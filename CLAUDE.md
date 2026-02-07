@@ -1,54 +1,23 @@
-You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScript, TypeScript, HTML, CSS and modern UI/UX frameworks (e.g., TailwindCSS, Shadcn, Radix). You are thoughtful, give nuanced answers, and are brilliant at reasoning. You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning.
+### 프로젝트 환경
 
-### Coding Environment
-
-The user asks questions about the following coding languages:
-
-- ReactJS
-- NextJS
-- JavaScript
-- TypeScript
-- TailwindCSS
-- HTML
-- CSS
-
-### Code Implementation Guidelines
-
-Follow these rules when you write code:
-
-- Use early returns whenever possible to make the code more readable.
-- Always use Tailwind classes for styling HTML elements; avoid using CSS or tags.
-- Use consts instead of functions, for example, "const toggle = () =>". Also, define a type if possible.
-- Use named exports at the end of file instead of inline exports (e.g., `export { foo, bar }`, `export type { FooType }`). This makes it easier to distinguish internal and external code.
-- Do not use useMemo or useCallback hooks. This project uses React 19.2+ with React Compiler enabled, which handles memoization automatically.
-- Do not use relative imports deeper than `../..`. If a path requires `../../..` or more, use a path alias instead.
-- Avoid hacky patterns. If such workarounds seem necessary, consider restructuring instead.
-
-### Project Info
-
-- Package manager: pnpm
+- 기술 스택: React, Next, TypeScript, TailwindCSS
+- 패키지 매니저: pnpm
 - Next.js 16 App Router (`src/app/`)
 - Path alias: `@/*` → `./src/*`
-- Commands: `pnpm dev` / `pnpm build` / `pnpm lint`
-- Communicate in Korean
+- 명령어: `pnpm dev` / `pnpm build` / `pnpm lint`
+- 한국어로 소통
 
-### Commit Message Convention
+### 코드 작성 규칙
 
-Use prefix format: `<type>: <description in Korean>`
+- 가독성을 위해 early return 패턴 적극 사용
+- HTML 요소 스타일링은 반드시 Tailwind 클래스 사용. inline style 사용 금지.
+- 함수 선언 대신 `const` 화살표 함수 사용 (예: `const toggle = () =>`) 가능하면 타입도 정의.
+- inline export 대신 파일 끝에서 named export 사용 (예: `export { foo, bar }`, `export type { FooType }`)
+- `useMemo`, `useCallback` 훅 사용 금지. React 19.2+ with React Compiler 사용으로 메모이제이션 자동 처리.
+- 상대 경로는 `../..`까지만 허용. `../../..` 이상이면 path alias 사용.
+- 해키한 패턴 금지. 우회가 필요하면 구조 자체를 재설계.
 
-- `feat:` 새 기능 추가
-- `fix:` 버그 수정
-- `refactor:` 리팩토링
-- `style:` UI/스타일 변경
-- `chore:` 설정, 빌드 등
-- `docs:` 문서 수정
-- `agent:` 에이전트/클로드/AI 관련 설정
-- `perf:` 성능 개선
-- `test:` 테스트
-- `ci:` CI/CD
-- `deps:` 의존성 업데이트
-- `remove:` 기능 제거
+### 커밋 & PR 규칙
 
-### PR Rules
-
-- PR 생성 시 반드시 `/pr` 스킬을 사용할 것. 직접 `gh pr create`를 실행하지 말 것.
+- 커밋 메시지: `<type>: <한국어 설명>` 형식. 상세 type은 `/commit` 스킬 참조.
+- PR 생성 시 반드시 `/pr` 스킬 사용. 직접 `gh pr create` 실행 금지.
