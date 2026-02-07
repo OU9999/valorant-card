@@ -48,3 +48,7 @@ Use prefix format: `<type>: <description in Korean>`
 - `ci:` CI/CD
 - `deps:` 의존성 업데이트
 - `remove:` 기능 제거
+
+### PR Rules
+
+- PR 생성 시 반드시 `/pr` 스킬을 사용할 것. 직접 `gh pr create`를 실행하지 말 것.
