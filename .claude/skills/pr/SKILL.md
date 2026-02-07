@@ -69,13 +69,13 @@ git log --name-only --oneline main..HEAD
 
 | Prefix     | Label         | 설명            |
 | ---------- | ------------- | --------------- |
-| feat       | feature       | 새로운 기능     |
+| feat       | feat          | 새로운 기능     |
 | fix        | fix           | 코드 수정       |
 | fix (버그) | bug           | 버그 수정       |
 | refactor   | refactoring   | 코드 리팩토링   |
 | perf       | performance   | 성능 개선       |
 | docs       | documentation | 문서 작업       |
-| test       | testing       | 테스트          |
+| test       | test          | 테스트          |
 | chore      | development   | 개발 환경 구성  |
 | ci         | CI/CD         | 파이프라인      |
 | deps       | dependencies  | 의존성 업데이트 |
