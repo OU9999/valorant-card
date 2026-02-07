@@ -1,0 +1,61 @@
+---
+description: "커밋 생성 - 변경사항 분석 후 커밋 메시지 자동 생성"
+allowed-tools: ["Bash", "Read", "Grep"]
+---
+
+# 커밋 생성 Skill
+
+변경사항을 분석하여 컨벤션에 맞는 커밋을 생성합니다.
+
+## 실행 순서
+
+### 1. 변경 내용 분석
+
+다음 명령어로 변경 내용을 확인하세요:
+
+```bash
+git status
+git diff
+git diff --cached
+```
+
+### 2. 커밋 메시지 생성
+
+`<type>: <한국어 설명>` 형식으로 커밋 메시지를 생성하세요.
+
+**type 목록:**
+
+| Type       | 설명                         |
+| ---------- | ---------------------------- |
+| `feat`     | 새 기능 추가                 |
+| `fix`      | 버그 수정                    |
+| `refactor` | 리팩토링                     |
+| `style`    | UI/스타일 변경               |
+| `chore`    | 설정, 빌드 등                |
+| `docs`     | 문서 수정                    |
+| `agent`    | 에이전트/클로드/AI 관련 설정 |
+| `perf`     | 성능 개선                    |
+| `test`     | 테스트                       |
+| `ci`       | CI/CD                        |
+| `deps`     | 의존성 업데이트              |
+| `remove`   | 기능 제거                    |
+
+**작성 규칙:**
+
+- "~함", "~추가", "~구현" 같은 간결한 문체 사용
+- 변경의 핵심만 1문장으로 요약
+- 여러 변경이 있으면 가장 중요한 변경을 기준으로 type 결정
+
+### 3. 커밋 실행
+
+```bash
+git add <변경된 파일들>
+git commit -m "$(cat <<'EOF'
+<type>: <한국어 설명>
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+EOF
+)"
+```
+
+**주의:** body는 반드시 HEREDOC 사용.
