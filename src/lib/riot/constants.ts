@@ -1,4 +1,4 @@
-import type { RiotRegion, ValorantShard } from "@/types/riot/common";
+import type { RiotRegion, ValorantShard } from "@/network/riot/types/common";
 
 const REGION_URLS: Record<RiotRegion, string> = {
   americas: "https://americas.api.riotgames.com",

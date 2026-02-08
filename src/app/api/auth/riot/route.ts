@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { generateState, buildAuthorizationUrl } from "@/lib/riot/auth";
+import { generateState, buildAuthorizationUrl } from "@/network/riot/auth";
 import { RSO } from "@/lib/riot/constants";
 
 const GET = async (): Promise<NextResponse> => {

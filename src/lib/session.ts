@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import type { RsoSession } from "@/types/riot/auth";
+import type { RsoSession } from "@/network/riot/types/auth";
 import { RSO } from "./riot/constants";
 
 const ALGORITHM = "AES-GCM";

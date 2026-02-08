@@ -1,4 +1,4 @@
-import type { RateLimitInfo } from "@/types/riot/common";
+import type { RateLimitInfo } from "@/network/riot/types/common";
 
 type RateLimitEntry = {
   retryAfter: number | null;
