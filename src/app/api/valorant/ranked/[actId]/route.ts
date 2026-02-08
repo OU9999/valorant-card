@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import type { ValorantShard } from "@/types/riot/common";
-import { getLeaderboard } from "@/lib/riot/client";
+import type { ValorantShard } from "@/network/riot/types/common";
+import { getLeaderboard } from "@/network/riot/client";
 
-type Params = {
+interface Params {
   params: Promise<{ actId: string }>;
-};
+}
 
 const GET = async (request: NextRequest, { params }: Params): Promise<NextResponse> => {
   const { actId } = await params;

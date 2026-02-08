@@ -1,13 +1,13 @@
-type RiotAccount = {
+interface RiotAccount {
   puuid: string;
   gameName: string;
   tagLine: string;
-};
+}
 
-type ActiveShard = {
+interface ActiveShard {
   puuid: string;
   game: string;
   activeShard: string;
-};
+}
 
 export type { RiotAccount, ActiveShard };

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/types/riot/common";
-import type { ValorantQueue } from "@/types/riot/match";
-import { getRecentMatches } from "@/lib/riot/client";
+import type { ValorantShard } from "@/network/riot/types/common";
+import type { ValorantQueue } from "@/network/riot/types/match";
+import { getRecentMatches } from "@/network/riot/client";
 
 const VALID_QUEUES = new Set<string>([
   "competitive",
@@ -15,9 +15,9 @@ const VALID_QUEUES = new Set<string>([
   "snowball",
 ]);
 
-type Params = {
+interface Params {
   params: Promise<{ queue: string }>;
-};
+}
 
 const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
   const { queue } = await params;

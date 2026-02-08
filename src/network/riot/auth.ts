@@ -1,5 +1,5 @@
-import type { RsoTokenResponse } from "@/types/riot/auth";
-import { RSO } from "./constants";
+import type { RsoTokenResponse } from "@/network/riot/types/auth";
+import { RSO } from "@/lib/riot/constants";
 
 const getClientId = (): string => {
   const id = process.env.RSO_CLIENT_ID;

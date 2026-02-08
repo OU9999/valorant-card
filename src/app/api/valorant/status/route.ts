@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/types/riot/common";
-import { getPlatformStatus } from "@/lib/riot/client";
+import type { ValorantShard } from "@/network/riot/types/common";
+import { getPlatformStatus } from "@/network/riot/client";
 
 const GET = async (): Promise<NextResponse> => {
   const shard = (process.env.VALORANT_SHARD ?? "kr") as ValorantShard;

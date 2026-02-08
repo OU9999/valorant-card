@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import type { ValorantShard, Locale } from "@/types/riot/common";
-import { getContent } from "@/lib/riot/client";
+import type { ValorantShard, Locale } from "@/network/riot/types/common";
+import { getContent } from "@/network/riot/client";
 
 const GET = async (request: NextRequest): Promise<NextResponse> => {
   const { searchParams } = request.nextUrl;

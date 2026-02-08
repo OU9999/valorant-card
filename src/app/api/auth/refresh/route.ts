@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import type { RsoSession } from "@/types/riot/auth";
-import { refreshAccessToken } from "@/lib/riot/auth";
-import { getAccountByAccessToken } from "@/lib/riot/client";
+import type { RsoSession } from "@/network/riot/types/auth";
+import { refreshAccessToken } from "@/network/riot/auth";
+import { getAccountByAccessToken } from "@/network/riot/client";
 import { getSession, setSession } from "@/lib/session";
 
 const POST = async (): Promise<NextResponse> => {

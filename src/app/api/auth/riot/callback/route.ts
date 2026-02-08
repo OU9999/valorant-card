@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import type { RsoSession } from "@/types/riot/auth";
-import { exchangeCodeForTokens } from "@/lib/riot/auth";
-import { getAccountByAccessToken } from "@/lib/riot/client";
+import type { RsoSession } from "@/network/riot/types/auth";
+import { exchangeCodeForTokens } from "@/network/riot/auth";
+import { getAccountByAccessToken } from "@/network/riot/client";
 import { RSO } from "@/lib/riot/constants";
 import { setSession } from "@/lib/session";
 

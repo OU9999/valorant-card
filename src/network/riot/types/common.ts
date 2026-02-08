@@ -2,30 +2,30 @@ type RiotRegion = "americas" | "asia" | "europe" | "esports";
 
 type ValorantShard = "ap" | "br" | "eu" | "kr" | "latam" | "na";
 
-type ApiSuccess<T> = {
+interface ApiSuccess<T> {
   ok: true;
   data: T;
   rateLimit: RateLimitInfo | null;
-};
+}
 
-type ApiError = {
+interface ApiError {
   ok: false;
   error: {
     status: number;
     message: string;
     code: string;
   };
-};
+}
 
 type ApiResult<T> = ApiSuccess<T> | ApiError;
 
-type RateLimitInfo = {
+interface RateLimitInfo {
   appRateLimit: string | null;
   appRateLimitCount: string | null;
   methodRateLimit: string | null;
   methodRateLimitCount: string | null;
   retryAfter: number | null;
-};
+}
 
 type Locale =
   | "ar-AE"

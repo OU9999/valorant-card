@@ -1,4 +1,4 @@
-type MatchInfo = {
+interface MatchInfo {
   matchId: string;
   mapId: string;
   gameLengthMillis: number;
@@ -10,9 +10,9 @@ type MatchInfo = {
   gameMode: string;
   isRanked: boolean;
   seasonId: string;
-};
+}
 
-type PlayerStats = {
+interface PlayerStats {
   score: number;
   roundsPlayed: number;
   kills: number;
@@ -20,16 +20,16 @@ type PlayerStats = {
   assists: number;
   playtimeMillis: number;
   abilityCasts: AbilityCasts | null;
-};
+}
 
-type AbilityCasts = {
+interface AbilityCasts {
   grenadeCasts: number;
   ability1Casts: number;
   ability2Casts: number;
   ultimateCasts: number;
-};
+}
 
-type MatchPlayer = {
+interface MatchPlayer {
   puuid: string;
   gameName: string;
   tagLine: string;
@@ -40,17 +40,17 @@ type MatchPlayer = {
   competitiveTier: number;
   playerCard: string;
   playerTitle: string;
-};
+}
 
-type MatchTeam = {
+interface MatchTeam {
   teamId: string;
   won: boolean;
   roundsPlayed: number;
   roundsWon: number;
   numPoints: number;
-};
+}
 
-type RoundResult = {
+interface RoundResult {
   roundNum: number;
   roundResult: string;
   roundCeremony: string;
@@ -65,29 +65,29 @@ type RoundResult = {
   defusePlayerLocations: PlayerLocation[] | null;
   defuseLocation: Location;
   playerStats: RoundPlayerStats[];
-};
+}
 
-type PlayerLocation = {
+interface PlayerLocation {
   puuid: string;
   viewRadians: number;
   location: Location;
-};
+}
 
-type Location = {
+interface Location {
   x: number;
   y: number;
-};
+}
 
-type RoundPlayerStats = {
+interface RoundPlayerStats {
   puuid: string;
   kills: Kill[];
   damage: Damage[];
   score: number;
   economy: Economy;
   ability: Ability;
-};
+}
 
-type Kill = {
+interface Kill {
   timeSinceGameStartMillis: number;
   timeSinceRoundStartMillis: number;
   killer: string;
@@ -96,65 +96,65 @@ type Kill = {
   assistants: string[];
   playerLocations: PlayerLocation[];
   finishingDamage: FinishingDamage;
-};
+}
 
-type FinishingDamage = {
+interface FinishingDamage {
   damageType: string;
   damageItem: string;
   isSecondaryFireMode: boolean;
-};
+}
 
-type Damage = {
+interface Damage {
   receiver: string;
   damage: number;
   legshots: number;
   bodyshots: number;
   headshots: number;
-};
+}
 
-type Economy = {
+interface Economy {
   loadoutValue: number;
   weapon: string;
   armor: string;
   remaining: number;
   spent: number;
-};
+}
 
-type Ability = {
+interface Ability {
   grenadeEffects: string | null;
   ability1Effects: string | null;
   ability2Effects: string | null;
   ultimateEffects: string | null;
-};
+}
 
-type Coach = {
+interface Coach {
   puuid: string;
   teamId: string;
-};
+}
 
-type MatchDetails = {
+interface MatchDetails {
   matchInfo: MatchInfo;
   players: MatchPlayer[];
   coaches: Coach[];
   teams: MatchTeam[];
   roundResults: RoundResult[];
-};
+}
 
-type MatchList = {
+interface MatchList {
   puuid: string;
   history: MatchListEntry[];
-};
+}
 
-type MatchListEntry = {
+interface MatchListEntry {
   matchId: string;
   gameStartTimeMillis: number;
   queueId: string;
-};
+}
 
-type RecentMatches = {
+interface RecentMatches {
   currentTime: number;
   matchIds: string[];
-};
+}
 
 type ValorantQueue =
   | "competitive"

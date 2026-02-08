@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/types/riot/common";
-import { getMatchListByPuuid } from "@/lib/riot/client";
+import type { ValorantShard } from "@/network/riot/types/common";
+import { getMatchListByPuuid } from "@/network/riot/client";
 
-type Params = {
+interface Params {
   params: Promise<{ puuid: string }>;
-};
+}
 
 const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
   const { puuid } = await params;

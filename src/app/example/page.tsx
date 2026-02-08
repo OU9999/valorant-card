@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-type ApiState = {
+interface ApiState {
   loading: boolean;
   data: unknown;
   error: string | null;
-};
+}
 
 const INITIAL_STATE: ApiState = { loading: false, data: null, error: null };
 

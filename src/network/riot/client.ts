@@ -1,23 +1,23 @@
-import type { ApiResult, RiotRegion, ValorantShard, Locale } from "@/types/riot/common";
-import type { RiotAccount, ActiveShard } from "@/types/riot/account";
-import type { MatchDetails, MatchList, RecentMatches, ValorantQueue } from "@/types/riot/match";
-import type { Leaderboard } from "@/types/riot/ranked";
-import type { GameContent } from "@/types/riot/content";
-import type { PlatformStatus } from "@/types/riot/status";
-import { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, API_PATHS } from "./constants";
-import { RiotApiError, RiotRateLimitError } from "./errors";
+import type { ApiResult, RiotRegion, ValorantShard, Locale } from "@/network/riot/types/common";
+import type { RiotAccount, ActiveShard } from "@/network/riot/types/account";
+import type { MatchDetails, MatchList, RecentMatches, ValorantQueue } from "@/network/riot/types/match";
+import type { Leaderboard } from "@/network/riot/types/ranked";
+import type { GameContent } from "@/network/riot/types/content";
+import type { PlatformStatus } from "@/network/riot/types/status";
+import { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, API_PATHS } from "@/lib/riot/constants";
+import { RiotApiError, RiotRateLimitError } from "@/lib/riot/errors";
 import {
   parseRateLimitInfo,
   isRateLimited,
   recordRateLimit,
-} from "./rate-limiter";
+} from "@/lib/riot/rate-limiter";
 
-type FetchConfig = {
+interface FetchConfig {
   baseUrl: string;
   path: string;
   params?: Record<string, string>;
   rateLimitKey: string;
-};
+}
 
 const buildUrl = (baseUrl: string, path: string, params?: Record<string, string>): string => {
   const url = new URL(path, baseUrl);
@@ -179,12 +179,12 @@ const getRecentMatches = (
 
 // ─── Ranked API ───
 
-type LeaderboardOptions = {
+interface LeaderboardOptions {
   actId: string;
   shard?: ValorantShard;
   size?: number;
   startIndex?: number;
-};
+}
 
 const getLeaderboard = ({
   actId,

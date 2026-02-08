@@ -1,9 +1,9 @@
-import type { RateLimitInfo } from "@/types/riot/common";
+import type { RateLimitInfo } from "@/network/riot/types/common";
 
-type RateLimitEntry = {
+interface RateLimitEntry {
   retryAfter: number | null;
   blockedUntil: number;
-};
+}
 
 const limitMap = new Map<string, RateLimitEntry>();
 
