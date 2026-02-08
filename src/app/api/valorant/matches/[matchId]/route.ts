@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import type { ValorantShard } from "@/network/riot/types/common";
 import { getMatchById } from "@/network/riot/client";
 
-type Params = {
+interface Params {
   params: Promise<{ matchId: string }>;
-};
+}
 
 const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
   const { matchId } = await params;

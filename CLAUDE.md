@@ -29,6 +29,7 @@ src/
 - inline export 대신 파일 끝에서 named export 사용 (예: `export { foo, bar }`, `export type { FooType }`)
 - `useMemo`, `useCallback` 훅 사용 금지. React 19.2+ with React Compiler 사용으로 메모이제이션 자동 처리.
 - 상대 경로는 `../..`까지만 허용. `../../..` 이상이면 path alias 사용.
+- 객체 타입은 `type` 대신 `interface` 사용.
 - 해키한 패턴 금지. 우회가 필요하면 구조 자체를 재설계.
 
 ### 커밋 & PR 규칙

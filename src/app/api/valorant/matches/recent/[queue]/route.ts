@@ -15,9 +15,9 @@ const VALID_QUEUES = new Set<string>([
   "snowball",
 ]);
 
-type Params = {
+interface Params {
   params: Promise<{ queue: string }>;
-};
+}
 
 const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
   const { queue } = await params;

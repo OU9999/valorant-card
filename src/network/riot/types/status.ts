@@ -1,9 +1,9 @@
-type StatusContent = {
+interface StatusContent {
   locale: string;
   content: string;
-};
+}
 
-type StatusUpdate = {
+interface StatusUpdate {
   id: number;
   author: string;
   publish: boolean;
@@ -11,9 +11,9 @@ type StatusUpdate = {
   translations: StatusContent[];
   created_at: string;
   updated_at: string;
-};
+}
 
-type StatusIncident = {
+interface StatusIncident {
   id: number;
   maintenance_status: string | null;
   incident_severity: string | null;
@@ -23,14 +23,14 @@ type StatusIncident = {
   archive_at: string | null;
   updated_at: string | null;
   platforms: string[];
-};
+}
 
-type PlatformStatus = {
+interface PlatformStatus {
   id: string;
   name: string;
   locales: string[];
   maintenances: StatusIncident[];
   incidents: StatusIncident[];
-};
+}
 
 export type { StatusContent, StatusUpdate, StatusIncident, PlatformStatus };

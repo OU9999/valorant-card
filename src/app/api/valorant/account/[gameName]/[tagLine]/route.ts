@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import type { RiotRegion } from "@/network/riot/types/common";
 import { getAccountByRiotId } from "@/network/riot/client";
 
-type Params = {
+interface Params {
   params: Promise<{ gameName: string; tagLine: string }>;
-};
+}
 
 const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
   const { gameName, tagLine } = await params;

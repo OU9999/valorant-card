@@ -12,12 +12,12 @@ import {
   recordRateLimit,
 } from "@/lib/riot/rate-limiter";
 
-type FetchConfig = {
+interface FetchConfig {
   baseUrl: string;
   path: string;
   params?: Record<string, string>;
   rateLimitKey: string;
-};
+}
 
 const buildUrl = (baseUrl: string, path: string, params?: Record<string, string>): string => {
   const url = new URL(path, baseUrl);
@@ -179,12 +179,12 @@ const getRecentMatches = (
 
 // ─── Ranked API ───
 
-type LeaderboardOptions = {
+interface LeaderboardOptions {
   actId: string;
   shard?: ValorantShard;
   size?: number;
   startIndex?: number;
-};
+}
 
 const getLeaderboard = ({
   actId,
