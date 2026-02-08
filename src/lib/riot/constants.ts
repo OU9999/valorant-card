@@ -25,17 +25,6 @@ const SHARD_TO_REGION: Record<ValorantShard, RiotRegion> = {
   na: "americas",
 };
 
-const RSO = {
-  AUTHORIZATION_URL: "https://auth.riotgames.com/authorize",
-  TOKEN_URL: "https://auth.riotgames.com/token",
-  SCOPES: "openid cpid",
-  RESPONSE_TYPE: "code",
-  STATE_COOKIE_NAME: "rso_state",
-  SESSION_COOKIE_NAME: "rso_session",
-  STATE_MAX_AGE_SECONDS: 300,
-  SESSION_MAX_AGE_SECONDS: 7 * 24 * 60 * 60,
-} as const;
-
 const API_PATHS = {
   ACCOUNT_BY_RIOT_ID: "/riot/account/v1/accounts/by-riot-id",
   ACCOUNT_BY_PUUID: "/riot/account/v1/accounts/by-puuid",
@@ -48,4 +37,4 @@ const API_PATHS = {
   STATUS: "/val/status/v1/platform-data",
 } as const;
 
-export { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, RSO, API_PATHS };
+export { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, API_PATHS };
