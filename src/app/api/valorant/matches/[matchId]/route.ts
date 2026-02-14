@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/network/riot/types/common";
-import { getMatchById } from "@/network/riot/client";
+import type { ValorantShard } from "@/network/riot/common";
+import { getMatchById } from "@/lib/riot/client";
 
 interface Params {
   params: Promise<{ matchId: string }>;

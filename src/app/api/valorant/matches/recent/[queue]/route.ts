@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/network/riot/types/common";
-import type { ValorantQueue } from "@/network/riot/types/match";
-import { getRecentMatches } from "@/network/riot/client";
+import type { ValorantShard } from "@/network/riot/common";
+import type { ValorantQueue } from "@/network/riot/match";
+import { getRecentMatches } from "@/lib/riot/client";
 
 const VALID_QUEUES = new Set<string>([
   "competitive",
