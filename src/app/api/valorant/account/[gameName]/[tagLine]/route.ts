@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { RiotRegion } from "@/network/riot/common";
-import { getAccountByRiotId } from "@/network/riot/client";
+import { getAccountByRiotId } from "@/lib/riot/client";
 
 interface Params {
   params: Promise<{ gameName: string; tagLine: string }>;

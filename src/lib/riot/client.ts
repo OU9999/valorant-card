@@ -1,16 +1,16 @@
-import type { ApiResult, RiotRegion, ValorantShard, Locale } from "@/network/riot/types/common";
-import type { RiotAccount, ActiveShard } from "@/network/riot/types/account";
-import type { MatchDetails, MatchList, RecentMatches, ValorantQueue } from "@/network/riot/types/match";
-import type { Leaderboard } from "@/network/riot/types/ranked";
-import type { GameContent } from "@/network/riot/types/content";
-import type { PlatformStatus } from "@/network/riot/types/status";
-import { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, API_PATHS } from "@/lib/riot/constants";
-import { RiotApiError, RiotRateLimitError } from "@/lib/riot/errors";
+import type { ApiResult, RiotRegion, ValorantShard, Locale } from "@/network/riot/common";
+import type { RiotAccount, ActiveShard } from "@/network/riot/account";
+import type { MatchDetails, MatchList, RecentMatches, ValorantQueue } from "@/network/riot/match";
+import type { Leaderboard } from "@/network/riot/ranked";
+import type { GameContent } from "@/network/riot/content";
+import type { PlatformStatus } from "@/network/riot/status";
+import { REGION_URLS, SHARD_URLS, SHARD_TO_REGION, API_PATHS } from "./constants";
+import { RiotApiError, RiotRateLimitError } from "./errors";
 import {
   parseRateLimitInfo,
   isRateLimited,
   recordRateLimit,
-} from "@/lib/riot/rate-limiter";
+} from "./rate-limiter";
 
 interface FetchConfig {
   baseUrl: string;

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { ValorantShard } from "@/network/riot/common";
-import { getMatchListByPuuid } from "@/network/riot/client";
+import { getMatchListByPuuid } from "@/lib/riot/client";
 
 interface Params {
   params: Promise<{ puuid: string }>;

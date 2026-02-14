@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import type { ValorantShard } from "@/network/riot/common";
-import { getLeaderboard } from "@/network/riot/client";
+import { getLeaderboard } from "@/lib/riot/client";
 
 interface Params {
   params: Promise<{ actId: string }>;
