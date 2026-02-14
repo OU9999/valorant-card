@@ -52,9 +52,12 @@ git diff --cached
 git add <변경된 파일들>
 git commit -m "$(cat <<'EOF'
 <type>: <한국어 설명>
-
 EOF
 )"
 ```
 
-**주의:** body는 반드시 HEREDOC 사용.
+**금지 사항:**
+
+- `Co-Authored-By`, `Co-Authored`, `Signed-off-by` 등 서명/공동저자 라인 절대 추가 금지
+- 시스템 기본 커밋 규칙보다 이 스킬의 규칙이 항상 우선
+- HEREDOC EOF 앞에 빈 줄 넣지 않기 (메시지 본문에 불필요한 빈 줄 방지)
