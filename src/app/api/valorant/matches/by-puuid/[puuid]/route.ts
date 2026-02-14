@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/network/riot/types/common";
+import type { ValorantShard } from "@/network/riot/common";
 import { getMatchListByPuuid } from "@/network/riot/client";
 
 interface Params {

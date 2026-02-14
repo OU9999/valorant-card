@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { RiotRegion } from "@/network/riot/types/common";
+import type { RiotRegion } from "@/network/riot/common";
 import { getAccountByRiotId } from "@/network/riot/client";
 
 interface Params {
