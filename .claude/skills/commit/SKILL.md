@@ -53,7 +53,6 @@ git add <변경된 파일들>
 git commit -m "$(cat <<'EOF'
 <type>: <한국어 설명>
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```
