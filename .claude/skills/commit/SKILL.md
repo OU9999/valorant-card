@@ -31,9 +31,9 @@ git diff --cached
 | `fix`      | 버그 수정                    |
 | `refactor` | 리팩토링                     |
 | `style`    | UI/스타일 변경               |
-| `chore`    | 설정, 빌드 등                |
-| `docs`     | 문서 수정                    |
-| `agent`    | 에이전트/클로드/AI 관련 설정 |
+| `chore`    | 설정, 빌드 등 (agent 범위 제외)                                    |
+| `docs`     | 문서 수정                                                          |
+| `agent`    | AI 에이전트 관련 모든 변경 (CLAUDE.md, .claude/, 스킬, MCP 설정 등) |
 | `perf`     | 성능 개선                    |
 | `test`     | 테스트                       |
 | `ci`       | CI/CD                        |
@@ -53,7 +53,6 @@ git add <변경된 파일들>
 git commit -m "$(cat <<'EOF'
 <type>: <한국어 설명>
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```

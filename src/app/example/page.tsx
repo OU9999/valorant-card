@@ -11,7 +11,6 @@ interface ApiState {
 const INITIAL_STATE: ApiState = { loading: false, data: null, error: null };
 
 const ExamplePage = () => {
-  const [me, setMe] = useState<ApiState>(INITIAL_STATE);
   const [content, setContent] = useState<ApiState>(INITIAL_STATE);
   const [status, setStatus] = useState<ApiState>(INITIAL_STATE);
   const [account, setAccount] = useState<ApiState>(INITIAL_STATE);
@@ -52,34 +51,6 @@ const ExamplePage = () => {
           <h1 className="text-3xl font-bold text-white">Valorant API Example</h1>
           <p className="mt-2 text-gray-400">Riot Games API 엔드포인트 테스트 페이지</p>
         </div>
-
-        {/* Auth Section */}
-        <section className="space-y-4 rounded-xl border border-gray-800 bg-gray-900 p-6">
-          <h2 className="text-xl font-semibold text-white">Auth</h2>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="/api/auth/riot"
-              className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-500"
-            >
-              RSO 로그인
-            </a>
-            <button
-              type="button"
-              onClick={() => fetchApi("/api/auth/me", setMe)}
-              className="rounded-lg bg-gray-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-600"
-            >
-              내 정보 조회
-            </button>
-            <button
-              type="button"
-              onClick={() => fetch("/api/auth/refresh", { method: "POST" }).then(() => fetchApi("/api/auth/me", setMe))}
-              className="rounded-lg bg-gray-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-600"
-            >
-              토큰 갱신
-            </button>
-          </div>
-          <ResultBlock state={me} />
-        </section>
 
         {/* Account Lookup */}
         <section className="space-y-4 rounded-xl border border-gray-800 bg-gray-900 p-6">
@@ -140,10 +111,6 @@ const ExamplePage = () => {
         <section className="space-y-3 rounded-xl border border-gray-800 bg-gray-900 p-6">
           <h2 className="text-xl font-semibold text-white">API 엔드포인트 목록</h2>
           <ul className="space-y-1 text-sm text-gray-400">
-            <li><code className="text-gray-300">GET /api/auth/riot</code> - RSO 로그인</li>
-            <li><code className="text-gray-300">GET /api/auth/riot/callback</code> - RSO 콜백</li>
-            <li><code className="text-gray-300">POST /api/auth/refresh</code> - 토큰 갱신</li>
-            <li><code className="text-gray-300">GET /api/auth/me</code> - 내 정보</li>
             <li><code className="text-gray-300">GET /api/valorant/account/:gameName/:tagLine</code> - 계정 조회</li>
             <li><code className="text-gray-300">GET /api/valorant/matches/:matchId</code> - 매치 상세</li>
             <li><code className="text-gray-300">GET /api/valorant/matches/by-puuid/:puuid</code> - 매치 히스토리</li>

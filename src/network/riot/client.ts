@@ -68,40 +68,6 @@ const fetchWithApiKey = async <T>(config: FetchConfig): Promise<ApiResult<T>> =>
   return { ok: true, data, rateLimit };
 };
 
-const fetchWithBearer = async <T>(
-  accessToken: string,
-  config: FetchConfig,
-): Promise<ApiResult<T>> => {
-  if (isRateLimited(config.rateLimitKey)) {
-    return {
-      ok: false,
-      error: { status: 429, message: "Rate limited", code: "RATE_LIMITED" },
-    };
-  }
-
-  const url = buildUrl(config.baseUrl, config.path, config.params);
-
-  const response = await fetch(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
-
-  const rateLimit = parseRateLimitInfo(response.headers);
-
-  if (response.status === 429) {
-    const retryAfter = rateLimit.retryAfter ?? 10;
-    recordRateLimit(config.rateLimitKey, retryAfter);
-    throw new RiotRateLimitError(retryAfter);
-  }
-
-  if (!response.ok) {
-    const body = await response.text();
-    throw new RiotApiError(response.status, body, `HTTP_${response.status}`);
-  }
-
-  const data = (await response.json()) as T;
-  return { ok: true, data, rateLimit };
-};
-
 // ─── Account API ───
 
 const getAccountByRiotId = (
@@ -132,16 +98,6 @@ const getActiveShard = (
   fetchWithApiKey({
     baseUrl: REGION_URLS[region],
     path: `${API_PATHS.ACTIVE_SHARD}/${puuid}`,
-    rateLimitKey: `account:${region}`,
-  });
-
-const getAccountByAccessToken = (
-  accessToken: string,
-  region: RiotRegion = "asia",
-): Promise<ApiResult<RiotAccount>> =>
-  fetchWithBearer(accessToken, {
-    baseUrl: REGION_URLS[region],
-    path: "/riot/account/v1/accounts/me",
     rateLimitKey: `account:${region}`,
   });
 
@@ -234,11 +190,9 @@ const getRegionForShard = (shard: ValorantShard): RiotRegion => SHARD_TO_REGION[
 
 export {
   fetchWithApiKey,
-  fetchWithBearer,
   getAccountByRiotId,
   getAccountByPuuid,
   getActiveShard,
-  getAccountByAccessToken,
   getMatchById,
   getMatchListByPuuid,
   getRecentMatches,
