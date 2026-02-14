@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { fetchApi } from "@/network/fetch-api";
 import type { FetchResult } from "@/network/fetch-api";
+import { API_ENDPOINTS } from "@/constants/api-endpoints";
 
 const ExamplePage = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ const ExamplePage = () => {
 
   const handleFetchContent = async () => {
     setLoading(true);
-    const res = await fetchApi("/api/valorant/content?locale=ko-KR");
+    const res = await fetchApi(`${API_ENDPOINTS.CONTENT}?locale=ko-KR`);
     setResult(res);
     setLoading(false);
   };
