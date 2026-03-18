@@ -12,6 +12,8 @@ import {
   calculatePerformance,
 } from "./tracker-score";
 import { getTierInfo } from "./tiers";
+import type { Badge } from "./badges";
+import { calculateBadges } from "./badges";
 
 // ─── Types ───
 
@@ -39,6 +41,7 @@ interface CardScoreResult {
   ovr: number;
   stats: CardStats;
   trend: FormTrend;
+  badges: Badge[];
 }
 
 // ─── Constants ───
@@ -339,8 +342,9 @@ const calculateCardScore = (
   );
 
   const trend = calculateFormTrend(matchMetrics);
+  const badges = calculateBadges(matches, puuid, matchMetrics);
 
-  return { ovr, stats, trend };
+  return { ovr, stats, trend, badges };
 };
 
 // ─── Helper: aggregate MatchMetrics without normalization ───
