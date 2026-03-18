@@ -43,17 +43,16 @@ const NORMALIZATION = {
   acs: { max: 350 },
   hsPercent: { max: 35 },
   adr: { max: 200 },
-  win: { max: 100 },
-  kast: { min: 40, range: 50 },
+  kast: { min: 65, range: 25 },
 } as const;
 
 const WEIGHTS = {
-  acs: 0.25,
-  kd: 0.2,
+  acs: 0.3,
+  kd: 0.25,
   adr: 0.15,
-  kast: 0.15,
-  win: 0.15,
-  hsPercent: 0.1,
+  kast: 0.05,
+  win: 0.1,
+  hsPercent: 0.15,
 } as const;
 
 // ─── Helpers ───
@@ -207,11 +206,15 @@ const checkTraded = (
 // ─── Normalization ───
 
 const normalizeMetrics = (metrics: MatchMetrics): NormalizedMetrics => ({
-  kd: clamp(metrics.kd / NORMALIZATION.kd.max, 0, 1),
-  acs: clamp(metrics.acs / NORMALIZATION.acs.max, 0, 1),
-  hsPercent: clamp(metrics.hsPercent / NORMALIZATION.hsPercent.max, 0, 1),
-  adr: clamp(metrics.adr / NORMALIZATION.adr.max, 0, 1),
-  win: clamp(metrics.win / (NORMALIZATION.win.max / 100), 0, 1),
+  kd: clamp(Math.sqrt(metrics.kd / NORMALIZATION.kd.max), 0, 1),
+  acs: clamp(Math.sqrt(metrics.acs / NORMALIZATION.acs.max), 0, 1),
+  hsPercent: clamp(
+    Math.sqrt(metrics.hsPercent / NORMALIZATION.hsPercent.max),
+    0,
+    1
+  ),
+  adr: clamp(Math.sqrt(metrics.adr / NORMALIZATION.adr.max), 0, 1),
+  win: clamp(metrics.win, 0, 1),
   kast: clamp(
     (metrics.kast - NORMALIZATION.kast.min) / NORMALIZATION.kast.range,
     0,
@@ -230,6 +233,9 @@ const calculatePerformance = (normalized: NormalizedMetrics): number =>
   normalized.hsPercent * WEIGHTS.hsPercent;
 
 // ─── Recency-Weighted Aggregation ───
+
+const BAYESIAN_PRIOR_WINS = 5;
+const BAYESIAN_PRIOR_TOTAL = 10;
 
 const aggregateMetrics = (
   matchMetrics: MatchMetrics[]
@@ -252,12 +258,17 @@ const aggregateMetrics = (
     sums.kast += m.kast * weight;
   }
 
+  const totalWins = matchMetrics.filter((m) => m.win === 1).length;
+  const bayesianWinRate =
+    (totalWins + BAYESIAN_PRIOR_WINS) /
+    (matchMetrics.length + BAYESIAN_PRIOR_TOTAL);
+
   const averaged: MatchMetrics = {
     kd: sums.kd / totalWeight,
     acs: sums.acs / totalWeight,
     hsPercent: sums.hsPercent / totalWeight,
     adr: sums.adr / totalWeight,
-    win: sums.win / totalWeight,
+    win: bayesianWinRate,
     kast: sums.kast / totalWeight,
   };
 
@@ -291,11 +302,11 @@ const calculateTrackerScore = (
   if (!metrics) return null;
 
   const performance = calculatePerformance(metrics);
-  const { base, ceiling } = tierInfo;
-  const score = Math.round(base + performance * (ceiling - base));
+  const { adjustedBase, ceiling } = tierInfo;
+  const score = Math.round(adjustedBase + performance * (ceiling - adjustedBase));
 
   return {
-    score: clamp(score, base, ceiling),
+    score: clamp(score, Math.round(adjustedBase), ceiling),
     performance,
     metrics,
   };
