@@ -14,6 +14,7 @@ interface MatchMetrics {
   acs: number;
   hsPercent: number;
   adr: number;
+  ddDelta: number;
   win: number;
   kast: number;
 }
@@ -23,6 +24,7 @@ interface NormalizedMetrics {
   acs: number;
   hsPercent: number;
   adr: number;
+  ddDelta: number;
   win: number;
   kast: number;
 }
@@ -30,6 +32,7 @@ interface NormalizedMetrics {
 interface TrackerScoreResult {
   score: number;
   performance: number;
+  consistency: number;
   metrics: NormalizedMetrics;
 }
 
@@ -37,23 +40,30 @@ interface TrackerScoreResult {
 
 const TRADE_WINDOW_MS = 5000;
 const RECENCY_DECAY = 0.97;
+const BAYESIAN_PRIOR_WINS = 5;
+const BAYESIAN_PRIOR_TOTAL = 10;
+const CONSISTENCY_MAX_STDDEV = 0.3;
 
 const NORMALIZATION = {
   kd: { max: 2.0 },
   acs: { max: 350 },
   hsPercent: { max: 35 },
   adr: { max: 200 },
+  ddDelta: { max: 80 },
   kast: { min: 65, range: 25 },
 } as const;
 
 const WEIGHTS = {
-  acs: 0.3,
-  kd: 0.25,
-  adr: 0.15,
-  kast: 0.05,
+  acs: 0.25,
+  kd: 0.2,
+  adr: 0.1,
+  ddDelta: 0.1,
+  hsPercent: 0.1,
   win: 0.1,
-  hsPercent: 0.15,
+  kast: 0.05,
 } as const;
+
+const CONSISTENCY_WEIGHT = 0.1;
 
 // ─── Helpers ───
 
@@ -78,12 +88,18 @@ const calculateMatchMetrics = (
   const team = match.teams.find((t) => t.teamId === player.teamId);
   const win = team?.won ? 1 : 0;
 
-  const { totalHeadshots, totalBodyshots, totalLegshots, totalDamage } =
-    aggregateRoundDamage(match.roundResults, puuid);
+  const {
+    totalHeadshots,
+    totalBodyshots,
+    totalLegshots,
+    totalDamage,
+    totalDamageReceived,
+  } = aggregateRoundDamage(match.roundResults, puuid);
 
   const totalShots = totalHeadshots + totalBodyshots + totalLegshots;
   const hsPercent = totalShots > 0 ? (totalHeadshots / totalShots) * 100 : 0;
   const adr = totalDamage / stats.roundsPlayed;
+  const ddDelta = (totalDamage - totalDamageReceived) / stats.roundsPlayed;
 
   const kast = calculateKAST(
     match.roundResults,
@@ -92,7 +108,7 @@ const calculateMatchMetrics = (
     match.players
   );
 
-  return { kd, acs, hsPercent, adr, win, kast };
+  return { kd, acs, hsPercent, adr, ddDelta, win, kast };
 };
 
 const aggregateRoundDamage = (
@@ -103,11 +119,13 @@ const aggregateRoundDamage = (
   totalBodyshots: number;
   totalLegshots: number;
   totalDamage: number;
+  totalDamageReceived: number;
 } => {
   let totalHeadshots = 0;
   let totalBodyshots = 0;
   let totalLegshots = 0;
   let totalDamage = 0;
+  let totalDamageReceived = 0;
 
   for (const round of roundResults) {
     const playerStats = round.playerStats.find((ps) => ps.puuid === puuid);
@@ -119,9 +137,25 @@ const aggregateRoundDamage = (
       totalLegshots += dmg.legshots;
       totalDamage += dmg.damage;
     }
+
+    for (const ps of round.playerStats) {
+      if (ps.puuid === puuid) continue;
+
+      for (const dmg of ps.damage) {
+        if (dmg.receiver === puuid) {
+          totalDamageReceived += dmg.damage;
+        }
+      }
+    }
   }
 
-  return { totalHeadshots, totalBodyshots, totalLegshots, totalDamage };
+  return {
+    totalHeadshots,
+    totalBodyshots,
+    totalLegshots,
+    totalDamage,
+    totalDamageReceived,
+  };
 };
 
 // ─── KAST Calculation ───
@@ -214,6 +248,8 @@ const normalizeMetrics = (metrics: MatchMetrics): NormalizedMetrics => ({
     1
   ),
   adr: clamp(Math.sqrt(metrics.adr / NORMALIZATION.adr.max), 0, 1),
+  ddDelta:
+    clamp(metrics.ddDelta / NORMALIZATION.ddDelta.max, -1, 1) * 0.5 + 0.5,
   win: clamp(metrics.win, 0, 1),
   kast: clamp(
     (metrics.kast - NORMALIZATION.kast.min) / NORMALIZATION.kast.range,
@@ -228,14 +264,30 @@ const calculatePerformance = (normalized: NormalizedMetrics): number =>
   normalized.acs * WEIGHTS.acs +
   normalized.kd * WEIGHTS.kd +
   normalized.adr * WEIGHTS.adr +
-  normalized.kast * WEIGHTS.kast +
+  normalized.ddDelta * WEIGHTS.ddDelta +
+  normalized.hsPercent * WEIGHTS.hsPercent +
   normalized.win * WEIGHTS.win +
-  normalized.hsPercent * WEIGHTS.hsPercent;
+  normalized.kast * WEIGHTS.kast;
+
+// ─── Consistency ───
+
+const calculateConsistency = (matchMetrics: MatchMetrics[]): number => {
+  if (matchMetrics.length < 2) return 1;
+
+  const performances = matchMetrics.map((m) =>
+    calculatePerformance(normalizeMetrics(m))
+  );
+
+  const mean = performances.reduce((a, b) => a + b, 0) / performances.length;
+  const variance =
+    performances.reduce((sum, p) => sum + (p - mean) ** 2, 0) /
+    performances.length;
+  const stddev = Math.sqrt(variance);
+
+  return 1 - clamp(stddev / CONSISTENCY_MAX_STDDEV, 0, 1);
+};
 
 // ─── Recency-Weighted Aggregation ───
-
-const BAYESIAN_PRIOR_WINS = 5;
-const BAYESIAN_PRIOR_TOTAL = 10;
 
 const aggregateMetrics = (
   matchMetrics: MatchMetrics[]
@@ -243,7 +295,15 @@ const aggregateMetrics = (
   if (matchMetrics.length === 0) return null;
 
   let totalWeight = 0;
-  const sums = { kd: 0, acs: 0, hsPercent: 0, adr: 0, win: 0, kast: 0 };
+  const sums = {
+    kd: 0,
+    acs: 0,
+    hsPercent: 0,
+    adr: 0,
+    ddDelta: 0,
+    win: 0,
+    kast: 0,
+  };
 
   for (let i = 0; i < matchMetrics.length; i++) {
     const weight = Math.pow(RECENCY_DECAY, i);
@@ -254,6 +314,7 @@ const aggregateMetrics = (
     sums.acs += m.acs * weight;
     sums.hsPercent += m.hsPercent * weight;
     sums.adr += m.adr * weight;
+    sums.ddDelta += m.ddDelta * weight;
     sums.win += m.win * weight;
     sums.kast += m.kast * weight;
   }
@@ -268,6 +329,7 @@ const aggregateMetrics = (
     acs: sums.acs / totalWeight,
     hsPercent: sums.hsPercent / totalWeight,
     adr: sums.adr / totalWeight,
+    ddDelta: sums.ddDelta / totalWeight,
     win: bayesianWinRate,
     kast: sums.kast / totalWeight,
   };
@@ -301,13 +363,21 @@ const calculateTrackerScore = (
   const metrics = aggregateMetrics(matchMetrics);
   if (!metrics) return null;
 
-  const performance = calculatePerformance(metrics);
+  const basePerformance = calculatePerformance(metrics);
+  const consistency = calculateConsistency(matchMetrics);
+  const performance =
+    basePerformance * (1 - CONSISTENCY_WEIGHT) +
+    consistency * CONSISTENCY_WEIGHT;
+
   const { adjustedBase, ceiling } = tierInfo;
-  const score = Math.round(adjustedBase + performance * (ceiling - adjustedBase));
+  const score = Math.round(
+    adjustedBase + performance * (ceiling - adjustedBase)
+  );
 
   return {
     score: clamp(score, Math.round(adjustedBase), ceiling),
     performance,
+    consistency,
     metrics,
   };
 };
@@ -317,6 +387,7 @@ export {
   calculateMatchMetrics,
   calculateKAST,
   calculatePerformance,
+  calculateConsistency,
   normalizeMetrics,
   aggregateMetrics,
 };
