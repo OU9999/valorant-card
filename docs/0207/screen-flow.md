@@ -193,7 +193,7 @@ gameName#tagLine
 
 | 항목                   | 산출 방식                                                  |
 | ---------------------- | ---------------------------------------------------------- |
-| 모스트 에이전트 초상화 | `characterId` 빈도 → `CHARACTERS[].fullPortrait`           |
+| 모스트 에이전트 풀 초상화 | `characterId` 빈도 → `CHARACTERS[].fullPortrait`           |
 | KDA                    | `Σ(kills + assists) / Σ(deaths)` (전체 매치)               |
 | 승률                   | 승리 매치 수 / 전체 매치 수 × 100                          |
 | ACS (평균 전투 점수)   | `Σ(stats.score) / Σ(stats.roundsPlayed)`                   |
