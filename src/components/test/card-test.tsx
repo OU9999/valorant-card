@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import diamondCard from "@/asset/example/tier-card/diamond.png";
+import { CardSvg } from "@/components/card/card-svg";
 
 const JETT_PORTRAIT =
   "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
@@ -15,24 +17,43 @@ const SAMPLE_STATS = [
 ];
 
 const CardTest = () => (
-  <div className="flex min-h-screen items-center justify-center bg-gray-950 p-8">
-    <div className="relative w-[300px] aspect-[2109/3218]">
+  <div className="flex min-h-screen items-center justify-center gap-12 bg-gray-950 p-8">
+    {/* Overlay comparison: PNG card + SVG outline on top */}
+    <div className="relative w-75 aspect-2109/3218">
+      <Image
+        src={diamondCard}
+        alt="card"
+        fill
+        className="object-contain"
+      />
+      <CardSvg
+        fill="none"
+        stroke="lime"
+        className="absolute inset-0 h-full w-full"
+      />
+    </div>
+
+    {/* Image card */}
+    <div className="relative w-75 aspect-2109/3218">
       {/* Layer 1: Card background */}
-      <img
-        src={diamondCard.src}
+      <Image
+        src={diamondCard}
         alt="card background"
-        className="absolute inset-0 h-full w-full object-contain"
+        fill
+        className="object-contain"
       />
 
       {/* Layer 2: Agent portrait (clipped + faded) */}
-      <img
+      <Image
         src={JETT_PORTRAIT}
         alt="agent portrait"
-        className="card-clip card-portrait-fade absolute inset-0 h-full w-full object-cover object-top"
+        fill
+        sizes="300px"
+        className="card-clip card-portrait-fade object-cover object-top"
       />
 
       {/* Layer 3: Bottom gradient for text readability */}
-      <div className="card-clip absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      <div className="card-clip absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
       {/* Layer 4: Text content */}
       <div className="absolute inset-0">
