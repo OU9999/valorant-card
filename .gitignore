@@ -42,3 +42,6 @@ next-env.d.ts
 
 # docs (올라갈 필요 없는 문서)
 .docs
+
+# playwright
+.playwright-mcp
