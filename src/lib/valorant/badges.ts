@@ -1,5 +1,6 @@
-import type { MatchDetails, RoundPlayerStats, Kill } from "@/network/riot/match";
+import type { MatchDetails, RoundPlayerStats } from "@/network/riot/match";
 import type { MatchMetrics } from "./tracker-score";
+import { collectAllKills, detectClutch } from "./match-utils";
 
 // ─── Types ───
 
@@ -71,56 +72,18 @@ const countClutches = (matches: MatchDetails[], puuid: string): number => {
 
     for (const round of match.roundResults) {
       const allKills = collectAllKills(round.playerStats);
-      const result = detectClutchResult(
+      const result = detectClutch(
         allKills,
         puuid,
+        player.teamId,
         teammatePuuids,
-        round.winningTeam,
-        player.teamId
+        round.winningTeam
       );
       if (result === true) successes++;
     }
   }
 
   return successes;
-};
-
-const collectAllKills = (playerStats: RoundPlayerStats[]): Kill[] => {
-  const kills: Kill[] = [];
-  for (const ps of playerStats) {
-    kills.push(...ps.kills);
-  }
-  return kills;
-};
-
-const detectClutchResult = (
-  allKills: Kill[],
-  puuid: string,
-  teammatePuuids: Set<string>,
-  winningTeam: string,
-  teamId: string
-): boolean | null => {
-  const sorted = [...allKills].sort(
-    (a, b) => a.timeSinceRoundStartMillis - b.timeSinceRoundStartMillis
-  );
-
-  let teammatesAlive = teammatePuuids.size;
-  let playerDied = false;
-
-  for (const kill of sorted) {
-    if (kill.victim === puuid) {
-      playerDied = true;
-      break;
-    }
-    if (teammatePuuids.has(kill.victim)) {
-      teammatesAlive--;
-    }
-  }
-
-  if (playerDied) return null;
-  if (teammatesAlive > 0) return null;
-
-  return winningTeam === teamId;
 };
 
 const checkUndefeated = (matchMetrics: MatchMetrics[]): boolean =>

@@ -1,5 +1,8 @@
 # Tracker Score 알고리즘 개선안
 
+기존 알고리즘의 문제점을 분석하고 개선안을 제시함.
+최종 반영 결과는 [[tier-scoring-algorithm]], 검증은 [[tracker-score-validation]] 참고.
+
 ## 1. 현재 문제점
 
 ### 1.1 KAST 차별력 부족

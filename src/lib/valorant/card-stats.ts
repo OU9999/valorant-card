@@ -1,19 +1,22 @@
-import type {
-  MatchDetails,
-  MatchPlayer,
-  RoundResult,
-  RoundPlayerStats,
-  Kill,
-} from "@/network/riot/match";
+import type { MatchDetails } from "@/network/riot/match";
 import type { MatchMetrics, NormalizedMetrics } from "./tracker-score";
 import {
   calculateMatchMetrics,
   normalizeMetrics,
-  calculatePerformance,
+  calculateConsistency,
 } from "./tracker-score";
 import { getTierInfo } from "./tiers";
 import type { Badge } from "./badges";
 import { calculateBadges } from "./badges";
+import {
+  clamp,
+  collectAllKills,
+  detectClutch,
+  detectFirstBlood,
+  RECENCY_DECAY,
+  BAYESIAN_PRIOR_WINS,
+  BAYESIAN_PRIOR_TOTAL,
+} from "./match-utils";
 
 // ─── Types ───
 
@@ -22,7 +25,6 @@ interface CardMetrics {
   multikillRate: number;
   assistsPerRound: number;
   surviveRate: number;
-  deathsPerRound: number;
   clutchRate: number;
 }
 
@@ -46,21 +48,15 @@ interface CardScoreResult {
 
 // ─── Constants ───
 
-const RECENCY_DECAY = 0.97;
+const CLUTCH_NEUTRAL_RATE = 0.125;
 
 const CARD_NORMALIZATION = {
   fbRatio: { max: 2.0 },
   multikillRate: { max: 0.4 },
   assistsPerRound: { max: 0.5 },
   surviveRate: { max: 1.0 },
-  deathsPerRound: { max: 1.0 },
   clutchRate: { max: 0.5 },
 } as const;
-
-// ─── Helpers ───
-
-const clamp = (value: number, min: number, max: number): number =>
-  Math.min(max, Math.max(min, value));
 
 // ─── CardMetrics Calculation ───
 
@@ -119,68 +115,9 @@ const calculateCardMetrics = (
     multikillRate: multikillRounds / stats.roundsPlayed,
     assistsPerRound: stats.assists / stats.roundsPlayed,
     surviveRate: surviveRounds / stats.roundsPlayed,
-    deathsPerRound: stats.deaths / stats.roundsPlayed,
     clutchRate:
-      clutchAttempts > 0 ? clutchSuccesses / clutchAttempts : 0,
+      clutchAttempts > 0 ? clutchSuccesses / clutchAttempts : CLUTCH_NEUTRAL_RATE,
   };
-};
-
-const collectAllKills = (playerStats: RoundPlayerStats[]): Kill[] => {
-  const kills: Kill[] = [];
-  for (const ps of playerStats) {
-    kills.push(...ps.kills);
-  }
-  return kills;
-};
-
-const detectFirstBlood = (
-  allKills: Kill[],
-  puuid: string
-): "kill" | "death" | null => {
-  if (allKills.length === 0) return null;
-
-  const sorted = [...allKills].sort(
-    (a, b) => a.timeSinceRoundStartMillis - b.timeSinceRoundStartMillis
-  );
-  const first = sorted[0];
-
-  if (first.killer === puuid) return "kill";
-  if (first.victim === puuid) return "death";
-  return null;
-};
-
-/**
- * 클러치 판정: 팀원이 모두 죽고 혼자 남은 상태에서 라운드 승리
- * 킬 이벤트를 시간순으로 추적하여 팀원 생존 수를 계산
- */
-const detectClutch = (
-  allKills: Kill[],
-  puuid: string,
-  teamId: string,
-  teammatePuuids: Set<string>,
-  winningTeam: string
-): boolean | null => {
-  const sorted = [...allKills].sort(
-    (a, b) => a.timeSinceRoundStartMillis - b.timeSinceRoundStartMillis
-  );
-
-  let teammatesAlive = teammatePuuids.size;
-  let playerDied = false;
-
-  for (const kill of sorted) {
-    if (kill.victim === puuid) {
-      playerDied = true;
-      break;
-    }
-    if (teammatePuuids.has(kill.victim)) {
-      teammatesAlive--;
-    }
-  }
-
-  if (playerDied) return null;
-  if (teammatesAlive > 0) return null;
-
-  return winningTeam === teamId;
 };
 
 // ─── Aggregate CardMetrics ───
@@ -196,7 +133,6 @@ const aggregateCardMetrics = (
     multikillRate: 0,
     assistsPerRound: 0,
     surviveRate: 0,
-    deathsPerRound: 0,
     clutchRate: 0,
   };
 
@@ -209,7 +145,6 @@ const aggregateCardMetrics = (
     sums.multikillRate += m.multikillRate * weight;
     sums.assistsPerRound += m.assistsPerRound * weight;
     sums.surviveRate += m.surviveRate * weight;
-    sums.deathsPerRound += m.deathsPerRound * weight;
     sums.clutchRate += m.clutchRate * weight;
   }
 
@@ -218,7 +153,6 @@ const aggregateCardMetrics = (
     multikillRate: sums.multikillRate / totalWeight,
     assistsPerRound: sums.assistsPerRound / totalWeight,
     surviveRate: sums.surviveRate / totalWeight,
-    deathsPerRound: sums.deathsPerRound / totalWeight,
     clutchRate: sums.clutchRate / totalWeight,
   };
 };
@@ -250,18 +184,13 @@ const calculatePAS = (nm: NormalizedMetrics, cm: CardMetrics): number => {
   return apr * 0.5 + nm.kast * 0.5;
 };
 
-const calculateDEF = (cm: CardMetrics): number => {
-  const invDeaths = clamp(
-    1 - cm.deathsPerRound / CARD_NORMALIZATION.deathsPerRound.max,
-    0,
-    1
-  );
+const calculateDEF = (cm: CardMetrics, consistency: number): number => {
   const survive = clamp(
     cm.surviveRate / CARD_NORMALIZATION.surviveRate.max,
     0,
     1
   );
-  return invDeaths * 0.5 + survive * 0.5;
+  return survive * 0.5 + consistency * 0.5;
 };
 
 const calculatePHY = (nm: NormalizedMetrics, cm: CardMetrics): number => {
@@ -275,21 +204,53 @@ const calculatePHY = (nm: NormalizedMetrics, cm: CardMetrics): number => {
 
 // ─── Form Trend ───
 
-const calculateFormTrend = (matchMetrics: MatchMetrics[]): FormTrend => {
-  if (matchMetrics.length < 6) return "stable";
+/**
+ * 매치별 경량 OVR (0~1 스케일)
+ * DEF는 per-match이므로 consistency 제외, surviveRate만 사용
+ */
+const calculateMatchOVR = (
+  match: MatchDetails,
+  puuid: string
+): number | null => {
+  const mm = calculateMatchMetrics(match, puuid);
+  const cm = calculateCardMetrics(match, puuid);
+  if (!mm || !cm) return null;
 
-  const recent5 = matchMetrics.slice(0, 5);
-  const older = matchMetrics.slice(5);
+  const nm = normalizeMetrics(mm);
+  const survive = clamp(
+    cm.surviveRate / CARD_NORMALIZATION.surviveRate.max,
+    0,
+    1
+  );
 
-  const avgPerf = (metrics: MatchMetrics[]): number => {
-    const total = metrics.reduce(
-      (sum, m) => sum + calculatePerformance(normalizeMetrics(m)),
-      0
-    );
-    return total / metrics.length;
-  };
+  return (
+    (calculateSHO(nm) +
+      calculateDRI(nm) +
+      calculatePAC(cm) +
+      calculatePAS(nm, cm) +
+      survive +
+      calculatePHY(nm, cm)) /
+    6
+  );
+};
 
-  const diff = avgPerf(recent5) - avgPerf(older);
+const calculateFormTrend = (
+  matches: MatchDetails[],
+  puuid: string
+): FormTrend => {
+  const ovrs = matches
+    .map((m) => calculateMatchOVR(m, puuid))
+    .filter((v): v is number => v !== null);
+
+  if (ovrs.length < 6) return "stable";
+
+  const recent5 = ovrs.slice(0, 5);
+  const older = ovrs.slice(5);
+
+  const avg = (arr: number[]): number =>
+    arr.reduce((s, v) => s + v, 0) / arr.length;
+
+  const diff = avg(recent5) - avg(older);
 
   if (diff > 0.05) return "up";
   if (diff < -0.05) return "down";
@@ -322,6 +283,8 @@ const calculateCardScore = (
   const cm = aggregateCardMetrics(cardMetricsArray);
   if (!cm) return null;
 
+  const consistency = calculateConsistency(matchMetrics);
+
   const { adjustedBase, ceiling } = tierInfo;
   const range = ceiling - adjustedBase;
 
@@ -333,7 +296,7 @@ const calculateCardScore = (
     dri: mapToScore(calculateDRI(nm)),
     pac: mapToScore(calculatePAC(cm)),
     pas: mapToScore(calculatePAS(nm, cm)),
-    def: mapToScore(calculateDEF(cm)),
+    def: mapToScore(calculateDEF(cm, consistency)),
     phy: mapToScore(calculatePHY(nm, cm)),
   };
 
@@ -341,7 +304,7 @@ const calculateCardScore = (
     (stats.sho + stats.dri + stats.pac + stats.pas + stats.def + stats.phy) / 6
   );
 
-  const trend = calculateFormTrend(matchMetrics);
+  const trend = calculateFormTrend(matches, puuid);
   const badges = calculateBadges(matches, puuid, matchMetrics);
 
   return { ovr, stats, trend, badges };
@@ -378,7 +341,9 @@ const aggregateMatchMetrics = (
   }
 
   const totalWins = matchMetrics.filter((m) => m.win === 1).length;
-  const bayesianWinRate = (totalWins + 5) / (matchMetrics.length + 10);
+  const bayesianWinRate =
+    (totalWins + BAYESIAN_PRIOR_WINS) /
+    (matchMetrics.length + BAYESIAN_PRIOR_TOTAL);
 
   return {
     kd: sums.kd / totalWeight,

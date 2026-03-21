@@ -2,10 +2,9 @@ import type {
   MatchDetails,
   MatchPlayer,
   RoundResult,
-  RoundPlayerStats,
   Kill,
 } from "@/network/riot/match";
-import { getTierInfo } from "./tiers";
+import { clamp, collectAllKills } from "./match-utils";
 
 // ─── Types ───
 
@@ -29,19 +28,9 @@ interface NormalizedMetrics {
   kast: number;
 }
 
-interface TrackerScoreResult {
-  score: number;
-  performance: number;
-  consistency: number;
-  metrics: NormalizedMetrics;
-}
-
 // ─── Constants ───
 
 const TRADE_WINDOW_MS = 5000;
-const RECENCY_DECAY = 0.97;
-const BAYESIAN_PRIOR_WINS = 5;
-const BAYESIAN_PRIOR_TOTAL = 10;
 const CONSISTENCY_MAX_STDDEV = 0.3;
 
 const NORMALIZATION = {
@@ -62,13 +51,6 @@ const WEIGHTS = {
   win: 0.1,
   kast: 0.05,
 } as const;
-
-const CONSISTENCY_WEIGHT = 0.1;
-
-// ─── Helpers ───
-
-const clamp = (value: number, min: number, max: number): number =>
-  Math.min(max, Math.max(min, value));
 
 // ─── Per-Match Metric Calculation ───
 
@@ -206,14 +188,6 @@ const calculateKAST = (
   return (kastRounds / roundResults.length) * 100;
 };
 
-const collectAllKills = (playerStats: RoundPlayerStats[]): Kill[] => {
-  const kills: Kill[] = [];
-  for (const ps of playerStats) {
-    kills.push(...ps.kills);
-  }
-  return kills;
-};
-
 /**
  * Trade 판정: 플레이어 사망 후 5초 이내에 팀원이 킬러를 처치했는지 확인
  */
@@ -287,108 +261,11 @@ const calculateConsistency = (matchMetrics: MatchMetrics[]): number => {
   return 1 - clamp(stddev / CONSISTENCY_MAX_STDDEV, 0, 1);
 };
 
-// ─── Recency-Weighted Aggregation ───
-
-const aggregateMetrics = (
-  matchMetrics: MatchMetrics[]
-): NormalizedMetrics | null => {
-  if (matchMetrics.length === 0) return null;
-
-  let totalWeight = 0;
-  const sums = {
-    kd: 0,
-    acs: 0,
-    hsPercent: 0,
-    adr: 0,
-    ddDelta: 0,
-    win: 0,
-    kast: 0,
-  };
-
-  for (let i = 0; i < matchMetrics.length; i++) {
-    const weight = Math.pow(RECENCY_DECAY, i);
-    const m = matchMetrics[i];
-    totalWeight += weight;
-
-    sums.kd += m.kd * weight;
-    sums.acs += m.acs * weight;
-    sums.hsPercent += m.hsPercent * weight;
-    sums.adr += m.adr * weight;
-    sums.ddDelta += m.ddDelta * weight;
-    sums.win += m.win * weight;
-    sums.kast += m.kast * weight;
-  }
-
-  const totalWins = matchMetrics.filter((m) => m.win === 1).length;
-  const bayesianWinRate =
-    (totalWins + BAYESIAN_PRIOR_WINS) /
-    (matchMetrics.length + BAYESIAN_PRIOR_TOTAL);
-
-  const averaged: MatchMetrics = {
-    kd: sums.kd / totalWeight,
-    acs: sums.acs / totalWeight,
-    hsPercent: sums.hsPercent / totalWeight,
-    adr: sums.adr / totalWeight,
-    ddDelta: sums.ddDelta / totalWeight,
-    win: bayesianWinRate,
-    kast: sums.kast / totalWeight,
-  };
-
-  return normalizeMetrics(averaged);
-};
-
-// ─── Main Entry ───
-
-/**
- * 최근 매치 데이터와 랭크 티어로 Tracker Score(1~99)를 산출한다.
- *
- * @param matches - 최근 매치 목록 (최신순 정렬, 최대 20개)
- * @param puuid - 대상 플레이어 PUUID
- * @param competitiveTier - 현재 경쟁전 티어 (0~27)
- */
-const calculateTrackerScore = (
-  matches: MatchDetails[],
-  puuid: string,
-  competitiveTier: number
-): TrackerScoreResult | null => {
-  const tierInfo = getTierInfo(competitiveTier);
-  if (!tierInfo) return null;
-
-  const matchMetrics = matches
-    .map((match) => calculateMatchMetrics(match, puuid))
-    .filter((m): m is MatchMetrics => m !== null);
-
-  if (matchMetrics.length === 0) return null;
-
-  const metrics = aggregateMetrics(matchMetrics);
-  if (!metrics) return null;
-
-  const basePerformance = calculatePerformance(metrics);
-  const consistency = calculateConsistency(matchMetrics);
-  const performance =
-    basePerformance * (1 - CONSISTENCY_WEIGHT) +
-    consistency * CONSISTENCY_WEIGHT;
-
-  const { adjustedBase, ceiling } = tierInfo;
-  const score = Math.round(
-    adjustedBase + performance * (ceiling - adjustedBase)
-  );
-
-  return {
-    score: clamp(score, Math.round(adjustedBase), ceiling),
-    performance,
-    consistency,
-    metrics,
-  };
-};
-
 export {
-  calculateTrackerScore,
   calculateMatchMetrics,
   calculateKAST,
   calculatePerformance,
   calculateConsistency,
   normalizeMetrics,
-  aggregateMetrics,
 };
-export type { MatchMetrics, NormalizedMetrics, TrackerScoreResult };
+export type { MatchMetrics, NormalizedMetrics };

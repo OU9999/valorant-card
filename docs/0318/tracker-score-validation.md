@@ -3,6 +3,7 @@
 ## 1. 검증 목적
 
 티어 기반 스코어링 알고리즘(1~99)이 다양한 랭크 구간에서 자연스러운 점수를 산출하는지 확인한다.
+대상 알고리즘은 [[tier-scoring-algorithm]] 참고.
 
 ---
 
@@ -111,6 +112,8 @@ performance = ACS×0.25 + K/D×0.20 + ADR×0.15 + KAST×0.15 + Win×0.15 + HS%×
 ---
 
 ## 8. Phase 1 개선 후 재검증
+
+[[tracker-score-improvements]]의 Phase 1 항목 적용 후 재검증.
 
 ### 8.1 개선 내용
 

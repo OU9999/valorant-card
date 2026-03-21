@@ -2,6 +2,8 @@
 
 ## 1. 개요
 
+[[tracker-score-improvements]]의 개선안을 반영한 최종 알고리즘.
+
 FIFA Ultimate Team 카드처럼, 플레이어의 능력치를 **1~99** 점수로 부여한다.
 점수는 두 가지 요소로 결정된다:
 
@@ -188,6 +190,8 @@ finalScore = round(adjustedBase + finalPerformance × (ceiling - adjustedBase))
 
 ## 5. 검증 시뮬레이션
 
+전체 검증 결과는 [[tracker-score-validation]] 참고.
+
 ### GenG Xiesta (레디언트)
 
 ```
@@ -292,3 +296,5 @@ trend = avg(recent5) - avg(older15)
 | `src/lib/valorant/tracker-score.ts` | 기본 지표 계산 (K/D, ACS, HS%, ADR, DDΔ, Win, KAST, Consistency) |
 | `src/lib/valorant/card-stats.ts` | FIFA 스타일 6개 스탯, CardMetrics, OVR, FormTrend, Badges 통합 |
 | `src/lib/valorant/badges.ts` | 스페셜 뱃지 6종 판정 |
+
+리팩토링 계획은 [[todo]] 참고.
