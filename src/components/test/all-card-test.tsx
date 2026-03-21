@@ -40,12 +40,12 @@ const TIER_CARDS: TierCard[] = [
   { name: "Radiant", image: radiantCard },
 ];
 
-const CardTest = () => (
-  <div className="flex min-h-screen flex-wrap items-start justify-center gap-8 bg-gray-950 p-8">
+const AllCardTest = () => (
+  <div className="grid h-screen grid-cols-3 grid-rows-3 place-items-center bg-gray-950 p-6">
     {TIER_CARDS.map((tier) => (
-      <div key={tier.name} className="flex flex-col items-center gap-2">
+      <div key={tier.name} className="flex h-full flex-col items-center justify-center gap-1">
         <span className="text-sm font-medium text-white/70">{tier.name}</span>
-        <div className="relative w-50 aspect-2109/3218">
+        <div className="relative aspect-2109/3218 h-[calc(100%-1.5rem)]">
           {/* Layer 1: Card background */}
           <Image
             src={tier.image}
@@ -98,4 +98,4 @@ const CardTest = () => (
   </div>
 );
 
-export { CardTest };
+export { AllCardTest };
