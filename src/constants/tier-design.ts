@@ -1,13 +1,16 @@
-type TierName =
-  | "Iron"
-  | "Bronze"
-  | "Silver"
-  | "Gold"
-  | "Platinum"
-  | "Diamond"
-  | "Ascendant"
-  | "Immortal"
-  | "Radiant";
+const TIER_NAMES = [
+  "Iron",
+  "Bronze",
+  "Silver",
+  "Gold",
+  "Platinum",
+  "Diamond",
+  "Ascendant",
+  "Immortal",
+  "Radiant",
+] as const;
+
+type TierName = (typeof TIER_NAMES)[number];
 
 interface TierDesign {
   ovr: string;
@@ -121,5 +124,5 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
 };
 
-export { HIGH_TIER_NAMES, TIER_DESIGNS };
+export { HIGH_TIER_NAMES, TIER_DESIGNS, TIER_NAMES };
 export type { TierName, TierDesign };
