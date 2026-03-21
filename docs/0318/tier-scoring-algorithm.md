@@ -1,3 +1,18 @@
+---
+tags:
+  - algorithm
+  - scoring
+  - fifa-stats
+  - badge
+status: published
+category: algorithm
+date: 2025-03-18
+related:
+  - "[[tracker-score-improvements]]"
+  - "[[tracker-score-validation]]"
+  - "[[todo]]"
+---
+
 # 티어 기반 스코어링 알고리즘
 
 ## 1. 개요

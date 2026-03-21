@@ -1,3 +1,20 @@
+---
+tags:
+  - algorithm
+  - scoring
+  - improvement
+  - phase/1
+  - phase/2
+  - phase/3
+  - phase/4
+status: published
+category: algorithm
+date: 2025-03-18
+related:
+  - "[[tier-scoring-algorithm]]"
+  - "[[tracker-score-validation]]"
+---
+
 # Tracker Score 알고리즘 개선안
 
 기존 알고리즘의 문제점을 분석하고 개선안을 제시함.

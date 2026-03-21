@@ -1,3 +1,14 @@
+---
+tags:
+  - card-design
+  - asset
+  - image-generation
+status: published
+category: card-design
+date: 2025-03-21
+related: []
+---
+
 # 고티어 카드 배경 디자인 및 배경 제거
 
 ## 배경

@@ -1,3 +1,16 @@
+---
+tags:
+  - algorithm
+  - refactoring
+  - todo
+status: published
+category: algorithm
+date: 2025-03-18
+related:
+  - "[[tier-scoring-algorithm]]"
+  - "[[tracker-score-validation]]"
+---
+
 # TODO — Tracker Score 알고리즘 리팩토링
 
 [[tier-scoring-algorithm]]의 구현 코드 정리 항목.

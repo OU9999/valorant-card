@@ -1,3 +1,14 @@
+---
+tags:
+  - api
+  - infrastructure
+  - riot-games
+status: published
+category: api
+date: 2025-02-14
+related: []
+---
+
 # Riot Games API Key 발급 가이드
 
 ## 발급 절차

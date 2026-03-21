@@ -1,3 +1,17 @@
+---
+tags:
+  - algorithm
+  - scoring
+  - validation
+  - phase/1
+status: published
+category: algorithm
+date: 2025-03-18
+related:
+  - "[[tier-scoring-algorithm]]"
+  - "[[tracker-score-improvements]]"
+---
+
 # Tracker Score 알고리즘 검증 결과
 
 ## 1. 검증 목적
