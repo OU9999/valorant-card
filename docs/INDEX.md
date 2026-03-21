@@ -28,6 +28,7 @@ related: []
 ## 카드 디자인
 
 - [[high-tier-card-design]] -- 초월자/불멸/레디언트 카드 배경 생성 및 크로마키 배경 제거.
+- [[card-design-review]] -- 9장 전체 카드 디자인 리뷰. TierCard 컴포넌트, SVG Path, 레이아웃 개선 내역.
 
 ## 메타
 
