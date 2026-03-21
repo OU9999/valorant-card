@@ -1,9 +1,9 @@
 import { useId } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { CARD_SVG_PATH_HIGH_TIER } from "@/constants/card";
+import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/tier-design";
+import type { TierName } from "@/constants/tier-design";
 import { cn } from "@/lib/cn";
-
-const HIGH_TIER_NAMES = new Set(["Ascendant", "Immortal", "Radiant"]);
 
 interface CardStat {
   label: string;
@@ -11,7 +11,7 @@ interface CardStat {
 }
 
 interface TierCardProps {
-  tierName: string;
+  tierName: TierName;
   backgroundImage: StaticImageData;
   portraitUrl: string;
   ovr: number;
@@ -32,6 +32,7 @@ const TierCard = ({
   className,
 }: TierCardProps) => {
   const clipId = useId();
+  const design = TIER_DESIGNS[tierName];
   const isHighTier = HIGH_TIER_NAMES.has(tierName);
   const clipStyle = isHighTier ? { clipPath: `url(#${clipId})` } : undefined;
 
@@ -73,7 +74,8 @@ const TierCard = ({
       {/* Layer 3: Bottom gradient (clipped) */}
       <div
         className={cn(
-          "absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/40 to-transparent",
+          "absolute inset-x-0 bottom-0 bg-linear-to-t",
+          design.gradient,
           isHighTier ? "h-[33%]" : "h-[38%]",
           !isHighTier && "card-clip",
         )}
@@ -89,15 +91,15 @@ const TierCard = ({
             isHighTier ? "left-[9%] top-[14%]" : "left-[6%] top-[10%]",
           )}
         >
-          <span className="text-[clamp(2.5rem,8cqw,5rem)] font-extrabold leading-none text-white drop-shadow-lg">
+          <span className={cn("text-[clamp(2.5rem,8cqw,5rem)] font-extrabold leading-none", design.ovr)}>
             {ovr}
           </span>
-          <span className="text-[clamp(0.625rem,2cqw,1.125rem)] font-bold tracking-wider text-white/90">
+          <span className={cn("text-[clamp(0.625rem,2cqw,1.125rem)] font-bold tracking-wider", design.position)}>
             {position}
           </span>
           <div className="mt-[clamp(0.25rem,0.8cqw,0.5rem)] flex flex-col items-center gap-[clamp(0.125rem,0.5cqw,0.375rem)]">
-            <div className="h-[clamp(0.75rem,2.5cqw,1.5rem)] w-[clamp(1rem,3.5cqw,2rem)] rounded-sm bg-white/20" />
-            <div className="h-[clamp(0.875rem,3cqw,1.75rem)] w-[clamp(0.875rem,3cqw,1.75rem)] rounded-full bg-white/20" />
+            <div className={cn("h-[clamp(0.75rem,2.5cqw,1.5rem)] w-[clamp(1rem,3.5cqw,2rem)] rounded-sm", design.placeholder)} />
+            <div className={cn("h-[clamp(0.875rem,3cqw,1.75rem)] w-[clamp(0.875rem,3cqw,1.75rem)] rounded-full", design.placeholder)} />
           </div>
         </div>
 
@@ -108,7 +110,7 @@ const TierCard = ({
             isHighTier ? "top-[68%]" : "top-[70%]",
           )}
         >
-          <span className="text-[clamp(1rem,3.5cqw,2.25rem)] font-bold uppercase tracking-widest text-white drop-shadow-lg">
+          <span className={cn("text-[clamp(1rem,3.5cqw,2.25rem)] font-bold uppercase tracking-widest", design.playerName)}>
             {playerName}
           </span>
         </div>
@@ -124,10 +126,10 @@ const TierCard = ({
         >
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
-              <span className="text-[clamp(0.5rem,1.8cqw,0.875rem)] font-medium tracking-wide text-white/60">
+              <span className={cn("text-[clamp(0.5rem,1.8cqw,0.875rem)] font-medium tracking-wide", design.statLabel)}>
                 {stat.label}
               </span>
-              <span className="text-[clamp(1rem,3.5cqw,2rem)] font-bold leading-tight text-white">
+              <span className={cn("text-[clamp(1rem,3.5cqw,2rem)] font-bold leading-tight", design.statValue)}>
                 {stat.value}
               </span>
             </div>
