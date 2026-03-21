@@ -5,7 +5,7 @@ tags:
   - improvement
 status: draft
 category: card-design
-date: 2025-03-21
+date: 2026-03-21
 related:
   - "[[high-tier-card-design]]"
 ---
@@ -60,11 +60,12 @@ Playwright로 9장 전체를 스크린샷 찍어 냉정하게 리뷰한 결과.
 
 - `src/components/card/tier-card.tsx` -- TierCard 통합 컴포넌트
 - `src/lib/cn.ts` -- clsx + tailwind-merge 유틸
+- `src/constants/tier-design.ts` -- 티어별 디자인 상수 (`TIER_DESIGNS`, `TierName`, `HIGH_TIER_NAMES`)
 
 ### 수정된 파일
 
 - `src/constants/card.ts` -- `CARD_SVG_PATH_HIGH_TIER` 추가
-- `src/styles/globals.css` -- `.card-portrait-fade-high` 추가
+- `src/styles/globals.css` -- `.card-portrait-fade` 유지, `.card-portrait-fade-high` 제거
 - `src/components/test/all-card-test.tsx` -- TierCard 사용으로 리팩토링
 - `src/components/test/carousel-test.tsx` -- TierCard 사용으로 리팩토링
 - `src/components/test/card-svg-test.tsx` -- TierCard 사용으로 리팩토링
@@ -74,25 +75,25 @@ Playwright로 9장 전체를 스크린샷 찍어 냉정하게 리뷰한 결과.
 
 ### 전체 공통
 
-| 우선순위 | 이슈 |
-|---------|------|
-| 높음 | 스탯 라벨 크기 너무 작음. 거의 안 보임 |
-| 높음 | Silver/Platinum 밝은 배경에서 흰색 텍스트 가독성 떨어짐 |
-| 중간 | 플레이스홀더 아이콘 존재감 없음 |
-| 중간 | 상위 티어 초상화 페이드가 너무 빠름 |
-| 낮음 | Radiant 스탯 하단 여백 촉박 |
+| 우선순위 | 이슈 | 상태 |
+|---------|------|------|
+| 높음 | 스탯 라벨 크기 너무 작음. 거의 안 보임 | 미해결 |
+| 높음 | Silver/Platinum 밝은 배경에서 흰색 텍스트 가독성 떨어짐 | 해결: `TIER_DESIGNS`로 티어별 고유 텍스트 색상 적용. Silver는 `text-slate-800`, Gold는 `text-amber-950` 등 밝은 배경엔 어두운 텍스트 사용 |
+| 중간 | 플레이스홀더 아이콘 존재감 없음 | 해결: 티어 아이콘 + 글로우 효과로 대체. `competitiveTier` 기반 Valorant API 아이콘 표시 |
+| 중간 | 상위 티어 초상화 페이드가 너무 빠름 | 해결: `.card-portrait-fade-high` 제거. 상위/하위 모두 `.card-portrait-fade` 통합 사용 |
+| 낮음 | Radiant 스탯 하단 여백 촉박 | 해결: 이름/스탯 위치 상향 조정 (이름 top-[68%→65%], 스탯 top-[77%→74%]) |
 
 ### 하위 티어 (Iron~Diamond)
 
 - OVR 크기와 위치 적절
 - 이름/스탯이 초상화와 겹치지 않음
-- Silver 배경에서 텍스트가 묻힘. text-shadow 강화 또는 배경 처리 필요
+- ~~Silver 배경에서 텍스트가 묻힘~~ → `text-slate-800` + 밝은 drop-shadow로 해결
 
 ### 상위 티어 (Ascendant~Radiant)
 
-- Ascendant: 초상화 상체만 보임. 페이드 조정 필요
-- Immortal: 어두운 배경에 white/60 라벨이 약함
-- Radiant: 완성도 가장 높음. 하단 여백만 조정 필요
+- ~~Ascendant: 초상화 상체만 보임~~ → 페이드 통합으로 개선
+- ~~Immortal: 어두운 배경에 white/60 라벨이 약함~~ → `text-rose-200/70`으로 개선
+- Radiant: 완성도 가장 높음. ~~하단 여백 촉박~~ → 위치 상향으로 해결
 
 ## 이슈
 
@@ -108,9 +109,28 @@ Playwright로 9장 전체를 스크린샷 찍어 냉정하게 리뷰한 결과.
 - 이미지 스케일 불일치로 인해 위치가 맞지 않음
 - 카드 형태가 근본적으로 다르므로 `isHighTier` 위치 분기가 올바른 설계라는 결론
 
+## 추가 작업 내용
+
+### 티어별 디자인 상수 분리
+
+- `src/constants/tier-design.ts`에 `TIER_DESIGNS` 상수 추출
+- 9개 티어 각각에 ovr, position, playerName, statLabel, statValue, placeholder, gradient, iconGlow 정의
+- 밝은 배경(Silver, Gold, Radiant)에는 어두운 텍스트 + 밝은 drop-shadow 조합
+- 어두운 배경에는 밝은 텍스트 + drop-shadow-lg 조합
+- `TierName` 타입으로 tierName prop 타입 안전성 확보
+
+### 티어 아이콘 표시
+
+- `competitiveTier` prop 추가. Valorant API 티어 아이콘 URL 생성에 사용.
+- 카드 하단에 티어별 글로우 효과가 적용된 아이콘 배치
+- 상위 티어는 더 강한 글로우 (0_0_8px), 하위 티어는 약한 글로우 (0_0_6px)
+
+### 레이아웃 위치 조정
+
+- 이름 위치: 상위 top-[68%→65%], 하위 top-[70%→68%]
+- 스탯 위치: 상위 top-[77%→74%], 하위 top-[78%→76%]
+- 티어 아이콘: 상위 top-[83%], 하위 top-[87%]
+
 ## 다음 단계
 
 - 스탯 라벨 크기 증가
-- 밝은 배경(Silver/Platinum) 텍스트 가독성 개선
-- 플레이스홀더 아이콘을 실제 에이전트/국기 아이콘으로 교체
-- 상위 티어 초상화 페이드 미세 조정

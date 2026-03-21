@@ -5,6 +5,7 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
+import type { TierName } from "@/constants/tier-design";
 
 const JETT_PORTRAIT =
   "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
@@ -19,14 +20,15 @@ const SAMPLE_STATS = [
 ];
 
 interface HighTierCardEntry {
-  name: string;
+  name: TierName;
+  competitiveTier: number;
   image: StaticImageData;
 }
 
 const HIGH_TIER_CARDS: HighTierCardEntry[] = [
-  { name: "Ascendant", image: ascendantCard },
-  { name: "Immortal", image: immortalCard },
-  { name: "Radiant", image: radiantCard },
+  { name: "Ascendant", competitiveTier: 23, image: ascendantCard },
+  { name: "Immortal", competitiveTier: 26, image: immortalCard },
+  { name: "Radiant", competitiveTier: 27, image: radiantCard },
 ];
 
 const CardSvgTest = () => (
@@ -36,6 +38,7 @@ const CardSvgTest = () => (
         <span className="text-sm font-medium text-white/70">{card.name}</span>
         <TierCard
           tierName={card.name}
+          competitiveTier={card.competitiveTier}
           backgroundImage={card.image}
           portraitUrl={JETT_PORTRAIT}
           ovr={92}

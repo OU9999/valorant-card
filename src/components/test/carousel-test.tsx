@@ -12,6 +12,7 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
+import type { TierName } from "@/constants/tier-design";
 
 const JETT_PORTRAIT =
   "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
@@ -26,20 +27,21 @@ const SAMPLE_STATS = [
 ];
 
 interface TierCardEntry {
-  name: string;
+  name: TierName;
+  competitiveTier: number;
   image: StaticImageData;
 }
 
 const TIER_CARDS: TierCardEntry[] = [
-  { name: "Iron", image: ironCard },
-  { name: "Bronze", image: bronzeCard },
-  { name: "Silver", image: silverCard },
-  { name: "Gold", image: goldCard },
-  { name: "Platinum", image: platinumCard },
-  { name: "Diamond", image: diamondCard },
-  { name: "Ascendant", image: ascendantCard },
-  { name: "Immortal", image: immortalCard },
-  { name: "Radiant", image: radiantCard },
+  { name: "Iron", competitiveTier: 5, image: ironCard },
+  { name: "Bronze", competitiveTier: 8, image: bronzeCard },
+  { name: "Silver", competitiveTier: 11, image: silverCard },
+  { name: "Gold", competitiveTier: 14, image: goldCard },
+  { name: "Platinum", competitiveTier: 17, image: platinumCard },
+  { name: "Diamond", competitiveTier: 20, image: diamondCard },
+  { name: "Ascendant", competitiveTier: 23, image: ascendantCard },
+  { name: "Immortal", competitiveTier: 26, image: immortalCard },
+  { name: "Radiant", competitiveTier: 27, image: radiantCard },
 ];
 
 const SLIDE_OFFSETS = [
@@ -94,6 +96,7 @@ const CarouselTest = () => {
               >
                 <TierCard
                   tierName={tier.name}
+                  competitiveTier={tier.competitiveTier}
                   backgroundImage={tier.image}
                   portraitUrl={JETT_PORTRAIT}
                   ovr={92}
