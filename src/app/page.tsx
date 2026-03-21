@@ -1,5 +1,5 @@
-import { CardSvgTest } from "@/components/test/card-svg-test";
+import { CarouselTest } from "@/components/test/carousel-test";
 
 export default function Home() {
-  return <CardSvgTest />;
+  return <CarouselTest />;
 }

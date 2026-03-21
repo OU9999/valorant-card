@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import ironCard from "@/asset/example/tier-card/iron.png";
 import bronzeCard from "@/asset/example/tier-card/bronze.png";
 import silverCard from "@/asset/example/tier-card/silver.png";
@@ -11,6 +11,7 @@ import diamondCard from "@/asset/example/tier-card/diamond.png";
 import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
+import { TierCard } from "@/components/card/tier-card";
 
 const JETT_PORTRAIT =
   "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
@@ -24,12 +25,12 @@ const SAMPLE_STATS = [
   { label: "PHY", value: 78 },
 ];
 
-interface TierCard {
+interface TierCardEntry {
   name: string;
   image: StaticImageData;
 }
 
-const TIER_CARDS: TierCard[] = [
+const TIER_CARDS: TierCardEntry[] = [
   { name: "Iron", image: ironCard },
   { name: "Bronze", image: bronzeCard },
   { name: "Silver", image: silverCard },
@@ -91,63 +92,15 @@ const CarouselTest = () => {
                 key={tier.name}
                 className="flex w-full shrink-0 items-center justify-center"
               >
-                <div className="relative h-[80vh] aspect-[2109/3218]">
-                  {/* Layer 1: Card background */}
-                  <Image
-                    src={tier.image}
-                    alt={`${tier.name} card background`}
-                    fill
-                    className="object-contain"
-                    priority={i === 0}
-                    sizes="52vh"
-                  />
-
-                  {/* Layer 2: Agent portrait (clipped + faded) */}
-                  <Image
-                    src={JETT_PORTRAIT}
-                    alt="agent portrait"
-                    fill
-                    sizes="52vh"
-                    className="card-clip card-portrait-fade object-cover object-top"
-                  />
-
-                  {/* Layer 3: Bottom gradient for text readability */}
-                  <div className="card-clip absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-
-                  {/* Layer 4: Text content */}
-                  <div className="absolute inset-0">
-                    {/* OVR */}
-                    <div className="absolute left-[12%] top-[12%]">
-                      <span className="text-5xl font-bold text-white drop-shadow-lg">
-                        92
-                      </span>
-                    </div>
-
-                    {/* Player name */}
-                    <div className="absolute inset-x-0 top-[62%] text-center">
-                      <span className="text-2xl font-semibold text-white drop-shadow-lg">
-                        Player#KR1
-                      </span>
-                    </div>
-
-                    {/* Stats grid */}
-                    <div className="absolute inset-x-[15%] top-[70%] grid grid-cols-2 gap-x-6 gap-y-1 text-white">
-                      {SAMPLE_STATS.map((stat) => (
-                        <div
-                          key={stat.label}
-                          className="flex justify-between"
-                        >
-                          <span className="text-base text-white/70">
-                            {stat.label}
-                          </span>
-                          <span className="text-base font-bold">
-                            {stat.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <TierCard
+                  tierName={tier.name}
+                  backgroundImage={tier.image}
+                  portraitUrl={JETT_PORTRAIT}
+                  ovr={92}
+                  playerName="Player#KR1"
+                  stats={SAMPLE_STATS}
+                  className="h-[80vh]"
+                />
               </div>
             ))}
           </div>
