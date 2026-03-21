@@ -1,5 +1,5 @@
-import { CardTest } from "@/components/test/card-test";
+import { CarouselTest } from "@/components/test/carousel-test";
 
 export default function Home() {
-  return <CardTest />;
+  return <CarouselTest />;
 }
