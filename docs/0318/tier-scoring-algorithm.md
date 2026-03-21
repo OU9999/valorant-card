@@ -1,3 +1,17 @@
+---
+tags:
+  - algorithm
+  - scoring
+  - fifa-stats
+  - badge
+status: published
+category: algorithm
+date: 2025-03-18
+related:
+  - "[[tracker-score-improvements]]"
+  - "[[tracker-score-validation]]"
+---
+
 # 티어 기반 스코어링 알고리즘
 
 ## 1. 개요
@@ -297,4 +311,4 @@ trend = avg(recent5) - avg(older15)
 | `src/lib/valorant/card-stats.ts` | FIFA 스타일 6개 스탯, CardMetrics, OVR, FormTrend, Badges 통합 |
 | `src/lib/valorant/badges.ts` | 스페셜 뱃지 6종 판정 |
 
-리팩토링 계획은 [[todo]] 참고.
+리팩토링 계획은 추후 별도 문서로 정리 예정.

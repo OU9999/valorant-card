@@ -1,3 +1,14 @@
+---
+tags:
+  - ui-ux
+  - screen-flow
+  - specification
+status: published
+category: ui-ux
+date: 2025-02-07
+related: []
+---
+
 # VALORANT CARD — 화면 기획서
 
 ## 1. 개요

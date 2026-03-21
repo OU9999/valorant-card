@@ -13,11 +13,7 @@ const CardSvg = ({
   strokeWidth = 0.3,
   className,
 }: CardSvgProps) => (
-  <svg
-    viewBox="0 0 100 100"
-    preserveAspectRatio="none"
-    className={className}
-  >
+  <svg viewBox="0 0 100 100" preserveAspectRatio="none" className={className}>
     <path
       d={CARD_SVG_PATH}
       fill={fill}

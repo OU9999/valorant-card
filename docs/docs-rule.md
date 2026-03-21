@@ -1,3 +1,13 @@
+---
+tags:
+  - meta
+  - writing-rule
+status: published
+category: meta
+date: 2025-02-07
+related: []
+---
+
 # 문서 작성 규칙
 
 ## 말투
@@ -22,3 +32,44 @@
 | 정말 좋은 / 매우 강력한 | 삭제 |
 | 이것은 ~입니다 | ~임 |
 | ~라는 점이 중요합니다 | ~중요 |
+
+## 프론트매터
+
+모든 문서는 최상단에 YAML 프론트매터를 포함.
+
+```yaml
+---
+tags:
+  - category-tag
+  - topic-tag
+status: published
+category: primary-category
+date: 2025-03-18
+related:
+  - "[[related-doc]]"
+---
+```
+
+### 필드 정의
+
+| 필드 | 타입 | 필수 | 설명 |
+|------|------|------|------|
+| tags | string[] | O | 문서 주제 태그. 계층 태그는 `/` 구분 (예: `phase/1`) |
+| status | enum | O | `draft`, `published`, `deprecated` 중 하나 |
+| category | string | O | 단일 주분류 |
+| date | date | O | 생성일. YYYY-MM-DD 형식 |
+| related | string[] | O | 관련 문서 위키링크 배열. 없으면 빈 배열 `[]` |
+
+### 카테고리 목록
+
+`algorithm`, `ui-ux`, `api`, `card-design`, `meta`
+
+### 태그 규칙
+
+- 소문자 kebab-case 사용.
+- 계층 태그는 `parent/child` 형식 (예: `phase/1`).
+- 기존 태그 우선 사용. 새 태그는 INDEX.md에 분류가 가능한 경우에만 추가.
+
+### 태그 목록
+
+`algorithm`, `scoring`, `validation`, `improvement`, `refactoring`, `todo`, `fifa-stats`, `badge`, `ui-ux`, `screen-flow`, `specification`, `api`, `infrastructure`, `riot-games`, `card-design`, `asset`, `image-generation`, `meta`, `writing-rule`, `moc`, `phase/1`~`phase/4`
