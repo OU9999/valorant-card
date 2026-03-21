@@ -27,6 +27,12 @@
 }
 
 .card-portrait-fade {
-  mask-image: linear-gradient(to bottom, black 50%, transparent 85%);
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 85%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 65%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 65%);
 }
+
+.card-portrait-fade-high {
+  mask-image: linear-gradient(to bottom, black 35%, transparent 60%);
+  -webkit-mask-image: linear-gradient(to bottom, black 35%, transparent 60%);
+}
+
