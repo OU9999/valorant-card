@@ -1,5 +1,8 @@
 # TODO — Tracker Score 알고리즘 리팩토링
 
+[[tier-scoring-algorithm]]의 구현 코드 정리 항목.
+검증 결과는 [[tracker-score-validation]] 참고.
+
 ## 1. 코드 중복 제거
 
 `collectAllKills`, `detectClutch` 등이 `tracker-score.ts`, `card-stats.ts`, `badges.ts` 3개 파일에 중복 존재.
