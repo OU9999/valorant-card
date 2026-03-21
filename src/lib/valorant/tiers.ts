@@ -1,5 +1,5 @@
 const TIER_MEDIA_BASE =
-  "https://media.valorant-api.com/competitivetiers/latest";
+  "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04";
 
 interface TierInfo {
   index: number;

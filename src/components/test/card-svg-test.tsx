@@ -21,13 +21,14 @@ const SAMPLE_STATS = [
 
 interface HighTierCardEntry {
   name: TierName;
+  competitiveTier: number;
   image: StaticImageData;
 }
 
 const HIGH_TIER_CARDS: HighTierCardEntry[] = [
-  { name: "Ascendant", image: ascendantCard },
-  { name: "Immortal", image: immortalCard },
-  { name: "Radiant", image: radiantCard },
+  { name: "Ascendant", competitiveTier: 23, image: ascendantCard },
+  { name: "Immortal", competitiveTier: 26, image: immortalCard },
+  { name: "Radiant", competitiveTier: 27, image: radiantCard },
 ];
 
 const CardSvgTest = () => (
@@ -37,6 +38,7 @@ const CardSvgTest = () => (
         <span className="text-sm font-medium text-white/70">{card.name}</span>
         <TierCard
           tierName={card.name}
+          competitiveTier={card.competitiveTier}
           backgroundImage={card.image}
           portraitUrl={JETT_PORTRAIT}
           ovr={92}

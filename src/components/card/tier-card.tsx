@@ -4,6 +4,7 @@ import { CARD_SVG_PATH_HIGH_TIER } from "@/constants/card";
 import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/tier-design";
 import type { TierName } from "@/constants/tier-design";
 import { cn } from "@/lib/cn";
+import { getTierIcon } from "@/lib/valorant/tiers";
 
 interface CardStat {
   label: string;
@@ -12,6 +13,7 @@ interface CardStat {
 
 interface TierCardProps {
   tierName: TierName;
+  competitiveTier: number;
   backgroundImage: StaticImageData;
   portraitUrl: string;
   ovr: number;
@@ -23,6 +25,7 @@ interface TierCardProps {
 
 const TierCard = ({
   tierName,
+  competitiveTier,
   backgroundImage,
   portraitUrl,
   ovr,
@@ -65,7 +68,7 @@ const TierCard = ({
         sizes="600px"
         className={cn(
           "object-cover object-top",
-          isHighTier ? "card-portrait-fade-high" : "card-portrait-fade",
+          "card-portrait-fade",
           !isHighTier && "card-clip",
         )}
         style={clipStyle}
@@ -107,7 +110,7 @@ const TierCard = ({
         <div
           className={cn(
             "absolute inset-x-0 text-center",
-            isHighTier ? "top-[68%]" : "top-[70%]",
+            isHighTier ? "top-[65%]" : "top-[68%]",
           )}
         >
           <span className={cn("text-[clamp(1rem,3.5cqw,2.25rem)] font-bold uppercase tracking-widest", design.playerName)}>
@@ -120,8 +123,8 @@ const TierCard = ({
           className={cn(
             "absolute flex text-center",
             isHighTier
-              ? "inset-x-[10%] top-[77%] justify-evenly gap-[clamp(0.375rem,1.5cqw,1rem)]"
-              : "inset-x-[6%] top-[78%] justify-between",
+              ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.375rem,1.5cqw,1rem)]"
+              : "inset-x-[6%] top-[76%] justify-between",
           )}
         >
           {stats.map((stat) => (
@@ -134,6 +137,25 @@ const TierCard = ({
               </span>
             </div>
           ))}
+        </div>
+
+        {/* 티어 아이콘 */}
+        <div
+          className={cn(
+            "absolute inset-x-0 flex justify-center",
+            isHighTier ? "top-[83%]" : "top-[87%]",
+          )}
+        >
+          <Image
+            src={getTierIcon(competitiveTier)}
+            alt={`${tierName} tier icon`}
+            width={512}
+            height={512}
+            className={cn(
+              "h-[clamp(1.5rem,5cqw,3rem)] w-[clamp(1.5rem,5cqw,3rem)] object-contain",
+              design.iconGlow,
+            )}
+          />
         </div>
       </div>
     </div>
