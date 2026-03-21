@@ -15,7 +15,6 @@ related: []
 - [[tier-scoring-algorithm]] -- 티어 기반 1~99 스코어링 최종 알고리즘. FIFA 스타일 6개 스탯, 뱃지 포함.
 - [[tracker-score-improvements]] -- 기존 알고리즘 문제점 분석 및 Phase 1~4 개선안.
 - [[tracker-score-validation]] -- 실데이터 기반 v1/v2 검증 결과.
-- [[todo]] -- 알고리즘 구현 코드 리팩토링 항목.
 
 ## UI/UX
 

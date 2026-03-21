@@ -138,5 +138,5 @@ const TierCard = ({
   );
 };
 
-export { TierCard, HIGH_TIER_NAMES };
+export { TierCard };
 export type { TierCardProps, CardStat };
