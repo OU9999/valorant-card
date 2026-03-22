@@ -19,6 +19,7 @@ import { calculateCardScore, formatCardStats } from "@/lib/valorant/card-stats";
 import type { CardScoreResult } from "@/lib/valorant/card-stats";
 import { getTierIndex } from "@/lib/valorant/tiers";
 import { CHARACTERS } from "@/constants/characters";
+import { SHARD_DISPLAY_NAMES } from "@/constants/regions";
 import { TIER_NAMES } from "@/constants/tier-design";
 import type { TierName } from "@/constants/tier-design";
 import type { MatchDetails } from "@/network/riot/match";
@@ -91,6 +92,7 @@ interface FixtureData {
   tag: string;
   competitiveTier: number;
   rr: number;
+  region: string;
 }
 
 const loadFixtures = async (): Promise<FixtureData> => {
@@ -113,6 +115,7 @@ const loadFixtures = async (): Promise<FixtureData> => {
     tag: account.data.tag,
     competitiveTier: mmr.data.current.tier.id,
     rr: mmr.data.current.rr,
+    region: account.data.region,
   };
 };
 
@@ -164,6 +167,9 @@ const RealDataTest = () => {
   const agentId = findMostPlayedAgent(fixture.matches, fixture.puuid);
   const portraitUrl = getPortraitUrl(agentId);
   const formattedStats = formatCardStats(result.stats);
+  const regionDisplay =
+    SHARD_DISPLAY_NAMES[fixture.region as keyof typeof SHARD_DISPLAY_NAMES] ??
+    fixture.region.toUpperCase();
 
   const trendLabel =
     result.trend === "up" ? "상승" : result.trend === "down" ? "하락" : "유지";
@@ -186,6 +192,7 @@ const RealDataTest = () => {
           portraitUrl={portraitUrl}
           ovr={result.ovr}
           playerName={`${fixture.name}#${fixture.tag}`}
+          region={regionDisplay}
           stats={formattedStats}
           className="h-[80vh]"
         />
