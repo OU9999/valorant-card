@@ -42,7 +42,7 @@ const TierCardRef = ({
   const clipStyle = isHighTier ? { clipPath: `url(#${clipId})` } : undefined;
 
   return (
-    <div className={cn("relative aspect-2109/3218", className)}>
+    <div className={cn("relative overflow-hidden aspect-2109/3218", className)}>
       {isHighTier && (
         <svg className="absolute h-0 w-0">
           <defs>
