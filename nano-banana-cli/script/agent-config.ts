@@ -136,47 +136,73 @@ SECOND IMAGE: Close-up face reference for Neon. Match her EXACT facial features 
     expression: `Expression is FOCUSED and INTENSE — the cold determination of a sprinter at the starting line. NOT smiling, NOT excited. Sharp eyes, tight jaw, quiet intensity. She is coiled energy about to explode — but the expression is RESTRAINED. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
-        name: "overdrive",
-        prompt: `POSE — "OVERDRIVE" (Ultimate Ability — Transformation):
+        name: "fast-lane-a",
+        prompt: `POSE — "FAST LANE RUSH" (Electric Sprint Through Energy Walls):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with one arm up and one arm down. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with BOTH arms forward together. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with a static twisted standing pose, one arm up one arm down. This pose is COMPLETELY DIFFERENT — Neon is RUNNING at full sprint STRAIGHT AT THE VIEWER, body leaning forward aggressively. Do NOT copy the reference standing twist or body angle.
 
-Neon faces the viewer STRAIGHT-ON. Her eyes glow blue, hair stands up with static, circuit patterns on her arms glow. BOTH arms extended forward together at chest height — like aiming a pistol. Subtle electric energy wraps around her body. Minimal effects — focus on the character.
+Neon SPRINTS at full speed STRAIGHT AT THE VIEWER. This is faster and more intense than walking — an aggressive combat sprint.
 
-Wide symmetrical stance. Intense focused expression.
+Her body LEANS FORWARD — weight fully committed to the sprint. LEFT foot forward in a long stride, RIGHT foot pushing off behind. Her stride is wide and dynamic.
 
-Clean white background.`,
+Her RIGHT HAND holds a SHORTY — a VERY SMALL, COMPACT pocket sidearm shotgun, barely bigger than her fist. Tiny stubby barrel, minimalist grip — it fits entirely in one hand. She holds it naturally at her side while running.
+
+Her LEFT ARM pumps FORWARD in a natural sprint motion — fist or open hand, arm bent at the elbow.
+
+ELECTRIC EFFECT (CRITICAL): Two parallel walls of ELECTRIC BLUE ENERGY run alongside her on BOTH sides — her "Fast Lane" ability. The electric walls are vertical sheets of crackling blue-white lightning energy, running parallel to her direction of movement. They are close to her body, framing her on left and right like corridor walls. The electric energy WRAPS inward slightly — small arcs and sparks jump from the walls toward her body. Her circuit patterns on her arms glow blue.
+
+Her electric blue hair streams BACKWARD from the speed, with small electric sparks trailing from the tips. Her eyes glow with electric blue intensity.
+
+Determined, focused expression — the cold intensity of a sprinter. NOT smiling, NOT excited. Pure forward momentum.
+
+Clean white background. ONLY the character sprinting between the two parallel electric walls.`,
       },
       {
-        name: "high-gear",
-        prompt: `POSE — "HIGH GEAR" (Electric Sprint — Walking Forward):
+        name: "fast-lane-b",
+        prompt: `POSE — "FAST LANE RUSH" (Electric Sprint Through Energy Walls):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn. This pose is COMPLETELY DIFFERENT — walking STRAIGHT TOWARD THE VIEWER like the Jett walking poses. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with a static twisted standing pose, one arm up one arm down. This pose is COMPLETELY DIFFERENT — Neon is RUNNING at full sprint STRAIGHT AT THE VIEWER, body leaning forward aggressively. Do NOT copy the reference standing twist or body angle.
 
-Neon walks STRAIGHT TOWARD the viewer. Left foot forward, right foot behind. BOTH arms hang naturally at her sides with slight motion blur — a confident walk, not a sprint. Small electric wisps trail from her body. Hair flows back slightly.
+Neon SPRINTS at full speed STRAIGHT AT THE VIEWER. This is faster and more intense than walking — an aggressive combat sprint.
 
-Determined focused expression — NOT smiling.
+Her body LEANS FORWARD — weight fully committed to the sprint. LEFT foot forward in a long stride, RIGHT foot pushing off behind. Her stride is wide and dynamic.
 
-Clean white background.`,
+Her RIGHT HAND holds a SHORTY — a VERY SMALL, COMPACT pocket sidearm shotgun, barely bigger than her fist. Tiny stubby barrel, minimalist grip — it fits entirely in one hand. She holds it naturally at her side while running.
+
+Her LEFT ARM pumps FORWARD in a natural sprint motion — fist or open hand, arm bent at the elbow.
+
+ELECTRIC EFFECT (CRITICAL): Two parallel walls of ELECTRIC BLUE ENERGY run alongside her on BOTH sides — her "Fast Lane" ability. The electric walls are vertical sheets of crackling blue-white lightning energy, running parallel to her direction of movement. They are close to her body, framing her on left and right like corridor walls. The electric energy WRAPS inward slightly — small arcs and sparks jump from the walls toward her body. Her circuit patterns on her arms glow blue.
+
+Her electric blue hair streams BACKWARD from the speed, with small electric sparks trailing from the tips. Her eyes glow with electric blue intensity.
+
+Determined, focused expression — the cold intensity of a sprinter. NOT smiling, NOT excited. Pure forward momentum.
+
+Clean white background. ONLY the character sprinting between the two parallel electric walls.`,
       },
       {
-        name: "relay-bolt",
-        prompt: `POSE — "RELAY BOLT" (Electric Power — Hands on Hips):
+        name: "fast-lane-c",
+        prompt: `POSE — "FAST LANE RUSH" (Electric Sprint Through Energy Walls):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with one arm up one arm down. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with BOTH hands on hips. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with a static twisted standing pose, one arm up one arm down. This pose is COMPLETELY DIFFERENT — Neon is RUNNING at full sprint STRAIGHT AT THE VIEWER, body leaning forward aggressively. Do NOT copy the reference standing twist or body angle.
 
-Neon faces the viewer STRAIGHT-ON. BOTH HANDS on her HIPS — elbows out, a confident power stance. Like a superhero landing pose but standing upright. Chin slightly raised, looking at the viewer with quiet intensity.
+Neon SPRINTS at full speed STRAIGHT AT THE VIEWER. This is faster and more intense than walking — an aggressive combat sprint.
 
-Subtle electric energy wraps around her body — small sparks and faint blue glow close to her skin. NOT large bolts or beams. The character is the focus, not the effects.
+Her body LEANS FORWARD — weight fully committed to the sprint. LEFT foot forward in a long stride, RIGHT foot pushing off behind. Her stride is wide and dynamic.
 
-Wide planted stance, weight even. She radiates controlled power — coiled energy at rest.
+Her RIGHT HAND holds a SHORTY — a VERY SMALL, COMPACT pocket sidearm shotgun, barely bigger than her fist. Tiny stubby barrel, minimalist grip — it fits entirely in one hand. She holds it naturally at her side while running.
 
-This pose has a COMPLETELY DIFFERENT arm arrangement from her other two poses (arms-forward and arms-at-sides walking).
+Her LEFT ARM pumps FORWARD in a natural sprint motion — fist or open hand, arm bent at the elbow.
 
-Clean white background.`,
+ELECTRIC EFFECT (CRITICAL): Two parallel walls of ELECTRIC BLUE ENERGY run alongside her on BOTH sides — her "Fast Lane" ability. The electric walls are vertical sheets of crackling blue-white lightning energy, running parallel to her direction of movement. They are close to her body, framing her on left and right like corridor walls. The electric energy WRAPS inward slightly — small arcs and sparks jump from the walls toward her body. Her circuit patterns on her arms glow blue.
+
+Her electric blue hair streams BACKWARD from the speed, with small electric sparks trailing from the tips. Her eyes glow with electric blue intensity.
+
+Determined, focused expression — the cold intensity of a sprinter. NOT smiling, NOT excited. Pure forward momentum.
+
+Clean white background. ONLY the character sprinting between the two parallel electric walls.`,
       },
     ],
   },
@@ -189,115 +215,271 @@ SECOND IMAGE: Close-up face reference for Omen. Match exactly — the hood/hat s
     expression: `There IS no facial expression — Omen has NO visible face. Only glowing teal eyes in absolute darkness beneath his hood. The "expression" is conveyed through BODY LANGUAGE and the INTENSITY of his eye glow. His posture should communicate: ancient dread, patient menace, something inhuman that has existed for too long. He is still, like a predator that doesn't need to move.`,
     poses: [
       {
-        name: "from-the-shadows",
-        prompt: `POSE — "FROM THE SHADOWS" (Ultimate Ability — Shadow Teleport):
+        name: "smoke-emerge-a",
+        prompt: `POSE — "SMOKE EMERGE" (Breaking Through Dark Smoke Wall):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn standing still. This pose is COMPLETELY DIFFERENT — Omen is EMERGING forward through a wall of dense dark smoke, pushing STRAIGHT AT THE VIEWER. His body leans forward aggressively. Do NOT copy the reference body angle or still posture.
 
-Omen faces the viewer STRAIGHT-ON. He is COMPLETELY WRAPPED in his cloak — BOTH arms hidden inside, NO hands visible, NO weapons visible. IMPORTANT: There is NO RIFLE, NO GUN in this image. He holds NOTHING. His cloak cocoons his entire body like a dark shroud.
+Omen EMERGES through a wall of dense dark BLACK SMOKE, pushing forward STRAIGHT AT THE VIEWER. His full body is visible — he is breaking through the smoke barrier like a predator stepping out of darkness.
 
-His LOWER BODY from the knees down DISSOLVES into dense dark purple-black smoke that swirls and pools beneath him. He RISES from a dark shadow portal on the ground.
+His body leans SLIGHTLY FORWARD — weight on his front foot, aggressive forward momentum. He is mid-emergence, NOT standing still.
 
-His wide-brimmed hat (FLAT, ANGULAR — exactly like the reference image) crowns the figure. Below the hat brim, ONLY two TEAL GLOWING EYES in absolute darkness. No face, no features.
+SMOKE EFFECT (CRITICAL): Dense, dark BLACK-PURPLE smoke WRAPS AROUND his entire body — clinging to his cloak, swirling around his legs, trailing behind him. The smoke is THICKEST behind him and at his sides, THINNEST at his front where he has pushed through. His body BREAKS through the smoke wall. The smoke is NOT separate from him — it clings to and wraps his form. His lower body dissolves naturally into the dense smoke below.
 
-His silhouette is a NARROW VERTICAL COLUMN — the hat is the widest point, below it the cloak narrows to a pillar shape, then dissolves into smoke. He is PERFECTLY STILL. Not dramatic, not active — just present. An ancient shadow that appeared without warning.
+His RIGHT ARM pushes forward, clawed hand reaching out of the smoke toward the viewer — fingers spread, palm partially open. His LEFT ARM is partially hidden in his cloak and smoke, emerging less fully.
 
-Clean white background. ONLY the cloaked figure and shadow smoke.`,
+His wide-brimmed hat (FLAT, ANGULAR — match reference exactly) is the first thing emerging from the smoke. Below the hat, ONLY two TEAL GLOWING EYES pierce through the darkness. No face, no features — just eyes in void.
+
+His cloak billows and streams BACKWARD into the smoke behind him, creating trailing dark wisps.
+
+The overall impression: a shadow stepping out of darkness itself. Patient, inevitable, inhuman.
+
+NO RIFLE, NO GUN, NO WEAPON. He holds NOTHING in his hands. ONLY clawed hands and smoke.
+
+Clean white background. ONLY the character emerging from dark smoke.`,
       },
       {
-        name: "dark-cover",
-        prompt: `POSE — "DARK COVER" (Smoke Orb — Placing Darkness):
+        name: "smoke-emerge-b",
+        prompt: `POSE — "SMOKE EMERGE" (Breaking Through Dark Smoke Wall):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-POSE CHANGE: This pose faces LEFT (3/4 left turn) — the OPPOSITE direction of the reference image. The head looks UP. NO RIFLE — only shadow ability. This is NOT the default pose.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn standing still. This pose is COMPLETELY DIFFERENT — Omen is EMERGING forward through a wall of dense dark smoke, pushing STRAIGHT AT THE VIEWER. His body leans forward aggressively. Do NOT copy the reference body angle or still posture.
 
-Omen stands in a strong 3/4 turn to the LEFT. His body faces LEFT while his head tilts UPWARD — he is looking at the SKY, watching where his smoke orb will land. This upward gaze is completely different from his usual forward stare.
+Omen EMERGES through a wall of dense dark BLACK SMOKE, pushing forward STRAIGHT AT THE VIEWER. His full body is visible — he is breaking through the smoke barrier like a predator stepping out of darkness.
 
-His LEFT ARM is raised HIGH above his head, clawed hand open, palm facing up. Above his raised hand, a dark SHADOW ORB hovers — a dense sphere of swirling dark purple-black smoke, about the size of his head. The orb appears to be floating just above his clawed fingers, ready to be sent.
+His body leans SLIGHTLY FORWARD — weight on his front foot, aggressive forward momentum. He is mid-emergence, NOT standing still.
 
-His RIGHT ARM is completely HIDDEN inside his cloak, tucked against his body. This creates a strong ASYMMETRIC silhouette — one arm reaching high, the other invisible.
+SMOKE EFFECT (CRITICAL): Dense, dark BLACK-PURPLE smoke WRAPS AROUND his entire body — clinging to his cloak, swirling around his legs, trailing behind him. The smoke is THICKEST behind him and at his sides, THINNEST at his front where he has pushed through. His body BREAKS through the smoke wall. The smoke is NOT separate from him — it clings to and wraps his form. His lower body dissolves naturally into the dense smoke below.
 
-His wide-brimmed hat (FLAT, ANGULAR — match the reference exactly) tilts back with his upward gaze. His teal eyes glow upward toward the orb. His cloak hangs heavily on his right side.
+His RIGHT ARM pushes forward, clawed hand reaching out of the smoke toward the viewer — fingers spread, palm partially open. His LEFT ARM is partially hidden in his cloak and smoke, emerging less fully.
 
-The overall shape is a TALL VERTICAL composition — very different from the wide spread of other poses. One clawed hand reaching skyward with a dark sphere, the rest of the body still and cloaked.
+His wide-brimmed hat (FLAT, ANGULAR — match reference exactly) is the first thing emerging from the smoke. Below the hat, ONLY two TEAL GLOWING EYES pierce through the darkness. No face, no features — just eyes in void.
 
-Clean white background. ONLY the character and the hovering shadow orb.`,
+His cloak billows and streams BACKWARD into the smoke behind him, creating trailing dark wisps.
+
+The overall impression: a shadow stepping out of darkness itself. Patient, inevitable, inhuman.
+
+NO RIFLE, NO GUN, NO WEAPON. He holds NOTHING in his hands. ONLY clawed hands and smoke.
+
+Clean white background. ONLY the character emerging from dark smoke.`,
       },
       {
-        name: "paranoia",
-        prompt: `POSE — "PARANOIA" (Shadow Projectile — Forward Cast):
+        name: "smoke-emerge-c",
+        prompt: `POSE — "SMOKE EMERGE" (Breaking Through Dark Smoke Wall):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-This pose faces STRAIGHT-ON at the viewer with ONE ARM extended forward casting shadow. NO GUN in this pose.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn standing still. This pose is COMPLETELY DIFFERENT — Omen is EMERGING forward through a wall of dense dark smoke, pushing STRAIGHT AT THE VIEWER. His body leans forward aggressively. Do NOT copy the reference body angle or still posture.
 
-Omen faces the viewer STRAIGHT-ON. His posture is upright and CONTROLLED.
+Omen EMERGES through a wall of dense dark BLACK SMOKE, pushing forward STRAIGHT AT THE VIEWER. His full body is visible — he is breaking through the smoke barrier like a predator stepping out of darkness.
 
-His RIGHT ARM extends FORWARD directly at the viewer at chest height — clawed hand open, palm facing the camera. From his palm, a MASSIVE dark shadow mass LAUNCHES toward the viewer — a dense dark purple-black void with shadow tendrils streaming outward. The projectile appears to come AT the viewer, creating depth.
+His body leans SLIGHTLY FORWARD — weight on his front foot, aggressive forward momentum. He is mid-emergence, NOT standing still.
 
-His LEFT ARM hangs at his side, clawed fingers loosely curled — calm, still. Only one arm acts while the rest remains composed.
+SMOKE EFFECT (CRITICAL): Dense, dark BLACK-PURPLE smoke WRAPS AROUND his entire body — clinging to his cloak, swirling around his legs, trailing behind him. The smoke is THICKEST behind him and at his sides, THINNEST at his front where he has pushed through. His body BREAKS through the smoke wall. The smoke is NOT separate from him — it clings to and wraps his form. His lower body dissolves naturally into the dense smoke below.
 
-CRITICAL — HAT SHAPE: His hat is WIDE, FLAT-BRIMMED, angular — like the reference image. NOT a pointy witch hat. The brim is wide and horizontal with sharp geometric edges.
+His RIGHT ARM pushes forward, clawed hand reaching out of the smoke toward the viewer — fingers spread, palm partially open. His LEFT ARM is partially hidden in his cloak and smoke, emerging less fully.
 
-His cloak drapes symmetrically since he faces straight-on. His teal eyes glow with cold precision — locked on the viewer. The shadow projectile in front of him creates a dark mass between him and the viewer.
+His wide-brimmed hat (FLAT, ANGULAR — match reference exactly) is the first thing emerging from the smoke. Below the hat, ONLY two TEAL GLOWING EYES pierce through the darkness. No face, no features — just eyes in void.
 
-The overall composition is SYMMETRICAL and CONFRONTATIONAL — Omen staring and casting directly at you. Very different from the angled reference pose.
+His cloak billows and streams BACKWARD into the smoke behind him, creating trailing dark wisps.
 
-Clean white background. ONLY the character and the shadow projectile.`,
+The overall impression: a shadow stepping out of darkness itself. Patient, inevitable, inhuman.
+
+NO RIFLE, NO GUN, NO WEAPON. He holds NOTHING in his hands. ONLY clawed hands and smoke.
+
+Clean white background. ONLY the character emerging from dark smoke.`,
       },
     ],
   },
 
-  raze: {
-    characterDesc: `FIRST IMAGE: Full-body character reference for "Raze" from the game Valorant. Match her appearance EXACTLY — dark brown Brazilian skin, athletic build with visible muscle. She wears an ORANGE BANDANA/HEADBAND with goggles pushed up on top, large ORANGE HEADPHONES over her ears. Her outfit is a teal/olive tactical CROP TOP exposing her midriff, with an orange-and-camo tactical harness/vest over it. Teal/olive BAGGY CARGO PANTS with orange stripes and paint splatter details. Black COMBAT BOOTS with orange/red soles and X markings. She carries explosives and grenades on her belt. Reproduce her face, outfit, and color palette PRECISELY.
+  yoru: {
+    characterDesc: `FIRST IMAGE: Full-body character reference for "Yoru" from the game Valorant. NOTE: This reference shows Yoru FROM BEHIND — the large demon/oni mask design is on the BACK of his jacket. When generating FRONT-FACING poses, the FRONT of the jacket is PLAIN dark navy blue with a zipper closure, high collar, and subtle geometric accents — NO demon mask on the front.
 
-SECOND IMAGE: Close-up face reference for Raze. Match her EXACT facial features — round face, warm confident eyes, orange bandana with goggles, large orange headphones, dark brown skin.`,
-    palette: `Raze's palette: orange, yellow-gold, teal/olive, brown. The base outfit uses TEAL/OLIVE and BROWN — earthy, military. ONLY ability effects (explosions, paint splatters, rocket blast) use EXTREME high-saturation ORANGE/YELLOW with bright warm glow. Orange accents on her headphones, bandana, and boots provide identity markers against the muted teal base.`,
-    expression: `Expression is CONFIDENT with a slight edge of mischief — but RESTRAINED. NOT a big grin or exaggerated smile. A subtle, self-assured smirk at most — the quiet confidence of someone who knows exactly how much damage she can do. Eyes sharp and focused. Cool, not cartoonish. Valorant expressions are ALWAYS understated.`,
+Match his appearance EXACTLY — Japanese male, lean athletic build, dark navy-blue hair styled in a sharp swept-back pompadour/spike with blue highlights. He wears a dark blue BOMBER JACKET (front is plain dark blue with zipper, demon mask is on the BACK only). Orange trim accents and an orange number patch on the left sleeve. Under the jacket: dark shirt/tactical gear. Black tactical PANTS with utility straps. Orange-and-white SNEAKERS with bright orange accents. Silver EAR PIERCINGS/STUDS on both ears. Reproduce his face, outfit, and color palette PRECISELY.
+
+SECOND IMAGE: Close-up face reference for Yoru. Match his EXACT facial features — angular face, sharp jawline, dark navy hair swept back with blue highlights, silver ear piercings, intense confident eyes, slight cocky edge to his expression.
+
+THIRD IMAGE: Front-view reference showing Yoru's FRONT appearance and his DIMENSIONAL CLONE ability. This shows how Yoru looks FROM THE FRONT — the jacket front is dark navy with geometric accents. Behind him is a translucent BLUE DIMENSIONAL CLONE (a ghostly blue energy copy of himself). Use this image to accurately render Yoru's front-facing appearance.`,
+    palette: `Yoru's palette: dark blue, navy, black, orange accents. The base outfit uses DARK NAVY BLUE and BLACK — sleek streetwear. ONLY ability effects (dimensional rifts, teleport energy) use EXTREME high-saturation BRIGHT CYAN-BLUE with electric glow. Orange accents on jacket trim, sneakers, and sleeve patch provide warm contrast against the cool dark base.`,
+    expression: `Expression is COOL and NONCHALANT — a trickster's quiet confidence. Subtle smirk at most, one eyebrow slightly raised. He looks like he already knows how this ends. Cocky but RESTRAINED — not a big grin. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
-        name: "showstopper",
-        prompt: `POSE — "SHOWSTOPPER" (Ultimate Ability — Rocket Launcher):
+        name: "dimensional-drift",
+        prompt: `POSE — "DIMENSIONAL DRIFT" (Ultimate — Masked Sprint Inside Blue Dimension):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with one arm up and one arm down. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with the launcher across both shoulders. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows Yoru from BEHIND in a 3/4 RIGHT turn looking over his shoulder. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER, sprinting forward aggressively. Do NOT copy the reference back-view angle.
 
-Raze faces the viewer STRAIGHT-ON. Wide confident stance, feet apart, weight even.
+IMPORTANT — JACKET FRONT: The reference shows the BACK of the jacket (demon mask). When facing the viewer, the FRONT of the jacket is PLAIN dark navy blue with a zipper and high collar. Do NOT put the demon mask design on the front.
 
-A large ROCKET LAUNCHER rests across BOTH SHOULDERS behind her neck — she grips it with BOTH hands, one on each side. The launcher sits horizontally behind her head like a yoke. This creates a WIDE SYMMETRICAL silhouette completely different from the reference.
+ONI MASK (CRITICAL — MUST BE PRESENT): Yoru wears a JAPANESE ONI/DEMON MASK over his face. The mask covers his entire face. The mask has SHARP FANGS/TEETH painted on it, angular demon features, and GLOWING BLUE EYES visible through the eye holes. The mask is the MOST IMPORTANT element of this pose — it MUST be clearly visible and prominent. Without the mask, this pose is WRONG.
 
-Subtle confident expression — restrained, not a grin. Cool.
+DIMENSIONAL ATMOSPHERE (CRITICAL): Yoru is INSIDE his dimensional rift — the space around him is filled with DARK BLUE-PURPLE dimensional energy. Dense dark blue/indigo void WRAPS around his entire body. The overall color tone is DEEP DARK BLUE and INDIGO — like the interior of a dimensional void. Blue-cyan energy streaks and rifts trail behind and around him. This is NOT a clean white background — the dimensional void is the background.
 
-Clean white background. ONLY the character and the launcher.`,
+Yoru SPRINTS aggressively STRAIGHT AT THE VIEWER — body leaning forward, one foot forward in a long stride. This is a fast, predatory run through the dimension.
+
+BOTH arms pump naturally in a sprint motion. NO weapons in hands.
+
+His hair and jacket flow BACKWARD from speed. Blue energy rifts trail from his body like speed lines.
+
+NO GUN, NO RIFLE, NO WEAPON.
+
+The background is the DARK BLUE DIMENSIONAL VOID — not white. Dark indigo/navy with blue energy streaks. The overall mood is DARK and MENACING.`,
       },
       {
-        name: "boom-bot",
-        prompt: `POSE — "BOOM BOT" (Robot Companion — Walking With Pet):
+        name: "gatecrash",
+        prompt: `POSE — "GATECRASH" (Dimensional Rift — Sheriff Pistol):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn standing still. This pose is COMPLETELY DIFFERENT — WALKING STRAIGHT TOWARD THE VIEWER. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows Yoru from BEHIND in a 3/4 RIGHT turn. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with one arm forward and one arm raised with a pistol. Do NOT copy the reference back-view angle.
 
-Raze WALKS STRAIGHT TOWARD the viewer. Left foot forward, right foot behind, mid-stride — confident swagger. BOTH arms swing naturally at her sides in a walking motion.
+IMPORTANT — JACKET FRONT: The reference shows the BACK of the jacket (demon mask). When facing the viewer, the FRONT of the jacket is PLAIN dark navy blue with a zipper and high collar. Do NOT put the demon mask design on the front.
 
-On her RIGHT SHOULDER sits a small round BOOM BOT — a mechanical ball-shaped robot with two simple eyes and an antenna, perched on her shoulder like a pet parrot. The bot is at head/shoulder level so it is clearly visible in the upper body area.
+Yoru faces the viewer STRAIGHT-ON. NO mask — his normal face is visible.
 
-Her expression is subtle and cool — walking with purpose.
+His LEFT ARM extends FORWARD toward the viewer — open palm, fingers spread, as if channeling or beckoning. A dimensional rift energy glows around his extended hand.
 
-This is a WALKING pose, completely different from her other two poses which are static standing.
+His RIGHT HAND holds a SHERIFF — Valorant's heavy revolver-style pistol. It is a large, angular, boxy REVOLVER with a long barrel — looks like a futuristic magnum/desert eagle hybrid. He holds it RAISED and slightly tilted upward at about 45 degrees, elbow bent — a stylish, casual gun-raised pose. NOT aiming at the viewer — pointing upward/to the side.
+
+The asymmetric pose — one arm reaching forward, one arm with pistol raised — creates a dynamic, trickster silhouette.
+
+Dimensional rift energy WRAPS around his body — blue-cyan cracks and rifts cling to his form.
+
+Wide planted stance. Cocky nonchalant expression.
+
+Clean white background.`,
+      },
+    ],
+  },
+
+  iso: {
+    characterDesc: `FIRST IMAGE: Full-body character reference for "Iso" from the game Valorant. Match his appearance EXACTLY — Chinese male, lean build, dark messy BLACK HAIR that falls over one eye (emo/scene hairstyle covering the right eye). Angular face with PURPLE/VIOLET EYES, a small BAND-AID/TAPE on his left cheek. He wears an oversized light GRAY/WHITE tactical JACKET with a high collar and black geometric accents, a dark shirt underneath. Wide BLACK BAGGY PANTS. Dark gray/black SNEAKERS. His pose shows a large geometric PURPLE ENERGY SHIELD behind him — a hexagonal/star-shaped kinetic energy pattern. He holds thin red THREADS/WIRES between his hands. Reproduce his face, outfit, and color palette PRECISELY.
+
+SECOND IMAGE: Close-up face reference for Iso. Match his EXACT facial features — angular face, dark hair covering one eye, purple/violet eyes visible through the hair, band-aid on cheek, cold detached expression, purple energy accents on collar.
+
+THIRD IMAGE: Reference showing Iso's signature ability effect — CONCENTRIC OCTAGONAL/STAR-SHAPED geometric energy rings. These are layered geometric patterns of purple-white energy radiating outward in concentric octagonal shapes. This is the correct visual for Iso's kinetic energy — NOT a simple sphere, but GEOMETRIC OCTAGONAL RINGS.`,
+    palette: `Iso's palette: purple, violet, white/light gray, black. The base outfit uses LIGHT GRAY/WHITE and BLACK — clean, monochromatic. ONLY ability effects (kinetic shields, energy spheres, dimensional rifts) use EXTREME high-saturation PURPLE/VIOLET with bright glow. This creates stark contrast between his muted grayscale outfit and the intense purple energy.`,
+    expression: `Expression is COLD and DETACHED — isolated, looking through the viewer rather than at them. Minimal emotion, almost apathetic. Eyes half-visible behind hair. The quiet intensity of someone who has disconnected from everything. NOT angry, NOT sad — just absent. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "kill-contract",
+        prompt: `POSE — "KILL CONTRACT" (Ultimate — Octagonal Energy Dimension):
+STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn in a crouching action pose with arms spread holding threads. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with BOTH arms forward together. Do NOT copy the reference crouching angle.
+
+Iso faces the viewer STRAIGHT-ON. BOTH ARMS are extended forward together at chest height — hands facing each other with a gap between them.
+
+ENERGY EFFECT (CRITICAL — see third reference image): Behind Iso, CONCENTRIC OCTAGONAL/STAR-SHAPED geometric energy rings radiate outward from his body. These are NOT simple spheres — they are layered GEOMETRIC OCTAGONAL PATTERNS of purple-white energy, like concentric star/octagon shapes expanding behind him. Multiple nested octagonal rings, each glowing with purple-violet energy. The geometric pattern wraps BEHIND and AROUND his body like a mandala of energy.
+
+The octagonal energy rings emit purple light that illuminates his face. Kinetic energy lines flow from the rings along his arms.
+
+Wide symmetrical stance. Hair over one eye. Band-aid visible. Cold, detached stare.
+
+NO weapons.
 
 Clean white background.`,
       },
       {
-        name: "paint-shells",
-        prompt: `POSE — "PAINT SHELLS" (Cluster Grenade — Arms Crossed):
+        name: "double-tap",
+        prompt: `POSE — "DOUBLE TAP" (Kinetic Shield — Vandal Rifle Aim):
 STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
 FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn with one arm up and one arm down. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with arms CROSSED. Do NOT copy the reference body angle.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn in a crouching action pose. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER, aiming a rifle forward. Do NOT copy the reference crouching angle.
 
-Raze faces the viewer STRAIGHT-ON. Her ARMS are CROSSED over her chest — a confident, relaxed stance. In her RIGHT HAND (crossed over), she holds a small CLUSTER GRENADE casually between her fingers. The grenade peeks out from her crossed arms.
+Iso faces the viewer STRAIGHT-ON. He holds a VANDAL assault rifle — Valorant's signature full-auto rifle. It is a medium-length tactical rifle with angular, geometric design. He aims it FORWARD at the viewer with BOTH HANDS — proper rifle grip, stock against shoulder, looking down the sights.
 
-Wide stance, weight even, chin slightly up. The crossed-arms pose is completely different from the reference's one-up-one-down arm arrangement.
+A translucent PURPLE KINETIC SHIELD hovers in front of him — a geometric OCTAGONAL barrier pattern that WRAPS partially around his upper body. He aims THROUGH the shield. The shield is semi-transparent, the rifle and his face visible behind it.
 
-Subtle confident expression — cool, not grinning.
+His oversized jacket hangs loosely around the rifle stance. Hair over one eye. Band-aid visible. Cold apathetic stare through scope and shield.
 
-Clean white background. ONLY the character with the grenade in her crossed arms.`,
+Purple energy lines trace along the rifle barrel and his arms.
+
+Clean white background.`,
+      },
+      {
+        name: "contingency",
+        prompt: `POSE — "CONTINGENCY" (Emerging Through Octagonal Energy):
+STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a 3/4 RIGHT turn in a crouching action pose. This pose is COMPLETELY DIFFERENT — EMERGING FORWARD through a wall of energy STRAIGHT AT THE VIEWER. Do NOT copy the reference crouching angle.
+
+Iso EMERGES through a wall of OCTAGONAL KINETIC ENERGY, pushing forward STRAIGHT AT THE VIEWER. His full body is visible — he is breaking through the geometric energy barrier.
+
+ENERGY EFFECT (CRITICAL): Dense PURPLE OCTAGONAL/STAR-SHAPED geometric energy patterns WRAP AROUND his entire body — clinging to his jacket, swirling around his legs. The geometric rings are THICKEST behind him, THINNEST at his front where he has pushed through. The energy is NOT separate from him — it clings to and wraps his form with geometric patterns.
+
+His body leans SLIGHTLY FORWARD — weight on his front foot, forward momentum. One arm reaches forward, the other at his side.
+
+His oversized jacket billows backward into the energy behind him. Hair over one eye. Cold detached expression — pushing through his own dimensional barrier.
+
+NO weapons.
+
+Clean white background. ONLY the character emerging from geometric purple energy.`,
+      },
+    ],
+  },
+
+  waylay: {
+    characterDesc: `FIRST IMAGE: Full-body character reference for "Waylay" from the game Valorant. Match her appearance EXACTLY — Thai female, medium-dark tan skin, athletic combat build. She has wild spiky SILVER/WHITE hair swept back with crystalline/prismatic highlights that catch light in rainbow hues. She wears a sleeveless GOLD/TAN tactical VEST with a high collar and dark interior lining, dark shirt underneath with chain/bead accessories at the neckline. Dark navy/black BAGGY PANTS with tactical straps. Purple/violet SNEAKERS. Her signature ability creates PRISMATIC LIGHT — rainbow-refracting energy with dominant purple, cyan, and gold tones. In the reference she holds a large PRISMATIC LIGHT SWORD in her right hand — a blade made of pure refracting light energy. Reproduce her face, outfit, and color palette PRECISELY.
+
+SECOND IMAGE: Close-up face reference for Waylay. Match her EXACT facial features — angular face, medium-dark skin, silver/white crystalline hair, sharp determined eyes with gold/amber undertones, small ear piercings, intense focused expression.`,
+    palette: `Waylay's palette: gold/tan, silver/white, dark navy, prismatic rainbow. The base outfit uses GOLD/TAN and DARK NAVY — warm tactical. ONLY ability effects (prismatic blades, light refraction, speed trails) use EXTREME high-saturation PRISMATIC RAINBOW with dominant purple, cyan, and gold — light refracting through a prism. Silver/white hair provides a cool contrast against the warm gold vest.`,
+    expression: `Expression is FOCUSED and DETERMINED — a warrior's quiet intensity before the strike. NOT smiling. Sharp eyes, tight jaw, coiled energy. She is precise and lethal. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "convergent-paths",
+        prompt: `POSE — "CONVERGENT PATHS" (Ultimate — Light Transformation):
+STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a wide combat stance with a prismatic sword. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with BOTH arms at sides, transformed into pure light. Do NOT copy the reference combat stance.
+
+TRANSFORMATION STATE: Waylay has activated her ultimate. Her entire body GLOWS with prismatic light energy — she is transforming into pure light itself. Rainbow-refracting energy radiates from her body in all directions. Her eyes emit bright prismatic light. Her hair floats upward, infused with rainbow energy.
+
+Waylay faces the viewer STRAIGHT-ON. BOTH ARMS hang at her sides — relaxed but radiating power. Her body is the effect. Prismatic light WRAPS around her entire form, emanating outward.
+
+Wide planted stance, weight even. An otherworldly being of pure light.
+
+NO WEAPON, NO SWORD. The transformation itself is the spectacle.
+
+Clean white background.`,
+      },
+      {
+        name: "light-speed",
+        prompt: `POSE — "LIGHT SPEED" (Prismatic Sprint — Speed Rush):
+STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a wide combat stance. This pose is COMPLETELY DIFFERENT — SPRINTING STRAIGHT AT THE VIEWER at high speed. Do NOT copy the reference stance.
+
+Waylay SPRINTS at full speed STRAIGHT AT THE VIEWER — body leaning forward aggressively, one foot forward in a long stride.
+
+Her RIGHT HAND holds her PRISMATIC LIGHT SWORD — a blade made of refracting rainbow energy, glowing with purple, cyan, and gold tones. She grips it at her side while running.
+
+Her LEFT ARM pumps FORWARD in a natural sprint motion.
+
+PRISMATIC EFFECT: Rainbow light trails STREAM BACKWARD from her body — her speed creates prismatic afterimages and light refractions that cling to and trail from her form. Her silver hair streams back with prismatic sparkles.
+
+Determined, focused expression — pure forward momentum.
+
+Clean white background. ONLY the character sprinting with prismatic trails.`,
+      },
+      {
+        name: "refract",
+        prompt: `POSE — "REFRACT" (Prismatic Light — Crossed Arms):
+STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
+FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
+SKELETON CHANGE: The reference shows a wide combat stance with sword extended. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with ARMS CROSSED. Do NOT copy the reference stance.
+
+Waylay faces the viewer STRAIGHT-ON. Her ARMS are CROSSED over her chest — a confident, controlled stance. NO weapon in hands.
+
+PRISMATIC EFFECT: Light fragments and prismatic shards FLOAT around her body — small rainbow-refracting pieces of light energy hovering near her arms, shoulders, and hair. The prismatic light illuminates her from multiple angles, creating rainbow light patches on her skin and clothes.
+
+Her silver/white hair catches the prismatic light, creating subtle rainbow highlights.
+
+Wide planted stance. Quiet intensity — a warrior at rest but ready.
+
+This pose has a COMPLETELY DIFFERENT body arrangement from her other two poses (arms-at-sides and sprinting).
+
+Clean white background.`,
       },
     ],
   },
