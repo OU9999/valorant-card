@@ -18,7 +18,8 @@ interface TierCardProps {
   portraitUrl: string;
   ovr: number;
   playerName: string;
-  position?: string;
+  region?: string;
+  weaponIconUrl?: string;
   stats: CardStat[];
   className?: string;
 }
@@ -30,7 +31,8 @@ const TierCard = ({
   portraitUrl,
   ovr,
   playerName,
-  position = "DLT",
+  region = "AP",
+  weaponIconUrl,
   stats,
   className,
 }: TierCardProps) => {
@@ -97,13 +99,22 @@ const TierCard = ({
           <span className={cn("text-[clamp(2.5rem,8cqw,5rem)] font-extrabold leading-none", design.ovr)}>
             {ovr}
           </span>
-          <span className={cn("text-[clamp(0.625rem,2cqw,1.125rem)] font-bold tracking-wider", design.position)}>
-            {position}
+          <span className={cn("text-[clamp(0.875rem,2.8cqw,1.5rem)] font-bold tracking-wider", design.position)}>
+            {region}
           </span>
-          <div className="mt-[clamp(0.25rem,0.8cqw,0.5rem)] flex flex-col items-center gap-[clamp(0.125rem,0.5cqw,0.375rem)]">
-            <div className={cn("h-[clamp(0.75rem,2.5cqw,1.5rem)] w-[clamp(1rem,3.5cqw,2rem)] rounded-sm", design.placeholder)} />
-            <div className={cn("h-[clamp(0.875rem,3cqw,1.75rem)] w-[clamp(0.875rem,3cqw,1.75rem)] rounded-full", design.placeholder)} />
-          </div>
+          {weaponIconUrl && (
+            <div
+              role="img"
+              aria-label="weapon"
+              className={cn(
+                "mt-[clamp(0.25rem,0.8cqw,0.5rem)] aspect-[4/1] w-[clamp(2rem,6cqw,3.5rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
+                design.position,
+              )}
+              style={{
+                maskImage: `url(${weaponIconUrl})`,
+              }}
+            />
+          )}
         </div>
 
         {/* 플레이어 이름 */}
@@ -123,8 +134,8 @@ const TierCard = ({
           className={cn(
             "absolute flex text-center",
             isHighTier
-              ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.375rem,1.5cqw,1rem)]"
-              : "inset-x-[6%] top-[76%] justify-between",
+              ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.5rem,2cqw,1.25rem)]"
+              : "inset-x-[6%] top-[76%] justify-between gap-[clamp(0.25rem,1cqw,0.75rem)]",
           )}
         >
           {stats.map((stat) => (
@@ -132,7 +143,7 @@ const TierCard = ({
               <span className={cn("text-[clamp(0.5rem,1.8cqw,0.875rem)] font-medium tracking-wide", design.statLabel)}>
                 {stat.label}
               </span>
-              <span className={cn("text-[clamp(1rem,3.5cqw,2rem)] font-bold leading-tight", design.statValue)}>
+              <span className={cn("text-[clamp(0.875rem,3cqw,1.75rem)] font-bold leading-tight", design.statValue)}>
                 {stat.value}
               </span>
             </div>

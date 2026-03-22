@@ -176,5 +176,38 @@ const aggregateMatchMetrics = (
   };
 };
 
-export { calculateCardScore, calculateFormTrend, formatCardStats };
+// ─── Weapon ───
+
+const findMostUsedWeapon = (
+  matches: MatchDetails[],
+  puuid: string,
+): string | null => {
+  const counts = new Map<string, number>();
+
+  for (const match of matches) {
+    for (const round of match.roundResults) {
+      const ps = round.playerStats.find((s) => s.puuid === puuid);
+      if (!ps) continue;
+
+      for (const kill of ps.kills) {
+        const weaponId = kill.finishingDamage.damageItem;
+        if (!weaponId) continue;
+        counts.set(weaponId, (counts.get(weaponId) ?? 0) + 1);
+      }
+    }
+  }
+
+  let maxId: string | null = null;
+  let maxCount = 0;
+  for (const [id, count] of counts) {
+    if (count > maxCount) {
+      maxId = id;
+      maxCount = count;
+    }
+  }
+
+  return maxId;
+};
+
+export { calculateCardScore, calculateFormTrend, formatCardStats, findMostUsedWeapon };
 export type { CardStat, CardStats, CardScoreResult, FormTrend };
