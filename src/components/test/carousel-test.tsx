@@ -12,11 +12,10 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
+import { CHARACTERS } from "@/constants/characters";
 import type { TierName } from "@/constants/tier-design";
 
-const JETT_PORTRAIT = "/characters/jett/fullportrait.png";
-
-const SAMPLE_STATS = [
+const DEFAULT_STATS = [
   { label: "SHO", value: 88 },
   { label: "DRI", value: 92 },
   { label: "PAC", value: 85 },
@@ -24,6 +23,8 @@ const SAMPLE_STATS = [
   { label: "DEF", value: 70 },
   { label: "PHY", value: 78 },
 ];
+
+const JETT_INDEX = CHARACTERS.findIndex((c) => c.name === "제트");
 
 interface TierCardEntry {
   name: TierName;
@@ -57,6 +58,14 @@ const SLIDE_OFFSETS = [
 
 const CarouselTest = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [stats, setStats] = useState(DEFAULT_STATS);
+  const [ovr, setOvr] = useState(92);
+  const [playerName, setPlayerName] = useState("Player#KR1");
+  const [characterIndex, setCharacterIndex] = useState(JETT_INDEX);
+
+  const handleStatChange = (index: number, value: number) => {
+    setStats((prev) => prev.map((s, i) => (i === index ? { ...s, value } : s)));
+  };
 
   const goToPrev = () => {
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : TIER_CARDS.length - 1));
@@ -93,10 +102,10 @@ const CarouselTest = () => {
                   tierName={tier.name}
                   competitiveTier={tier.competitiveTier}
                   backgroundImage={tier.image}
-                  portraitUrl={JETT_PORTRAIT}
-                  ovr={92}
-                  playerName="Player#KR1"
-                  stats={SAMPLE_STATS}
+                  portraitUrl={CHARACTERS[characterIndex].fullPortrait}
+                  ovr={ovr}
+                  playerName={playerName}
+                  stats={stats}
                   className="h-[80vh]"
                 />
               </div>
@@ -178,21 +187,64 @@ const CarouselTest = () => {
           </div>
         </section>
 
-        {/* Stats display */}
+        {/* Character select */}
+        <section>
+          <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
+            CHARACTER
+          </h3>
+          <select
+            value={characterIndex}
+            onChange={(e) => setCharacterIndex(Number(e.target.value))}
+            className="w-full rounded-md bg-white/10 px-3 py-2 text-sm text-white outline-none"
+          >
+            {CHARACTERS.map((c, i) => (
+              <option key={c.id} value={i} className="bg-gray-900">
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </section>
+
+        {/* Stats controls */}
         <section>
           <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
             STATS
           </h3>
           <div className="flex flex-col gap-2">
-            {SAMPLE_STATS.map((stat) => (
+            <div className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5">
+              <span className="text-sm text-white/60">OVR</span>
+              <input
+                type="number"
+                min={0}
+                max={99}
+                value={ovr}
+                onChange={(e) => setOvr(Number(e.target.value))}
+                className="w-16 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+              />
+            </div>
+            <div className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5">
+              <span className="text-sm text-white/60">NAME</span>
+              <input
+                type="text"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                className="w-32 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+              />
+            </div>
+            {stats.map((stat, i) => (
               <div
                 key={stat.label}
                 className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5"
               >
                 <span className="text-sm text-white/60">{stat.label}</span>
-                <span className="text-sm font-bold text-white">
-                  {stat.value}
-                </span>
+                <input
+                  type="number"
+                  min={0}
+                  max={99}
+                  value={stat.value}
+                  onChange={(e) => handleStatChange(i, Number(e.target.value))}
+                  className="w-16 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+                />
               </div>
             ))}
           </div>
