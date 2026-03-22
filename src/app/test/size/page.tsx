@@ -12,7 +12,7 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
-import { TierCardRef } from "@/components/card/tier-card-ref";
+import type { CardSize } from "@/components/card/tier-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -57,9 +57,9 @@ const TIERS: TierEntry[] = [
 ];
 
 const SizeTest = () => {
-  const [height, setHeight] = useState(500);
+  const [height, setHeight] = useState(800);
   const [tierIndex, setTierIndex] = useState(8); // Radiant
-  const [showOriginal, setShowOriginal] = useState(true);
+  const [cardSize, setCardSize] = useState<CardSize>("default");
 
   const tier = TIERS[tierIndex];
 
@@ -78,20 +78,27 @@ const SizeTest = () => {
     <TestLayout
       cardArea={
         <div className="flex items-center justify-center gap-6">
-          {showOriginal && (
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-xs text-muted-foreground">Original</span>
-              <div style={{ height: `${height}px` }}>
-                <TierCardRef {...cardProps} className="h-full" />
-              </div>
-            </div>
-          )}
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-muted-foreground">
-              New (cqw)
-            </span>
+            <span className="text-xs text-muted-foreground">Iron (low tier)</span>
             <div style={{ height: `${height}px` }}>
-              <TierCard {...cardProps} className="h-full" />
+              <TierCard
+                tierName="Iron"
+                competitiveTier={5}
+                backgroundImage={ironCard}
+                portraitUrl="/characters/sage/fullportrait.png"
+                ovr={12}
+                playerName="Rookie"
+                weaponIconUrl={VANDAL_ICON_URL}
+                stats={STATS}
+                size={cardSize}
+                className="h-full"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-muted-foreground">{tier.name} (selected)</span>
+            <div style={{ height: `${height}px` }}>
+              <TierCard {...cardProps} size={cardSize} className="h-full" />
             </div>
           </div>
         </div>
@@ -148,19 +155,23 @@ const SizeTest = () => {
             </Select>
           </section>
 
-          {/* Compare Toggle */}
+          {/* Card Size Variant */}
           <section>
             <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
-              COMPARE
+              SIZE VARIANT
             </Label>
-            <Button
-              variant={showOriginal ? "default" : "secondary"}
-              size="sm"
-              className="w-full"
-              onClick={() => setShowOriginal((prev) => !prev)}
-            >
-              {showOriginal ? "Original 비교 ON" : "Original 비교 OFF"}
-            </Button>
+            <div className="grid grid-cols-2 gap-2">
+              {(["default", "sm"] as const).map((s) => (
+                <Button
+                  key={s}
+                  variant={cardSize === s ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setCardSize(s)}
+                >
+                  {s}
+                </Button>
+              ))}
+            </div>
           </section>
 
           {/* Quick Sizes */}
@@ -169,7 +180,7 @@ const SizeTest = () => {
               PRESETS
             </Label>
             <div className="grid grid-cols-2 gap-2">
-              {[200, 350, 500, 700].map((h) => (
+              {[200, 350, 500, 800].map((h) => (
                 <Button
                   key={h}
                   variant={height === h ? "default" : "ghost"}
