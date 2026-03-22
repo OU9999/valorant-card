@@ -14,8 +14,7 @@ import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
 import type { TierName } from "@/constants/tier-design";
 
-const JETT_PORTRAIT =
-  "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
+const JETT_PORTRAIT = "/characters/jett/fullportrait.png";
 
 const SAMPLE_STATS = [
   { label: "SHO", value: 88 },
@@ -60,15 +59,11 @@ const CarouselTest = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const goToPrev = () => {
-    setActiveIndex((prev) =>
-      prev > 0 ? prev - 1 : TIER_CARDS.length - 1,
-    );
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : TIER_CARDS.length - 1));
   };
 
   const goToNext = () => {
-    setActiveIndex((prev) =>
-      prev < TIER_CARDS.length - 1 ? prev + 1 : 0,
-    );
+    setActiveIndex((prev) => (prev < TIER_CARDS.length - 1 ? prev + 1 : 0));
   };
 
   /** ArrowLeft/ArrowRight 키보드 네비게이션 */

@@ -7,8 +7,7 @@ import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
 import type { TierName } from "@/constants/tier-design";
 
-const JETT_PORTRAIT =
-  "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
+const JETT_PORTRAIT = "/characters/jett/fullportrait.png";
 
 const SAMPLE_STATS = [
   { label: "SHO", value: 88 },
