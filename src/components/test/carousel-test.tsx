@@ -27,12 +27,12 @@ import { CHARACTERS } from "@/constants/characters";
 import type { TierName } from "@/constants/tier-design";
 
 const DEFAULT_STATS = [
-  { label: "SHO", value: 88 },
-  { label: "DRI", value: 92 },
-  { label: "PAC", value: 85 },
-  { label: "PAS", value: 75 },
-  { label: "DEF", value: 70 },
-  { label: "PHY", value: 78 },
+  { label: "ACS", value: "280" },
+  { label: "K/D", value: "1.3" },
+  { label: "HS%", value: "27%" },
+  { label: "DDΔ", value: "+31" },
+  { label: "KAST", value: "74%" },
+  { label: "ADR", value: "168" },
 ];
 
 const JETT_INDEX = CHARACTERS.findIndex((c) => c.name === "제트");
@@ -74,7 +74,7 @@ const CarouselTest = () => {
   const [playerName, setPlayerName] = useState("Player#KR1");
   const [characterIndex, setCharacterIndex] = useState(JETT_INDEX);
 
-  const handleStatChange = (index: number, value: number) => {
+  const handleStatChange = (index: number, value: string) => {
     setStats((prev) => prev.map((s, i) => (i === index ? { ...s, value } : s)));
   };
 
@@ -222,11 +222,9 @@ const CarouselTest = () => {
               >
                 <Label className="text-sm text-white/60">{stat.label}</Label>
                 <Input
-                  type="number"
-                  min={0}
-                  max={99}
+                  type="text"
                   value={stat.value}
-                  onChange={(e) => handleStatChange(i, Number(e.target.value))}
+                  onChange={(e) => handleStatChange(i, e.target.value)}
                   className="w-20 text-right"
                 />
               </div>
