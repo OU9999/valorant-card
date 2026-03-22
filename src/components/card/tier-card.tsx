@@ -123,8 +123,8 @@ const TierCard = ({
           className={cn(
             "absolute flex text-center",
             isHighTier
-              ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.375rem,1.5cqw,1rem)]"
-              : "inset-x-[6%] top-[76%] justify-between",
+              ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.5rem,2cqw,1.25rem)]"
+              : "inset-x-[6%] top-[76%] justify-between gap-[clamp(0.25rem,1cqw,0.75rem)]",
           )}
         >
           {stats.map((stat) => (
@@ -132,7 +132,7 @@ const TierCard = ({
               <span className={cn("text-[clamp(0.5rem,1.8cqw,0.875rem)] font-medium tracking-wide", design.statLabel)}>
                 {stat.label}
               </span>
-              <span className={cn("text-[clamp(1rem,3.5cqw,2rem)] font-bold leading-tight", design.statValue)}>
+              <span className={cn("text-[clamp(0.875rem,3cqw,1.75rem)] font-bold leading-tight", design.statValue)}>
                 {stat.value}
               </span>
             </div>

@@ -15,10 +15,7 @@ import { TierCard } from "@/components/card/tier-card";
 import { Label } from "@/components/ui/label";
 import { TestLayout } from "./test-layout";
 import { adaptHenrikMatch } from "@/lib/henrik/adapter";
-import {
-  calculateCardScore,
-  formatCardStats,
-} from "@/lib/valorant/card-stats";
+import { calculateCardScore, formatCardStats } from "@/lib/valorant/card-stats";
 import type { CardScoreResult } from "@/lib/valorant/card-stats";
 import { getTierIndex } from "@/lib/valorant/tiers";
 import { CHARACTERS } from "@/constants/characters";
@@ -169,17 +166,9 @@ const RealDataTest = () => {
   const formattedStats = formatCardStats(result.stats);
 
   const trendLabel =
-    result.trend === "up"
-      ? "상승"
-      : result.trend === "down"
-        ? "하락"
-        : "유지";
+    result.trend === "up" ? "상승" : result.trend === "down" ? "하락" : "유지";
   const trendIcon =
-    result.trend === "up"
-      ? "▲"
-      : result.trend === "down"
-        ? "▼"
-        : "─";
+    result.trend === "up" ? "▲" : result.trend === "down" ? "▼" : "─";
   const trendColor =
     result.trend === "up"
       ? "text-green-400"
@@ -271,9 +260,7 @@ const RealDataTest = () => {
                     <p className="text-sm font-semibold text-white">
                       {badge.name}
                     </p>
-                    <p className="text-xs text-white/40">
-                      {badge.description}
-                    </p>
+                    <p className="text-xs text-white/40">{badge.description}</p>
                   </div>
                 ))}
               </div>
