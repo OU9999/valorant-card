@@ -119,6 +119,23 @@ const generatePose = async (
     });
   }
 
+  // 추가 레퍼런스 이미지 (reference-*.{png,jpg} 패턴)
+  const assetFiles = fs.readdirSync(assetDir);
+  for (const file of assetFiles) {
+    if (/^reference-.*\.(png|jpg|jpeg)$/i.test(file)) {
+      const refPath = path.join(assetDir, file);
+      const ext = path.extname(file).toLowerCase();
+      const mimeType = ext === ".png" ? "image/png" : "image/jpeg";
+      contents.push({
+        inlineData: {
+          mimeType,
+          data: getImageBase64(refPath),
+        },
+      });
+      console.log(`  📎 추가 레퍼런스: ${file}`);
+    }
+  }
+
   contents.push({ text: prompt });
 
   const response = await ai.models.generateContent({
