@@ -41,7 +41,7 @@ const CardSvgTest = () => (
           backgroundImage={card.image}
           portraitUrl={JETT_PORTRAIT}
           ovr={92}
-          playerName="Player#KR1"
+          playerName="Player"
           stats={SAMPLE_STATS}
           className="h-[85vh]"
         />

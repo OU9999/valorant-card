@@ -76,7 +76,7 @@ const CarouselTest = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [stats, setStats] = useState(DEFAULT_STATS);
   const [ovr, setOvr] = useState(92);
-  const [playerName, setPlayerName] = useState("Player#KR1");
+  const [playerName, setPlayerName] = useState("Player");
   const [characterIndex, setCharacterIndex] = useState(JETT_INDEX);
 
   const handleStatChange = (index: number, value: string) => {

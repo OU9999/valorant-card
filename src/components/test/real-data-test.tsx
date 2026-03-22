@@ -194,7 +194,7 @@ const RealDataTest = () => {
           backgroundImage={TIER_CARD_IMAGES[tierName]}
           portraitUrl={portraitUrl}
           ovr={result.ovr}
-          playerName={`${fixture.name}#${fixture.tag}`}
+          playerName={fixture.name}
           region={regionDisplay}
           weaponIconUrl={weaponIconUrl}
           stats={formattedStats}
