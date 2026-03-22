@@ -107,14 +107,11 @@ const TierCard = ({
               role="img"
               aria-label="weapon"
               className={cn(
-                "mt-[clamp(0.25rem,0.8cqw,0.5rem)] aspect-[4/1] w-[clamp(2rem,6cqw,3.5rem)] bg-current",
+                "mt-[clamp(0.25rem,0.8cqw,0.5rem)] aspect-[4/1] w-[clamp(2rem,6cqw,3.5rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
                 design.position,
               )}
               style={{
                 maskImage: `url(${weaponIconUrl})`,
-                maskSize: "contain",
-                maskRepeat: "no-repeat",
-                maskPosition: "center",
               }}
             />
           )}
