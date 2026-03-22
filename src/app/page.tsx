@@ -1,6 +1,5 @@
-import { CarouselTest } from "@/components/test/carousel-test";
-import { RealDataTest } from "@/components/test/real-data-test";
+import { HeroSection } from "@/components/home/hero-section";
 
 export default function Home() {
-  return <CarouselTest />;
+  return <HeroSection />;
 }
