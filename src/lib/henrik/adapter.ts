@@ -142,7 +142,7 @@ const adaptRoundPlayerStats = (
       weapon: rs.economy.weapon?.id ?? "",
       armor: rs.economy.armor?.id ?? "",
       remaining: rs.economy.remaining,
-      spent: Math.max(0, rs.economy.loadout_value - rs.economy.remaining),
+      spent: 0, // Henrik API에서 실제 spent 값을 제공하지 않음
     },
     ability: {
       grenadeEffects: null,
