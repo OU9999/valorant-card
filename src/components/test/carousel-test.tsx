@@ -11,7 +11,18 @@ import diamondCard from "@/asset/example/tier-card/diamond.png";
 import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TierCard } from "@/components/card/tier-card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { CHARACTERS } from "@/constants/characters";
 import type { TierName } from "@/constants/tier-design";
 
@@ -118,132 +129,105 @@ const CarouselTest = () => {
       <div className="flex w-80 flex-col gap-6 border-l border-white/10 bg-gray-900 p-6">
         {/* Tier select buttons */}
         <section>
-          <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
+          <Label className="mb-3 text-xs tracking-wider text-white/50">
             TIER
-          </h3>
+          </Label>
           <div className="grid grid-cols-3 gap-2">
             {TIER_CARDS.map((tier, i) => (
-              <button
+              <Button
                 key={tier.name}
+                variant={i === activeIndex ? "default" : "ghost"}
+                size="sm"
                 onClick={() => setActiveIndex(i)}
-                className={`rounded-md px-2 py-1.5 text-sm font-medium transition-colors ${
-                  i === activeIndex
-                    ? "bg-white text-gray-900"
-                    : "bg-white/10 text-white hover:bg-white/20"
-                }`}
               >
                 {tier.name}
-              </button>
+              </Button>
             ))}
           </div>
         </section>
 
         {/* Carousel controls */}
         <section>
-          <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
+          <Label className="mb-3 text-xs tracking-wider text-white/50">
             CAROUSEL
-          </h3>
+          </Label>
           <div className="flex items-center gap-3">
-            <button
-              onClick={goToPrev}
-              className="rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
+            <Button variant="ghost" size="icon" onClick={goToPrev}>
+              <ChevronLeft />
+            </Button>
 
             <span className="flex-1 text-center text-sm font-medium text-white">
               {TIER_CARDS[activeIndex].name} ({activeIndex + 1}/
               {TIER_CARDS.length})
             </span>
 
-            <button
-              onClick={goToNext}
-              className="rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+            <Button variant="ghost" size="icon" onClick={goToNext}>
+              <ChevronRight />
+            </Button>
           </div>
         </section>
 
         {/* Character select */}
         <section>
-          <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
+          <Label className="mb-3 text-xs tracking-wider text-white/50">
             CHARACTER
-          </h3>
-          <select
-            value={characterIndex}
-            onChange={(e) => setCharacterIndex(Number(e.target.value))}
-            className="w-full rounded-md bg-white/10 px-3 py-2 text-sm text-white outline-none"
+          </Label>
+          <Select
+            value={String(characterIndex)}
+            onValueChange={(val) => setCharacterIndex(Number(val))}
           >
-            {CHARACTERS.map((c, i) => (
-              <option key={c.id} value={i} className="bg-gray-900">
-                {c.name}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {CHARACTERS.map((c, i) => (
+                <SelectItem key={c.id} value={String(i)}>
+                  {c.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </section>
 
         {/* Stats controls */}
         <section>
-          <h3 className="mb-3 text-sm font-semibold tracking-wider text-white/50">
+          <Label className="mb-3 text-xs tracking-wider text-white/50">
             STATS
-          </h3>
+          </Label>
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5">
-              <span className="text-sm text-white/60">OVR</span>
-              <input
+            <div className="flex items-center justify-between gap-3">
+              <Label className="text-sm text-white/60">OVR</Label>
+              <Input
                 type="number"
                 min={0}
                 max={99}
                 value={ovr}
                 onChange={(e) => setOvr(Number(e.target.value))}
-                className="w-16 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+                className="w-20 text-right"
               />
             </div>
-            <div className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5">
-              <span className="text-sm text-white/60">NAME</span>
-              <input
+            <div className="flex items-center justify-between gap-3">
+              <Label className="text-sm text-white/60">NAME</Label>
+              <Input
                 type="text"
                 value={playerName}
                 onChange={(e) => setPlayerName(e.target.value)}
-                className="w-32 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+                className="w-36 text-right"
               />
             </div>
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className="flex items-center justify-between rounded-md bg-white/5 px-3 py-1.5"
+                className="flex items-center justify-between gap-3"
               >
-                <span className="text-sm text-white/60">{stat.label}</span>
-                <input
+                <Label className="text-sm text-white/60">{stat.label}</Label>
+                <Input
                   type="number"
                   min={0}
                   max={99}
                   value={stat.value}
                   onChange={(e) => handleStatChange(i, Number(e.target.value))}
-                  className="w-16 rounded bg-white/10 px-2 py-0.5 text-right text-sm font-bold text-white outline-none"
+                  className="w-20 text-right"
                 />
               </div>
             ))}
