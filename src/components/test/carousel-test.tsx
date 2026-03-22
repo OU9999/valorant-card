@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { CHARACTERS } from "@/constants/characters";
 import type { TierName } from "@/constants/tier-design";
+import { TestLayout } from "./test-layout";
 
 const DEFAULT_STATS = [
   { label: "ACS", value: "280" },
@@ -97,14 +98,13 @@ const CarouselTest = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-950">
-      {/* Left: Card display */}
-      <div className="flex flex-1 items-center justify-center overflow-hidden">
+    <TestLayout
+      cardArea={
         <div className="relative w-full overflow-hidden">
           <div
             className={`flex transition-transform duration-500 ease-out ${SLIDE_OFFSETS[activeIndex]}`}
           >
-            {TIER_CARDS.map((tier, i) => (
+            {TIER_CARDS.map((tier) => (
               <div
                 key={tier.name}
                 className="flex w-full shrink-0 items-center justify-center"
@@ -123,116 +123,116 @@ const CarouselTest = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Right: Debug panel */}
-      <div className="flex w-80 flex-col gap-6 border-l border-white/10 bg-gray-900 p-6">
-        {/* Tier select buttons */}
-        <section>
-          <Label className="mb-3 text-xs tracking-wider text-white/50">
-            TIER
-          </Label>
-          <div className="grid grid-cols-3 gap-2">
-            {TIER_CARDS.map((tier, i) => (
-              <Button
-                key={tier.name}
-                variant={i === activeIndex ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setActiveIndex(i)}
-              >
-                {tier.name}
-              </Button>
-            ))}
-          </div>
-        </section>
-
-        {/* Carousel controls */}
-        <section>
-          <Label className="mb-3 text-xs tracking-wider text-white/50">
-            CAROUSEL
-          </Label>
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={goToPrev}>
-              <ChevronLeft />
-            </Button>
-
-            <span className="flex-1 text-center text-sm font-medium text-white">
-              {TIER_CARDS[activeIndex].name} ({activeIndex + 1}/
-              {TIER_CARDS.length})
-            </span>
-
-            <Button variant="ghost" size="icon" onClick={goToNext}>
-              <ChevronRight />
-            </Button>
-          </div>
-        </section>
-
-        {/* Character select */}
-        <section>
-          <Label className="mb-3 text-xs tracking-wider text-white/50">
-            CHARACTER
-          </Label>
-          <Select
-            value={String(characterIndex)}
-            onValueChange={(val) => setCharacterIndex(Number(val))}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {CHARACTERS.map((c, i) => (
-                <SelectItem key={c.id} value={String(i)}>
-                  {c.name}
-                </SelectItem>
+      }
+      sidePanel={
+        <>
+          {/* Tier select buttons */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-white/50">
+              TIER
+            </Label>
+            <div className="grid grid-cols-3 gap-2">
+              {TIER_CARDS.map((tier, i) => (
+                <Button
+                  key={tier.name}
+                  variant={i === activeIndex ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setActiveIndex(i)}
+                >
+                  {tier.name}
+                </Button>
               ))}
-            </SelectContent>
-          </Select>
-        </section>
+            </div>
+          </section>
 
-        {/* Stats controls */}
-        <section>
-          <Label className="mb-3 text-xs tracking-wider text-white/50">
-            STATS
-          </Label>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between gap-3">
-              <Label className="text-sm text-white/60">OVR</Label>
-              <Input
-                type="number"
-                min={0}
-                max={99}
-                value={ovr}
-                onChange={(e) => setOvr(Number(e.target.value))}
-                className="w-20 text-right"
-              />
+          {/* Carousel controls */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-white/50">
+              CAROUSEL
+            </Label>
+            <div className="flex items-center gap-3">
+              <Button variant="ghost" size="icon" onClick={goToPrev}>
+                <ChevronLeft />
+              </Button>
+
+              <span className="flex-1 text-center text-sm font-medium text-white">
+                {TIER_CARDS[activeIndex].name} ({activeIndex + 1}/
+                {TIER_CARDS.length})
+              </span>
+
+              <Button variant="ghost" size="icon" onClick={goToNext}>
+                <ChevronRight />
+              </Button>
             </div>
-            <div className="flex items-center justify-between gap-3">
-              <Label className="text-sm text-white/60">NAME</Label>
-              <Input
-                type="text"
-                value={playerName}
-                onChange={(e) => setPlayerName(e.target.value)}
-                className="w-36 text-right"
-              />
-            </div>
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className="flex items-center justify-between gap-3"
-              >
-                <Label className="text-sm text-white/60">{stat.label}</Label>
+          </section>
+
+          {/* Character select */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-white/50">
+              CHARACTER
+            </Label>
+            <Select
+              value={String(characterIndex)}
+              onValueChange={(val) => setCharacterIndex(Number(val))}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {CHARACTERS.map((c, i) => (
+                  <SelectItem key={c.id} value={String(i)}>
+                    {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </section>
+
+          {/* Stats controls */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-white/50">
+              STATS
+            </Label>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between gap-3">
+                <Label className="text-sm text-white/60">OVR</Label>
                 <Input
-                  type="text"
-                  value={stat.value}
-                  onChange={(e) => handleStatChange(i, e.target.value)}
+                  type="number"
+                  min={0}
+                  max={99}
+                  value={ovr}
+                  onChange={(e) => setOvr(Number(e.target.value))}
                   className="w-20 text-right"
                 />
               </div>
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
+              <div className="flex items-center justify-between gap-3">
+                <Label className="text-sm text-white/60">NAME</Label>
+                <Input
+                  type="text"
+                  value={playerName}
+                  onChange={(e) => setPlayerName(e.target.value)}
+                  className="w-36 text-right"
+                />
+              </div>
+              {stats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className="flex items-center justify-between gap-3"
+                >
+                  <Label className="text-sm text-white/60">{stat.label}</Label>
+                  <Input
+                    type="text"
+                    value={stat.value}
+                    onChange={(e) => handleStatChange(i, e.target.value)}
+                    className="w-20 text-right"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
+      }
+    />
   );
 };
 
