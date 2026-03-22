@@ -46,3 +46,6 @@ next-env.d.ts
 
 # obsidian
 .obsidian
+
+# test fixtures (API 응답 — 개인정보 포함)
+scripts/fixtures/
