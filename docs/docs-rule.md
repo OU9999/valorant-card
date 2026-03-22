@@ -72,4 +72,4 @@ related:
 
 ### 태그 목록
 
-`algorithm`, `scoring`, `validation`, `improvement`, `refactoring`, `todo`, `fifa-stats`, `badge`, `ui-ux`, `screen-flow`, `specification`, `api`, `infrastructure`, `riot-games`, `card-design`, `asset`, `image-generation`, `meta`, `writing-rule`, `moc`, `phase/1`~`phase/4`
+`algorithm`, `scoring`, `validation`, `improvement`, `refactoring`, `todo`, `card-stats`, `badge`, `ui-ux`, `screen-flow`, `specification`, `api`, `infrastructure`, `riot-games`, `card-design`, `asset`, `image-generation`, `meta`, `writing-rule`, `moc`, `phase/1`~`phase/4`
