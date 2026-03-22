@@ -1,0 +1,19 @@
+{
+  "name": "nano-banana-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gen:poses": "tsx script/generate-agent-poses.ts",
+    "clear": "rm -rf output/* && echo 'output cleared'"
+  },
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}
