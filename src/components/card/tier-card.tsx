@@ -8,7 +8,7 @@ import { getTierIcon } from "@/lib/valorant/tiers";
 
 interface CardStat {
   label: string;
-  value: number;
+  value: string;
 }
 
 interface TierCardProps {

@@ -318,45 +318,6 @@ const makeLowPerfMatch = (won: boolean): MatchDetails => {
   return makeMatch(rounds, won);
 };
 
-/**
- * 클러치가 없는 매치 (13-0 스톰프)
- */
-const makeStompMatch = (): MatchDetails => {
-  const rounds = Array.from({ length: 13 }, (_, i) =>
-    makeRound(i, TEAM_ID, 2, false, {
-      headshots: 1,
-      bodyshots: 1,
-      damage: 260,
-      receivedDamage: 0,
-    })
-  );
-  return makeMatch(rounds, true);
-};
-
-/**
- * 클러치가 있는 매치
- */
-const makeClutchMatch = (): MatchDetails => {
-  const rounds = Array.from({ length: 20 }, (_, i) => {
-    if (i < 5) {
-      return makeRound(i, TEAM_ID, 3, false, {
-        headshots: 2,
-        bodyshots: 1,
-        damage: 390,
-        receivedDamage: 50,
-        teammatesDiedFirst: true,
-      });
-    }
-    return makeRound(i, i < 13 ? TEAM_ID : ENEMY_TEAM, 1, i >= 15, {
-      headshots: 0,
-      bodyshots: 1,
-      damage: 130,
-      receivedDamage: 100,
-    });
-  });
-  return makeMatch(rounds, true);
-};
-
 // ─── Tests ───
 
 describe("calculateCardScore", () => {
@@ -390,8 +351,8 @@ describe("calculateCardScore", () => {
     });
   });
 
-  describe("6개 스탯 분포 검증", () => {
-    it("고성능 듀얼리스트 스타일 → SHO, DRI 높음", () => {
+  describe("실제 스탯 검증", () => {
+    it("고성능 매치 → ACS, ADR이 유의미한 수치", () => {
       const matches = Array.from({ length: 10 }, () =>
         makeHighPerfMatch(true)
       );
@@ -399,11 +360,12 @@ describe("calculateCardScore", () => {
 
       expect(result).not.toBeNull();
       const { stats } = result!;
-      expect(stats.sho).toBeGreaterThanOrEqual(stats.pas);
-      expect(stats.dri).toBeGreaterThanOrEqual(stats.pas);
+      expect(stats.acs).toBeGreaterThan(100);
+      expect(stats.adr).toBeGreaterThan(100);
+      expect(stats.kd).toBeGreaterThan(1.0);
     });
 
-    it("모든 스탯이 adjustedBase 이상", () => {
+    it("스탯이 실제 수치 범위를 반영", () => {
       const matches = Array.from({ length: 10 }, (_, i) =>
         makeHighPerfMatch(i % 2 === 0)
       );
@@ -411,48 +373,13 @@ describe("calculateCardScore", () => {
 
       expect(result).not.toBeNull();
       const { stats } = result!;
-      const values = [
-        stats.sho,
-        stats.dri,
-        stats.pac,
-        stats.pas,
-        stats.def,
-        stats.phy,
-      ];
-      for (const v of values) {
-        expect(v).toBeGreaterThanOrEqual(34);
-        expect(v).toBeLessThanOrEqual(50);
-      }
-    });
-  });
-
-  describe("클러치 0회 패널티 보완", () => {
-    it("13-0 스톰프에서 PHY가 중립값 이상", () => {
-      const matches = Array.from({ length: 10 }, () => makeStompMatch());
-      const result = calculateCardScore(matches, PUUID, 27);
-
-      expect(result).not.toBeNull();
-      const { stats } = result!;
-      // PHY = clutch(0.5) * 0.6 + win * 0.4
-      // clutch_neutral = 0.125, sqrt(0.125/0.5) = 0.5
-      // 중립 이상이므로 adjustedBase보다 유의미하게 높아야 함
-      expect(stats.phy).toBeGreaterThan(89);
-    });
-
-    it("클러치 성공이 있는 매치는 PHY가 더 높음", () => {
-      const stompMatches = Array.from({ length: 10 }, () => makeStompMatch());
-      const clutchMatches = Array.from({ length: 10 }, () =>
-        makeClutchMatch()
-      );
-
-      const stompResult = calculateCardScore(stompMatches, PUUID, 27);
-      const clutchResult = calculateCardScore(clutchMatches, PUUID, 27);
-
-      expect(stompResult).not.toBeNull();
-      expect(clutchResult).not.toBeNull();
-      expect(clutchResult!.stats.phy).toBeGreaterThanOrEqual(
-        stompResult!.stats.phy
-      );
+      expect(stats.acs).toBeGreaterThan(0);
+      expect(stats.kd).toBeGreaterThan(0);
+      expect(stats.hsPercent).toBeGreaterThanOrEqual(0);
+      expect(stats.hsPercent).toBeLessThanOrEqual(100);
+      expect(stats.kast).toBeGreaterThanOrEqual(0);
+      expect(stats.kast).toBeLessThanOrEqual(100);
+      expect(stats.adr).toBeGreaterThan(0);
     });
   });
 

@@ -7,16 +7,15 @@ import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
 import type { TierName } from "@/constants/tier-design";
 
-const JETT_PORTRAIT =
-  "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png";
+const JETT_PORTRAIT = "/characters/jett/fullportrait.png";
 
 const SAMPLE_STATS = [
-  { label: "SHO", value: 88 },
-  { label: "DRI", value: 92 },
-  { label: "PAC", value: 85 },
-  { label: "PAS", value: 75 },
-  { label: "DEF", value: 70 },
-  { label: "PHY", value: 78 },
+  { label: "ACS", value: "280" },
+  { label: "K/D", value: "1.3" },
+  { label: "HS%", value: "27%" },
+  { label: "DDΔ", value: "+31" },
+  { label: "KAST", value: "74%" },
+  { label: "ADR", value: "168" },
 ];
 
 interface HighTierCardEntry {

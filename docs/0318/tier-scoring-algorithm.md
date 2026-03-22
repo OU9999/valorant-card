@@ -2,7 +2,7 @@
 tags:
   - algorithm
   - scoring
-  - fifa-stats
+  - card-stats
   - badge
 status: published
 category: algorithm
@@ -18,7 +18,7 @@ related:
 
 [[tracker-score-improvements]]의 개선안을 반영한 최종 알고리즘.
 
-FIFA Ultimate Team 카드처럼, 플레이어의 능력치를 **1~99** 점수로 부여한다.
+플레이어의 능력치를 **1~99** OVR 점수와 **실전 스탯 6종**으로 부여한다.
 점수는 두 가지 요소로 결정된다:
 
 1. **랭크 티어** → 점수의 바닥(베이스)과 천장(상한)을 결정
@@ -233,44 +233,37 @@ finalScore = round(adjustedBase + finalPerformance × (ceiling - adjustedBase))
 
 ---
 
-## 6. FIFA 스타일 다중 스탯 (OVR 시스템)
+## 6. 카드 스탯 시스템
 
 ### 6.1 개요
 
-단일 종합 점수 외에 **6개 개별 능력치**를 각각 1~99로 부여.
-OVR(종합 점수) = 6개 스탯의 균등 평균. 기존 `calculateTrackerScore`를 대체.
+카드에 **OVR(1~99)**과 **실전 스탯 6종**(실제 수치)을 표시한다.
+기존 FIFA식 추상 점수(SHO, DRI 등)를 폐기하고, OP.GG/tracker.gg에서 사용하는 실제 발로란트 지표를 직접 노출.
 
-### 6.2 스탯 정의
+### 6.2 카드 표시 스탯
 
-| 스탯 | 발로란트 대응 | 입력 지표 | 가중치 |
-|------|-------------|----------|--------|
-| **화력 (SHO)** | 딜링 능력 | ACS, ADR, DDΔ | 0.4, 0.3, 0.3 |
-| **에임 (DRI)** | 정밀도 | HS%, K/D | 0.5, 0.5 |
-| **기동력 (PAC)** | 선제 타격 | FB비율, 멀티킬률 | 0.5, 0.5 |
-| **서포트 (PAS)** | 팀 기여 | Assists/Round, KAST | 0.5, 0.5 |
-| **생존력 (DEF)** | 생존 능력 | (1-Deaths/Round), Survive비율 | 0.5, 0.5 |
-| **클러치 (PHY)** | 극한 상황 | 1vX 성공률, Win | 0.6, 0.4 |
+| 라벨 | 의미 | 원천 | 포맷 |
+|------|------|------|------|
+| **ACS** | 평균 전투 점수 | `MatchMetrics.acs` | 정수 (280) |
+| **K/D** | 킬뎃 비율 | `MatchMetrics.kd` | 소수 1자리 (1.3) |
+| **HS%** | 헤드샷률 | `MatchMetrics.hsPercent` | 정수% (27%) |
+| **DDΔ** | 데미지 델타 | `MatchMetrics.ddDelta` | 부호 정수 (+31) |
+| **KAST** | 라운드 기여율 | `MatchMetrics.kast` | 정수% (74%) |
+| **ADR** | 라운드당 데미지 | `MatchMetrics.adr` | 정수 (168) |
 
-### 6.3 추가 매치별 지표 (CardMetrics)
+모든 스탯은 최근 20경기의 가중 평균(§4.2)에서 직접 산출. 별도 변환 공식 없음.
 
-| 지표 | 계산식 | 데이터 소스 |
-|------|--------|-------------|
-| FB비율 | `firstKills / max(firstDeaths, 1)` | 라운드별 최초 킬 이벤트 (timeSinceRoundStartMillis 기반) |
-| 멀티킬률 | `2킬+ 라운드 수 / 총 라운드 수` | `RoundPlayerStats.kills[]` |
-| Assists/Round | `assists / roundsPlayed` | `PlayerStats` |
-| Survive비율 | `생존 라운드 수 / 총 라운드 수` | 킬 이벤트에서 victim 미포함 |
-| Deaths/Round | `deaths / roundsPlayed` | `PlayerStats` |
-| 1vX 성공률 | `클러치 성공 / 클러치 시도` | 팀원 전멸 후 라운드 승리 여부 |
-
-### 6.4 OVR 산출
+### 6.3 OVR 산출
 
 ```
-OVR = round((SHO + DRI + PAC + PAS + DEF + PHY) / 6)
+performance = ACS×0.25 + K/D×0.20 + DDΔ×0.10 + ADR×0.10 + HS%×0.10 + Win×0.10 + KAST×0.05
+finalPerf = performance × 0.90 + consistency × 0.10
+OVR = round(adjustedBase + finalPerf × (ceiling - adjustedBase))
 ```
 
-각 스탯은 티어 범위 내에서 산출: `adjustedBase + statPerf × (ceiling - adjustedBase)`
+§4.5의 가중 합산 공식 그대로 사용. 티어 범위(§2) 내에서 매핑.
 
-### 6.5 최근 폼 트렌드
+### 6.4 최근 폼 트렌드
 
 최근 5경기 vs 이전 15경기의 performance 비교.
 
@@ -308,7 +301,7 @@ trend = avg(recent5) - avg(older15)
 |------|------|
 | `src/lib/valorant/tiers.ts` | 티어 상수, 디비전 매핑, adjustedBase 계산 |
 | `src/lib/valorant/tracker-score.ts` | 기본 지표 계산 (K/D, ACS, HS%, ADR, DDΔ, Win, KAST, Consistency) |
-| `src/lib/valorant/card-stats.ts` | FIFA 스타일 6개 스탯, CardMetrics, OVR, FormTrend, Badges 통합 |
+| `src/lib/valorant/card-stats.ts` | 실전 스탯 6종, OVR, FormTrend, Badges 통합 |
 | `src/lib/valorant/badges.ts` | 스페셜 뱃지 6종 판정 |
 
 리팩토링 계획은 추후 별도 문서로 정리 예정.

@@ -80,7 +80,7 @@ related:
 
 **기존 태그 목록 (우선 사용):**
 
-`algorithm`, `scoring`, `validation`, `improvement`, `refactoring`, `todo`, `fifa-stats`, `badge`, `ui-ux`, `screen-flow`, `specification`, `api`, `infrastructure`, `riot-games`, `card-design`, `asset`, `image-generation`, `meta`, `writing-rule`, `moc`, `phase/1`~`phase/4`
+`algorithm`, `scoring`, `validation`, `improvement`, `refactoring`, `todo`, `card-stats`, `badge`, `ui-ux`, `screen-flow`, `specification`, `api`, `infrastructure`, `riot-games`, `card-design`, `asset`, `image-generation`, `meta`, `writing-rule`, `moc`, `phase/1`~`phase/4`
 
 새 태그가 필요하면 기존 태그와 유사한 네이밍 규칙을 따르세요.
 
