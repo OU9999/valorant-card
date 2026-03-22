@@ -49,3 +49,4 @@ next-env.d.ts
 
 # test fixtures (API 응답 — 개인정보 포함)
 scripts/fixtures/
+public/fixtures/
