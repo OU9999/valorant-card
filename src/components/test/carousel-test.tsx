@@ -133,7 +133,7 @@ const CarouselTest = () => {
         <>
           {/* Tier select buttons */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               TIER
             </Label>
             <div className="grid grid-cols-3 gap-2">
@@ -152,7 +152,7 @@ const CarouselTest = () => {
 
           {/* Carousel controls */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               CAROUSEL
             </Label>
             <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ const CarouselTest = () => {
                 <ChevronLeft />
               </Button>
 
-              <span className="flex-1 text-center text-sm font-medium text-white">
+              <span className="flex-1 text-center text-sm font-medium text-foreground">
                 {TIER_CARDS[activeIndex].name} ({activeIndex + 1}/
                 {TIER_CARDS.length})
               </span>
@@ -173,7 +173,7 @@ const CarouselTest = () => {
 
           {/* Character select */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               CHARACTER
             </Label>
             <Select
@@ -195,12 +195,12 @@ const CarouselTest = () => {
 
           {/* Stats controls */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               STATS
             </Label>
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between gap-3">
-                <Label className="text-sm text-white/60">OVR</Label>
+                <Label className="text-sm text-muted-foreground">OVR</Label>
                 <Input
                   type="number"
                   min={0}
@@ -211,7 +211,7 @@ const CarouselTest = () => {
                 />
               </div>
               <div className="flex items-center justify-between gap-3">
-                <Label className="text-sm text-white/60">NAME</Label>
+                <Label className="text-sm text-muted-foreground">NAME</Label>
                 <Input
                   type="text"
                   value={playerName}
@@ -224,7 +224,7 @@ const CarouselTest = () => {
                   key={stat.label}
                   className="flex items-center justify-between gap-3"
                 >
-                  <Label className="text-sm text-white/60">{stat.label}</Label>
+                  <Label className="text-sm text-muted-foreground">{stat.label}</Label>
                   <Input
                     type="text"
                     value={stat.value}

@@ -150,15 +150,15 @@ const RealDataTest = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950">
-        <p className="text-white/60">Loading fixture data...</p>
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <p className="text-muted-foreground">Loading fixture data...</p>
       </div>
     );
   }
 
   if (error || !fixture || !result) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-950">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-red-400">{error ?? "알고리즘 실행 실패"}</p>
       </div>
     );
@@ -183,7 +183,7 @@ const RealDataTest = () => {
       ? "text-green-400"
       : result.trend === "down"
         ? "text-red-400"
-        : "text-white/60";
+        : "text-muted-foreground";
 
   return (
     <TestLayout
@@ -205,14 +205,14 @@ const RealDataTest = () => {
         <>
           {/* Player Info */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               PLAYER
             </Label>
             <div className="flex flex-col gap-1">
-              <p className="text-lg font-bold text-white">
+              <p className="text-lg font-bold text-foreground">
                 {fixture.name}#{fixture.tag}
               </p>
-              <p className="text-sm text-white/60">
+              <p className="text-sm text-muted-foreground">
                 {tierName} · RR {fixture.rr} · {fixture.matches.length} matches
               </p>
             </div>
@@ -220,15 +220,15 @@ const RealDataTest = () => {
 
           {/* OVR */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               OVERALL RATING
             </Label>
-            <p className="text-5xl font-black text-white">{result.ovr}</p>
+            <p className="text-5xl font-black text-foreground">{result.ovr}</p>
           </section>
 
           {/* Stats */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               STATS (weighted avg)
             </Label>
             <div className="flex flex-col gap-2">
@@ -237,8 +237,8 @@ const RealDataTest = () => {
                   key={stat.label}
                   className="flex items-center justify-between"
                 >
-                  <span className="text-sm text-white/60">{stat.label}</span>
-                  <span className="font-mono text-sm font-semibold text-white">
+                  <span className="text-sm text-muted-foreground">{stat.label}</span>
+                  <span className="font-mono text-sm font-semibold text-foreground">
                     {stat.value}
                   </span>
                 </div>
@@ -248,7 +248,7 @@ const RealDataTest = () => {
 
           {/* Form Trend */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               FORM TREND
             </Label>
             <p className={`text-lg font-bold ${trendColor}`}>
@@ -258,7 +258,7 @@ const RealDataTest = () => {
 
           {/* Badges */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               BADGES
             </Label>
             {result.badges.length > 0 ? (
@@ -266,26 +266,26 @@ const RealDataTest = () => {
                 {result.badges.map((badge) => (
                   <div
                     key={badge.id}
-                    className="rounded-md bg-white/5 px-3 py-2"
+                    className="rounded-md bg-secondary px-3 py-2"
                   >
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-foreground">
                       {badge.name}
                     </p>
-                    <p className="text-xs text-white/40">{badge.description}</p>
+                    <p className="text-xs text-muted-foreground">{badge.description}</p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-white/40">뱃지 없음</p>
+              <p className="text-sm text-muted-foreground">뱃지 없음</p>
             )}
           </section>
 
           {/* Raw Data */}
           <section>
-            <Label className="mb-3 text-xs tracking-wider text-white/50">
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
               RAW ALGORITHM OUTPUT
             </Label>
-            <pre className="max-h-48 overflow-auto rounded-md bg-black/40 p-3 text-xs text-white/60">
+            <pre className="max-h-48 overflow-auto rounded-md bg-muted p-3 text-xs text-muted-foreground">
               {JSON.stringify(result, null, 2)}
             </pre>
           </section>

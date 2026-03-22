@@ -31,10 +31,10 @@ const HIGH_TIER_CARDS: HighTierCardEntry[] = [
 ];
 
 const CardSvgTest = () => (
-  <div className="flex min-h-screen items-center justify-center gap-8 bg-gray-950 p-6">
+  <div className="flex min-h-screen items-center justify-center gap-8 bg-background p-6">
     {HIGH_TIER_CARDS.map((card) => (
       <div key={card.name} className="flex flex-col items-center gap-3">
-        <span className="text-sm font-medium text-white/70">{card.name}</span>
+        <span className="text-sm font-medium text-muted-foreground">{card.name}</span>
         <TierCard
           tierName={card.name}
           competitiveTier={card.competitiveTier}
