@@ -15,11 +15,12 @@ import { TierCard } from "@/components/card/tier-card";
 import { Label } from "@/components/ui/label";
 import { TestLayout } from "./test-layout";
 import { adaptHenrikMatch } from "@/lib/henrik/adapter";
-import { calculateCardScore, formatCardStats } from "@/lib/valorant/card-stats";
+import { calculateCardScore, formatCardStats, findMostUsedWeapon } from "@/lib/valorant/card-stats";
 import type { CardScoreResult } from "@/lib/valorant/card-stats";
 import { getTierIndex } from "@/lib/valorant/tiers";
 import { CHARACTERS } from "@/constants/characters";
 import { SHARD_DISPLAY_NAMES } from "@/constants/regions";
+import { getWeaponIconUrl } from "@/constants/weapons";
 import { TIER_NAMES } from "@/constants/tier-design";
 import type { TierName } from "@/constants/tier-design";
 import type { MatchDetails } from "@/network/riot/match";
@@ -170,6 +171,8 @@ const RealDataTest = () => {
   const regionDisplay =
     SHARD_DISPLAY_NAMES[fixture.region as keyof typeof SHARD_DISPLAY_NAMES] ??
     fixture.region.toUpperCase();
+  const topWeaponId = findMostUsedWeapon(fixture.matches, fixture.puuid);
+  const weaponIconUrl = topWeaponId ? getWeaponIconUrl(topWeaponId) : undefined;
 
   const trendLabel =
     result.trend === "up" ? "상승" : result.trend === "down" ? "하락" : "유지";
@@ -193,6 +196,7 @@ const RealDataTest = () => {
           ovr={result.ovr}
           playerName={`${fixture.name}#${fixture.tag}`}
           region={regionDisplay}
+          weaponIconUrl={weaponIconUrl}
           stats={formattedStats}
           className="h-[80vh]"
         />

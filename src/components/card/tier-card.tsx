@@ -19,6 +19,7 @@ interface TierCardProps {
   ovr: number;
   playerName: string;
   region?: string;
+  weaponIconUrl?: string;
   stats: CardStat[];
   className?: string;
 }
@@ -31,6 +32,7 @@ const TierCard = ({
   ovr,
   playerName,
   region = "AP",
+  weaponIconUrl,
   stats,
   className,
 }: TierCardProps) => {
@@ -100,10 +102,22 @@ const TierCard = ({
           <span className={cn("text-[clamp(0.875rem,2.8cqw,1.5rem)] font-bold tracking-wider", design.position)}>
             {region}
           </span>
-          <div className="mt-[clamp(0.25rem,0.8cqw,0.5rem)] flex flex-col items-center gap-[clamp(0.125rem,0.5cqw,0.375rem)]">
-            <div className={cn("h-[clamp(0.75rem,2.5cqw,1.5rem)] w-[clamp(1rem,3.5cqw,2rem)] rounded-sm", design.placeholder)} />
-            <div className={cn("h-[clamp(0.875rem,3cqw,1.75rem)] w-[clamp(0.875rem,3cqw,1.75rem)] rounded-full", design.placeholder)} />
-          </div>
+          {weaponIconUrl && (
+            <div
+              role="img"
+              aria-label="weapon"
+              className={cn(
+                "mt-[clamp(0.25rem,0.8cqw,0.5rem)] aspect-[4/1] w-[clamp(2rem,6cqw,3.5rem)] bg-current",
+                design.position,
+              )}
+              style={{
+                maskImage: `url(${weaponIconUrl})`,
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "center",
+              }}
+            />
+          )}
         </div>
 
         {/* 플레이어 이름 */}

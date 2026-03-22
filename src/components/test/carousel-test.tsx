@@ -24,6 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CHARACTERS } from "@/constants/characters";
+import { getWeaponIconUrl } from "@/constants/weapons";
 import type { TierName } from "@/constants/tier-design";
 import { TestLayout } from "./test-layout";
 
@@ -37,6 +38,9 @@ const DEFAULT_STATS = [
 ];
 
 const JETT_INDEX = CHARACTERS.findIndex((c) => c.name === "제트");
+
+// Vandal UUID
+const VANDAL_ICON_URL = getWeaponIconUrl("9c82e19d-4575-0200-1a81-3eacf00cf872");
 
 interface TierCardEntry {
   name: TierName;
@@ -116,6 +120,7 @@ const CarouselTest = () => {
                   portraitUrl={CHARACTERS[characterIndex].fullPortrait}
                   ovr={ovr}
                   playerName={playerName}
+                  weaponIconUrl={VANDAL_ICON_URL}
                   stats={stats}
                   className="h-[80vh]"
                 />
