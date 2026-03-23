@@ -293,92 +293,64 @@ Clean white background. ONLY the character emerging from dark smoke.`,
   },
 
   yoru: {
-    characterDesc: `FIRST IMAGE: Full-body character reference for "Yoru" from the game Valorant. NOTE: This reference shows Yoru FROM BEHIND — the large demon/oni mask design is on the BACK of his jacket. When generating FRONT-FACING poses, the FRONT of the jacket is PLAIN dark navy blue with a zipper closure, high collar, and subtle geometric accents — NO demon mask on the front.
-
-Match his appearance EXACTLY — Japanese male, lean athletic build, dark navy-blue hair styled in a sharp swept-back pompadour/spike with blue highlights. He wears a dark blue BOMBER JACKET (front is plain dark blue with zipper, demon mask is on the BACK only). Orange trim accents and an orange number patch on the left sleeve. Under the jacket: dark shirt/tactical gear. Black tactical PANTS with utility straps. Orange-and-white SNEAKERS with bright orange accents. Silver EAR PIERCINGS/STUDS on both ears. Reproduce his face, outfit, and color palette PRECISELY.
-
-SECOND IMAGE: Close-up face reference for Yoru. Match his EXACT facial features — angular face, sharp jawline, dark navy hair swept back with blue highlights, silver ear piercings, intense confident eyes, slight cocky edge to his expression.
-
-THIRD IMAGE: Front-view reference showing Yoru's FRONT appearance and his DIMENSIONAL CLONE ability. This shows how Yoru looks FROM THE FRONT — the jacket front is dark navy with geometric accents. Behind him is a translucent BLUE DIMENSIONAL CLONE (a ghostly blue energy copy of himself). Use this image to accurately render Yoru's front-facing appearance.`,
-    palette: `Yoru's palette: dark blue, navy, black, orange accents. The base outfit uses DARK NAVY BLUE and BLACK — sleek streetwear. ONLY ability effects (dimensional rifts, teleport energy) use EXTREME high-saturation BRIGHT CYAN-BLUE with electric glow. Orange accents on jacket trim, sneakers, and sleeve patch provide warm contrast against the cool dark base.`,
+    characterDesc: `FIRST IMAGE: Full-body reference for "Yoru" — shown FROM BEHIND. The demon/oni mask is on the BACK of his jacket only. When facing the viewer, the jacket FRONT is PLAIN dark navy blue with zipper and high collar — NO demon mask on the front.
+SECOND IMAGE: Face close-up reference.
+THIRD IMAGE: Front-view reference showing how Yoru looks FROM THE FRONT and his DIMENSIONAL CLONE ability.
+Match the reference images' appearance EXACTLY. Reproduce the SAME rendering style.`,
+    palette: `Yoru's palette: blue, navy, black, orange accents. The base outfit uses MEDIUM BLUE (#4A60B6) — sleek streetwear. Ability effects use DEEP SATURATED ELECTRIC BLUE (#0A18F6) — an extremely vivid, intense PURE BLUE (NOT cyan, NOT sky blue, NOT dark navy). This is almost maximum-blue with very low red/green — think royal blue turned up to maximum saturation. The dimensional void combines this electric blue with BLACK WISPS and DARK SHADOWS. Orange accents (#F55114) on jacket trim, sneakers, and sleeve patch provide warm contrast.`,
     expression: `Expression is COOL and NONCHALANT — a trickster's quiet confidence. Subtle smirk at most, one eyebrow slightly raised. He looks like he already knows how this ends. Cocky but RESTRAINED — not a big grin. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "dimensional-drift",
-        prompt: `POSE — "DIMENSIONAL DRIFT" (Ultimate — Masked Sprint Inside Blue Dimension):
-STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows Yoru from BEHIND in a 3/4 RIGHT turn looking over his shoulder. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER, sprinting forward aggressively. Do NOT copy the reference back-view angle.
+        prompt: `POSE — "DIMENSIONAL DRIFT" (Ultimate — Standing Through Rift):
+SKELETON CHANGE: The reference shows Yoru FROM BEHIND. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER, standing powerfully through a dimensional tear.
 
-IMPORTANT — JACKET FRONT: The reference shows the BACK of the jacket (demon mask). When facing the viewer, the FRONT of the jacket is PLAIN dark navy blue with a zipper and high collar. Do NOT put the demon mask design on the front.
+TRANSFORMATION: Yoru wears a HALF-MASK covering his LOWER FACE (match the 4th reference image EXACTLY — orange-red painted markings, sharp white fangs/teeth). Eyes glow above the mask.
 
-ONI MASK (CRITICAL — MUST BE PRESENT): Yoru wears a JAPANESE ONI/DEMON MASK over his face. The mask covers his entire face. The mask has SHARP FANGS/TEETH painted on it, angular demon features, and GLOWING BLUE EYES visible through the eye holes. The mask is the MOST IMPORTANT element of this pose — it MUST be clearly visible and prominent. Without the mask, this pose is WRONG.
+DIMENSIONAL TEAR: Behind Yoru, white background TORN OPEN — jagged crack in reality. Through it, DEEP ELECTRIC BLUE (#0A18F6) void visible with black wisps inside. Tear edges sharp like ripped paper.
 
-DIMENSIONAL ATMOSPHERE (CRITICAL): Yoru is INSIDE his dimensional rift — the space around him is filled with DARK BLUE-PURPLE dimensional energy. Dense dark blue/indigo void WRAPS around his entire body. The overall color tone is DEEP DARK BLUE and INDIGO — like the interior of a dimensional void. Blue-cyan energy streaks and rifts trail behind and around him. This is NOT a clean white background — the dimensional void is the background.
+POSE: Yoru stands TALL through the tear — wide powerful stance, both feet planted. BOTH ARMS at his sides, fists clenched, shoulders squared. He has JUST stepped through — still partially surrounded by the tear's edges. Static intimidation rather than motion. NO weapons.
 
-Yoru SPRINTS aggressively STRAIGHT AT THE VIEWER — body leaning forward, one foot forward in a long stride. This is a fast, predatory run through the dimension.
+EFFECTS: Electric blue (#0A18F6) energy wisps cling to his body from the tear behind him.
 
-BOTH arms pump naturally in a sprint motion. NO weapons in hands.
-
-His hair and jacket flow BACKWARD from speed. Blue energy rifts trail from his body like speed lines.
-
-NO GUN, NO RIFLE, NO WEAPON.
-
-The background is the DARK BLUE DIMENSIONAL VOID — not white. Dark indigo/navy with blue energy streaks. The overall mood is DARK and MENACING.`,
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. White background WITH dimensional tear behind him.`,
       },
       {
         name: "gatecrash",
-        prompt: `POSE — "GATECRASH" (Dimensional Rift — Sheriff Pistol):
-STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows Yoru from BEHIND in a 3/4 RIGHT turn. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with one arm forward and one arm raised with a pistol. Do NOT copy the reference back-view angle.
+        prompt: `POSE — "GATECRASH" (Dimensional Rift — Crossed Arms):
+SKELETON CHANGE: The reference shows Yoru FROM BEHIND. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with ARMS CROSSED. Do NOT copy the reference angle.
 
-IMPORTANT — JACKET FRONT: The reference shows the BACK of the jacket (demon mask). When facing the viewer, the FRONT of the jacket is PLAIN dark navy blue with a zipper and high collar. Do NOT put the demon mask design on the front.
+POSE: Yoru faces the viewer STRAIGHT-ON. NO mask — his normal face visible. ARMS CROSSED over his chest — a trickster's confident, nonchalant stance. Wide planted stance, weight balanced.
 
-Yoru faces the viewer STRAIGHT-ON. NO mask — his normal face is visible.
+EFFECTS: Subtle dimensional rift energy around his body — faint DARK NAVY BLUE (NOT cyan, NOT sky blue) cracks along his jacket and legs. The energy color is DEEP DARK NAVY, matching the dark indigo dimensional void from the game. The energy is VERY SUBTLE so his outfit's NATURAL MEDIUM NAVY BLUE color is clearly visible. Do NOT darken his entire outfit.
 
-His LEFT ARM extends FORWARD toward the viewer — open palm, fingers spread, as if channeling or beckoning. A dimensional rift energy glows around his extended hand.
+NO WEAPONS. The pose is pure attitude — cocky confidence.
 
-His RIGHT HAND holds a SHERIFF — Valorant's heavy revolver-style pistol. It is a large, angular, boxy REVOLVER with a long barrel — looks like a futuristic magnum/desert eagle hybrid. He holds it RAISED and slightly tilted upward at about 45 degrees, elbow bent — a stylish, casual gun-raised pose. NOT aiming at the viewer — pointing upward/to the side.
-
-The asymmetric pose — one arm reaching forward, one arm with pistol raised — creates a dynamic, trickster silhouette.
-
-Dimensional rift energy WRAPS around his body — blue-cyan cracks and rifts cling to his form.
-
-Wide planted stance. Cocky nonchalant expression.
-
-Clean white background.`,
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
     ],
   },
 
   iso: {
-    characterDesc: `FIRST IMAGE: Full-body character reference for "Iso" from the game Valorant. Match his appearance EXACTLY — Chinese male, lean build, dark messy BLACK HAIR that falls over one eye (emo/scene hairstyle covering the right eye). Angular face with PURPLE/VIOLET EYES, a small BAND-AID/TAPE on his left cheek. He wears an oversized light GRAY/WHITE tactical JACKET with a high collar and black geometric accents, a dark shirt underneath. Wide BLACK BAGGY PANTS. Dark gray/black SNEAKERS. His pose shows a large geometric PURPLE ENERGY SHIELD behind him — a hexagonal/star-shaped kinetic energy pattern. He holds thin red THREADS/WIRES between his hands. Reproduce his face, outfit, and color palette PRECISELY.
-
-SECOND IMAGE: Close-up face reference for Iso. Match his EXACT facial features — angular face, dark hair covering one eye, purple/violet eyes visible through the hair, band-aid on cheek, cold detached expression, purple energy accents on collar.
-
-THIRD IMAGE: Reference showing Iso's signature ability effect — CONCENTRIC OCTAGONAL/STAR-SHAPED geometric energy rings. These are layered geometric patterns of purple-white energy radiating outward in concentric octagonal shapes. This is the correct visual for Iso's kinetic energy — NOT a simple sphere, but GEOMETRIC OCTAGONAL RINGS.`,
+    characterDesc: `FIRST IMAGE: Full-body reference for "Iso" — match his appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+THIRD IMAGE: Reference for Iso's signature ability — CONCENTRIC OCTAGONAL geometric energy rings (NOT a simple sphere, but layered octagonal/star-shaped patterns).
+Match the reference images' appearance and rendering style EXACTLY.`,
     palette: `Iso's palette: purple, violet, white/light gray, black. The base outfit uses LIGHT GRAY/WHITE and BLACK — clean, monochromatic. ONLY ability effects (kinetic shields, energy spheres, dimensional rifts) use EXTREME high-saturation PURPLE/VIOLET with bright glow. This creates stark contrast between his muted grayscale outfit and the intense purple energy.`,
     expression: `Expression is COLD and DETACHED — isolated, looking through the viewer rather than at them. Minimal emotion, almost apathetic. Eyes half-visible behind hair. The quiet intensity of someone who has disconnected from everything. NOT angry, NOT sad — just absent. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "kill-contract",
-        prompt: `POSE — "KILL CONTRACT" (Ultimate — Octagonal Energy Dimension):
-STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn in a crouching action pose with arms spread holding threads. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with BOTH arms forward together. Do NOT copy the reference crouching angle.
+        prompt: `POSE — "KILL CONTRACT" (Ultimate — Energy Formation):
+SKELETON CHANGE: The reference shows a crouching action pose. This pose is COMPLETELY DIFFERENT — facing STRAIGHT AT THE VIEWER with BOTH arms forward together.
 
-Iso faces the viewer STRAIGHT-ON. BOTH ARMS are extended forward together at chest height — hands facing each other with a gap between them.
+POSE: Iso faces the viewer STRAIGHT-ON. BOTH ARMS extended forward at chest height — hands facing each other with a gap between them, as if forming energy between his palms. Wide symmetrical stance.
 
-ENERGY EFFECT (CRITICAL — see third reference image): Behind Iso, CONCENTRIC OCTAGONAL/STAR-SHAPED geometric energy rings radiate outward from his body. These are NOT simple spheres — they are layered GEOMETRIC OCTAGONAL PATTERNS of purple-white energy, like concentric star/octagon shapes expanding behind him. Multiple nested octagonal rings, each glowing with purple-violet energy. The geometric pattern wraps BEHIND and AROUND his body like a mandala of energy.
-
-The octagonal energy rings emit purple light that illuminates his face. Kinetic energy lines flow from the rings along his arms.
-
-Wide symmetrical stance. Hair over one eye. Band-aid visible. Cold, detached stare.
+EFFECTS: Between his hands, purple kinetic energy forms. From his body, CONCENTRIC OCTAGONAL geometric energy rings (see third reference) radiate BEHIND him — layered octagonal patterns of purple-white energy wrapping behind and around his body. The energy illuminates his face with purple light. Energy lines flow along his arms.
 
 NO weapons.
 
-Clean white background.`,
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
         name: "double-tap",
@@ -399,30 +371,24 @@ Clean white background.`,
       },
       {
         name: "contingency",
-        prompt: `POSE — "CONTINGENCY" (Emerging Through Octagonal Energy):
-STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a 3/4 RIGHT turn in a crouching action pose. This pose is COMPLETELY DIFFERENT — EMERGING FORWARD through a wall of energy STRAIGHT AT THE VIEWER. Do NOT copy the reference crouching angle.
+        prompt: `POSE — "CONTINGENCY" (Energy Corridor — Walking Through):
+SKELETON CHANGE: The reference shows a crouching action pose. This pose is COMPLETELY DIFFERENT — WALKING FORWARD STRAIGHT AT THE VIEWER.
 
-Iso EMERGES through a wall of OCTAGONAL KINETIC ENERGY, pushing forward STRAIGHT AT THE VIEWER. His full body is visible — he is breaking through the geometric energy barrier.
+POSE: Iso WALKS forward STRAIGHT AT THE VIEWER — confident stride, one foot forward, slight forward lean. One arm at his side, the other slightly forward. Oversized jacket billows slightly behind him.
 
-ENERGY EFFECT (CRITICAL): Dense PURPLE OCTAGONAL/STAR-SHAPED geometric energy patterns WRAP AROUND his entire body — clinging to his jacket, swirling around his legs. The geometric rings are THICKEST behind him, THINNEST at his front where he has pushed through. The energy is NOT separate from him — it clings to and wraps his form with geometric patterns.
+EFFECTS: Purple energy WRAPS tightly around his body as he walks — clinging to his jacket, swirling around his arms and legs. Thin purple energy wisps trail behind him. The effect is SUBTLE and BODY-HUGGING — no large background patterns, no octagonal shapes behind him. Just purple energy clinging to and trailing from his form.
 
-His body leans SLIGHTLY FORWARD — weight on his front foot, forward momentum. One arm reaches forward, the other at his side.
+NO weapons. NO large background effects. NO geometric patterns behind him.
 
-His oversized jacket billows backward into the energy behind him. Hair over one eye. Cold detached expression — pushing through his own dimensional barrier.
-
-NO weapons.
-
-Clean white background. ONLY the character emerging from geometric purple energy.`,
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
     ],
   },
 
   waylay: {
-    characterDesc: `FIRST IMAGE: Full-body character reference for "Waylay" from the game Valorant. Match her appearance EXACTLY — Thai female, medium-dark tan skin, athletic combat build. She has wild spiky SILVER/WHITE hair swept back with crystalline/prismatic highlights that catch light in rainbow hues. She wears a sleeveless GOLD/TAN tactical VEST with a high collar and dark interior lining, dark shirt underneath with chain/bead accessories at the neckline. Dark navy/black BAGGY PANTS with tactical straps. Purple/violet SNEAKERS. Her signature ability creates PRISMATIC LIGHT — rainbow-refracting energy with dominant purple, cyan, and gold tones. In the reference she holds a large PRISMATIC LIGHT SWORD in her right hand — a blade made of pure refracting light energy. Reproduce her face, outfit, and color palette PRECISELY.
-
-SECOND IMAGE: Close-up face reference for Waylay. Match her EXACT facial features — angular face, medium-dark skin, silver/white crystalline hair, sharp determined eyes with gold/amber undertones, small ear piercings, intense focused expression.`,
+    characterDesc: `FIRST IMAGE: Full-body reference for "Waylay" — match her appearance EXACTLY from this image. She holds a PRISMATIC LIGHT SWORD in the reference.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
     palette: `Waylay's palette: gold/tan, silver/white, dark navy, prismatic rainbow. The base outfit uses GOLD/TAN and DARK NAVY — warm tactical. ONLY ability effects (prismatic blades, light refraction, speed trails) use EXTREME high-saturation PRISMATIC RAINBOW with dominant purple, cyan, and gold — light refracting through a prism. Silver/white hair provides a cool contrast against the warm gold vest.`,
     expression: `Expression is FOCUSED and DETERMINED — a warrior's quiet intensity before the strike. NOT smiling. Sharp eyes, tight jaw, coiled energy. She is precise and lethal. Valorant expressions are ALWAYS understated.`,
     poses: [
@@ -465,21 +431,344 @@ Clean white background. ONLY the character sprinting with prismatic trails.`,
       {
         name: "refract",
         prompt: `POSE — "REFRACT" (Prismatic Light — Crossed Arms):
-STYLE REMINDER: Render with PLANAR SHADING — faceted angular planes, hard edges, NO outlines, NO smooth gradients. Copy the EXACT rendering technique from the reference images.
-FULL BODY must be visible from head to FEET — do NOT crop any part of the body.
-SKELETON CHANGE: The reference shows a wide combat stance with sword extended. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with ARMS CROSSED. Do NOT copy the reference stance.
+SKELETON CHANGE: The reference shows a wide combat stance with sword. This pose is COMPLETELY DIFFERENT — standing STRAIGHT with ARMS CROSSED. Do NOT copy the reference stance.
 
-Waylay faces the viewer STRAIGHT-ON. Her ARMS are CROSSED over her chest — a confident, controlled stance. NO weapon in hands.
+POSE: Waylay faces the viewer STRAIGHT-ON. ARMS CROSSED over her chest — a confident, controlled warrior's stance. Wide planted stance. NO weapon in hands.
 
-PRISMATIC EFFECT: Light fragments and prismatic shards FLOAT around her body — small rainbow-refracting pieces of light energy hovering near her arms, shoulders, and hair. The prismatic light illuminates her from multiple angles, creating rainbow light patches on her skin and clothes.
+EFFECTS: Small prismatic light SHARDS and fragments FLOAT close to her body — hovering near her arms, shoulders, and through her hair. The prismatic light creates subtle rainbow refractions on her skin and clothes. Her silver/white hair catches prismatic highlights. The effect is SUBTLE and body-hugging, not explosive.
 
-Her silver/white hair catches the prismatic light, creating subtle rainbow highlights.
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+    ],
+  },
 
-Wide planted stance. Quiet intensity — a warrior at rest but ready.
+  // ============================================================
+  // Phase 1: Controllers
+  // ============================================================
 
-This pose has a COMPLETELY DIFFERENT body arrangement from her other two poses (arms-at-sides and sprinting).
+  astra: {
+    characterDesc: `FIRST IMAGE: Full-body reference for "Astra" — match her appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
+    palette: `Astra's palette: cosmic purple, gold, deep violet. The base outfit uses DEEP PURPLE/VIOLET and GOLD accents. Ability effects use BRIGHT COSMIC VIOLET (#7013E4) — a vivid purple glow. Secondary accents include hot magenta (#CB33B2) and pale gold sparkles (#FFFCC4) for star effects. The contrast is dark purple body vs luminous violet-purple energy.`,
+    expression: `Expression is SERENE and TRANSCENDENT — a cosmic being gazing with quiet omniscience. Eyes calm, slight knowing look. She sees beyond mortal sight. NOT smiling. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "astral-form",
+        prompt: `POSE — "ASTRAL FORM" (Ultimate — Cosmic Transformation):
+SKELETON CHANGE: The reference shows an action pose with gun. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with BOTH arms at sides, transformed.
 
-Clean white background.`,
+TRANSFORMATION: Astra's body becomes SEMI-TRANSPARENT — infused with cosmic purple energy (#7013E4). Her skin and outfit take on a nebula-like quality with starlight points. Her eyes GLOW bright violet. Her hair floats upward, infused with cosmic energy.
+
+POSE: Astra stands facing the viewer. BOTH ARMS relaxed at her sides. Wide stance. She IS the cosmic energy — her body radiates violet-purple light. Faint star constellation patterns appear around her feet.
+
+EFFECTS: Cosmic violet (#7013E4) energy WRAPS around her entire body. Tiny pale gold (#FFFCC4) star sparkles float near her form. The energy is luminous and ethereal.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "nova-pulse",
+        prompt: `POSE — "ASTRAL FORM" (Hooded — Cosmic Meditation):
+SKELETON CHANGE: The reference shows an action pose. This pose is COMPLETELY DIFFERENT — standing with HOOD UP in a meditative cosmic state.
+
+TRANSFORMATION (CRITICAL): Astra has PULLED HER PURPLE HOODED SHAWL UP over her head — the hood is now UP, covering her hair/mohawk. The hood is small and fitted, sitting over her head. This is her Astral Form state. Her body has a faint BLUE-VIOLET translucent energy outline.
+
+POSE: Astra faces the viewer STRAIGHT-ON. HOOD UP. Her RIGHT HAND is raised in front of her chest, palm up — a small COSMIC STAR (bright violet-gold energy orb) floats above her open palm. Her LEFT ARM hangs at her side. Her eyes glow bright violet beneath the hood shadow. Quiet cosmic omniscience.
+
+EFFECTS: The star in her palm emits cosmic violet (#7013E4) light with gold (#FFFCC4) sparkles. Her body has a faint blue-violet translucent glow. Small star constellation patterns near the orb.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "cosmic-divide",
+        prompt: `POSE — "COSMIC DIVIDE" (Ultimate Wall — Walking Through):
+SKELETON CHANGE: The reference shows an action pose. This pose is COMPLETELY DIFFERENT — WALKING FORWARD toward the viewer.
+
+POSE: Astra WALKS forward toward the viewer — confident cosmic stride, one foot ahead. BOTH arms at sides in natural walking motion. Her cosmic energy flows with her movement.
+
+EFFECTS: Cosmic violet (#7013E4) energy WRAPS around her body as she walks — nebula-like wisps clinging to her form and trailing behind. Gold star sparkles drift in her wake. The energy is body-hugging, not separate.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+    ],
+  },
+
+  brimstone: {
+    characterDesc: `FIRST IMAGE: Full-body reference for "Brimstone" — match his appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
+    palette: `Brimstone's palette: dark gray, military charcoal, orange accents. The base outfit uses DARK GRAY tactical gear. Ability effects use WARM ORANGE (#F08A33) — military fire/incendiary glow. Orbital Strike leans redder (#E05030). Stim Beacon uses golden yellow (#FCC423). Orange beret is his signature. Contrast: dark military body vs warm orange fire energy.`,
+    expression: `Expression is STOIC and COMMANDING — a veteran military leader. Hard jaw, steady eyes, no-nonsense. The quiet authority of someone who has seen everything. NOT smiling. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "orbital-strike",
+        prompt: `POSE — "ORBITAL STRIKE" (Ultimate — Calling The Strike):
+SKELETON CHANGE: The reference shows walking with rifle on shoulder. This pose is COMPLETELY DIFFERENT — pointing UP at the sky with one arm.
+
+POSE: Brimstone faces the viewer STRAIGHT-ON. His RIGHT ARM points STRAIGHT UP at the sky — index finger extended, calling down an orbital strike from above. His LEFT HAND holds a small tactical wrist-device near his chest. Wide planted military stance, legs apart. He looks UPWARD with intense focus — his gaze follows his pointing arm to the sky.
+
+EFFECTS: From above, warm orange (#F08A33) light beams DOWN onto him — an orange glow from the orbital strike above. The orange light illuminates his face and upraised arm from above. Faint orange energy particles rain down.
+
+NO rifle.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "stim-beacon",
+        prompt: `POSE — "STIM BEACON" (Combat Buff — Crossed Arms):
+SKELETON CHANGE: The reference shows walking with rifle. This pose is COMPLETELY DIFFERENT — standing STRAIGHT with ARMS CROSSED.
+
+POSE: Brimstone faces the viewer STRAIGHT-ON. ARMS CROSSED over his chest — veteran's confident stance. Wide planted military stance. Shoulders broad.
+
+EFFECTS: Subtle golden-orange (#FCC423) energy aura WRAPS around his body — the stim beacon's enhancement effect. Faint warm glow on his arms and torso. The effect is subtle and body-hugging.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "incendiary",
+        prompt: `POSE — "INCENDIARY" (Grenade Launcher — Hip Carry, Cigar):
+SKELETON CHANGE: The reference shows walking with rifle. This pose is COMPLETELY DIFFERENT — casually holding a launcher at his hip.
+
+POSE: Brimstone faces the viewer STRAIGHT-ON. His LEFT ARM holds a large, chunky tubular GRENADE LAUNCHER resting against his hip/thigh — one-handed, casual, like it weighs nothing. His RIGHT HAND is raised near his face, holding a lit CIGAR between two fingers — smoke curling upward. He takes a drag. The pose says "ready for war but in no rush." Wide relaxed military stance.
+
+EFFECTS: Warm orange (#F08A33) glow from the cigar tip and faint embers. The launcher barrel has a subtle orange heat shimmer.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+    ],
+  },
+
+  viper: {
+    characterDesc: `FIRST IMAGE: Full-body reference for "Viper" — match her appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
+    palette: `Viper's palette: toxic green, black, dark green. The base outfit uses BLACK and DARK GREEN — sleek tactical. Ability effects use TOXIC NEON GREEN (#00B441) — bright, saturated poison green. Darker gas shading uses #274B35. The contrast is dark black-green body vs vivid neon green toxic gas.`,
+    expression: `Expression is COLD and VENOMOUS — predatory calm behind the mask. Calculating eyes, zero warmth. She is poison personified. NOT smiling. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "vipers-pit-a",
+        prompt: `POSE — "VIPER'S PIT" Variant A (Ultimate — Insectoid Helmet, Standing):
+SKELETON CHANGE: The reference shows walking forward. This pose is COMPLETELY DIFFERENT — standing with an aggressive INSECTOID HELMET.
+
+TRANSFORMATION (CRITICAL — match the 3rd reference image EXACTLY): Viper has activated her ultimate. She wears a sharp, ANGULAR INSECTOID/SERPENTINE HELMET that covers her entire head. The helmet has: a large GOLDEN/YELLOW VISOR over the eyes (like insect compound eyes), sharp angular protrusions/horns on top, dark green-black armored plating with glowing green accent lines. The helmet looks like a SNAKE or INSECT HEAD — aggressive, predatory, alien. Her hair is completely hidden. Match the helmet design from the 3rd reference image precisely.
+
+POSE: Viper stands facing the viewer STRAIGHT-ON. BOTH ARMS at her sides, fists clenched. Wide stance. Apex predator — still, silent, lethal.
+
+EFFECTS: Toxic neon green (#00B441) gas RISES from below — swirling around her legs.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "vipers-pit-b",
+        prompt: `POSE — "VIPER'S PIT" Variant B (Ultimate — Insectoid Helmet, Gas Control):
+SKELETON CHANGE: The reference shows walking. COMPLETELY DIFFERENT — standing with helmet, arms spread low commanding gas.
+
+TRANSFORMATION (CRITICAL — match 3rd reference image): Same ANGULAR INSECTOID/SERPENTINE HELMET — golden visor, sharp horns/protrusions, snake-head design. Match the 3rd reference image precisely.
+
+POSE: Viper faces viewer STRAIGHT-ON. Both arms SPREAD LOW — palms facing down, fingers splayed, commanding the toxic gas. Slight forward lean. Wide stance.
+
+EFFECTS: Toxic green (#00B441) gas rises responding to her hands. Green glow from below illuminates the golden visor.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "vipers-pit-c",
+        prompt: `POSE — "VIPER'S PIT" Variant C (Ultimate — Insectoid Helmet, Walking):
+SKELETON CHANGE: The reference shows normal walk. COMPLETELY DIFFERENT — walking through gas with insectoid helmet.
+
+TRANSFORMATION (CRITICAL — match 3rd reference image): Same ANGULAR INSECTOID/SERPENTINE HELMET — golden visor, sharp horns, snake-head design. Match precisely.
+
+POSE: Viper WALKS forward through dense green gas toward the viewer. One foot ahead, predatory stride. Arms at sides. The golden visor catches green glow.
+
+EFFECTS: Dense toxic green (#00B441) gas wraps her lower body. Gas trails behind.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "snake-bite-a",
+        prompt: `POSE — "SNAKE BITE" Variant A (Dual Palm Spray):
+SKELETON CHANGE: The reference shows walking. This is COMPLETELY DIFFERENT — standing with both palms spraying toxin.
+
+POSE: Viper faces viewer in 3/4 turn. BOTH HANDS extended at different heights — LEFT at waist, RIGHT at shoulder — palms facing outward, fingers spread. Toxic green sprays from both palms. Green tubes from her backpack connect to her palm sprayers. Aggressive lean forward.
+
+EFFECTS: Toxic green (#00B441) streams SPRAY from both palms. Green mist around hands. Normal half-mask (NOT helmeted).
+
+NO weapons. FRAMING: FULL BODY head-to-toe, 85% vertical fill. Clean white background.`,
+      },
+      {
+        name: "snake-bite-b",
+        prompt: `POSE — "SNAKE BITE" Variant B (One Hand Poison Drip):
+SKELETON CHANGE: The reference shows walking. COMPLETELY DIFFERENT — one hand dripping poison.
+
+POSE: Viper faces viewer STRAIGHT-ON. Her LEFT ARM extends to the side at waist height, palm DOWN — toxic green liquid DRIPS from her fingers like venom. RIGHT hand near her chin, index finger tapping her mask thoughtfully. Head tilted, cold calculating gaze.
+
+EFFECTS: Green (#00B441) liquid drips from left hand, trailing green gas. Normal half-mask. Faint green glow on left side.
+
+NO weapons. FRAMING: FULL BODY head-to-toe, 85% vertical fill. Clean white background.`,
+      },
+      {
+        name: "snake-bite-c",
+        prompt: `POSE — "SNAKE BITE" Variant C (Tossing Canister):
+SKELETON CHANGE: The reference shows walking. COMPLETELY DIFFERENT — casually tossing a toxic canister.
+
+POSE: Viper faces viewer STRAIGHT-ON. Her RIGHT HAND is raised, TOSSING a small green-glowing TOXIC CANISTER upward — catching it mid-air, casually juggling it. LEFT ARM at her side. Slight tilt of head — bored, contemptuous, as if the canister is a toy.
+
+EFFECTS: The canister GLOWS toxic green (#00B441), green mist leaks from it mid-air. Normal half-mask. Faint green aura around the canister.
+
+NO weapons. FRAMING: FULL BODY head-to-toe, 85% vertical fill. Clean white background.`,
+      },
+      {
+        name: "toxic-screen",
+        prompt: `POSE — "TOXIC SCREEN" (Poison Sweep — Arm Trailing Gas):
+SKELETON CHANGE: The reference shows walking forward. This pose is COMPLETELY DIFFERENT — one arm sweeping wide with a trail of toxic gas.
+
+POSE: Viper faces the viewer in a slight 3/4 turn. Her RIGHT ARM is fully extended to her RIGHT SIDE at hip height, fingers spread — she has just SWEPT her arm outward, deploying a toxic screen. Her LEFT ARM is at her side. Her body has a slight twist from the sweeping motion. She looks over her RIGHT shoulder toward the viewer.
+
+EFFECTS: A trail of toxic neon green (#00B441) gas follows her sweeping right arm — a ribbon of poison gas that arcs from her hand and trails behind her arm's path. The gas clings to her arm and streams outward. Green glow illuminates her right side.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+    ],
+  },
+
+  harbor: {
+    characterDesc: `FIRST IMAGE: Full-body reference for "Harbor" — match his appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
+    palette: `Harbor's palette: teal, deep aqua, gold/bronze accents. The base outfit uses TEAL GREEN and DARK NAVY. Ability effects use DEEP TEAL-AQUA — NOT bright cyan. Use #76DDD0 for bright water glow highlights and #11434E for deeper water tones. His ancient bracelet/artifact glows with gilded teal-blue energy. Gold/bronze accents on his artifact and gear.`,
+    expression: `Expression is CALM and RESOLUTE — a guardian's steady determination. Warm but serious eyes. The quiet strength of an ancient protector. NOT smiling. Valorant expressions are ALWAYS understated.`,
+    poses: [
+      {
+        name: "reckoning",
+        prompt: `POSE — "RECKONING" (Ultimate — Water Power):
+SKELETON CHANGE: The reference shows a 3/4 pose with weapon. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with BOTH arms at sides.
+
+POSE: Harbor faces the viewer STRAIGHT-ON. BOTH ARMS at his sides, relaxed but radiating power. Wide grounded stance. His artifact bracelet GLOWS with teal energy.
+
+EFFECTS: Teal-aqua (#76DDD0) water energy RISES from below his feet, wrapping around his body upward. The water has a deep teal (#11434E) interior with bright aqua highlights. Water energy clings to his arms and torso. His eyes glow faintly teal.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "cascade",
+        prompt: `POSE — "CASCADE" (Water Wave — Crossed Arms):
+SKELETON CHANGE: The reference shows a 3/4 pose. This pose is COMPLETELY DIFFERENT — standing STRAIGHT with ARMS CROSSED.
+
+POSE: Harbor faces the viewer STRAIGHT-ON. ARMS CROSSED over his chest — a guardian's calm confidence. Wide stance. His artifact bracelet visible and glowing.
+
+EFFECTS: Teal-aqua (#76DDD0) water energy aura WRAPS subtly around his body. His bracelet emits a teal glow that illuminates one side of his face. Faint water droplets/wisps float near him.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "cove",
+        prompt: `POSE — "COVE" (Water Shield — Walking):
+SKELETON CHANGE: The reference shows a 3/4 pose. This pose is COMPLETELY DIFFERENT — WALKING FORWARD toward the viewer.
+
+POSE: Harbor WALKS forward toward the viewer — steady guardian's stride. One foot ahead. BOTH arms in natural walking motion. Determined expression.
+
+EFFECTS: Teal-aqua (#76DDD0) water energy flows alongside him — clinging to his body and trailing behind. A faint water-energy shimmer in front of him like a semi-visible shield. The energy is body-hugging and fluid.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+    ],
+  },
+
+  clove: {
+    characterDesc: `FIRST IMAGE: Full-body reference for "Clove" — match their appearance EXACTLY from this image.
+SECOND IMAGE: Face close-up reference.
+Match the reference images' appearance and rendering style EXACTLY.`,
+    palette: `Clove's palette: pink, purple, blue, gold accents. The outfit is dominated by a PINK SHORT-SLEEVED JACKET (the most eye-catching piece — NOT black) over a BLACK long-sleeved SHIRT with WHITE sleeves. Purple shorts, dark blue leggings with butterfly decorations, purple shoes with white soles, gold/amber accents. Ability effects use VIVID MAGENTA-PINK (#C347C7). Butterflies shimmer iridescent pink-to-purple. The PINK JACKET is the signature — do NOT make it black.`,
+    expression: `Expression is MISCHIEVOUS and UNBOTHERED — a youthful defiance of death itself. Slight smirk, relaxed confidence. They don't take death seriously. A bit more expressive than other agents — Clove's personality allows it. But still RESTRAINED.`,
+    poses: [
+      {
+        name: "not-dead-yet",
+        prompt: `POSE — "NOT DEAD YET" (Ultimate — Undead Resurrection):
+SKELETON CHANGE: The reference shows a crouching pose. This pose is COMPLETELY DIFFERENT — standing STRAIGHT facing the viewer with BOTH arms at sides.
+
+TRANSFORMATION: Clove has just resurrected — their body is SEMI-TRANSPARENT with an ethereal lavender-magenta aura. Magenta-pink (#C347C7) energy radiates from their entire form. They are between life and death.
+
+POSE: Clove stands facing the viewer. BOTH ARMS at their sides, relaxed. Head tilted slightly up — transcending death with casual defiance. Wide stance.
+
+EFFECTS: Magenta-pink (#C347C7) and deep purple (#4B1D80) energy WRAPS around their entire body — ethereal smoke/mist clinging to their form. Dark purple butterflies float near their body. The energy is ghostly and luminous.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "meddle-a",
+        prompt: `POSE — "MEDDLE" Variant A (Butterfly On Hand — Looking At It):
+SKELETON CHANGE: The reference shows a crouching pose. This pose is COMPLETELY DIFFERENT — one hand raised with a butterfly perched on it.
+
+POSE: Clove faces the viewer in slight 3/4 turn. Their RIGHT HAND is raised to face level, palm up — a single large magenta-purple BUTTERFLY sits on their fingertips. They look at the butterfly with a mischievous half-smile, head tilted. LEFT HAND in jacket pocket. Weight on one hip.
+
+EFFECTS: The butterfly GLOWS magenta-pink (#C347C7). Smaller butterflies float nearby. Faint magenta aura.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "meddle-b",
+        prompt: `POSE — "MEDDLE" Variant B (Butterfly On Finger — Pointing Up):
+SKELETON CHANGE: The reference shows a crouching pose. This pose is COMPLETELY DIFFERENT — one finger raised with a butterfly landing on it.
+
+POSE: Clove faces the viewer STRAIGHT-ON. Their RIGHT INDEX FINGER points UP — a glowing magenta butterfly is LANDING on the tip of their finger. They watch it with a playful smirk, chin tilted up slightly. LEFT ARM relaxed at their side. Casual stance, weight shifted to one leg.
+
+EFFECTS: The butterfly GLOWS magenta-pink (#C347C7). Trail of smaller butterflies flutter around their head and shoulders.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "meddle-c",
+        prompt: `POSE — "MEDDLE" Variant C (Blowing Butterflies — Playful):
+SKELETON CHANGE: The reference shows a crouching pose. This pose is COMPLETELY DIFFERENT — blowing butterflies from an open palm.
+
+POSE: Clove faces the viewer STRAIGHT-ON. BOTH HANDS cupped together at chest level — they BLOW across their open palms, sending a burst of magenta butterflies flying outward toward the viewer. Eyes playful and mischievous, slight smile. The blowing gesture is gentle and magical.
+
+EFFECTS: Multiple magenta-pink (#C347C7) butterflies FLY outward from their cupped hands — scattering toward the viewer. Magenta sparkles trail from the butterflies.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "pick-me-up",
+        prompt: `POSE — "PICK-ME-UP" (Soul Absorb — Floating Surrounded By Butterflies):
+SKELETON CHANGE: The reference shows a crouching pose. This pose is COMPLETELY DIFFERENT — FLOATING slightly above the ground, surrounded by butterflies.
+
+POSE: Clove FLOATS slightly above the ground — feet ~15cm off the ground, body relaxed and weightless. Their head is tilted back slightly, eyes closed, arms loose at their sides with palms slightly open — absorbing energy. Hair floats upward from the supernatural lift. A serene, death-defying pose.
+
+EFFECTS: A SWARM of magenta-pink (#C347C7) and deep purple (#4B1D80) butterflies surround their floating body — orbiting, swirling, some landing on their arms and jacket. Magenta energy wisps rise from below, lifting them. The butterflies create a halo effect around their form.
+
+NO weapons.
+
+FRAMING: FULL BODY head-to-toe (including gap below floating feet), 85% vertical fill. Character CENTERED. Clean white background.`,
       },
     ],
   },
