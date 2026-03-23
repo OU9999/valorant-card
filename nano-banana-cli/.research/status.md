@@ -1,29 +1,53 @@
 # Valorant Agent Pose Generation — Status
 
-> 최종 업데이트: 2026-03-23
+> 최종 업데이트: 2026-03-24
 
-## 전체 현황
+## 전체 현황 (43/84 저장)
 
 | 요원 | Pose 1 | Pose 2 | Pose 3 | 상태 |
 |------|--------|--------|--------|------|
-| Jett | ✅ jett-pose1 | ✅ jett-pose2 | ✅ jett-pose3 | **완료** |
-| Reyna | ✅ reyna-pose1 (leer) | ✅ reyna-pose2 (empress) | ✅ reyna-pose3 (soul-harvest) | **완료** |
-| Omen | ✅ omen-pose1 (paranoia, R4) | ✅ omen-pose2 (dark-cover, R6) | ✅ omen-pose3 (smoke-emerge, R12) | **완료** |
-| Phoenix | ✅ phoenix-pose1 (run-it-back, R4) | ✅ phoenix-pose2 (hot-hands, R9) | ✅ phoenix-pose3 (curveball, R11) | **완료** |
-| Neon | ✅ neon-pose1 (overdrive, R9) | ✅ neon-pose2 (high-gear, R9) | ✅ neon-pose3 (fast-lane, R12) | **완료** |
-| Raze | ✅ raze-pose1 (paint-shells, R9) | ✅ raze-pose2 (showstopper, R9) | ✅ raze-pose3 (blast-pack, R12) | **완료** |
-| Yoru | 🔄 dimensional-drift (R15 합격수준) | 🔄 gatecrash (R15 합격수준) | ✅ yoru-pose3 (clone, R14) | **2개 남음** |
-| Iso | ✅ iso-pose1 (double-tap, R15) | 🔄 kill-contract (R15 합격수준) | 🔄 contingency (R15 합격수준) | **2개 남음** |
-| Waylay | 🔄 light-speed (R15 합격수준) | ✅ waylay-pose2 (convergent-paths, R15) | 🔄 refract (R15 합격수준) | **2개 남음** |
+| Jett | ✅ | ✅ | ✅ | **3/3 완료** |
+| Reyna | ✅ | ✅ | ✅ | **3/3 완료** |
+| Omen | ✅ | ✅ | ✅ | **3/3 완료** |
+| Phoenix | ✅ | ✅ | ✅ | **3/3 완료** |
+| Neon | ✅ | ✅ | ✅ | **3/3 완료** |
+| Raze | ✅ | ✅ | ✅ | **3/3 완료** |
+| Yoru | ✅ dimensional-drift | ✅ gatecrash | ✅ clone | **3/3 완료** |
+| Iso | ✅ double-tap | ✅ kill-contract | ✅ contingency | **3/3 완료** |
+| Waylay | ✅ pose1 | ✅ pose2 | ✅ refract | **3/3 완료** |
+| Astra | ✅ astral-form | ✅ nova-pulse(후드) | ✅ cosmic-divide | **3/3 완료** |
+| Brimstone | ✅ orbital-strike | ✅ stim-beacon | ✅ incendiary(시가) | **3/3 완료** |
+| Viper | ✅ vipers-pit(헬멧) | ✅ snake-bite(독뚝뚝) | ✅ toxic-screen | **3/3 완료** |
+| Harbor | ✅ reckoning | ✅ cascade | ✅ cove | **3/3 완료** |
+| Clove | ✅ not-dead-yet | ✅ meddle(나비검지) | ✅ pick-me-up(부유) | **3/3 완료** |
+| Breach | ✅ rolling-thunder | ✅ aftershock | ✅ fault-line | **3/3 완료** |
+| Fade | ✅ nightfall | ✅ haunt | ✅ prowler | **3/3 완료** |
+| KAY/O | ✅ null-cmd | ✅ zero-point | ✅ fragment | **3/3 완료** |
+| Skye | ✅ seekers | ✅ guiding-light | ✅ trailblazer | **3/3 완료** |
+| Sova | ✅ hunters-fury | ✅ owl-drone | ✅ recon-bolt | **3/3 완료** |
+| Tejo | ❌ armageddon | ✅ guided-salvo | ❌ stealth-drone | **1/3** |
+| Gekko | ❌ thrash | ❌ dizzy | ❌ wingman | **0/3 (봇 레퍼런스 필요)** |
+| Chamber | ❌ tour-de-force | ❌ headhunter | ❌ rendezvous | **0/3 (총기 레퍼런스 필요)** |
+| Cypher | ❌ neural-theft | ✅ trapwire | ❌ spycam | **1/3** |
+| Deadlock | ❌ annihilation | ❌ barrier-mesh | ❌ sonic-sensor | **0/3 (스킬 레퍼런스 필요)** |
+| Killjoy | ❌ lockdown | ❌ turret | ❌ nanoswarm | **0/3 (스킬 레퍼런스 필요)** |
+| Sage | ✅ resurrection | ❌ barrier-orb | ✅ healing-orb | **2/3 (얼음벽 레퍼런스 필요)** |
+| Vyse | ❌ steel-garden | ❌ arc-rose | ❌ shear | **0/3 (앞모습 레퍼런스 필요)** |
+| Veto | ❌ evolution | ❌ interceptor | ❌ chokehold | **0/3 (궁극기 레퍼런스 필요)** |
+
+## 다음 작업 — 레퍼런스 이미지 수집 필요
+
+| 요원 | 필요한 레퍼런스 | 우선순위 |
+|------|-------------|---------|
+| Gekko | Thrash/Dizzy/Wingman/Mosh 실제 인게임 모습 | 높음 |
+| Vyse | 앞모습 (현재 ref가 뒷모습) → vyse.avif 사용 | 높음 |
+| Chamber | Headhunter 금 권총, Tour de Force 금 스나이퍼 실제 모습 | 높음 |
+| Deadlock | 나노와이어, 배리어 메시, 소닉센서 스킬 이펙트 | 중간 |
+| Killjoy | 터렛, 록다운 장치, 나노스웜 실제 모습 | 중간 |
+| Sage | Barrier Orb (옥빛 얼음벽) 실제 인게임 모습 | 중간 |
+| Veto | Evolution 궁극기 변신 모습 | 중간 |
+| Tejo | 더 역동적 포즈 필요 (골격 차별화) | 낮음 |
+| Cypher | 재생성만 필요 (팔3개/확대 수정) | 낮음 |
 
 ## 합격 포즈 저장 위치
 `nano-banana-cli/new-pose/{agent}/{agent}-pose{N}.png`
-
-## 현재 진행 상황
-- **6명 완료**: Jett, Reyna, Omen, Phoenix, Neon, Raze (각 3/3)
-- **3명 진행중**: Yoru (1/3 저장), Iso (1/3 저장), Waylay (1/3 저장) — 나머지 포즈도 합격 수준이나 유저 확인 대기
-- **19명 미착수**: 전체 28명 중 9명 작업 완료/진행중
-
-## Config 등록 현황
-현재 agent-config.ts 등록: reyna, phoenix, neon, omen, yoru, iso, waylay (7명)
-Jett, Raze는 포즈 완료되었으나 config에서 제거된 상태
