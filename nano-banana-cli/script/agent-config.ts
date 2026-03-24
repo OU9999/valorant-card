@@ -876,20 +876,19 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   },
 
   gekko: {
-    characterDesc: `FIRST IMAGE: Full-body reference for "Gekko" — match his appearance EXACTLY from this image.
-SECOND IMAGE: Face close-up reference.
-Match the reference images' appearance and rendering style EXACTLY.`,
-    palette: `Gekko's palette: lime green, cream, purple accents. The base outfit uses LIME GREEN SWEATER (#C7F558) with PURPLE hoodie accents and brown plaid pants. His creatures are NOT all the same color: Wingman=YELLOW (axolotl), Dizzy=BLUE (armadillo, floats), Mosh=GREEN (frog egg blob), Thrash=BLUE-GREEN with PURPLE (shark). All creatures are gelatinous/slimy/translucent. Gekko is more EXPRESSIVE than other agents — LA kid energy.`,
-    expression: `Expression is FRIENDLY and ENERGETIC — an LA kid who loves his creature buddies. Genuine smile allowed (Gekko is one of the few agents where warmth fits). Bright eyes, open expression. More expressive than most Valorant agents.`,
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+SECOND IMAGE: Face close-up — match EXACTLY.`,
+    palette: `Ability effects: green (#5EBD3E), purple (#7C37E7), yellow/golden — vibrant multi-color energy auras. All bioluminescent abstract glow.`,
+    expression: `Expression is FRIENDLY and ENERGETIC — an LA kid bursting with energy. Genuine smile allowed (Gekko is one of the few agents where warmth fits). Bright eyes, open expression. More expressive than most Valorant agents.`,
     poses: [
       {
         name: "thrash",
-        prompt: `POSE — "THRASH" (Creature — Shoulder Buddy):
-SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — creature on his shoulder, fist bump.
+        prompt: `POSE — "THRASH" (Abstract Energy Burst):
+SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — both arms spread wide with energy radiating outward.
 
-POSE: Gekko faces the viewer STRAIGHT-ON. A BLUE-GREEN/TEAL SHARK-LIKE CREATURE (Thrash — see 5th reference icon) sits on his RIGHT SHOULDER. Thrash has oversized FINS, JAGGED TEETH, gill-like frills, and a bioluminescent glow. Thrash is about half Gekko's height. Gekko's RIGHT HAND reaches up to FIST BUMP the creature. His LEFT HAND in pocket. Wide relaxed stance, genuine grin.
+POSE: Gekko faces the viewer STRAIGHT-ON. BOTH ARMS spread WIDE open to the sides, palms facing outward — an exuberant "bring it on" stance. Wide relaxed stance, genuine grin, chest open. ATTITUDE: overflowing energy — a kid who can barely contain the power inside him.
 
-EFFECTS: Thrash GLOWS blue-green with PURPLE (#7C37E7) accents — bioluminescent, translucent, gelatinous. Faint sparkles between the fist bump.
+EFFECTS: Green (#5EBD3E) and purple (#7C37E7) abstract energy aura RADIATES outward from his entire body — no specific shape, just raw bioluminescent glow emanating from his torso, arms, and hands. The colors blend and pulse.
 
 NO weapons.
 
@@ -910,12 +909,12 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       },
       {
         name: "wingman",
-        prompt: `POSE — "WINGMAN" (Walking With Buddy):
-SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — walking casually with a creature companion.
+        prompt: `POSE — "WINGMAN" (Confident Walk):
+SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — walking casually forward with energy trailing.
 
-POSE: Gekko WALKS forward toward the viewer — casual LA stroll, one foot ahead. A small YELLOW AXOLOTL-LIKE CREATURE (Wingman — see 3rd reference icon) walks BESIDE him at his feet, matching his stride. Wingman is YELLOW (warm golden), bipedal, with an axolotl head (wide face, gill frills), and a dark metallic head-plate. About knee height. Gekko looks down at Wingman with an affectionate glance.
+POSE: Gekko WALKS forward toward the viewer — casual LA stroll, one foot ahead, relaxed swagger. His RIGHT HAND in his jacket pocket. His LEFT ARM swings naturally with the stride. He looks at the viewer with a confident grin. ATTITUDE: self-assured youth — a kid strolling into battle like it's just another sunny day.
 
-EFFECTS: Wingman GLOWS YELLOW/GOLDEN (NOT green) — a small bipedal axolotl creature with gelatinous translucent quality. Faint yellow glow around the creature.
+EFFECTS: Yellow and purple abstract energy aura trails behind his body as he walks — warm golden (#DAA520) glow mixed with purple (#7C37E7) wisps. The energy clings faintly to his back and shoulders, dissipating behind him.
 
 NO weapons.
 
@@ -1074,38 +1073,40 @@ Match the reference images' appearance and rendering style EXACTLY.`,
     poses: [
       {
         name: "armageddon",
-        prompt: `POSE — "ARMAGEDDON" (Ultimate — Calling Strike Coordinates):
-SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — pointing at a wrist device while directing coordinates.
+        prompt: `POSE — "ARMAGEDDON" (Ultimate — Tactical Tablet Strike):
+SKELETON CHANGE: The reference shows a relaxed standing pose with arms down. This is COMPLETELY DIFFERENT — both arms forward operating a device.
 
-POSE: Tejo faces the viewer STRAIGHT-ON. His LEFT ARM is raised, pointing at a glowing WRIST TACTICAL DEVICE on his left forearm — an amber holographic display showing strike coordinates. His RIGHT HAND points FORWARD toward the viewer — designating the target. He looks at the viewer with cold operational focus. Wide military stance.
+POSE: Tejo STANDS facing the viewer STRAIGHT-ON. BOTH ARMS are raised in front of his chest — he holds a TACTICAL TABLET between both hands, fingers tapping coordinates. A large HOLOGRAPHIC MAP/TARGETING DISPLAY projects upward from the tablet, showing bombing coordinates. He stares through the hologram with cold operational focus. Wide military stance, jacket open.
 
-EFFECTS: The wrist device GLOWS warm amber (#D4761D) with holographic coordinate data. Amber light illuminates his face from below. Faint targeting lines extend from his pointing finger.
+EFFECTS: The tablet GLOWS warm amber (#D4761D). A holographic targeting display projects ABOVE the tablet — amber gridlines, coordinate numbers, bombing zone circles. Amber light illuminates his face from below. His OPAQUE SUNGLASSES reflect the hologram.
 
-NO other weapons.
+NO weapons. Only the tactical tablet device.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
         name: "guided-salvo",
-        prompt: `POSE — "GUIDED SALVO" (Missile — Examining Ordnance):
-SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — casually holding a missile/projectile.
+        prompt: `POSE — "GUIDED SALVO" (Tactical Commander — Directing Strike):
+SKELETON CHANGE: The reference shows a relaxed standing pose. This is COMPLETELY DIFFERENT — commanding military stance directing an attack.
 
-POSE: Tejo faces the viewer STRAIGHT-ON. His RIGHT HAND holds a small GUIDED MISSILE at his side — gripping it casually like a baton, the warhead pointing down. His LEFT HAND rests on his tactical belt. He looks at the viewer with professional confidence — "I have more where this came from." Relaxed military stance.
+POSE: Tejo faces the viewer STRAIGHT-ON. His RIGHT ARM extends forward, pointing with two fingers — designating a target with absolute authority. His LEFT HAND holds a small TACTICAL DEVICE at his hip. Wide power stance, chest out, shoulders back. He embodies a military commander who just gave the order. His OPAQUE SUNGLASSES reflect amber light — eyes NOT visible. Jacket slightly open, showing tactical vest underneath.
 
-EFFECTS: The missile's guidance fins have faint amber (#D4761D) glow. Minimal effects — the ordnance itself IS the statement.
+EFFECTS: Warm amber (#D4761D) energy aura surrounds his body — faint explosive energy radiating outward. Holographic targeting data trails from his pointing fingers. His sunglasses glow amber.
+
+NO large weapons. Only the small tactical device.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
         name: "stealth-drone",
-        prompt: `POSE — "STEALTH DRONE" (Recon — Crab Drone At Feet):
-SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — small ground drone at his feet.
+        prompt: `POSE — "STEALTH DRONE" (Recon — Sprinting With Drone):
+SKELETON CHANGE: The reference shows a relaxed standing pose. This is COMPLETELY DIFFERENT — running/sprinting forward in action.
 
-POSE: Tejo faces the viewer STRAIGHT-ON. At his feet, a small CRAB-LIKE GROUND DRONE crouches — it has LEGS (NOT propellers), a compact body with folding wing panels, and a sleek mechanical look. About 20cm wide. It crawls on the ground, NOT flying. Tejo looks down at it, his RIGHT HAND directing it with a gesture. His LEFT HAND rests on his belt. His OPAQUE ORANGE SUNGLASSES reflect light — eyes NOT visible.
+POSE: Tejo is MID-SPRINT toward the viewer, leaning forward aggressively. His RIGHT ARM pumps back, LEFT ARM forward — full running motion. His jacket FLARES behind him from speed. A small CRAB-LIKE GROUND DRONE with legs (NOT propellers) runs alongside his feet, keeping pace. He looks straight ahead through his opaque sunglasses — locked on target.
 
-EFFECTS: The drone's amber (#D4761D) lights glow. Faint scanning lines from the drone. The drone sits at ground level by his feet.
+EFFECTS: The drone's amber (#D4761D) lights glow as it scuttles alongside. Motion blur lines behind his jacket. Amber holographic data trails from his sunglasses.
 
-NO other weapons.
+NO weapons in hands.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1117,42 +1118,42 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   // ============================================================
 
   chamber: {
-    characterDesc: `FIRST IMAGE: Full-body reference for "Chamber" — match his appearance EXACTLY. He is a French luxury arms dealer in an expensive suit.
-SECOND IMAGE: Face close-up reference.
-Match the reference images' appearance and rendering style EXACTLY.`,
-    palette: `Chamber's palette: gold, black, white, navy. The base outfit is an EXPENSIVE WHITE/NAVY SUIT with gold accents. Ability effects use GOLD (#FFD700) — luxurious metallic gold energy. His weapons assemble from gold nanotech particles. Everything about him screams wealth and precision. The contrast is crisp suit vs rich gold energy.`,
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+SECOND IMAGE: Face close-up — match EXACTLY.
+Additional ref shows his HEADHUNTER pistol.`,
+    palette: `Ability effects: gold (#FFD700) — luxurious metallic gold energy. Gold particles and aura.`,
     expression: `Expression is SMUG and REFINED — a man who knows he's the best and dresses the part. Slight confident smirk, one eyebrow slightly raised. French sophistication. NOT a big smile. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "tour-de-force",
-        prompt: `POSE — "TOUR DE FORCE" (Ultimate — Gold Sniper Assembly):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — gold nanotech particles assembling a sniper rifle from his hand.
+        prompt: `POSE — "TOUR DE FORCE" (Sniper On Shoulder):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — one hand holds a gold sniper rifle resting on shoulder, the other adjusts his lapel.
 
-POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT ARM extends to his side — GOLD NANOTECH PARTICLES stream from his hand, assembling into a long SNIPER RIFLE shape mid-air. The rifle is half-formed, particles still swirling into place. His LEFT HAND adjusts his suit lapel casually — he doesn't even look at the forming weapon. Pure nonchalance.
+POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT HAND holds a sleek GOLD-ACCENTED SNIPER RIFLE resting on his RIGHT SHOULDER — barrel pointing up and behind him. His LEFT HAND adjusts his suit lapel casually. Weight on one hip, confident lean. ATTITUDE: luxurious authority — the weapon is a fashion accessory, not a tool of war.
 
-EFFECTS: Gold (#FFD700) nanotech particles STREAM from his right hand, coalescing into the sniper shape. Gold light illuminates his right side. Metallic gold sparkles where particles converge.
+EFFECTS: Gold (#FFD700) abstract energy particles drift lazily around the weapon and his body — a subtle golden aura of wealth and power. Minimal, refined.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
         name: "headhunter",
-        prompt: `POSE — "HEADHUNTER" (Gold Pistol — Twirling):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — spinning a gold pistol on one finger.
+        prompt: `POSE — "HEADHUNTER" (Gold Pistol — Casual Hold):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — holding his signature gold pistol with extreme nonchalance.
 
-POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT HAND holds a gold PISTOL — spinning it on his trigger finger in a casual twirl. The pistol is mid-rotation, a blur of gold. His LEFT HAND is in his suit pocket. Weight on one hip, completely relaxed. A gunslinger who makes it look like art.
+POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT HAND holds his HEADHUNTER gold pistol (see ref image) raised beside his head, barrel pointing UP. His LEFT HAND in his suit pocket. Weight shifted to one hip. ATTITUDE: extreme nonchalance — he treats a lethal weapon like jewelry.
 
-EFFECTS: The gold (#FFD700) pistol GLEAMS as it spins. Faint gold trail from the rotation. Minimal effects — the style IS the statement.
+EFFECTS: Gold (#FFD700) abstract glow emanates from the pistol. Faint gold particles float around his hand. Ultra-clean, minimal.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
         name: "rendezvous",
-        prompt: `POSE — "RENDEZVOUS" (Teleport — Adjusting Cufflinks):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — adjusting suit cufflinks with a teleport anchor glowing.
+        prompt: `POSE — "RENDEZVOUS" (Finger Snap):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — snapping fingers with pure style, no weapons.
 
-POSE: Chamber faces the viewer STRAIGHT-ON. BOTH HANDS at chest height — he adjusts his RIGHT CUFFLINK with his LEFT hand, a meticulous grooming gesture. Head slightly tilted, looking at the viewer with supreme confidence. Impeccable posture. At his feet, a small TELEPORT ANCHOR glows gold.
+POSE: Chamber faces the viewer in slight 3/4 turn. His RIGHT HAND raised at head height — fingers in a SNAP GESTURE, thumb and middle finger just touching. His LEFT HAND at his side, relaxed. One foot slightly lifted. ATTITUDE: pure style — effortless superiority in a single gesture.
 
-EFFECTS: The teleport anchor at his feet GLOWS gold (#FFD700) with a circular pattern. Faint gold energy lines from the anchor. His cufflinks have tiny gold gleams. Ultra-minimal effects.
+EFFECTS: Gold (#FFD700) abstract energy SPARKS from his snapping fingers. Faint gold glow pools at his feet. A subtle golden shimmer wraps around his entire body — wealth made visible.
 
 NO weapons.
 
@@ -1170,12 +1171,12 @@ Match the reference images' appearance and rendering style EXACTLY.`,
     poses: [
       {
         name: "neural-theft",
-        prompt: `POSE — "NEURAL THEFT" (Ultimate — Hat Channeling Data):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — hat glowing with cyber data streaming.
+        prompt: `POSE — "NEURAL THEFT" (Ultimate — Stealing Intelligence):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — dramatic hat-tip with data theft.
 
-POSE: Cypher faces the viewer STRAIGHT-ON. His RIGHT HAND touches the BRIM of his signature white hat — tilting it slightly. Cyan digital DATA STREAMS flow upward from the hat like a fountain of information. His LEFT ARM at his side. Standing tall, coat flowing.
+POSE: Cypher faces the viewer in slight 3/4 turn. His RIGHT HAND TIPS his white hat forward — a dramatic greeting gesture, like a gentleman thief revealing he's already stolen everything. His LEFT HAND is open at his side, palm up, with small cyan holographic data fragments floating above it. Relaxed confident stance, one foot slightly forward. His long coat drapes elegantly.
 
-EFFECTS: Electric cyan (#24FBFF) data streams RISE from his hat — holographic code fragments, digital lines, information flowing upward. His mask eyes glow intensely cyan. The hat brim has a bright cyan glow.
+EFFECTS: Subtle cyan (#24FBFF) data particles drift from under his tilted hat brim. Small holographic fragments float above his left palm. His mask eyes glow cyan. Restrained, mysterious effect.
 
 NO weapons.
 
@@ -1195,15 +1196,15 @@ NO weapons.
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "spycam",
-        prompt: `POSE — "SPYCAM" (Surveillance — Camera on Shoulder):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — small spy camera perched on his shoulder.
+        name: "ghost-pistol",
+        prompt: `POSE — "GHOST" (Armed — Holding Ghost Pistol):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — holding a pistol in a stylish pose.
 
-POSE: Cypher faces the viewer in slight 3/4 turn. A small SPYCAM device sits on his RIGHT SHOULDER — a compact mechanical eye that looks toward the viewer. Cypher's RIGHT HAND reaches across to touch the camera affectionately. His LEFT HAND holds the brim of his hat. He looks at the viewer through his glowing mask — "I see everything."
+POSE: Cypher faces the viewer STRAIGHT-ON. His RIGHT HAND holds a GHOST PISTOL (Valorant sidearm — a sleek, angular semi-automatic pistol) raised beside his head, barrel pointing UP. His LEFT HAND adjusts the brim of his hat. He tilts his head slightly — mysterious and dangerous. Wide stance, coat flowing. The gun is held casually, not aiming — he's posing with it.
 
-EFFECTS: The spycam GLOWS cyan (#24FBFF) — its lens emits a faint scanning beam. Digital data fragments float near the camera. His mask eyes glow.
+EFFECTS: His mask eyes glow cyan (#24FBFF). Faint cyan digital lines trace along the pistol's barrel. Minimal effects — the silhouette of hat + gun is the statement.
 
-NO weapons.
+The Ghost pistol is ANGULAR, SLEEK, modern tactical design — NOT a revolver.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1211,20 +1212,19 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   },
 
   deadlock: {
-    characterDesc: `FIRST IMAGE: Full-body reference for "Deadlock" — match her appearance EXACTLY. She is a strong Norwegian woman with a prosthetic arm.
-SECOND IMAGE: Face close-up reference.
-Match the reference images' appearance and rendering style EXACTLY.`,
-    palette: `Deadlock's palette: dark red, metal gray, black, nanowire gold. The base outfit uses DARK RED/MAROON and BLACK tactical gear. Ability effects use STEEL BLUE (#425495) — cool blue-grey metallic nanowire energy. Her prosthetic arm has teal energy. The contrast is dark red outfit vs cold blue-grey nanowire effects.`,
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+SECOND IMAGE: Face close-up — match EXACTLY.`,
+    palette: `Ability effects: steel blue (#425495) abstract energy, teal prosthetic glow at arm joints.`,
     expression: `Expression is FIERCE and UNBREAKABLE — a Norwegian warrior who will not be moved. Hard determined eyes, set jaw, no mercy. She IS the wall. NOT smiling. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "annihilation",
-        prompt: `POSE — "ANNIHILATION" (Ultimate — Nanowire Net Deployment):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — both hands deploying nanowire threads outward.
+        prompt: `POSE — "ANNIHILATION" (Arms Forward — Energy Focus):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — both arms gathered forward with concentrated energy radiating from her hands.
 
-POSE: Deadlock faces the viewer STRAIGHT-ON. BOTH ARMS extended forward — golden NANOWIRE THREADS shoot from her fingertips, spreading outward in a web/net pattern. Her prosthetic arm GLOWS with teal energy at the joints. Aggressive forward lean, feet planted wide. She is casting her trap.
+POSE: Deadlock faces the viewer STRAIGHT-ON. BOTH ARMS gathered forward at chest height, hands close together with fingers spread — concentrated focus. Aggressive forward lean, wide power stance, feet planted. ATTITUDE: a defender channeling raw strength — total concentration.
 
-EFFECTS: Golden nanowires (#C5A03F) extend from her fingers in a spreading web pattern. Steel blue (#425495) energy traces along the wires. Her prosthetic arm joints glow teal.
+EFFECTS: Steel blue (#425495) abstract energy RADIATES from both hands — no wires, no net, just raw glowing energy emanating outward. Teal glow pulses at her prosthetic arm joints. The energy is formless, intense, building.
 
 NO weapons.
 
@@ -1232,12 +1232,12 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       },
       {
         name: "barrier-mesh",
-        prompt: `POSE — "BARRIER MESH" (Shield — One Hand Raised):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — one hand raised creating a barrier.
+        prompt: `POSE — "BARRIER MESH" (Arms Crossed — Defensive Aura):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — arms crossed with abstract energy wrapping her body.
 
-POSE: Deadlock faces the viewer STRAIGHT-ON. Her RIGHT PROSTHETIC ARM is raised, palm facing outward — a translucent STEEL-BLUE BARRIER forms in front of her palm. Her LEFT HAND is clenched in a fist at her side. Standing strong, immovable. The barrier is her will made physical.
+POSE: Deadlock faces the viewer STRAIGHT-ON. ARMS CROSSED over her chest — a defender's resolute stance. Wide planted stance. ATTITUDE: no weapon needed — her sheer physical presence and her body IS the threat. Unarmed, unbreakable.
 
-EFFECTS: Steel blue (#425495) translucent barrier energy emanates from her raised palm — a geometric grid pattern. Her prosthetic arm joints glow teal. Faint nanowire threads connect her hand to the barrier.
+EFFECTS: Steel blue (#425495) abstract energy aura WRAPS around her entire body — clinging to her torso and arms like a protective field. Teal glow at prosthetic arm joints. The energy is formless, ambient, ever-present.
 
 NO weapons.
 
@@ -1245,12 +1245,12 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       },
       {
         name: "sonic-sensor",
-        prompt: `POSE — "SONIC SENSOR" (Detection — Holding Sensor Device):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — examining a sensor device in her hand.
+        prompt: `POSE — "SONIC SENSOR" (Walking Forward — Energy Trail):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — walking forward with determined stride and energy trailing her steps.
 
-POSE: Deadlock faces the viewer in slight 3/4 turn. Her LEFT (prosthetic) HAND holds a small SONIC SENSOR DEVICE at eye level — examining it. The device pulses with steel-blue energy. Her RIGHT HAND at her hip. Professional, focused — setting her trap.
+POSE: Deadlock WALKS FORWARD toward the viewer — mid-stride, determined march. RIGHT fist clenched at her side. LEFT arm swings naturally. Fierce forward momentum. ATTITUDE: a guard on patrol — the wall that moves toward you. Unyielding.
 
-EFFECTS: The sensor device GLOWS steel blue (#425495) with concentric sonic pulse rings radiating from it. Her prosthetic arm's teal joints glow. Faint detection lines extend from the device.
+EFFECTS: Steel blue (#425495) abstract energy spreads faintly along the ground from her footsteps — formless, rippling outward like a pulse. Teal glow at prosthetic arm joints.
 
 NO weapons.
 
@@ -1260,44 +1260,45 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   },
 
   killjoy: {
-    characterDesc: `FIRST IMAGE: Full-body reference for "Killjoy" — match her appearance EXACTLY. She wears a signature YELLOW JACKET and round glasses.
-SECOND IMAGE: Face close-up reference.
-Match the reference images' appearance and rendering style EXACTLY.`,
-    palette: `Killjoy's palette: yellow, black, gray. The base outfit features her iconic YELLOW JACKET and round glasses. Ability effects use GOLDEN YELLOW (#FADC31) — warm tech energy matching her jacket. Her turret and bots glow yellow. She's a genius engineer. The contrast is bright yellow personality vs precision tech.`,
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+SECOND IMAGE: Face close-up — match EXACTLY.`,
+    palette: `Ability effects: golden yellow (#FADC31) tech energy, pink/magenta (#FF4893) secondary accent.`,
     expression: `Expression is CONFIDENT and CLEVER — a genius engineer who knows exactly what she built. Slight knowing smirk. She can allow a SUBTLE smile — Killjoy is one of the more personable agents. Adjusting glasses is her signature gesture.`,
     poses: [
       {
         name: "lockdown",
-        prompt: `POSE — "LOCKDOWN" (Ultimate — Triumph Over Device):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — standing over a lockdown device triumphantly.
+        prompt: `POSE — "LOCKDOWN" (Vandal Aim — Combat Engineer):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — aiming a Vandal rifle with energy rising from below.
 
-POSE: Killjoy faces the viewer STRAIGHT-ON. Her RIGHT HAND pushes her GLASSES up on her nose with one finger — a signature genius gesture. Her LEFT HAND is on her hip. At her feet, a LOCKDOWN DEVICE pulses with expanding yellow energy rings. Confident stance — "all according to plan."
+POSE: Killjoy faces the viewer in slight 3/4 turn. BOTH HANDS grip a VANDAL RIFLE — she aims it forward, shouldered properly. Her expression is focused through her glasses. ATTITUDE: the combat engineer — brains AND firepower combined.
 
-EFFECTS: The lockdown device at her feet GLOWS golden yellow (#FADC31) with concentric energy rings expanding outward. Yellow light illuminates her from below.
+EFFECTS: Pink/magenta (#FF4893) abstract energy aura rises from the ground around her feet — formless, ambient, radiating outward. Her glasses reflect the pink glow. No devices, no beams — just pure energy rising.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "turret",
+        prompt: `POSE — "TURRET" (Glasses Adjust — Genius Confidence):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — adjusting glasses in a 3/4 turn with confident energy.
+
+POSE: Killjoy faces the viewer in a 3/4 TURN — looking back over her shoulder. Her RIGHT HAND pushes her glasses up the bridge of her nose. Her LEFT HAND on her hip. ATTITUDE: the genius who already solved the problem before you even understood it — effortless intellectual superiority.
+
+EFFECTS: Golden yellow (#FADC31) abstract energy glow radiates softly around her body — a warm ambient aura of brilliance. Her glasses catch and reflect the golden light.
 
 NO weapons.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "turret",
-        prompt: `POSE — "TURRET" (Engineer — With Her Creation):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — standing beside her turret, presenting it proudly.
-
-POSE: Killjoy faces the viewer in slight 3/4 turn. At her RIGHT SIDE, a small TURRET sits on the ground — a compact mechanical device with a scanning laser. Her RIGHT HAND gestures toward the turret like a presenter — "look what I made." Her LEFT HAND holds a wrench/tool. Proud engineer energy.
-
-EFFECTS: The turret GLOWS golden yellow (#FADC31) — its scanning laser emits a thin yellow beam. Faint yellow tech particles around the turret. Her glasses reflect the yellow glow.
-
-FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
-      },
-      {
         name: "nanoswarm",
-        prompt: `POSE — "NANOSWARM" (Grenade — Tossing Casually):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — tossing a nano grenade in the air and catching it.
+        prompt: `POSE — "NANOSWARM" (Hands On Hips — Playful Confidence):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — both hands on hips with energy radiating around her.
 
-POSE: Killjoy faces the viewer STRAIGHT-ON. Her RIGHT HAND is raised — tossing a small NANOSWARM GRENADE upward, catching it mid-air. The grenade hovers at the top of its arc. Her LEFT HAND adjusts her glasses. Playful confidence — casually juggling a devastating weapon.
+POSE: Killjoy faces the viewer STRAIGHT-ON. BOTH HANDS on her hips — wide confident stance. She tilts her head slightly with a knowing smirk. ATTITUDE: playful self-assurance and mischief — she knows something you don't, and she's enjoying it.
 
-EFFECTS: The grenade GLOWS golden yellow (#FADC31) at its core. Faint yellow nano-particles leak from it mid-air. Subtle yellow glow on her face from the toss.
+EFFECTS: Golden yellow (#FADC31) abstract energy radiates from her body in all directions — a warm, buzzing aura of genius-level confidence. Faint yellow glow wraps around her shoulders and arms.
+
+NO weapons.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1356,6 +1357,7 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   vyse: {
     characterDesc: `FIRST IMAGE: Full-body reference for "Vyse" — match her appearance EXACTLY. She controls metal and magnetic forces.
 SECOND IMAGE: Face close-up reference.
+CRITICAL OUTFIT DETAIL: She has metallic silver armor on BOTH shoulders — symmetrical shoulder plates. Her upper body is WHITE/SILVER armored, lower body is DARK/BLACK. Dark cables hang from her helmet. Match BOTH shoulder armor pieces exactly.
 Match the reference images' appearance and rendering style EXACTLY.`,
     palette: `Vyse's palette: deep purple, metallic silver, black. The base outfit uses DARK/BLACK with metallic accents. Ability effects use DEEP PURPLE/VIOLET (#6153B7) as primary and MAGENTA (#F047FE) as secondary accent. Her abilities manifest as liquid metal with purple energy. The contrast is dark metallic outfit vs vivid purple magnetic energy.`,
     expression: `Expression is SHARP and DANGEROUS — beauty with an edge. Calculating eyes, slight tilt of head. She controls metal, and she knows how devastating that is. NOT smiling. Valorant expressions are ALWAYS understated.`,
@@ -1378,9 +1380,13 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
         prompt: `POSE — "ARC ROSE" (Magnetic Rose — Floating Between Hands):
 SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — a metal rose floating between her hands.
 
-POSE: Vyse faces the viewer STRAIGHT-ON. BOTH HANDS raised at chest height, facing each other with a gap — a METAL ROSE made of magnetic silver shards FLOATS between her palms, slowly rotating. She gazes at the rose with dark fascination. The rose is deadly beautiful — sharp metal petals that could shred anything.
+POSE: Vyse faces the viewer STRAIGHT-ON. Her BOTH ARMS hang relaxed at her sides — palms slightly open, fingers spread. She stands perfectly still with quiet menace. Sharp metal SHARDS float around her body — orbiting slowly at various heights. Wide stable stance.
 
-EFFECTS: The metal rose GLOWS magenta-purple (#F047FE) at its core — magnetic energy holds the sharp metal petals in place. Purple (#6153B7) magnetic field lines visible between her hands and the rose. Metal shards orbit slowly.
+Her face is COVERED by her HELMET/MASK with glowing orange eyes. She does NOT have a human face — her mask IS her face. The helmet has two horn-like protrusions on top.
+
+EFFECTS: 8-12 sharp metallic silver shards ORBIT her body in a slow spiral — at chest, hip, and knee level. Deep purple (#6153B7) magnetic energy threads connect the shards. Faint magenta (#F047FE) glow at tips.
+
+DO NOT alter her outfit. Keep BOTH shoulder armor plates visible and symmetrical.
 
 NO weapons.
 
@@ -1391,9 +1397,11 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
         prompt: `POSE — "SHEAR" (Magnetic Field — Metal Shards Orbiting):
 SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — metal shards orbiting her body like a magnetic field.
 
-POSE: Vyse faces the viewer in slight 3/4 turn. Her RIGHT HAND is raised, fingers curled — CONTROLLING dozens of small metal SHARDS that ORBIT her body in a spiral pattern, like a personal magnetic storm. Her LEFT ARM at her side. She walks forward slowly, the metal storm moving with her.
+POSE: Vyse WALKS FORWARD toward the viewer — mid-stride, confident and predatory. Her RIGHT ARM swings naturally at her side. Her LEFT ARM swings forward in walking motion. Her coat/outfit flows with the movement. Metal shards TRAIL BEHIND her — pulled along by her magnetic field as she walks. She looks straight at the viewer through her glowing mask.
 
-EFFECTS: Sharp metallic shards ORBIT her body in spiral paths — controlled by deep purple (#6153B7) magnetic energy. Purple magnetic field lines trace the orbital paths. Faint magenta sparks where shards pass close to each other.
+EFFECTS: 5-8 metallic silver shards TRAIL behind her body, pulled along by magnetic force — like metal filings following a magnet. Faint deep purple (#6153B7) magnetic trails connect her body to the shards. Subtle magenta (#F047FE) at shard edges.
+
+DO NOT alter her outfit. Keep BOTH shoulder armor plates visible and symmetrical.
 
 NO weapons.
 
@@ -1403,22 +1411,20 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   },
 
   veto: {
-    characterDesc: `FIRST IMAGE: Full-body reference for "Veto" — match his appearance EXACTLY. He is a Senegalese mutant with bio-energy powers.
-SECOND IMAGE: Face close-up reference.
-Match the reference images' appearance and rendering style EXACTLY.`,
-    palette: `Veto's palette: teal, dark cyan, black, bio-green accents. The base outfit uses DARK/BLACK tactical gear. Ability effects use TEAL/DARK CYAN (#1A5D65) as primary — mutation energy. His Evolution ultimate makes his skin glow BRIGHT BLUE with dark markings. Secondary accents use luminous green (#39FF14) for bioluminescent details. The contrast is dark body vs vivid teal-blue mutation energy.`,
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+SECOND IMAGE: Face close-up — match EXACTLY.
+Additional ref shows Evolution ultimate form — match that transformation EXACTLY.`,
+    palette: `Ability effects: teal-cyan (#1A5D65) bio-mutation energy, luminous green (#39FF14) bioluminescent accents.`,
     expression: `Expression is INTENSE and FOCUSED — a man grappling with the mutation inside him. Hard stare, tight jaw. The mutation is both his weapon and his burden. NOT smiling. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "evolution",
-        prompt: `POSE — "EVOLUTION" (Ultimate — Mutant Transformation):
-SKELETON CHANGE: The reference shows a normal form. This is COMPLETELY DIFFERENT — fully mutated/transformed state.
+        prompt: `POSE — "EVOLUTION" (Ultimate — Transformed State):
+SKELETON CHANGE: The reference shows normal form. This is COMPLETELY DIFFERENT — fully transformed ultimate state as shown in official art reference. MATCH THE OFFICIAL ART REFERENCE.
 
-TRANSFORMATION: Veto has activated his ultimate Evolution. His SKIN GLOWS BRIGHT BLUE with dark markings/veins across his body. His eyes glow YELLOW. His mask has blue spiral patterns. His upper body is partially BARE/MUSCULAR, showing the glowing blue mutated skin. He is larger, more imposing in this form.
+POSE: Veto in his EVOLUTION ultimate form — MATCH THE OFFICIAL ART REFERENCE IMAGE EXACTLY. Both arms lowered at his sides, body relaxed but radiating overwhelming power. His transformed body itself IS the effect — no exaggerated gestures needed. Wide planted stance. ATTITUDE: overwhelming presence — a being who has transcended his human limits.
 
-POSE: Veto faces the viewer STRAIGHT-ON. BOTH ARMS slightly raised, fists clenched — his mutated body RADIATES teal-blue energy. Wide powerful stance. The transformation itself IS the spectacle.
-
-EFFECTS: Bright teal-blue (#1A5D65) energy radiates from his glowing skin. Dark mutation veins/markings trace across his body. Yellow eyes glow intensely. Green (#39FF14) bioluminescent accents on his gear pulse.
+EFFECTS: Teal-cyan (#1A5D65) abstract energy RADIATES from his entire transformed body — formless, rising from his skin like heat haze. The energy is part of him, not separate. YELLOW glowing eyes pierce through. Luminous green (#39FF14) bioluminescent accents pulse faintly at his extremities.
 
 NO weapons.
 
@@ -1426,12 +1432,12 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       },
       {
         name: "interceptor",
-        prompt: `POSE — "INTERCEPTOR" (Nullify — Directing Energy Orb):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — directing a teal energy orb with one hand.
+        prompt: `POSE — "INTERCEPTOR" (Arms Crossed — Cold Vigilance):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — arms crossed with teal energy wrapping his body.
 
-POSE: Veto faces the viewer STRAIGHT-ON. His RIGHT HAND is raised, palm forward — a teal ENERGY ORB hovers in front of his palm, ready to deploy. His LEFT ARM at his side, fist clenched. Intense focus — sending out his nullifying interceptor. Athletic stance.
+POSE: Veto faces the viewer STRAIGHT-ON. ARMS CROSSED over his chest — cold, calculated, watchful. Wide planted stance. ATTITUDE: a sentinel standing guard — he sees everything and nullifies threats before they arrive. Pure composure.
 
-EFFECTS: The interceptor orb GLOWS teal (#1A5D65) with darker energy swirling inside. Teal energy tendrils connect the orb to his palm. Faint green (#39FF14) bioluminescent glow on his arm.
+EFFECTS: Teal-cyan (#1A5D65) abstract energy aura WRAPS around his body — clinging to his arms and torso like a second skin. Faint luminous green (#39FF14) accents flicker at the energy edges. The aura is ambient, ever-present, formless.
 
 NO weapons.
 
@@ -1439,12 +1445,12 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       },
       {
         name: "chokehold",
-        prompt: `POSE — "CHOKEHOLD" (Bio Energy — Viscous Extension):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — teal viscous energy extending from one hand.
+        prompt: `POSE — "CHOKEHOLD" (Emerge Through Bio-Energy):
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — walking forward through viscous bio-energy that clings to his body.
 
-POSE: Veto faces the viewer in slight 3/4 turn. His RIGHT ARM extends FORWARD — teal VISCOUS ENERGY extends from his hand like a living tendril, thick and organic. His LEFT HAND touches his chest, bracing himself. The bio-energy is alive, reaching toward the viewer. He channels his mutation outward.
+POSE: Veto faces the viewer in slight 3/4 turn. He WALKS FORWARD — one arm reaches forward pushing through, the other pulls free behind him. The teal bio-energy clings to his body, stretching as he pushes through it. ATTITUDE: cold, unflinching composure — the mutation does not control him, he controls it.
 
-EFFECTS: Teal (#1A5D65) viscous/organic energy EXTENDS from his right hand — thick, living, almost liquid. The tendril has darker streaks inside. Green (#39FF14) bioluminescent dots along the tendril. The energy looks ORGANIC, not mechanical.
+EFFECTS: Teal (#1A5D65) viscous abstract bio-energy clings to and stretches across his body — thick, living, organic. Luminous green (#39FF14) bioluminescent dots glow where the energy contacts his skin. The energy is formless, sticky, alive — wrapping and pulling at him as he strides forward.
 
 NO weapons.
 

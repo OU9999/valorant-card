@@ -1,8 +1,8 @@
 # Valorant Agent Pose Generation — Status
 
-> 최종 업데이트: 2026-03-24
+> 최종 업데이트: 2026-03-24 (세션 2)
 
-## 전체 현황 (43/84 저장)
+## 전체 현황 (67/84 저장)
 
 | 요원 | Pose 1 | Pose 2 | Pose 3 | 상태 |
 |------|--------|--------|--------|------|
@@ -25,29 +25,28 @@
 | KAY/O | ✅ null-cmd | ✅ zero-point | ✅ fragment | **3/3 완료** |
 | Skye | ✅ seekers | ✅ guiding-light | ✅ trailblazer | **3/3 완료** |
 | Sova | ✅ hunters-fury | ✅ owl-drone | ✅ recon-bolt | **3/3 완료** |
-| Tejo | ❌ armageddon | ✅ guided-salvo | ❌ stealth-drone | **1/3** |
-| Gekko | ❌ thrash | ❌ dizzy | ❌ wingman | **0/3 (봇 레퍼런스 필요)** |
-| Chamber | ❌ tour-de-force | ❌ headhunter | ❌ rendezvous | **0/3 (총기 레퍼런스 필요)** |
-| Cypher | ❌ neural-theft | ✅ trapwire | ❌ spycam | **1/3** |
-| Deadlock | ❌ annihilation | ❌ barrier-mesh | ❌ sonic-sensor | **0/3 (스킬 레퍼런스 필요)** |
-| Killjoy | ❌ lockdown | ❌ turret | ❌ nanoswarm | **0/3 (스킬 레퍼런스 필요)** |
-| Sage | ✅ resurrection | ❌ barrier-orb | ✅ healing-orb | **2/3 (얼음벽 레퍼런스 필요)** |
-| Vyse | ❌ steel-garden | ❌ arc-rose | ❌ shear | **0/3 (앞모습 레퍼런스 필요)** |
-| Veto | ❌ evolution | ❌ interceptor | ❌ chokehold | **0/3 (궁극기 레퍼런스 필요)** |
+| Vyse | ✅ steel-garden | ✅ arc-rose | ✅ shear | **3/3 완료** ⭐신규 |
+| Tejo | ✅ armageddon | ✅ guided-salvo | ✅ stealth-drone | **3/3 완료** ⭐신규 |
+| Cypher | ✅ neural-theft | ✅ trapwire | ✅ ghost-pistol | **3/3 완료** ⭐신규 |
+| Sage | ✅ resurrection | ✅ healing-orb | ✅ barrier-orb | **3/3 완료** ⭐신규 |
+| Gekko | ❌ thrash | ✅ dizzy | ❌ wingman | **1/3** |
+| Chamber | ❌ tour-de-force | ❌ headhunter | ❌ rendezvous | **0/3** |
+| Deadlock | ❌ annihilation | ❌ barrier-mesh | ❌ sonic-sensor | **0/3** |
+| Killjoy | ❌ lockdown | ❌ turret | ❌ nanoswarm | **0/3** |
+| Veto | ❌ evolution | ❌ interceptor | ❌ chokehold | **0/3** |
 
-## 다음 작업 — 레퍼런스 이미지 수집 필요
+## 남은 5명 — 전략 재검토 필요
 
-| 요원 | 필요한 레퍼런스 | 우선순위 |
-|------|-------------|---------|
-| Gekko | Thrash/Dizzy/Wingman/Mosh 실제 인게임 모습 | 높음 |
-| Vyse | 앞모습 (현재 ref가 뒷모습) → vyse.avif 사용 | 높음 |
-| Chamber | Headhunter 금 권총, Tour de Force 금 스나이퍼 실제 모습 | 높음 |
-| Deadlock | 나노와이어, 배리어 메시, 소닉센서 스킬 이펙트 | 중간 |
-| Killjoy | 터렛, 록다운 장치, 나노스웜 실제 모습 | 중간 |
-| Sage | Barrier Orb (옥빛 얼음벽) 실제 인게임 모습 | 중간 |
-| Veto | Evolution 궁극기 변신 모습 | 중간 |
-| Tejo | 더 역동적 포즈 필요 (골격 차별화) | 낮음 |
-| Cypher | 재생성만 필요 (팔3개/확대 수정) | 낮음 |
+스킬 디바이스/크리처 접근 실패 → 추상 컬러 접근도 아직 불합격.
+다음 세션에서 추가 전략 검토 필요.
+
+| 요원 | 시도한 접근 | 결과 |
+|------|----------|------|
+| Deadlock | 스킬 ref → 추상 컬러 | 불합격 |
+| Chamber | 스킬 ref → 추상 컬러 (headhunter ref 유지) | 불합격 |
+| Gekko | 크리처 ref → 추상 컬러 | dizzy만 합격 |
+| Killjoy | 스킬 ref → 추상 컬러 | 불합격 |
+| Veto | 궁극기 ref → 추상 컬러 (evolution ref 유지) | 불합격 |
 
 ## 합격 포즈 저장 위치
 `nano-banana-cli/new-pose/{agent}/{agent}-pose{N}.png`
