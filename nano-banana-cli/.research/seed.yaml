@@ -1,0 +1,108 @@
+# ═══════════════════════════════════════════════════════════════
+# Valorant Agent Pose Generation — Seed Specification
+# ═══════════════════════════════════════════════════════════════
+
+goal: >
+  발로란트 전체 28명 요원의 포즈 3종씩 생성 완료.
+  진행중 3명(Yoru/Iso/Waylay) 마무리 → Controllers(5명) → Initiators(7명) → Sentinels(7명) 순서로 역할군별 배치 진행.
+
+constraints:
+  - 파이프라인: nano-banana-cli/script/generate-agent-poses.ts (Gemini 3.1 Flash Image Preview)
+  - 레퍼런스 이미지: fullportrait.png + displayicon.png 필수 입력 (전 요원 준비 완료)
+  - characterDesc 최소화 — 외모 과묘사 금지, 레퍼런스 이미지가 외모 전달
+  - 변신/궁극기 상태는 포즈 프롬프트 내 TRANSFORMATION 블록에서 강조
+  - palette, expression은 기존 방식 유지 (요원별 고유 색상/분위기)
+  - 포즈 설계는 agent-poses.md 기반 (15라운드 연구 검증 완료)
+  - SKELETON CHANGE 명시 필수 — 매 포즈에 기본 골격과의 차이 기술
+  - 이펙트는 몸에 밀착/감싸기 (분리된 투사체 지양)
+  - 촌스러운 포즈 금지 — 캐릭터에 안 맞는 범용 포즈 즉시 폐기
+  - 발로란트 아트 스타일 강제 — planar shading, hard edge, 제한 팔레트
+  - 표정 절제 — 냉정한 전투 준비 무드 ("NOT smiling" 명시)
+  - aspectRatio 1:1, 전신 head-to-toe, 85% vertical, 흰 배경
+
+acceptance_criteria:
+  - 요원당 포즈 3종 합격 이미지가 new-pose/{agent}/ 에 저장됨
+  - 각 포즈가 캐릭터 고유 스킬/능력을 반영함 (범용 포즈 아님)
+  - 골격 앵커링 없음 — 레퍼런스 이미지의 기본 자세와 명확히 다른 포즈
+  - 발로란트 아트 스타일 충족 (planar shading, hard edge, NO outlines)
+  - 이펙트가 몸에 밀착되어 자연스러움
+  - 3포즈 간 구도 다양성 확보 (정면 3연속 금지)
+  - agent-config.ts에 해당 요원 config 등록 완료
+  - status.md 진행 상황 업데이트
+
+ontology_schema:
+  name: ValorantPoseGeneration
+  description: 발로란트 요원별 포즈 생성 파이프라인의 도메인 모델
+  fields:
+    - name: agent
+      type: string
+      description: 요원 이름 (소문자, e.g. "astra")
+    - name: role
+      type: string
+      description: "역할군: duelist | controller | initiator | sentinel"
+    - name: poses
+      type: array
+      description: "3종 포즈 배열 [{name, prompt, status}]"
+    - name: characterDesc
+      type: string
+      description: 간략 캐릭터 설명 (레퍼런스 이미지 보조)
+    - name: palette
+      type: string
+      description: 요원 고유 색상 팔레트
+    - name: expression
+      type: string
+      description: 표정/분위기 지시
+    - name: status
+      type: string
+      description: "진행 상태: pending | in_progress | completed"
+
+evaluation_principles:
+  - name: character_identity
+    description: 포즈가 캐릭터 고유 스킬/성격을 반영하는가
+    weight: 0.30
+  - name: skeleton_independence
+    description: 레퍼런스 기본 골격에서 벗어난 독립적 포즈인가
+    weight: 0.25
+  - name: art_style_fidelity
+    description: 발로란트 아트 스타일(planar shading, hard edge) 충족하는가
+    weight: 0.20
+  - name: effect_integration
+    description: 이펙트가 몸에 밀착되어 자연스러운가
+    weight: 0.15
+  - name: pose_variety
+    description: 3포즈 간 구도/팔배치 다양성이 확보되었는가
+    weight: 0.10
+
+exit_conditions:
+  - name: all_agents_complete
+    description: 전체 28명 × 3포즈 = 84개 합격 이미지 저장
+    criteria: new-pose/ 디렉토리에 28개 하위 폴더, 각 3개 PNG
+  - name: batch_complete
+    description: 현재 배치(역할군)의 모든 요원이 3/3 완료
+    criteria: 해당 역할군 전원 status "completed"
+  - name: quality_gate_fail
+    description: 동일 포즈 5회 연속 불합격 시 포즈 설계 교체
+    criteria: 재생성 5회 초과 시 agent-poses.md에서 대체 포즈로 변경
+
+metadata:
+  version: "1.0.0"
+  created: "2026-03-23"
+  ambiguity_score: 0.10
+  source: "15라운드 연구 + 소크라테스 인터뷰"
+  execution_order:
+    - phase: 0
+      name: "진행중 마무리"
+      agents: [yoru, iso, waylay]
+      remaining_poses: 6
+    - phase: 1
+      name: "Controllers"
+      agents: [astra, brimstone, viper, harbor, clove]
+      total_poses: 15
+    - phase: 2
+      name: "Initiators"
+      agents: [breach, fade, gekko, kayo, skye, sova, tejo]
+      total_poses: 21
+    - phase: 3
+      name: "Sentinels"
+      agents: [chamber, cypher, deadlock, killjoy, sage, vyse, veto]
+      total_poses: 21

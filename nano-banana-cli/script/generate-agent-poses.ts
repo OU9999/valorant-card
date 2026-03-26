@@ -119,6 +119,23 @@ const generatePose = async (
     });
   }
 
+  // 추가 레퍼런스 이미지 (reference-*.{png,jpg} 패턴)
+  const assetFiles = fs.readdirSync(assetDir);
+  for (const file of assetFiles) {
+    if (/^reference-.*\.(png|jpg|jpeg)$/i.test(file)) {
+      const refPath = path.join(assetDir, file);
+      const ext = path.extname(file).toLowerCase();
+      const mimeType = ext === ".png" ? "image/png" : "image/jpeg";
+      contents.push({
+        inlineData: {
+          mimeType,
+          data: getImageBase64(refPath),
+        },
+      });
+      console.log(`  📎 추가 레퍼런스: ${file}`);
+    }
+  }
+
   contents.push({ text: prompt });
 
   const response = await ai.models.generateContent({
@@ -189,6 +206,11 @@ const failed = results
 
 if (failed.length > 0) {
   console.error(`\n❌ 실패한 요원: ${failed.join(", ")}`);
+  for (const [i, r] of results.entries()) {
+    if (r.status === "rejected") {
+      console.error(`  [${agentNames[i]}] reason:`, r.reason);
+    }
+  }
 }
 
 const succeeded = results.filter((r) => r.status === "fulfilled").length;
