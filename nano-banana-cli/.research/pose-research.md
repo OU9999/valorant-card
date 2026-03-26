@@ -4,6 +4,47 @@
 
 ## Analysis (Round 1~16+ 누적)
 
+### ⭐⭐⭐⭐ 세션 3 — "핵심만 남기기" 전략 (2026-03-26)
+
+**상태**: 프롬프트 재작성 완료, API 쿼타 초과로 미검증 (~2026-03-28 복구 예상)
+
+#### 핵심 발견: "방향 있는 에너지"만으로는 부족
+세션 2에서 "방향 없는 아우라"가 문제라고 진단했지만, 방향을 추가해도 **기하학 형태 설명**이 남아있으면 여전히 실패.
+
+합격/불합격 EFFECTS 블록 단어 수 비교:
+- 합격 (Sage/Cypher/Vyse): 평균 **~15단어**
+- 불합격 (5명): 평균 **~45단어** (방향 있어도!)
+
+차이점은 **기하학 형태 묘사 유무**:
+- ❌ "V-SHAPED CONE narrows at palms, WIDENS outward" — 형태+방향+크기
+- ❌ "4-5 distinct vertical GRID LINES with horizontal cross-bars" — 개수+형태+구조
+- ❌ "HEXAGONAL SHAPES in RING formation orbiting at WAIST HEIGHT" — 형태+배열+위치
+- ✅ "jade energy streams downward" — 색상+동사+방향만
+- ✅ "cyan tripwire between fingers" — 색상+물체+위치만
+
+#### 적용한 공식
+이펙트 = **색상(hex) + 동사 + 방향** (기하학 형태 설명 전면 삭제)
+
+#### 아이코닉 제스처 부여
+Cypher의 "모자 기울이기"를 모델로, 각 요원에 고유 시그니처 제스처 할당:
+- Gekko: 샤카(shaka/hang loose)
+- Chamber: 라펠 정리
+- Deadlock: 보철팔 머리위 주먹
+- Killjoy: 안경 밀어올리기
+- Veto: 변이팔 들어서 응시
+
+#### 포즈 이름 변경
+크리처/디바이스 연상을 제거하기 위해 일부 이름 교체:
+- Gekko: thrash → **mosh-pit** (크리처 제거)
+- Deadlock: barrier-mesh → **gravnet** (포즈 컨셉 변경)
+- Veto: interceptor → **arc** (포즈 컨셉 변경)
+
+#### 기타 수정
+- reference-evolution.webp → .png 변환 (파이프라인이 webp 미지원)
+- generate-agent-poses.ts에 rejection reason 로깅 추가
+
+---
+
 ### ⭐⭐⭐ Round 16+ 세션 2 — 소크라테스 질문기법 전략 전환
 
 **세션 2 성과**: Vyse 3/3, Tejo 3/3, Cypher 3/3, Sage 3/3 완료 (67/84)
