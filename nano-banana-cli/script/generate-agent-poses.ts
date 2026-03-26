@@ -206,6 +206,11 @@ const failed = results
 
 if (failed.length > 0) {
   console.error(`\n❌ 실패한 요원: ${failed.join(", ")}`);
+  for (const [i, r] of results.entries()) {
+    if (r.status === "rejected") {
+      console.error(`  [${agentNames[i]}] reason:`, r.reason);
+    }
+  }
 }
 
 const succeeded = results.filter((r) => r.status === "fulfilled").length;
