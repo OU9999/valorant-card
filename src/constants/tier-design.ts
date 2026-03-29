@@ -14,6 +14,7 @@ type TierName = (typeof TIER_NAMES)[number];
 
 interface TierDesign {
   ovr: string;
+  ovrGradient: string;
   position: string;
   playerName: string;
   statLabel: string;
@@ -32,6 +33,7 @@ const HIGH_TIER_NAMES: Set<TierName> = new Set([
 const TIER_DESIGNS: Record<TierName, TierDesign> = {
   Iron: {
     ovr: "text-gray-100 drop-shadow-lg",
+    ovrGradient: "from-gray-900/85 via-gray-900/50 to-transparent",
     position: "text-gray-300",
     playerName: "text-gray-100 drop-shadow-lg",
     statLabel: "text-gray-400",
@@ -42,6 +44,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Bronze: {
     ovr: "text-amber-50 drop-shadow-lg",
+    ovrGradient: "from-amber-950/85 via-amber-950/50 to-transparent",
     position: "text-amber-100/90",
     playerName: "text-amber-50 drop-shadow-lg",
     statLabel: "text-amber-200/60",
@@ -52,6 +55,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Silver: {
     ovr: "text-slate-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.3)]",
+    ovrGradient: "from-slate-200/85 via-slate-200/50 to-transparent",
     position: "text-slate-700/90",
     playerName: "text-slate-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.3)]",
     statLabel: "text-slate-600/70",
@@ -62,6 +66,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Gold: {
     ovr: "text-amber-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.2)]",
+    ovrGradient: "from-amber-100/85 via-amber-100/50 to-transparent",
     position: "text-amber-900/90",
     playerName:
       "text-amber-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.2)]",
@@ -73,6 +78,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Platinum: {
     ovr: "text-cyan-50 drop-shadow-lg",
+    ovrGradient: "from-cyan-950/85 via-cyan-950/50 to-transparent",
     position: "text-cyan-100/90",
     playerName: "text-cyan-50 drop-shadow-lg",
     statLabel: "text-cyan-200/60",
@@ -83,6 +89,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Diamond: {
     ovr: "text-fuchsia-50 drop-shadow-lg",
+    ovrGradient: "from-fuchsia-950/85 via-fuchsia-950/50 to-transparent",
     position: "text-fuchsia-100/90",
     playerName: "text-fuchsia-50 drop-shadow-lg",
     statLabel: "text-fuchsia-200/60",
@@ -93,6 +100,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Ascendant: {
     ovr: "text-emerald-50 drop-shadow-lg",
+    ovrGradient: "from-emerald-950/85 via-emerald-950/50 to-transparent",
     position: "text-emerald-100/90",
     playerName: "text-emerald-50 drop-shadow-lg",
     statLabel: "text-emerald-200/60",
@@ -103,6 +111,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Immortal: {
     ovr: "text-rose-50 drop-shadow-lg",
+    ovrGradient: "from-rose-950/85 via-rose-950/50 to-transparent",
     position: "text-rose-100/90",
     playerName: "text-rose-50 drop-shadow-lg",
     statLabel: "text-rose-200/70",
@@ -113,6 +122,7 @@ const TIER_DESIGNS: Record<TierName, TierDesign> = {
   },
   Radiant: {
     ovr: "text-amber-900 drop-shadow-[0_1px_3px_rgba(212,175,55,0.4)]",
+    ovrGradient: "from-amber-50/90 via-amber-50/55 to-transparent",
     position: "text-amber-800/90",
     playerName:
       "text-amber-900 drop-shadow-[0_1px_3px_rgba(212,175,55,0.4)]",
