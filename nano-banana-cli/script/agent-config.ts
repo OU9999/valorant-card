@@ -4,6 +4,7 @@
 interface PoseConfig {
   name: string;
   prompt: string;
+  refOnly?: boolean;
 }
 
 interface AgentConfig {
@@ -912,7 +913,9 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
         prompt: `POSE — "WINGMAN" (Confident Walk — Shaka Gesture):
 SKELETON CHANGE: The reference shows a standing pose. This is COMPLETELY DIFFERENT — walking casually forward with a relaxed shaka hand sign.
 
-POSE: Gekko WALKS forward toward the viewer — casual LA stroll, one foot ahead, relaxed swagger. His RIGHT HAND in his jacket pocket. His LEFT HAND makes a relaxed SHAKA gesture (hang loose sign) at his side. He looks at the viewer with a confident grin. ATTITUDE: self-assured youth — a kid strolling into battle like it's just another sunny day.
+ADDITIONAL REFERENCE IMAGE shows the desired composition — Gekko walking forward with a small creature sitting on his LEFT shoulder. MATCH THIS COMPOSITION. The creature on his shoulder must match its original game design — a small, round, friendly-faced blue creature (Wingman). Ensure the creature's face looks accurate and well-rendered.
+
+POSE: Gekko WALKS forward toward the viewer — casual LA stroll, one foot ahead, relaxed swagger. His LEFT HAND makes a relaxed SHAKA gesture (hang loose sign) at his side. He looks at the viewer with a confident grin. ATTITUDE: self-assured youth — a kid strolling into battle like it's just another sunny day.
 
 EFFECTS: Green (#5EBD3E) and golden (#DAA520) bioluminescent glow trails behind him from his footsteps.
 
@@ -1121,7 +1124,7 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
     characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
 SECOND IMAGE: Face close-up — match EXACTLY.
 Additional ref shows his HEADHUNTER pistol.`,
-    palette: `Ability effects: gold (#FFD700) — luxurious metallic gold energy. Gold particles and aura.`,
+    palette: `Ability effects: deep purple (#7B2FBE) and gold (#FFD700) intertwining flames — two colors that swirl together as fire-like energy. This purple-gold flame is Chamber's signature visual identity.`,
     expression: `Expression is SMUG and REFINED — a man who knows he's the best and dresses the part. Slight confident smirk, one eyebrow slightly raised. French sophistication. NOT a big smile. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
@@ -1131,7 +1134,7 @@ SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFER
 
 POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT HAND holds a sleek GOLD-ACCENTED SNIPER RIFLE resting on his RIGHT SHOULDER — barrel pointing up and behind him. His LEFT HAND adjusts his suit lapel casually. Weight on one hip, confident lean. ATTITUDE: luxurious authority — the weapon is a fashion accessory, not a tool of war.
 
-EFFECTS: Gold (#FFD700) light rises from the sniper barrel. Faint gold glow on the right side of his face.
+EFFECTS: Deep purple (#7B2FBE) and gold (#FFD700) flames swirl together around the sniper barrel and his right shoulder. The purple-gold fire illuminates the right side of his face.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1142,7 +1145,7 @@ SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFER
 
 POSE: Chamber faces the viewer STRAIGHT-ON. His RIGHT HAND holds his HEADHUNTER gold pistol (see ref image) raised beside his head, barrel pointing UP. His LEFT HAND in his suit pocket. Weight shifted to one hip. ATTITUDE: extreme nonchalance — he treats a lethal weapon like jewelry.
 
-EFFECTS: The Headhunter glows gold (#FFD700). Gold light illuminates the right side of his face from the weapon.
+EFFECTS: Deep purple (#7B2FBE) and gold (#FFD700) flames swirl together around the Headhunter pistol and his raised hand. The purple-gold fire illuminates his face from the weapon.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1153,7 +1156,7 @@ SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFER
 
 POSE: Chamber faces the viewer in slight 3/4 turn. His RIGHT HAND raised at head height — fingers in a SNAP GESTURE, thumb and middle finger just touching. His LEFT HAND at his side, relaxed. One foot slightly lifted — about to vanish. ATTITUDE: pure style — effortless superiority in a single gesture.
 
-EFFECTS: Gold (#FFD700) sparks fall downward from his snapping fingers. Faint gold glow at his feet.
+EFFECTS: Deep purple (#7B2FBE) and gold (#FFD700) flames erupt from his snapping fingers, cascading downward like luxurious sparks. Purple-gold fire around his raised hand.
 
 NO weapons.
 
@@ -1212,47 +1215,48 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
   },
 
   deadlock: {
-    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
+    characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY. Pay close attention to BOTH arms — match their exact appearance from the reference.
 SECOND IMAGE: Face close-up — match EXACTLY.`,
-    palette: `Ability effects: steel blue (#425495) abstract energy, teal prosthetic glow at arm joints.`,
+    palette: `Minimal ability effects. Deadlock is a tactical trap specialist — her abilities are physical devices, NOT energy beams.`,
     expression: `Expression is FIERCE and UNBREAKABLE — a Norwegian warrior who will not be moved. Hard determined eyes, set jaw, no mercy. She IS the wall. NOT smiling. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
-        name: "annihilation",
-        prompt: `POSE — "ANNIHILATION" (Arms Forward — Energy Projection):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — both arms thrust forward projecting energy toward the viewer.
+        name: "pose-a",
+        prompt: `POSE: Deadlock faces the viewer in slight 3/4 turn. BOTH HANDS grip a VANDAL RIFLE — she aims it forward, shouldered properly. Wide power stance with legs spread far apart. Aggressive forward lean. ATTITUDE: an unbreakable warrior holding the line.
 
-POSE: Deadlock faces the viewer STRAIGHT-ON. BOTH ARMS THRUST FORWARD at chest height, palms facing out — fingers spread, pushing energy TOWARD the viewer. Aggressive forward lean, wide power stance, feet planted. ATTITUDE: a defender unleashing raw force — total commitment to the strike.
-
-EFFECTS: Steel blue (#425495) energy shoots forward from both palms. Teal glow pulses at her prosthetic arm joints.
-
-NO weapons.
+NO ability effects. NO energy. NO glowing. Just the character and her weapon.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "gravnet",
-        prompt: `POSE — "GRAVNET" (Prosthetic Fist Raised — Energy Rising):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — prosthetic arm raised overhead in a power fist, energy rising from the ground.
+        name: "pose-b",
+        prompt: `POSE: Deadlock stands tall with ARMS CROSSED over her chest. Wide planted stance. Her chin is slightly raised, staring down the viewer with cold determination. ATTITUDE: the immovable wall — try me.
 
-POSE: Deadlock faces the viewer STRAIGHT-ON. Her LEFT prosthetic arm is RAISED OVERHEAD, fist clenched tight — a declaration of unstoppable force. Her RIGHT ARM hangs at her side, relaxed. Wide planted power stance. ATTITUDE: immovable wall — she IS the barrier.
-
-EFFECTS: Steel blue (#425495) energy rises upward from the ground around her feet. Her raised prosthetic fist glows teal at every joint.
-
-NO weapons.
+NO weapons. NO ability effects. NO energy. NO glowing.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "sonic-sensor",
-        prompt: `POSE — "SONIC SENSOR" (Walking Forward — Ground Pulse):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — walking forward with energy pulsing from her footsteps.
+        name: "pose-c",
+        prompt: `POSE: Deadlock holds a VANDAL RIFLE resting on her RIGHT SHOULDER with one hand — barrel pointing up behind her. Her LEFT HAND at her side, fist clenched. Standing tall. ATTITUDE: a soldier at ease — calm before the storm.
 
-POSE: Deadlock WALKS FORWARD toward the viewer — mid-stride, determined march. RIGHT fist clenched at her side. LEFT arm swings naturally. Fierce forward momentum. ATTITUDE: a guard on patrol — the wall that moves toward you. Unyielding.
+NO ability effects. NO energy. NO glowing.
 
-EFFECTS: Steel blue (#425495) energy pulses outward on the ground from her footsteps. Teal glow at prosthetic arm joints.
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "pose-d",
+        prompt: `POSE: Deadlock WALKS FORWARD toward the viewer — mid-stride, determined march. Her RIGHT HAND holds a RIFLE loosely at her side, barrel pointing down. LEFT arm swings naturally mid-stride. Fierce forward momentum. ATTITUDE: a sentinel on patrol — unstoppable.
 
-NO weapons.
+NO ability effects. NO energy. NO glowing.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "pose-e",
+        prompt: `POSE: Deadlock stands in 3/4 view facing LEFT. Her RIGHT HAND rests on her neck, cracking it to the side — the gesture of a fighter preparing for combat. Her LEFT arm hangs at her side. Wide stance. ATTITUDE: warming up for battle — unflinching.
+
+NO weapons. NO ability effects. NO energy. NO glowing.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1266,39 +1270,42 @@ SECOND IMAGE: Face close-up — match EXACTLY.`,
     expression: `Expression is CONFIDENT and CLEVER — a genius engineer who knows exactly what she built. Slight knowing smirk. She can allow a SUBTLE smile — Killjoy is one of the more personable agents. Adjusting glasses is her signature gesture.`,
     poses: [
       {
-        name: "lockdown",
-        prompt: `POSE — "LOCKDOWN" (Vandal Aim — Combat Engineer):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — aiming a Vandal rifle with energy rising from below.
+        name: "pose-a",
+        prompt: `POSE: Killjoy WALKS forward casually — a VANDAL RIFLE resting on her RIGHT SHOULDER, held loosely with one hand. Her LEFT HAND adjusts her glasses. Relaxed stride, slight smirk. ATTITUDE: casual genius heading to work.
 
-POSE: Killjoy faces the viewer in slight 3/4 turn. BOTH HANDS grip a VANDAL RIFLE — she aims it forward, shouldered properly. Her expression is focused through her glasses. ATTITUDE: the combat engineer — brains AND firepower combined.
-
-EFFECTS: Pink/magenta (#FF4893) energy rises from the ground around her feet. Her glasses reflect the magenta glow.
+NO ability effects. NO energy. NO glowing.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "turret",
-        prompt: `POSE — "TURRET" (Glasses Adjust — Lens Glow):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — adjusting glasses in a 3/4 turn, glasses glow as the focal point.
+        name: "pose-b",
+        prompt: `POSE: Killjoy faces the viewer. Her RIGHT HAND makes a PEACE SIGN (V-sign) near her face with a playful wink. Her LEFT HAND rests on her hip. Weight on one leg, hip popped to the side. Playful smirk. ATTITUDE: cheeky genius.
 
-POSE: Killjoy faces the viewer in a 3/4 TURN — looking back over her shoulder. Her RIGHT HAND pushes her glasses up the bridge of her nose. Her LEFT HAND on her hip. ATTITUDE: the genius who already solved the problem before you even understood it — effortless intellectual superiority.
-
-EFFECTS: Her glasses lenses glow golden yellow (#FADC31). Golden light illuminates her fingertips touching the frame.
-
-NO weapons.
+NO weapons. NO ability effects. NO energy. NO glowing.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
       {
-        name: "nanoswarm",
-        prompt: `POSE — "NANOSWARM" (Walking Engineer — Energy Trail):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — walking forward while golden energy trails from her hand.
+        name: "pose-c",
+        prompt: `POSE: Killjoy stands with BOTH HANDS in her jacket pockets. She walks forward toward the viewer with a casual confident stride. Head slightly tilted, knowing smirk. ATTITUDE: effortlessly cool — the smartest person in the room.
 
-POSE: Killjoy WALKS forward toward the viewer — casual confident stride. Her RIGHT HAND pushes her glasses up with one finger. Her LEFT ARM hangs at her side with fingers slightly spread. She tilts her head with a knowing smirk. ATTITUDE: playful self-assurance — an engineer on her way to collect another win.
+NO weapons. NO ability effects. NO energy. NO glowing.
 
-EFFECTS: Golden yellow (#FADC31) energy trails behind from her fingertips. Faint pink (#FF4893) wisps drift upward.
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "pose-d",
+        prompt: `POSE: Killjoy leans her weight on one leg, slight contrapposto. Her RIGHT HAND holds a VANDAL RIFLE pointing DOWN at her side. Her LEFT HAND pushes her glasses up. She looks at the viewer with a raised eyebrow and a subtle smirk. ATTITUDE: relaxed but armed.
 
-NO weapons.
+NO ability effects. NO energy. NO glowing.
+
+FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
+      },
+      {
+        name: "pose-e",
+        prompt: `POSE: Killjoy stands facing the viewer in 3/4 view. Her RIGHT INDEX FINGER pressed to her lips in a "SHHHH" gesture — like she just placed a trap. Her LEFT HAND behind her back. Mischievous grin. One foot slightly forward. ATTITUDE: devious inventor — she knows something you don't.
+
+NO weapons. NO ability effects. NO energy. NO glowing.
 
 FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean white background.`,
       },
@@ -1414,17 +1421,18 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
     characterDesc: `FIRST IMAGE: Full-body character reference — match EXACTLY.
 SECOND IMAGE: Face close-up — match EXACTLY.
 Additional ref shows Evolution ultimate form — match that transformation EXACTLY.`,
-    palette: `Ability effects: teal-cyan (#1A5D65) bio-mutation energy, luminous green (#39FF14) bioluminescent accents.`,
+    palette: `Ability effects: bright cyan (#00D4FF) bio-mutation energy. Dark navy-indigo body tones in transformed state. Yellow glowing eyes during ability use.`,
     expression: `Expression is INTENSE and FOCUSED — a man grappling with the mutation inside him. Hard stare, tight jaw. The mutation is both his weapon and his burden. NOT smiling. Valorant expressions are ALWAYS understated.`,
     poses: [
       {
         name: "evolution",
+        refOnly: true,
         prompt: `POSE — "EVOLUTION" (Ultimate — Transformation):
-SKELETON CHANGE: The reference shows normal form. This is COMPLETELY DIFFERENT — fully transformed ultimate state as shown in official art reference. MATCH THE OFFICIAL ART REFERENCE.
+THE REFERENCE IMAGE shows Veto's EVOLUTION ultimate form. MATCH THIS TRANSFORMED APPEARANCE EXACTLY — dark navy-indigo body with bright cyan (#00D4FF) energy patterns, yellow glowing eyes.
 
-POSE: Veto in his EVOLUTION ultimate form — MATCH THE OFFICIAL ART REFERENCE IMAGE EXACTLY. Both arms lowered at his sides, body relaxed but radiating overwhelming power. His transformed body itself IS the effect — no exaggerated gestures needed. Wide planted stance. ATTITUDE: overwhelming presence — a being who has transcended his human limits.
+POSE: Veto in his EVOLUTION ultimate form — MATCH THE REFERENCE IMAGE EXACTLY. Both arms lowered at his sides, body relaxed but radiating overwhelming power. His transformed body itself IS the effect — no exaggerated gestures needed. Wide planted stance. ATTITUDE: overwhelming presence — a being who has transcended his human limits.
 
-EFFECTS: Teal-cyan (#1A5D65) energy rises upward through his transformed body. Luminous green (#39FF14) veins pulse along his skin. Yellow glowing eyes.
+EFFECTS: Bright cyan (#00D4FF) energy rises upward around his transformed body. Yellow glowing eyes.
 
 NO weapons.
 
@@ -1433,11 +1441,11 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
       {
         name: "arc",
         prompt: `POSE — "ARC" (Mutation Arm Gaze — Inner Conflict):
-SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — raising one arm to stare at his own mutating hand.
+SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — raising his LEFT arm to stare at his own mutating hand.
 
-POSE: Veto faces the viewer STRAIGHT-ON. His RIGHT ARM is raised forward at chest height — he STARES at his own hand as mutation energy crawls up his arm. His LEFT ARM hangs at his side. Wide planted stance. ATTITUDE: a man confronting the mutation inside him — both weapon and burden.
+POSE: Veto faces the viewer in slight 3/4 turn. His LEFT ARM is raised forward at chest height — he STARES at his own left hand as bright cyan energy crawls up that arm. His RIGHT ARM hangs at his side, relaxed. Wide planted stance. ATTITUDE: a man confronting the mutation inside him — both weapon and burden. Match his outfit EXACTLY from the reference — dark leather jacket, cream tank top, burgundy pants, brown boots.
 
-EFFECTS: Teal-cyan (#1A5D65) mutation energy crawls up his raised right arm from elbow to fingertips. Luminous green (#39FF14) veins glow along the arm.
+EFFECTS: Bright cyan (#00D4FF) mutation energy glows on his raised left hand.
 
 NO weapons.
 
@@ -1448,9 +1456,9 @@ FRAMING: FULL BODY head-to-toe, 85% vertical fill. Character CENTERED. Clean whi
         prompt: `POSE — "CHOKEHOLD" (Walking Forward — Energy Wrap):
 SKELETON CHANGE: The reference shows a different pose. This is COMPLETELY DIFFERENT — walking forward with mutation energy wrapping around his body.
 
-POSE: Veto WALKS FORWARD toward the viewer — determined stride. RIGHT fist clenched at his side. LEFT arm swings naturally. ATTITUDE: cold, unflinching composure — the mutation does not control him, he controls it.
+POSE: Veto WALKS FORWARD toward the viewer — determined stride. RIGHT fist clenched at his side. LEFT arm swings naturally. ATTITUDE: cold, unflinching composure — the mutation does not control him, he controls it. Match his outfit EXACTLY from the reference — dark leather jacket, cream tank top, burgundy pants, brown boots. Do NOT change his clothing colors.
 
-EFFECTS: Teal-cyan (#1A5D65) energy wraps around his body. Luminous green (#39FF14) wisps trail behind him.
+EFFECTS: Bright cyan (#00D4FF) energy wraps around his left arm and shoulder.
 
 NO weapons.
 

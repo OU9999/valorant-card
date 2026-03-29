@@ -2,4 +2,3 @@ node_modules/
 .env
 output/
 asset/
-new-pose/
