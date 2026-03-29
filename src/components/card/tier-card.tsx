@@ -95,12 +95,13 @@ const TierCard = ({
       {/* Layer 4: Text content */}
       <div className="absolute inset-0">
         {/* OVR 영역 */}
+        {/* TODO: bg-red-500 디버그용 배경색 — OVR 위치 확정 후 제거 */}
         <div
           className={cn(
-            "absolute flex flex-col items-center",
+            "absolute flex flex-col items-center bg-red-500",
             isSm
               ? "left-[7%] top-[12%]"
-              : (isHighTier ? "left-[9%] top-[14%]" : "left-[6%] top-[10%]"),
+              : (isHighTier ? "left-[11%] top-[14%]" : "left-[6%] top-[10%]"),
           )}
         >
           <span className={cn(
@@ -112,7 +113,7 @@ const TierCard = ({
           </span>
           {!isSm && (
             <span className={cn(
-              "text-[clamp(0.375rem,6.4cqw,1.5rem)] font-bold tracking-wider",
+              "-mt-[clamp(0.25rem,4cqw,1rem)] text-[clamp(0.4375rem,7.5cqw,1.75rem)] font-bold tracking-wider",
               design.position,
             )}>
               {region}
@@ -123,7 +124,7 @@ const TierCard = ({
               role="img"
               aria-label="weapon"
               className={cn(
-                "mt-[clamp(0.125rem,2.1cqw,0.5rem)] aspect-[4/1] w-[clamp(0.75rem,14.9cqw,3.5rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
+                "mt-[clamp(0rem,0.4cqw,0.125rem)] aspect-[4/1] w-[clamp(0.875rem,17cqw,4rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
                 design.position,
               )}
               style={{
