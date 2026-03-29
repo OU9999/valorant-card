@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Search } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import ironCard from "@/asset/example/tier-card/iron.png";
@@ -28,35 +29,84 @@ const PLACEHOLDER_STATS = [
   { label: "ADR", value: "0" },
 ];
 
-interface CarouselCard {
+interface ShowcaseCard {
   tierName: TierName;
   competitiveTier: number;
   image: StaticImageData;
   portrait: string;
   ovr: number;
   playerName: string;
+  glow: string;
 }
 
-const CAROUSEL_CARDS: CarouselCard[] = [
-  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/fullportrait.png", ovr: 12, playerName: "Rookie" },
-  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/fullportrait.png", ovr: 23, playerName: "Breaker" },
-  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/fullportrait.png", ovr: 35, playerName: "Ghost" },
-  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/fullportrait.png", ovr: 45, playerName: "Blaze" },
-  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/sova/fullportrait.png", ovr: 56, playerName: "Hunter" },
-  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/killjoy/fullportrait.png", ovr: 67, playerName: "Spark" },
-  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/jett/fullportrait.png", ovr: 84, playerName: "Shadow" },
-  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/fullportrait.png", ovr: 91, playerName: "FAKER" },
-  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/chamber/fullportrait.png", ovr: 97, playerName: "TenZ" },
+/** 3열에 분배할 카드 데이터 */
+const COLUMN_1: ShowcaseCard[] = [
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/fullportrait.png", ovr: 12, playerName: "Rookie", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/fullportrait.png", ovr: 45, playerName: "Blaze", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
+  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/jett/fullportrait.png", ovr: 84, playerName: "Shadow", glow: "drop-shadow(0 0 14px rgba(16,185,129,0.6))" },
 ];
 
+const COLUMN_2: ShowcaseCard[] = [
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/fullportrait.png", ovr: 23, playerName: "Breaker", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/sova/fullportrait.png", ovr: 56, playerName: "Hunter", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
+  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/fullportrait.png", ovr: 91, playerName: "FAKER", glow: "drop-shadow(0 0 14px rgba(225,29,72,0.6))" },
+];
+
+const COLUMN_3: ShowcaseCard[] = [
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/fullportrait.png", ovr: 35, playerName: "Ghost", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/killjoy/fullportrait.png", ovr: 67, playerName: "Spark", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
+  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/chamber/fullportrait.png", ovr: 97, playerName: "TenZ", glow: "drop-shadow(0 0 14px rgba(212,175,55,0.6))" },
+];
+
+interface CardColumnProps {
+  cards: ShowcaseCard[];
+  direction: "up" | "down";
+  speed: number;
+  delay: number;
+}
+
+const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
+  const doubled = [...cards, ...cards];
+  return (
+    <div
+      className="card-column flex-1 overflow-hidden"
+      style={{ "--column-delay": `${delay}s` } as CSSProperties}
+    >
+      <div
+        className={`${direction === "up" ? "card-scroll-up" : "card-scroll-down"} flex flex-col gap-3`}
+        style={{ "--scroll-duration": `${speed}s` } as CSSProperties}
+      >
+        {doubled.map((card, i) => (
+          <div
+            key={`${card.tierName}-${i}`}
+            className="showcase-card"
+            style={{ "--tier-glow": card.glow } as CSSProperties}
+          >
+            <TierCard
+              tierName={card.tierName}
+              competitiveTier={card.competitiveTier}
+              backgroundImage={card.image}
+              portraitUrl={card.portrait}
+              ovr={card.ovr}
+              playerName={card.playerName}
+              weaponIconUrl={VANDAL_ICON_URL}
+              stats={PLACEHOLDER_STATS}
+              size="sm"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const HeroSection = () => (
-  <div className="relative flex min-h-screen flex-col items-center bg-background">
+  <div className="relative flex min-h-screen flex-col bg-background md:flex-row">
     {/* Radial gradient overlay */}
     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.668_0.220_21_/_0.12)_0%,_transparent_60%)]" />
 
-    {/* Content */}
-    <div className="relative z-10 flex w-full flex-1 flex-col items-center pt-32">
-      {/* Title */}
+    {/* Left — Title + Search */}
+    <div className="relative z-10 flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
       <h1 className="flex flex-col items-center gap-1">
         <span className="text-5xl font-black tracking-[0.25em] text-primary md:text-7xl">
           VALORANT
@@ -70,7 +120,7 @@ const HeroSection = () => (
       </p>
 
       {/* Search bar (demo) */}
-      <div className="mt-8 flex w-full max-w-md items-center gap-2 px-6">
+      <div className="mt-8 flex w-full max-w-md items-center gap-2">
         <Input
           type="text"
           placeholder="Player#TAG"
@@ -82,27 +132,18 @@ const HeroSection = () => (
           검색
         </Button>
       </div>
+    </div>
 
-      {/* Card carousel — infinite scroll */}
-      <div className="mt-16 w-full overflow-hidden">
-        <div className="carousel-track flex w-max gap-5">
-          {[...CAROUSEL_CARDS, ...CAROUSEL_CARDS].map((card, i) => (
-            <div key={`${card.tierName}-${i}`} className="shrink-0">
-              <TierCard
-                tierName={card.tierName}
-                competitiveTier={card.competitiveTier}
-                backgroundImage={card.image}
-                portraitUrl={card.portrait}
-                ovr={card.ovr}
-                playerName={card.playerName}
-                weaponIconUrl={VANDAL_ICON_URL}
-                stats={PLACEHOLDER_STATS}
-                size="sm"
-                className="h-[350px]"
-              />
-            </div>
-          ))}
-        </div>
+    {/* Right — 3-column vertical scroll */}
+    <div className="relative z-10 flex h-screen items-center overflow-hidden md:w-[45%]">
+      {/* Top/bottom fade masks */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
+
+      <div className="flex w-full gap-3 px-4">
+        <CardColumn cards={COLUMN_1} direction="up" speed={30} delay={0.1} />
+        <CardColumn cards={COLUMN_2} direction="down" speed={22} delay={0.3} />
+        <CardColumn cards={COLUMN_3} direction="up" speed={26} delay={0.5} />
       </div>
     </div>
   </div>

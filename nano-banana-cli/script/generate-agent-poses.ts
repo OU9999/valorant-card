@@ -99,24 +99,27 @@ const generatePose = async (
   prompt: string,
   assetDir: string,
   outputDir: string,
+  refOnly?: boolean,
 ): Promise<void> => {
   const outputFileName = `${agentName}-${poseName}-1.png`;
   console.log(`  🎨 [${poseName}] Generating ${outputFileName}...`);
 
   const contents: Array<Record<string, unknown>> = [];
 
-  for (const img of ["fullportrait.png", "displayicon.png"]) {
-    const imgPath = path.join(assetDir, img);
-    if (!fs.existsSync(imgPath)) {
-      console.error(`  ❌ 레퍼런스 이미지 없음: ${imgPath}`);
-      return;
+  if (!refOnly) {
+    for (const img of ["fullportrait.png", "displayicon.png"]) {
+      const imgPath = path.join(assetDir, img);
+      if (!fs.existsSync(imgPath)) {
+        console.error(`  ❌ 레퍼런스 이미지 없음: ${imgPath}`);
+        return;
+      }
+      contents.push({
+        inlineData: {
+          mimeType: "image/png",
+          data: getImageBase64(imgPath),
+        },
+      });
     }
-    contents.push({
-      inlineData: {
-        mimeType: "image/png",
-        data: getImageBase64(imgPath),
-      },
-    });
   }
 
   // 추가 레퍼런스 이미지 (reference-*.{png,jpg} 패턴)
@@ -187,7 +190,7 @@ const generateAgent = async (agentName: string): Promise<void> => {
 
   for (const pose of config.poses) {
     const fullPrompt = `${preamble}\n\n${pose.prompt}`;
-    await generatePose(agentName, pose.name, fullPrompt, assetDir, outputDir);
+    await generatePose(agentName, pose.name, fullPrompt, assetDir, outputDir, pose.refOnly);
   }
 
   console.log(`✅ [${agentName}] 완료\n`);

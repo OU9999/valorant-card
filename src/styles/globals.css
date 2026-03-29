@@ -35,21 +35,83 @@
   -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 65%);
 }
 
-@keyframes carousel-scroll {
+/* Card columns — 세로 무한 스크롤 */
+@keyframes scroll-up {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateY(-50%);
   }
 }
 
-.carousel-track {
-  animation: carousel-scroll 30s linear infinite;
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.carousel-track:hover {
+.card-scroll-up {
+  animation: scroll-up var(--scroll-duration, 25s) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.card-scroll-down {
+  animation: scroll-down var(--scroll-duration, 25s) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.card-scroll-up:hover,
+.card-scroll-down:hover {
   animation-play-state: paused;
+}
+
+/* Column — 진입 애니메이션 */
+@keyframes column-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-column {
+  opacity: 0;
+  animation: column-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--column-delay, 0s);
+}
+
+/* Card — 호버 효과 */
+.showcase-card {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+    filter 0.35s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter: brightness(1.08) var(--tier-glow);
+  z-index: 20;
+}
+
+/* 접근성 — 모션 감소 */
+@media (prefers-reduced-motion: reduce) {
+  .card-scroll-up,
+  .card-scroll-down {
+    animation: none !important;
+  }
+  .card-column {
+    animation: none !important;
+    opacity: 1;
+  }
 }
 
 @theme inline {
