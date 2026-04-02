@@ -78,6 +78,7 @@ const CarouselTest = () => {
   const [ovr, setOvr] = useState(92);
   const [playerName, setPlayerName] = useState("Player");
   const [characterIndex, setCharacterIndex] = useState(JETT_INDEX);
+  const [poseIndex, setPoseIndex] = useState<number | null>(null);
 
   const handleStatChange = (index: number, value: string) => {
     setStats((prev) => prev.map((s, i) => (i === index ? { ...s, value } : s)));
@@ -117,7 +118,11 @@ const CarouselTest = () => {
                   tierName={tier.name}
                   competitiveTier={tier.competitiveTier}
                   backgroundImage={tier.image}
-                  portraitUrl={CHARACTERS[characterIndex].fullPortrait}
+                  portraitUrl={
+                    poseIndex !== null
+                      ? CHARACTERS[characterIndex].poses[poseIndex]
+                      : CHARACTERS[characterIndex].fullPortrait
+                  }
                   ovr={ovr}
                   playerName={playerName}
                   weaponIconUrl={VANDAL_ICON_URL}
@@ -178,7 +183,10 @@ const CarouselTest = () => {
             </Label>
             <Select
               value={String(characterIndex)}
-              onValueChange={(val) => setCharacterIndex(Number(val))}
+              onValueChange={(val) => {
+                setCharacterIndex(Number(val));
+                setPoseIndex(null);
+              }}
             >
               <SelectTrigger className="w-full">
                 <SelectValue />
@@ -191,6 +199,32 @@ const CarouselTest = () => {
                 ))}
               </SelectContent>
             </Select>
+          </section>
+
+          {/* Pose select */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
+              POSE
+            </Label>
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                variant={poseIndex === null ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setPoseIndex(null)}
+              >
+                Default
+              </Button>
+              {[0, 1, 2].map((i) => (
+                <Button
+                  key={i}
+                  variant={poseIndex === i ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setPoseIndex(i)}
+                >
+                  Pose {i + 1}
+                </Button>
+              ))}
+            </div>
           </section>
 
           {/* Stats controls */}

@@ -5,6 +5,11 @@ const createCharacter = (name: string, id: string, dirName: string) => ({
   id,
   icon: `${MEDIA_BASE}/${dirName}/displayicon.png`,
   fullPortrait: `${MEDIA_BASE}/${dirName}/fullportrait.png`,
+  poses: [
+    `${MEDIA_BASE}/${dirName}/pose1.png`,
+    `${MEDIA_BASE}/${dirName}/pose2.png`,
+    `${MEDIA_BASE}/${dirName}/pose3.png`,
+  ] as const,
 });
 
 /**
