@@ -3,8 +3,8 @@ have_fun: true
 ignore_patterns:
   - "pnpm-lock.yaml"
   - "node_modules/**"
-  - ".next/**"
-  - "public/**"
+  - "valorant-card-web/.next/**"
+  - "valorant-card-web/public/**"
 
 code_review:
   disable: false

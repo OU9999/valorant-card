@@ -1,5 +1,6 @@
 packages:
-  - .
+  - valorant-card-web
+  - nano-banana-cli
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
