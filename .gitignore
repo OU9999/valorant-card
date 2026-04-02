@@ -50,3 +50,8 @@ next-env.d.ts
 # test fixtures (API 응답 — 개인정보 포함)
 scripts/fixtures/
 public/fixtures/
+
+# nano-banana-cli (생성 이미지 + Python venv)
+nano-banana-cli/new-pose/
+nano-banana-cli/new-pose-nobg/
+nano-banana-cli/.venv/

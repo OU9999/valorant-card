@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "gen:poses": "tsx script/generate-agent-poses.ts",
+    "remove-bg": "tsx script/remove-bg.ts",
     "clear": "rm -rf output/* && echo 'output cleared'"
   },
   "dependencies": {

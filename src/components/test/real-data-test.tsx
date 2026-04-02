@@ -12,6 +12,7 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { TestLayout } from "./test-layout";
 import { adaptHenrikMatch } from "@/lib/henrik/adapter";
@@ -77,13 +78,6 @@ const findMostPlayedAgent = (
   return maxId;
 };
 
-const getPortraitUrl = (characterId: string): string => {
-  const char = CHARACTERS.find(
-    (c) => c.id.toUpperCase() === characterId.toUpperCase(),
-  );
-  return char?.fullPortrait ?? CHARACTERS[0].fullPortrait;
-};
-
 // ─── Data Fetching ───
 
 interface FixtureData {
@@ -127,6 +121,7 @@ const RealDataTest = () => {
   const [result, setResult] = useState<CardScoreResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [poseIndex, setPoseIndex] = useState<number | null>(null);
 
   /** fixture 로드 → 어댑터 변환 → 알고리즘 실행 */
   useEffect(() => {
@@ -166,7 +161,13 @@ const RealDataTest = () => {
 
   const tierName = getTierName(fixture.competitiveTier);
   const agentId = findMostPlayedAgent(fixture.matches, fixture.puuid);
-  const portraitUrl = getPortraitUrl(agentId);
+  const character = CHARACTERS.find(
+    (c) => c.id.toUpperCase() === agentId.toUpperCase(),
+  ) ?? CHARACTERS[0];
+  const portraitUrl =
+    poseIndex !== null
+      ? character.poses[poseIndex]
+      : character.fullPortrait;
   const formattedStats = formatCardStats(result.stats);
   const regionDisplay =
     SHARD_DISPLAY_NAMES[fixture.region as keyof typeof SHARD_DISPLAY_NAMES] ??
@@ -203,6 +204,32 @@ const RealDataTest = () => {
       }
       sidePanel={
         <>
+          {/* Pose select */}
+          <section>
+            <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
+              POSE
+            </Label>
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                variant={poseIndex === null ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setPoseIndex(null)}
+              >
+                Default
+              </Button>
+              {character.poses.map((_, i) => (
+                <Button
+                  key={i}
+                  variant={poseIndex === i ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setPoseIndex(i)}
+                >
+                  Pose {i + 1}
+                </Button>
+              ))}
+            </div>
+          </section>
+
           {/* Player Info */}
           <section>
             <Label className="mb-3 text-xs tracking-wider text-muted-foreground">
