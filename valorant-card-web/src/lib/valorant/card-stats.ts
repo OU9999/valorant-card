@@ -43,7 +43,7 @@ interface CardScoreResult {
 
 // ─── Stats Formatting ───
 
-const formatCardStats = (metrics: MatchMetrics): CardStat[] => [
+const formatCardStats = (metrics: CardStats): CardStat[] => [
   { label: "ACS", value: String(Math.round(metrics.acs)) },
   { label: "K/D", value: metrics.kd.toFixed(1) },
   { label: "HS%", value: `${Math.round(metrics.hsPercent)}%` },
