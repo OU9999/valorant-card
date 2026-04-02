@@ -214,7 +214,7 @@ const CarouselTest = () => {
               >
                 Default
               </Button>
-              {[0, 1, 2].map((i) => (
+              {CHARACTERS[characterIndex].poses.map((_, i) => (
                 <Button
                   key={i}
                   variant={poseIndex === i ? "default" : "ghost"}

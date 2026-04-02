@@ -13,6 +13,11 @@ const MODEL = "isnet-anime";
 // ============================================================
 const args = process.argv.slice(2);
 
+if (!fs.existsSync(INPUT_DIR)) {
+  console.error(`❌ 입력 디렉토리를 찾을 수 없습니다: ${INPUT_DIR}`);
+  process.exit(1);
+}
+
 const allAgents = fs
   .readdirSync(INPUT_DIR, { withFileTypes: true })
   .filter((d) => d.isDirectory())
@@ -87,7 +92,8 @@ for (const agent of agentNames) {
   } catch (err) {
     failCount++;
     const message = err instanceof Error ? err.message : String(err);
-    console.error(`❌ ${agent} — 실패: ${message}`);
+    const stderr = (err as { stderr?: Buffer }).stderr?.toString();
+    console.error(`❌ ${agent} — 실패: ${message}${stderr ? `\n${stderr}` : ""}`);
   }
 }
 

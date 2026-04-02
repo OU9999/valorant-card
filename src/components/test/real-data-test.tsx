@@ -217,7 +217,7 @@ const RealDataTest = () => {
               >
                 Default
               </Button>
-              {[0, 1, 2].map((i) => (
+              {character.poses.map((_, i) => (
                 <Button
                   key={i}
                   variant={poseIndex === i ? "default" : "ghost"}
