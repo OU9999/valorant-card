@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "pnpm --filter valorant-card-web dev",
     "build": "pnpm --filter valorant-card-web build",
+    "start": "pnpm --filter valorant-card-web start",
     "lint": "pnpm --filter valorant-card-web lint"
   }
 }
