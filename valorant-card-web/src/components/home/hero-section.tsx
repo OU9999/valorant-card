@@ -47,30 +47,30 @@ interface ShowcaseCard {
  * 컬럼당 6장, 18장 모두 고유 요원+포즈
  */
 const COLUMN_1: ShowcaseCard[] = [
-  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/pose2.png", ovr: 12, playerName: "Rookie", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
-  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/pose2.png", ovr: 45, playerName: "Blaze", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
-  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/yoru/pose3.png", ovr: 34, playerName: "Breeze", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
-  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/omen/pose1.png", ovr: 68, playerName: "Phantom", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
-  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/neon/pose1.png", ovr: 21, playerName: "Volt", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
-  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/jett/pose3.png", ovr: 97, playerName: "Rift", glow: "drop-shadow(0 0 14px rgba(212,175,55,0.6))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/pose2.png", ovr: 12, playerName: "s0m", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/pose2.png", ovr: 45, playerName: "aspas", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/yoru/pose3.png", ovr: 34, playerName: "Boaster", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/omen/pose1.png", ovr: 68, playerName: "nAts", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/neon/pose1.png", ovr: 21, playerName: "Meteor", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/jett/pose3.png", ovr: 97, playerName: "Demon1", glow: "drop-shadow(0 0 14px rgba(212,175,55,0.6))" },
 ];
 
 const COLUMN_2: ShowcaseCard[] = [
-  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/pose1.png", ovr: 23, playerName: "Breaker", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
-  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/iso/pose3.png", ovr: 56, playerName: "Hunter", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
-  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/kayo/pose2.png", ovr: 10, playerName: "Nova", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
-  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/pose3.png", ovr: 91, playerName: "Toxin", glow: "drop-shadow(0 0 14px rgba(225,29,72,0.6))" },
-  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/tejo/pose1.png", ovr: 32, playerName: "Boom", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
-  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/skye/pose1.png", ovr: 65, playerName: "Wilder", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/pose1.png", ovr: 23, playerName: "t3xture", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/iso/pose3.png", ovr: 56, playerName: "stax", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/kayo/pose2.png", ovr: 10, playerName: "Jinggg", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/pose3.png", ovr: 91, playerName: "Alfajer", glow: "drop-shadow(0 0 14px rgba(225,29,72,0.6))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/tejo/pose1.png", ovr: 32, playerName: "crashies", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/skye/pose1.png", ovr: 65, playerName: "Shao", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
 ];
 
 const COLUMN_3: ShowcaseCard[] = [
-  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/pose1.png", ovr: 35, playerName: "Ghost", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
-  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/sova/pose2.png", ovr: 48, playerName: "Spark", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
-  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/chamber/pose3.png", ovr: 19, playerName: "Dealer", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
-  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/vyse/pose3.png", ovr: 84, playerName: "Dusk", glow: "drop-shadow(0 0 14px rgba(16,185,129,0.6))" },
-  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/astra/pose2.png", ovr: 8, playerName: "Star", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
-  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/gekko/pose3.png", ovr: 58, playerName: "Mosh", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/pose1.png", ovr: 35, playerName: "Lakia", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/sova/pose2.png", ovr: 48, playerName: "zekken", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/chamber/pose3.png", ovr: 19, playerName: "f0rsakeN", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/vyse/pose3.png", ovr: 84, playerName: "MaKo", glow: "drop-shadow(0 0 14px rgba(16,185,129,0.6))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/astra/pose2.png", ovr: 8, playerName: "BuZz", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/gekko/pose3.png", ovr: 58, playerName: "Derke", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
 ];
 
 interface CardColumnProps {
