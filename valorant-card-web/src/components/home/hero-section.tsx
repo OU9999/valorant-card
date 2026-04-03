@@ -39,23 +39,38 @@ interface ShowcaseCard {
   glow: string;
 }
 
-/** 3열에 분배할 카드 데이터 */
+/**
+ * 3열 카드 데이터 — 티어별 피라미드 분포 (저티어 多 → 고티어 少)
+ * 저(Iron/Bronze/Silver): 각 3장 = 9장
+ * 중(Gold/Platinum/Diamond): 각 2장 = 6장
+ * 고(Ascendant/Immortal/Radiant): 각 1장 = 3장
+ * 컬럼당 6장, 18장 모두 고유 요원+포즈
+ */
 const COLUMN_1: ShowcaseCard[] = [
-  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/pose1.png", ovr: 12, playerName: "Rookie", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
-  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/pose2.png", ovr: 45, playerName: "Blaze", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
-  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/jett/pose3.png", ovr: 84, playerName: "Shadow", glow: "drop-shadow(0 0 14px rgba(16,185,129,0.6))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/sage/pose2.png", ovr: 12, playerName: "s0m", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/phoenix/pose2.png", ovr: 45, playerName: "aspas", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/yoru/pose3.png", ovr: 34, playerName: "Boaster", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/omen/pose1.png", ovr: 68, playerName: "nAts", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/neon/pose1.png", ovr: 21, playerName: "Meteor", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/jett/pose3.png", ovr: 97, playerName: "Demon1", glow: "drop-shadow(0 0 14px rgba(212,175,55,0.6))" },
 ];
 
 const COLUMN_2: ShowcaseCard[] = [
-  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/pose1.png", ovr: 23, playerName: "Breaker", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
-  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/sova/pose2.png", ovr: 56, playerName: "Hunter", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
-  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/pose3.png", ovr: 91, playerName: "FAKER", glow: "drop-shadow(0 0 14px rgba(225,29,72,0.6))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/breach/pose1.png", ovr: 23, playerName: "t3xture", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/iso/pose3.png", ovr: 56, playerName: "stax", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/kayo/pose2.png", ovr: 10, playerName: "Jinggg", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Immortal", competitiveTier: 26, image: immortalCard, portrait: "/characters/reyna/pose3.png", ovr: 91, playerName: "Alfajer", glow: "drop-shadow(0 0 14px rgba(225,29,72,0.6))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/tejo/pose1.png", ovr: 32, playerName: "crashies", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/skye/pose1.png", ovr: 65, playerName: "Shao", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
 ];
 
 const COLUMN_3: ShowcaseCard[] = [
-  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/pose1.png", ovr: 35, playerName: "Ghost", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
-  { tierName: "Diamond", competitiveTier: 20, image: diamondCard, portrait: "/characters/killjoy/pose2.png", ovr: 67, playerName: "Spark", glow: "drop-shadow(0 0 12px rgba(192,38,211,0.5))" },
-  { tierName: "Radiant", competitiveTier: 27, image: radiantCard, portrait: "/characters/chamber/pose3.png", ovr: 97, playerName: "TenZ", glow: "drop-shadow(0 0 14px rgba(212,175,55,0.6))" },
+  { tierName: "Silver", competitiveTier: 11, image: silverCard, portrait: "/characters/cypher/pose1.png", ovr: 35, playerName: "Lakia", glow: "drop-shadow(0 0 12px rgba(148,163,184,0.6))" },
+  { tierName: "Gold", competitiveTier: 14, image: goldCard, portrait: "/characters/sova/pose2.png", ovr: 48, playerName: "zekken", glow: "drop-shadow(0 0 12px rgba(245,158,11,0.5))" },
+  { tierName: "Bronze", competitiveTier: 8, image: bronzeCard, portrait: "/characters/chamber/pose3.png", ovr: 19, playerName: "f0rsakeN", glow: "drop-shadow(0 0 12px rgba(217,119,6,0.5))" },
+  { tierName: "Ascendant", competitiveTier: 23, image: ascendantCard, portrait: "/characters/vyse/pose3.png", ovr: 84, playerName: "MaKo", glow: "drop-shadow(0 0 14px rgba(16,185,129,0.6))" },
+  { tierName: "Iron", competitiveTier: 5, image: ironCard, portrait: "/characters/astra/pose2.png", ovr: 8, playerName: "BuZz", glow: "drop-shadow(0 0 12px rgba(156,163,175,0.5))" },
+  { tierName: "Platinum", competitiveTier: 17, image: platinumCard, portrait: "/characters/gekko/pose3.png", ovr: 58, playerName: "Derke", glow: "drop-shadow(0 0 12px rgba(6,182,212,0.5))" },
 ];
 
 interface CardColumnProps {
@@ -72,14 +87,15 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
       className="card-column flex-1 overflow-hidden"
       style={{ "--column-delay": `${delay}s` } as CSSProperties}
     >
+      {/* pb-3: gap-3 대신 per-item padding 사용 — translateY(-50%)가 정확히 세트 경계와 일치하도록 */}
       <div
-        className={`${direction === "up" ? "card-scroll-up" : "card-scroll-down"} flex flex-col gap-3`}
+        className={`${direction === "up" ? "card-scroll-up" : "card-scroll-down"} flex flex-col`}
         style={{ "--scroll-duration": `${speed}s` } as CSSProperties}
       >
         {doubled.map((card, i) => (
           <div
             key={`${card.tierName}-${i}`}
-            className="showcase-card"
+            className="showcase-card pb-3"
             style={{ "--tier-glow": card.glow } as CSSProperties}
           >
             <TierCard
@@ -92,6 +108,7 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
               weaponIconUrl={VANDAL_ICON_URL}
               stats={PLACEHOLDER_STATS}
               size="sm"
+              priority={i < 3}
             />
           </div>
         ))}
@@ -140,10 +157,10 @@ const HeroSection = () => (
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
-      <div className="flex w-full gap-3 px-4">
-        <CardColumn cards={COLUMN_1} direction="up" speed={30} delay={0.1} />
-        <CardColumn cards={COLUMN_2} direction="down" speed={22} delay={0.3} />
-        <CardColumn cards={COLUMN_3} direction="up" speed={26} delay={0.5} />
+      <div className="flex h-full w-full gap-3 px-4">
+        <CardColumn cards={COLUMN_1} direction="up" speed={60} delay={0.1} />
+        <CardColumn cards={COLUMN_2} direction="down" speed={44} delay={0.3} />
+        <CardColumn cards={COLUMN_3} direction="up" speed={52} delay={0.5} />
       </div>
     </div>
   </div>

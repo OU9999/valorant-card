@@ -24,6 +24,7 @@ interface TierCardProps {
   weaponIconUrl?: string;
   stats: CardStat[];
   size?: CardSize;
+  priority?: boolean;
   className?: string;
 }
 
@@ -38,6 +39,7 @@ const TierCard = ({
   weaponIconUrl,
   stats,
   size = "default",
+  priority = false,
   className,
 }: TierCardProps) => {
   const clipId = useId();
@@ -64,6 +66,7 @@ const TierCard = ({
         src={backgroundImage}
         alt={`${tierName} card background`}
         fill
+        priority={priority}
         className="object-contain"
       />
 
@@ -73,6 +76,7 @@ const TierCard = ({
         alt="agent portrait"
         fill
         sizes="600px"
+        priority={priority}
         className={cn(
           "object-cover object-top",
           "card-portrait-fade",
@@ -144,7 +148,7 @@ const TierCard = ({
           )}
         >
           <span className={cn(
-            "font-bold uppercase tracking-widest",
+            "font-bold tracking-widest",
             isSm ? "text-[clamp(0.375rem,7cqw,1.75rem)]" : "text-[clamp(0.5rem,9.5cqw,2.25rem)]",
             design.playerName,
           )}>
@@ -189,6 +193,7 @@ const TierCard = ({
             alt={`${tierName} tier icon`}
             width={512}
             height={512}
+            priority={priority}
             className={cn(
               "object-contain",
               isSm
