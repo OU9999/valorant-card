@@ -148,7 +148,7 @@ const TierCard = ({
           )}
         >
           <span className={cn(
-            "font-bold uppercase tracking-widest",
+            "font-bold tracking-widest",
             isSm ? "text-[clamp(0.375rem,7cqw,1.75rem)]" : "text-[clamp(0.5rem,9.5cqw,2.25rem)]",
             design.playerName,
           )}>
