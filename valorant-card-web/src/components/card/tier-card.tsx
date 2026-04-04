@@ -49,7 +49,12 @@ const TierCard = ({
   const isSm = size === "sm";
 
   return (
-    <div className={cn("@container relative overflow-hidden aspect-2109/3218", className)}>
+    <div
+      className={cn(
+        "@container relative overflow-hidden aspect-2109/3218",
+        className,
+      )}
+    >
       {/* SVG clipPath 정의 (상위 티어 전용) */}
       {isHighTier && (
         <svg className="absolute h-0 w-0">
@@ -98,60 +103,87 @@ const TierCard = ({
 
       {/* Layer 4: Text content */}
       <div className="absolute inset-0">
-        {/* OVR 영역 */}
-        {/* TODO: bg-red-500 디버그용 배경색 — OVR 위치 확정 후 제거 */}
+        {/* OVR 영역 — clip wrapper > box(위치) > gradient(bg) + text */}
         <div
           className={cn(
-            "absolute flex flex-col items-center bg-red-500",
-            isSm
-              ? "left-[7%] top-[12%]"
-              : (isHighTier ? "left-[11%] top-[14%]" : "left-[6%] top-[10%]"),
+            "absolute inset-0 pointer-events-none",
+            !isHighTier && "card-clip",
           )}
+          style={clipStyle}
         >
-          <span className={cn(
-            "font-extrabold leading-none",
-            isSm ? "text-[clamp(0.75rem,18cqw,4rem)]" : "text-[clamp(1rem,21.2cqw,5rem)]",
-            design.ovr,
-          )}>
-            {ovr}
-          </span>
-          {!isSm && (
-            <span className={cn(
-              "-mt-[clamp(0.25rem,4cqw,1rem)] text-[clamp(0.4375rem,7.5cqw,1.75rem)] font-bold tracking-wider",
-              design.position,
-            )}>
-              {region}
-            </span>
-          )}
-          {!isSm && weaponIconUrl && (
+          <div
+            className={cn(
+              "absolute flex flex-col items-center",
+              isSm
+                ? "left-[7%] top-[12%]"
+                : isHighTier
+                  ? "left-[10%] top-[10%]"
+                  : "left-[6%] top-[10%]",
+            )}
+          >
+            {/* Gradient bg — mask로 상하 페이드, 텍스트 뒤에 깔림 */}
             <div
-              role="img"
-              aria-label="weapon"
               className={cn(
-                "mt-[clamp(0rem,0.4cqw,0.125rem)] aspect-[4/1] w-[clamp(0.875rem,17cqw,4rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
-                design.position,
+                "absolute inset-0 bg-linear-to-b",
+                "pb-[clamp(3rem,28cqw,8rem)]",
+                "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]",
+                design.ovrGradient,
               )}
-              style={{
-                maskImage: `url(${weaponIconUrl})`,
-              }}
             />
-          )}
+            {/* Text — mask 없이 항상 선명 */}
+            <span
+              className={cn(
+                "relative font-extrabold leading-none",
+                isSm
+                  ? "text-[clamp(0.75rem,18cqw,4rem)]"
+                  : "text-[clamp(1rem,21.2cqw,5rem)]",
+                design.ovr,
+              )}
+            >
+              {ovr}
+            </span>
+            {!isSm && (
+              <span
+                className={cn(
+                  "relative -mt-[clamp(0.25rem,4cqw,1rem)] text-[clamp(0.4375rem,7.5cqw,1.75rem)] font-bold tracking-wider",
+                  design.position,
+                )}
+              >
+                {region}
+              </span>
+            )}
+            {!isSm && weaponIconUrl && (
+              <div
+                role="img"
+                aria-label="weapon"
+                className={cn(
+                  "relative mt-[clamp(0rem,0.4cqw,0.125rem)] aspect-[4/1] w-[clamp(0.875rem,17cqw,4rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
+                  design.position,
+                )}
+                style={{
+                  maskImage: `url(${weaponIconUrl})`,
+                }}
+              />
+            )}
+          </div>
         </div>
 
         {/* 플레이어 이름 */}
         <div
           className={cn(
             "absolute inset-x-0 text-center",
-            isSm
-              ? "top-[73%]"
-              : (isHighTier ? "top-[65%]" : "top-[68%]"),
+            isSm ? "top-[73%]" : isHighTier ? "top-[65%]" : "top-[68%]",
           )}
         >
-          <span className={cn(
-            "font-bold tracking-widest",
-            isSm ? "text-[clamp(0.375rem,7cqw,1.75rem)]" : "text-[clamp(0.5rem,9.5cqw,2.25rem)]",
-            design.playerName,
-          )}>
+          <span
+            className={cn(
+              "font-bold tracking-widest",
+              isSm
+                ? "text-[clamp(0.375rem,7cqw,1.75rem)]"
+                : "text-[clamp(0.5rem,9.5cqw,2.25rem)]",
+              design.playerName,
+            )}
+          >
             {playerName}
           </span>
         </div>
@@ -168,10 +200,20 @@ const TierCard = ({
           >
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center">
-                <span className={cn("text-[clamp(0.25rem,3.7cqw,0.875rem)] font-medium tracking-wide", design.statLabel)}>
+                <span
+                  className={cn(
+                    "text-[clamp(0.25rem,3.7cqw,0.875rem)] font-medium tracking-wide",
+                    design.statLabel,
+                  )}
+                >
                   {stat.label}
                 </span>
-                <span className={cn("text-[clamp(0.375rem,7.4cqw,1.75rem)] font-bold leading-tight", design.statValue)}>
+                <span
+                  className={cn(
+                    "text-[clamp(0.375rem,7.4cqw,1.75rem)] font-bold leading-tight",
+                    design.statValue,
+                  )}
+                >
                   {stat.value}
                 </span>
               </div>
@@ -183,9 +225,7 @@ const TierCard = ({
         <div
           className={cn(
             "absolute inset-x-0 flex justify-center",
-            isSm
-              ? "top-[83%]"
-              : (isHighTier ? "top-[83%]" : "top-[87%]"),
+            isSm ? "top-[83%]" : isHighTier ? "top-[83%]" : "top-[87%]",
           )}
         >
           <Image
