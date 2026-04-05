@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { generateCard } from "@/lib/card/generate";
 import { CardGenerationError, ERROR_MESSAGES } from "@/lib/card/errors";
+import { getSession } from "@/lib/session";
 
 // ─── Concurrency Guard ───
 // NOTE: In-memory counter — only effective in single-instance (self-hosted) deployments.
@@ -20,6 +21,14 @@ const POST = async (request: Request): Promise<NextResponse> => {
   activeGenerations++;
 
   try {
+    const session = await getSession();
+    if (!session.puuid) {
+      return NextResponse.json(
+        { error: ERROR_MESSAGES.UNAUTHORIZED, code: "UNAUTHORIZED" },
+        { status: 401 },
+      );
+    }
+
     const body = await request.json().catch(() => null);
 
     if (!body || typeof body.riotId !== "string") {

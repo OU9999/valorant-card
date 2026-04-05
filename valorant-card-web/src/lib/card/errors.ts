@@ -1,4 +1,5 @@
 type CardErrorCode =
+  | "UNAUTHORIZED"
   | "INVALID_RIOT_ID"
   | "ACCOUNT_NOT_FOUND"
   | "NO_MATCHES"
@@ -21,6 +22,7 @@ class CardGenerationError extends Error {
 }
 
 const ERROR_MESSAGES: Record<CardErrorCode, string> = {
+  UNAUTHORIZED: "로그인이 필요합니다.",
   INVALID_RIOT_ID: "올바른 Riot ID 형식이 아닙니다. (예: Player#TAG)",
   ACCOUNT_NOT_FOUND: "해당 Riot ID를 찾을 수 없습니다.",
   NO_MATCHES: "최근 경쟁전 매치 기록이 없습니다.",
