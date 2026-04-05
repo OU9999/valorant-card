@@ -43,6 +43,7 @@ const CardResult = ({ data, onBack }: CardResultProps) => {
         region={data.region}
         weaponIconUrl={weaponIconUrl}
         stats={data.stats}
+        className="h-[800px]"
         priority
       />
       <Button

@@ -43,7 +43,7 @@ const CardSvgTest = () => (
           ovr={92}
           playerName="Player"
           stats={SAMPLE_STATS}
-          className="h-[85vh]"
+          className="h-[800px]"
         />
       </div>
     ))}

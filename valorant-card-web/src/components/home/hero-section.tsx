@@ -117,6 +117,7 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
               weaponIconUrl={VANDAL_ICON_URL}
               stats={PLACEHOLDER_STATS}
               size="sm"
+              className="w-[280px]"
               priority={i < 3}
             />
           </div>
