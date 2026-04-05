@@ -127,7 +127,7 @@ const CarouselTest = () => {
                   playerName={playerName}
                   weaponIconUrl={VANDAL_ICON_URL}
                   stats={stats}
-                  className="h-[80vh]"
+                  className="h-[800px]"
                 />
               </div>
             ))}

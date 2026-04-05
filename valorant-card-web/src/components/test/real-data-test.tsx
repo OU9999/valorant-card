@@ -199,7 +199,7 @@ const RealDataTest = () => {
           region={regionDisplay}
           weaponIconUrl={weaponIconUrl}
           stats={formattedStats}
-          className="h-[80vh]"
+          className="h-[800px]"
         />
       }
       sidePanel={
