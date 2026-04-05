@@ -134,24 +134,6 @@ const HeroSection = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  /**
-   * RSO 콜백 처리: 인증 성공 시 카드 생성 및 /card/[id]로 이동, 실패 시 에러 표시.
-   */
-  useEffect(() => {
-    if (searchParams.get("authenticated") === "true") {
-      refreshAuth();
-      window.history.replaceState({}, "", "/");
-      generateCard();
-      return;
-    }
-
-    const authError = searchParams.get("auth_error");
-    if (authError) {
-      setState({ phase: "error", message: "로그인에 실패했습니다. 다시 시도해주세요." });
-      window.history.replaceState({}, "", "/");
-    }
-  }, [searchParams, refreshAuth]);
-
   const generateCard = async () => {
     setState({ phase: "loading" });
 
@@ -178,6 +160,24 @@ const HeroSection = () => {
       setState({ phase: "error", message: "오류가 발생했습니다. 다시 시도해주세요." });
     }
   };
+
+  /**
+   * RSO 콜백 처리: 인증 성공 시 카드 생성 및 /card/[id]로 이동, 실패 시 에러 표시.
+   */
+  useEffect(() => {
+    if (searchParams.get("authenticated") === "true") {
+      refreshAuth();
+      window.history.replaceState({}, "", "/");
+      generateCard();
+      return;
+    }
+
+    const authError = searchParams.get("auth_error");
+    if (authError) {
+      setState({ phase: "error", message: "로그인에 실패했습니다. 다시 시도해주세요." });
+      window.history.replaceState({}, "", "/");
+    }
+  }, [searchParams, refreshAuth]);
 
   const handleLogin = () => {
     setDialogOpen(true);
