@@ -1,17 +1,23 @@
 import { useId } from "react";
-import Image, { type StaticImageData } from "next/image";
-import { CARD_SVG_PATH_HIGH_TIER } from "@/constants/card";
+import type { StaticImageData } from "next/image";
 import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/tier-design";
 import type { TierName } from "@/constants/tier-design";
 import { cn } from "@/lib/cn";
-import { getTierIcon } from "@/lib/valorant/tiers";
+import type { CardStat, CardSize } from "./tier-card/types";
+import {
+  ClipPathDefs,
+  BackgroundLayer,
+  PortraitLayer,
+  BottomGradientLayer,
+} from "./tier-card/layers";
+import { OvrSection } from "./tier-card/ovr-section";
+import { PlayerNameSection } from "./tier-card/player-name-section";
+import { StatsSection } from "./tier-card/stats-section";
+import { TierIconSection } from "./tier-card/tier-icon-section";
 
-type CardSize = "default" | "sm";
-
-interface CardStat {
-  label: string;
-  value: string;
-}
+/* ------------------------------------------------------------------ */
+/*  TierCard                                                          */
+/* ------------------------------------------------------------------ */
 
 interface TierCardProps {
   tierName: TierName;
@@ -55,194 +61,54 @@ const TierCard = ({
         className,
       )}
     >
-      {/* SVG clipPath 정의 (상위 티어 전용) */}
-      {isHighTier && (
-        <svg className="absolute h-0 w-0">
-          <defs>
-            <clipPath id={clipId} clipPathUnits="objectBoundingBox">
-              <path d={CARD_SVG_PATH_HIGH_TIER} transform="scale(0.01, 0.01)" />
-            </clipPath>
-          </defs>
-        </svg>
-      )}
-
-      {/* Layer 1: Card background */}
-      <Image
-        src={backgroundImage}
-        alt={`${tierName} card background`}
-        fill
+      {isHighTier && <ClipPathDefs clipId={clipId} />}
+      <BackgroundLayer
+        backgroundImage={backgroundImage}
+        tierName={tierName}
         priority={priority}
-        className="object-contain"
       />
-
-      {/* Layer 2: Agent portrait (clipped + faded) */}
-      <Image
-        src={portraitUrl}
-        alt="agent portrait"
-        fill
-        sizes="600px"
+      <PortraitLayer
+        portraitUrl={portraitUrl}
+        isHighTier={isHighTier}
+        clipStyle={clipStyle}
         priority={priority}
-        className={cn(
-          "object-cover object-top",
-          "card-portrait-fade",
-          !isHighTier && "card-clip",
-        )}
-        style={clipStyle}
       />
-
-      {/* Layer 3: Bottom gradient (clipped) */}
-      <div
-        className={cn(
-          "absolute inset-x-0 bottom-0 bg-linear-to-t",
-          design.gradient,
-          isHighTier ? "h-[33%]" : "h-[38%]",
-          !isHighTier && "card-clip",
-        )}
-        style={clipStyle}
+      <BottomGradientLayer
+        design={design}
+        isHighTier={isHighTier}
+        clipStyle={clipStyle}
       />
-
-      {/* Layer 4: Text content */}
       <div className="absolute inset-0">
-        {/* OVR 영역 — clip wrapper > box(위치) > gradient(bg) + text */}
-        <div
-          className={cn(
-            "absolute inset-0 pointer-events-none",
-            !isHighTier && "card-clip",
-          )}
-          style={clipStyle}
-        >
-          <div
-            className={cn(
-              "absolute flex flex-col items-center",
-              isSm
-                ? "left-[7%] top-[12%]"
-                : isHighTier
-                  ? "left-[10%] top-[10%]"
-                  : "left-[6%] top-[10%]",
-            )}
-          >
-            {/* Gradient bg — mask로 상하 페이드, 텍스트 뒤에 깔림 */}
-            <div
-              className={cn(
-                "absolute inset-0 bg-linear-to-b",
-                "pb-[clamp(3rem,28cqw,8rem)]",
-                "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]",
-                design.ovrGradient,
-              )}
-            />
-            {/* Text — mask 없이 항상 선명 */}
-            <span
-              className={cn(
-                "relative font-extrabold leading-none",
-                isSm
-                  ? "text-[clamp(0.75rem,18cqw,4rem)]"
-                  : "text-[clamp(1rem,21.2cqw,5rem)]",
-                design.ovr,
-              )}
-            >
-              {ovr}
-            </span>
-            {!isSm && (
-              <span
-                className={cn(
-                  "relative -mt-[clamp(0.25rem,4cqw,1rem)] text-[clamp(0.4375rem,7.5cqw,1.75rem)] font-bold tracking-wider",
-                  design.position,
-                )}
-              >
-                {region}
-              </span>
-            )}
-            {!isSm && weaponIconUrl && (
-              <div
-                role="img"
-                aria-label="weapon"
-                className={cn(
-                  "relative mt-[clamp(0rem,0.4cqw,0.125rem)] aspect-[4/1] w-[clamp(0.875rem,17cqw,4rem)] bg-current [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]",
-                  design.position,
-                )}
-                style={{
-                  maskImage: `url(${weaponIconUrl})`,
-                }}
-              />
-            )}
-          </div>
-        </div>
-
-        {/* 플레이어 이름 */}
-        <div
-          className={cn(
-            "absolute inset-x-0 text-center",
-            isSm ? "top-[73%]" : isHighTier ? "top-[65%]" : "top-[68%]",
-          )}
-        >
-          <span
-            className={cn(
-              "font-bold tracking-widest",
-              isSm
-                ? "text-[clamp(0.375rem,7cqw,1.75rem)]"
-                : "text-[clamp(0.5rem,9.5cqw,2.25rem)]",
-              design.playerName,
-            )}
-          >
-            {playerName}
-          </span>
-        </div>
-
-        {/* 스탯: default only */}
+        <OvrSection
+          ovr={ovr}
+          region={region}
+          weaponIconUrl={weaponIconUrl}
+          design={design}
+          isHighTier={isHighTier}
+          isSm={isSm}
+          clipStyle={clipStyle}
+        />
+        <PlayerNameSection
+          playerName={playerName}
+          design={design}
+          isHighTier={isHighTier}
+          isSm={isSm}
+        />
         {!isSm && (
-          <div
-            className={cn(
-              "absolute flex text-center",
-              isHighTier
-                ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.25rem,5.3cqw,1.25rem)]"
-                : "inset-x-[6%] top-[76%] justify-between gap-[clamp(0.125rem,3.2cqw,0.75rem)]",
-            )}
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center">
-                <span
-                  className={cn(
-                    "text-[clamp(0.25rem,3.7cqw,0.875rem)] font-medium tracking-wide",
-                    design.statLabel,
-                  )}
-                >
-                  {stat.label}
-                </span>
-                <span
-                  className={cn(
-                    "text-[clamp(0.375rem,7.4cqw,1.75rem)] font-bold leading-tight",
-                    design.statValue,
-                  )}
-                >
-                  {stat.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* 티어 아이콘 */}
-        <div
-          className={cn(
-            "absolute inset-x-0 flex justify-center",
-            isSm ? "top-[83%]" : isHighTier ? "top-[83%]" : "top-[87%]",
-          )}
-        >
-          <Image
-            src={getTierIcon(competitiveTier)}
-            alt={`${tierName} tier icon`}
-            width={512}
-            height={512}
-            priority={priority}
-            className={cn(
-              "object-contain",
-              isSm
-                ? "h-[clamp(0.375rem,10cqw,2.25rem)] w-[clamp(0.375rem,10cqw,2.25rem)]"
-                : "h-[clamp(0.5rem,12.7cqw,3rem)] w-[clamp(0.5rem,12.7cqw,3rem)]",
-              design.iconGlow,
-            )}
+          <StatsSection
+            stats={stats}
+            design={design}
+            isHighTier={isHighTier}
           />
-        </div>
+        )}
+        <TierIconSection
+          tierName={tierName}
+          competitiveTier={competitiveTier}
+          design={design}
+          isHighTier={isHighTier}
+          isSm={isSm}
+          priority={priority}
+        />
       </div>
     </div>
   );
