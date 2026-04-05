@@ -22,58 +22,78 @@ export default function DesignReferencePage() {
         <section className="space-y-4">
           <SectionTitle>Gradient Patterns</SectionTitle>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {/* Pattern 1: Boast (Dark → Red) */}
+            {/* Pattern 1: Boast */}
             <div className="space-y-3">
               <p className="text-sm font-medium text-foreground">
-                Pattern 1 — Boast (Dark → Red)
+                Pattern 1 — Boast (Dark)
               </p>
-              <div
-                className="relative flex aspect-square items-end overflow-hidden rounded-lg"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #FF4655 0%, #1A1A2E 35%, #0F1923 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <ValorantLogo className="h-48 w-48 text-white" />
-                </div>
-                <div className="relative z-10 w-full p-4">
-                  <p className="text-xs text-white/50">차분하고 프리미엄한</p>
+              <div className="overflow-hidden rounded-lg border border-[#2A1520] bg-[#0F1923]">
+                <div className="flex flex-col gap-3 p-5">
+                  <StatBar
+                    variant="boast"
+                    label="함께 가장 많이 승리한 플레이어"
+                    value="DRX HYUNBIN"
+                  />
+                  <StatBar
+                    variant="boast"
+                    label="가장 많이 지원한 플레이어"
+                    value="DRX HYUNBIN"
+                  />
+                  <StatBar
+                    variant="boast"
+                    label="헤드샷 확률이 가장 높은 플레이어"
+                    value="HEARTSPING"
+                  />
+                  <StatBar
+                    variant="boast"
+                    label="최후의 플레이어"
+                    value="DRX HYUNBIN"
+                  />
                 </div>
               </div>
               <GradientStops
                 stops={[
-                  { color: "#FF4655", position: "0%" },
-                  { color: "#1A1A2E", position: "35%" },
-                  { color: "#0F1923", position: "100%" },
+                  { color: "#FF4655", position: "left border" },
+                  { color: "#3D0F18", position: "bar start" },
+                  { color: "#1A0A10", position: "bar end" },
                 ]}
               />
             </div>
 
-            {/* Pattern 2: Roast (Red dominant) */}
+            {/* Pattern 2: Roast */}
             <div className="space-y-3">
               <p className="text-sm font-medium text-foreground">
                 Pattern 2 — Roast (Red Dominant)
               </p>
-              <div
-                className="relative flex aspect-square items-end overflow-hidden rounded-lg"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #1A1A2E 0%, #FF4655 30%, #FF6B6B 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <ValorantLogo className="h-48 w-48 text-white" />
-                </div>
-                <div className="relative z-10 w-full p-4">
-                  <p className="text-xs text-white/50">공격적이고 강렬한</p>
+              <div className="overflow-hidden rounded-lg border border-[#FF4655]/30 bg-[#FF4655]">
+                <div className="flex flex-col gap-3 p-5">
+                  <StatBar
+                    variant="roast"
+                    label="함께 가장 많이 패배한 플레이어"
+                    value="DRX HYUNBIN"
+                  />
+                  <StatBar
+                    variant="roast"
+                    label="나를 가장 많이 지원한 플레이어"
+                    value="DRX HYUNBIN"
+                  />
+                  <StatBar
+                    variant="roast"
+                    label="헤드샷 확률이 가장 낮은 플레이어"
+                    value="MYMELODY"
+                  />
+                  <StatBar
+                    variant="roast"
+                    label="가장 적게 마지막까지 남은 플레이어"
+                    value="코코베어"
+                  />
                 </div>
               </div>
               <GradientStops
                 stops={[
-                  { color: "#1A1A2E", position: "0%" },
-                  { color: "#FF4655", position: "30%" },
-                  { color: "#FF6B6B", position: "100%" },
+                  { color: "#FF4655", position: "left border" },
+                  { color: "#CC2233", position: "bar start" },
+                  { color: "#8B1A2B", position: "bar end" },
                 ]}
               />
             </div>
@@ -115,13 +135,43 @@ const ColorSwatch = ({ color, label, sub }: ColorSwatchProps) => (
   </div>
 );
 
+interface StatBarProps {
+  variant: "boast" | "roast";
+  label: string;
+  value: string;
+}
+
+const StatBar = ({ variant, label, value }: StatBarProps) => {
+  const isBoast = variant === "boast";
+
+  return (
+    <div
+      className="border-l-2 border-[#FF4655] px-5 pb-4 pt-3"
+      style={{
+        background: isBoast
+          ? "linear-gradient(180deg, rgba(255,70,85,0) 0%, rgba(255,70,85,0.4) 100%)"
+          : "linear-gradient(180deg, rgba(20,0,5,0) 0%, rgba(20,0,5,0.5) 100%)",
+      }}
+    >
+      <p className={`text-xs ${isBoast ? "text-white/70" : "text-[#6B1525]"}`}>
+        {label}
+      </p>
+      <p
+        className={`mt-1 text-2xl font-bold tracking-wide ${isBoast ? "text-white" : "text-[#1A0008]"}`}
+      >
+        {value}
+      </p>
+    </div>
+  );
+};
+
 interface GradientStop {
   color: string;
   position: string;
 }
 
 const GradientStops = ({ stops }: { stops: GradientStop[] }) => (
-  <div className="flex gap-3">
+  <div className="flex flex-wrap gap-3">
     {stops.map((stop) => (
       <div key={`${stop.color}-${stop.position}`} className="flex items-center gap-1.5">
         <div
@@ -134,11 +184,4 @@ const GradientStops = ({ stops }: { stops: GradientStop[] }) => (
       </div>
     ))}
   </div>
-);
-
-const ValorantLogo = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="currentColor">
-    <polygon points="50,5 95,95 50,70" />
-    <polygon points="5,50 45,95 45,70 20,65" />
-  </svg>
 );
