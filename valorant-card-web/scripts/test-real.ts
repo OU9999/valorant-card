@@ -153,7 +153,7 @@ const main = async () => {
 
   const formatted = formatCardStats(result.stats);
   for (const stat of formatted) {
-    const bar = renderBar(stat.label, result.stats);
+    const bar = renderBar(stat.label, result.stats as unknown as Record<string, number>);
     console.log(`  ${stat.label.padEnd(6)} ${stat.value.padStart(7)}  ${bar}`);
   }
 
