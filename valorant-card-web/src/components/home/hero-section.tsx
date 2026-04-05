@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import type { CSSProperties, FormEvent } from "react";
-import { Search, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import type { CSSProperties } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Loader2, LogOut } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import ironCard from "@/asset/example/tier-card/iron.png";
 import bronzeCard from "@/asset/example/tier-card/bronze.png";
@@ -15,13 +16,11 @@ import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { TierCard } from "@/components/card/tier-card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { getWeaponIconUrl } from "@/constants/weapons";
-import { CardResult } from "@/components/home/card-result";
-import { ERROR_MESSAGES } from "@/lib/card/errors";
+import { DataDisclosureDialog } from "@/components/home/data-disclosure-dialog";
+import { useAuthStatus } from "@/hooks/use-auth-status";
 import type { TierName } from "@/constants/tier-design";
 import type { CardErrorCode } from "@/lib/card/errors";
-import type { GeneratedCardData } from "@/lib/card/generate";
 
 const VANDAL_ICON_URL = getWeaponIconUrl("9c82e19d-4575-0200-1a81-3eacf00cf872");
 
@@ -39,7 +38,6 @@ const PLACEHOLDER_STATS = [
 type HeroState =
   | { phase: "idle" }
   | { phase: "loading" }
-  | { phase: "result"; data: GeneratedCardData }
   | { phase: "error"; message: string };
 
 // ─── Showcase Data ───
@@ -130,60 +128,73 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
 // ─── Hero Section ───
 
 const HeroSection = () => {
-  const [riotId, setRiotId] = useState("");
   const [state, setState] = useState<HeroState>({ phase: "idle" });
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { status: authStatus, refresh: refreshAuth } = useAuthStatus();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const trimmed = riotId.trim();
-    if (!trimmed.includes("#")) {
-      setState({ phase: "error", message: ERROR_MESSAGES.INVALID_RIOT_ID });
+  /**
+   * RSO 콜백 처리: 인증 성공 시 카드 생성 및 /card/[id]로 이동, 실패 시 에러 표시.
+   */
+  useEffect(() => {
+    if (searchParams.get("authenticated") === "true") {
+      refreshAuth();
+      window.history.replaceState({}, "", "/");
+      generateCard();
       return;
     }
 
+    const authError = searchParams.get("auth_error");
+    if (authError) {
+      setState({ phase: "error", message: "로그인에 실패했습니다. 다시 시도해주세요." });
+      window.history.replaceState({}, "", "/");
+    }
+  }, [searchParams, refreshAuth]);
+
+  const generateCard = async () => {
     setState({ phase: "loading" });
 
     try {
-      const res = await fetch("/api/card/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ riotId: trimmed }),
-      });
-
+      const res = await fetch("/api/card/generate", { method: "POST" });
       const json = await res.json();
 
       if (!res.ok) {
         const code = json.code as CardErrorCode | undefined;
-        const message = code ? ERROR_MESSAGES[code] : ERROR_MESSAGES.INTERNAL_ERROR;
+        if (code === "UNAUTHORIZED") {
+          setDialogOpen(true);
+          setState({ phase: "idle" });
+          return;
+        }
+        const message = code
+          ? (json.error as string)
+          : "오류가 발생했습니다. 다시 시도해주세요.";
         setState({ phase: "error", message });
         return;
       }
 
-      setState({ phase: "result", data: json as GeneratedCardData });
+      router.push(`/card/${json.id as string}`);
     } catch {
-      setState({ phase: "error", message: ERROR_MESSAGES.INTERNAL_ERROR });
+      setState({ phase: "error", message: "오류가 발생했습니다. 다시 시도해주세요." });
     }
   };
 
-  const handleBack = () => {
+  const handleLogin = () => {
+    setDialogOpen(true);
+  };
+
+  const handlePreview = () => {
+    router.push("/card/test");
+  };
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/rso/logout", { method: "POST" });
+    refreshAuth();
     setState({ phase: "idle" });
-    setRiotId("");
   };
 
   const isLoading = state.phase === "loading";
-
-  // ─── Result View ───
-  if (state.phase === "result") {
-    return (
-      <div className="relative flex min-h-screen flex-col items-center justify-center bg-background">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.668_0.220_21_/_0.12)_0%,_transparent_60%)]" />
-        <div className="relative z-10">
-          <CardResult data={state.data} onBack={handleBack} />
-        </div>
-      </div>
-    );
-  }
+  const isAuthenticated = authStatus?.authenticated === true;
 
   // ─── Default View (idle / loading / error) ───
   return (
@@ -205,33 +216,48 @@ const HeroSection = () => {
           나만의 발로란트 카드를 만들어보세요
         </p>
 
-        {/* Search form */}
-        <form onSubmit={handleSubmit} className="mt-8 flex w-full max-w-md items-center gap-2">
-          <Input
-            type="text"
-            placeholder="Player#TAG"
-            className="h-10 flex-1 text-sm"
-            value={riotId}
-            onChange={(e) => {
-              setRiotId(e.target.value);
-              if (state.phase === "error") setState({ phase: "idle" });
-            }}
-            disabled={isLoading}
-          />
-          <Button size="lg" className="h-10 gap-2 px-5" type="submit" disabled={isLoading}>
-            {isLoading ? (
+        {/* Action area */}
+        <div className="mt-8 flex flex-col items-center gap-3">
+          {isLoading ? (
+            <Button size="lg" className="h-12 gap-2 px-8" disabled>
               <Loader2 className="size-4 animate-spin" />
-            ) : (
-              <Search className="size-4" />
-            )}
-            {isLoading ? "생성 중..." : "검색"}
-          </Button>
-        </form>
+              카드 생성 중...
+            </Button>
+          ) : isAuthenticated ? (
+            <div className="flex items-center gap-3">
+              <Button size="lg" className="h-12 gap-2 px-8" onClick={generateCard}>
+                카드 생성
+              </Button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <LogOut className="size-3" />
+                로그아웃
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="flex h-12 items-center gap-2.5 rounded-lg bg-[#D13639] px-8 text-sm font-semibold text-white transition-colors hover:bg-[#B82E31]"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                <path d="M13.458.86 0 7.093l3.353 12.761 2.552-.313-.701-8.024.838-.373 1.447 8.202 4.361-.535-.775-8.857.83-.37 1.591 9.025 4.412-.542-.849-9.708.84-.374 1.74 9.87L24 17.318V3.5Zm.316 19.356.222 1.256L24 23.14v-4.18l-10.22 1.256Z" />
+              </svg>
+              Riot 계정으로 로그인
+            </button>
+          )}
 
-        {/* Error message */}
-        {state.phase === "error" && (
-          <p className="mt-3 text-sm text-destructive">{state.message}</p>
-        )}
+          {/* Error message */}
+          {state.phase === "error" && (
+            <p className="text-sm text-destructive">{state.message}</p>
+          )}
+        </div>
+
+        {/* Data disclosure dialog */}
+        <DataDisclosureDialog open={dialogOpen} onOpenChange={setDialogOpen} onPreview={handlePreview} />
       </div>
 
       {/* Right — 3-column vertical scroll */}
