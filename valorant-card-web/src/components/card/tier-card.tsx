@@ -13,7 +13,6 @@ import {
 import { OvrSection } from "./tier-card/ovr-section";
 import { PlayerNameSection } from "./tier-card/player-name-section";
 import { StatsSection } from "./tier-card/stats-section";
-import { TierIconSection } from "./tier-card/tier-icon-section";
 
 /* ------------------------------------------------------------------ */
 /*  TierCard                                                          */
@@ -83,6 +82,8 @@ const TierCard = ({
           ovr={ovr}
           region={region}
           weaponIconUrl={weaponIconUrl}
+          competitiveTier={competitiveTier}
+          tierName={tierName}
           design={design}
           isHighTier={isHighTier}
           isSm={isSm}
@@ -94,20 +95,11 @@ const TierCard = ({
           isHighTier={isHighTier}
           isSm={isSm}
         />
-        {!isSm && (
-          <StatsSection
-            stats={stats}
-            design={design}
-            isHighTier={isHighTier}
-          />
-        )}
-        <TierIconSection
-          tierName={tierName}
-          competitiveTier={competitiveTier}
+        <StatsSection
+          stats={stats}
           design={design}
           isHighTier={isHighTier}
           isSm={isSm}
-          priority={priority}
         />
       </div>
     </div>

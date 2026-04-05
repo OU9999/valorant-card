@@ -1,11 +1,15 @@
+import Image from "next/image";
 import type { TierDesign } from "@/constants/tier-design";
 import { cn } from "@/lib/cn";
+import { getTierIcon } from "@/lib/valorant/tiers";
 import type { ClipStyle } from "./types";
 
 interface OvrSectionProps {
   ovr: number;
   region: string;
   weaponIconUrl: string | undefined;
+  competitiveTier: number;
+  tierName: string;
   design: TierDesign;
   isHighTier: boolean;
   isSm: boolean;
@@ -16,6 +20,8 @@ const OvrSection = ({
   ovr,
   region,
   weaponIconUrl,
+  competitiveTier,
+  tierName,
   design,
   isHighTier,
   isSm,
@@ -59,6 +65,19 @@ const OvrSection = ({
       >
         {ovr}
       </span>
+      <Image
+        src={getTierIcon(competitiveTier)}
+        alt={`${tierName} tier icon`}
+        width={512}
+        height={512}
+        className={cn(
+          "relative object-contain",
+          isSm
+            ? "h-[clamp(0.375rem,10cqw,2.25rem)] w-[clamp(0.375rem,10cqw,2.25rem)]"
+            : "h-[clamp(0.5rem,12.7cqw,3rem)] w-[clamp(0.5rem,12.7cqw,3rem)]",
+          design.iconGlow,
+        )}
+      />
       <span
         className={cn(
           "relative text-[clamp(0.4375rem,7.5cqw,1.75rem)] font-bold tracking-wider",
