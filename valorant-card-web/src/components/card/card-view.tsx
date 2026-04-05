@@ -1,0 +1,70 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { TierCard } from "@/components/card/tier-card";
+import {
+  CardDetailLayout,
+  CardSlot,
+  DetailSlot,
+} from "@/components/card/card-detail-layout";
+import { CardDetailPlaceholder } from "@/components/card/card-detail-placeholder";
+import { CHARACTERS } from "@/constants/characters";
+import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
+import { getWeaponIconUrl } from "@/constants/weapons";
+import type { GeneratedCardData } from "@/lib/card/generate";
+
+const DEFAULT_POSE_INDEX = 0;
+
+const getAgentPortraitUrl = (agentId: string): string => {
+  const normalized = agentId.toUpperCase();
+  const character = CHARACTERS.find((c) => c.id.toUpperCase() === normalized);
+  if (!character) return "";
+  return character.poses[DEFAULT_POSE_INDEX];
+};
+
+interface CardViewProps {
+  data: GeneratedCardData;
+}
+
+const CardView = ({ data }: CardViewProps) => {
+  const backgroundImage = TIER_CARD_IMAGES[data.tierName];
+  const portraitUrl = getAgentPortraitUrl(data.agentId);
+  const weaponIconUrl = data.weaponId
+    ? getWeaponIconUrl(data.weaponId)
+    : undefined;
+
+  return (
+    <div className="flex min-h-screen flex-col items-center">
+      <CardDetailLayout>
+        <CardSlot>
+          <TierCard
+            tierName={data.tierName}
+            competitiveTier={data.competitiveTier}
+            backgroundImage={backgroundImage}
+            portraitUrl={portraitUrl}
+            ovr={data.ovr}
+            playerName={data.playerName}
+            region={data.region}
+            weaponIconUrl={weaponIconUrl}
+            stats={data.stats}
+            className="h-[800px]"
+            priority
+          />
+        </CardSlot>
+        <DetailSlot>
+          <CardDetailPlaceholder />
+        </DetailSlot>
+      </CardDetailLayout>
+      <Link
+        href="/"
+        className="relative z-10 mb-8 flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="size-4" />
+        돌아가기
+      </Link>
+    </div>
+  );
+};
+
+export { CardView };

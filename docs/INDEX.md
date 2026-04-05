@@ -24,7 +24,9 @@ related: []
 
 - [[riot-api-key-guide]] -- Riot Games API 키 발급 절차, 종류, Rate Limit 정리.
 - [[riot-production-key-review]] -- Production Key 심사 기준, 승인/거절 요건, 본 프로젝트 통과 가능성 분석.
-- [[production-key-todo]] -- Production Key 취득을 위한 4단계 TODO. RSO, 법적 준비, 신청, 전환.
+- [[production-key-todo]] -- Production Key 취득을 위한 4단계 TODO. RSO, 법적 준비, 신청, 전환. (0405 업데이트)
+- [[card-view-system]] -- RSO 인증, 카드 생성 API, 히어로 상태 머신, TierCard 리팩토링 상세.
+- [[card-page-routing]] -- /card/[id] 라우팅 시스템. in-memory 저장소, 페이지 분리, 데모 미리보기.
 
 ## 카드 디자인
 

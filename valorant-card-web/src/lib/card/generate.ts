@@ -31,7 +31,7 @@ const SHARD_LABELS: Record<ValorantShard, string> = {
   latam: "LATAM",
 };
 import {
-  getAccountByRiotId,
+  getAccountByPuuid,
   getMatchListByPuuid,
   getMatchById,
 } from "@/lib/riot/client";
@@ -43,7 +43,6 @@ import {
 import { getTierIndex } from "@/lib/valorant/tiers";
 import { RiotRateLimitError } from "@/lib/riot/errors";
 import { CardGenerationError } from "./errors";
-import { parseRiotId } from "@/lib/utils/riot-id";
 
 // ─── Types ───
 
@@ -97,20 +96,13 @@ const competitiveTierToTierName = (tier: number): TierName | null => {
 
 // ─── Main Orchestrator ───
 
-const generateCard = async (riotIdInput: string): Promise<GeneratedCardData> => {
-  // 1. Parse Riot ID
-  const parsed = parseRiotId(riotIdInput);
-  if (!parsed) {
-    throw new CardGenerationError("INVALID_RIOT_ID", "Invalid Riot ID format", 400);
-  }
-
-  const { gameName, tagLine } = parsed;
+const generateCard = async (puuid: string): Promise<GeneratedCardData> => {
   const region = getRegion();
   const shard = getShard();
 
   try {
-    // 2. Account lookup
-    const accountResult = await getAccountByRiotId(gameName, tagLine, region);
+    // 1. Account lookup by puuid
+    const accountResult = await getAccountByPuuid(puuid, region);
     if (!accountResult.ok) {
       if (accountResult.error.status === 404) {
         throw new CardGenerationError("ACCOUNT_NOT_FOUND", "Account not found", 404);
@@ -124,10 +116,8 @@ const generateCard = async (riotIdInput: string): Promise<GeneratedCardData> => 
       throw new CardGenerationError("INTERNAL_ERROR", accountResult.error.message, 500);
     }
 
-    const { puuid } = accountResult.data;
-
-    // 3. Match list
-    const matchListResult = await getMatchListByPuuid(puuid, shard);
+    // 2. Match list
+    const matchListResult = await getMatchListByPuuid(accountResult.data.puuid, shard);
     if (!matchListResult.ok) {
       if (matchListResult.error.code === "RATE_LIMITED") {
         throw new CardGenerationError("RATE_LIMITED", "Rate limited", 429);

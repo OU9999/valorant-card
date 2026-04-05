@@ -13,6 +13,7 @@
 - `useMemo`, `useCallback` 훅 사용 금지. React 19.2+ with React Compiler 사용으로 메모이제이션 자동 처리.
 - 상대 경로는 `../..`까지만 허용. `../../..` 이상이면 path alias 사용.
 - 객체 타입은 `type` 대신 `interface` 사용. 단, 리터럴 추론이 필요한 `as const` 파생 타입은 `type` 허용.
+- 복잡한 혼합 컴포넌트는 props 대신 children 기반 composition 패턴 우선 사용.
 - 해키한 패턴 금지. 우회가 필요하면 구조 자체를 재설계.
 - 함수는 단일 책임 원칙 준수. 순수 함수 지향하고, 작은 함수로 분리 후 조합.
 - `useEffect` 코드 추가시 항상 JSDoc으로 코드 설명.
