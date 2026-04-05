@@ -204,11 +204,11 @@ const HeroSection = () => {
 
       {/* Left — Title + Search */}
       <div className="relative z-10 flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
-        <h1 className="flex flex-col items-center gap-1">
-          <span className="text-5xl font-black tracking-[0.25em] text-primary md:text-7xl">
+        <h1 className="flex flex-col items-center gap-1 font-heading">
+          <span className="text-5xl font-extrabold uppercase tracking-wide text-primary md:text-7xl">
             VALORANT
           </span>
-          <span className="text-3xl font-bold tracking-widest text-foreground md:text-5xl">
+          <span className="text-3xl font-bold uppercase tracking-wide text-foreground md:text-5xl">
             FC CARD
           </span>
         </h1>
