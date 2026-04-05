@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { TierCard } from "@/components/card/tier-card";
+import {
+  CardDetailLayout,
+  CardSlot,
+  DetailSlot,
+} from "@/components/card/card-detail-layout";
+import { CardDetailPlaceholder } from "@/components/card/card-detail-placeholder";
 import { CHARACTERS } from "@/constants/characters";
 import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
 import { getWeaponIconUrl } from "@/constants/weapons";
@@ -15,12 +21,29 @@ import {
 } from "@/lib/valorant/card-stats";
 import { getTierIndex } from "@/lib/valorant/tiers";
 import type { TierName } from "@/constants/tier-design";
+import type { CardStat, FormTrend } from "@/lib/valorant/card-stats";
+import type { Badge } from "@/lib/valorant/badges";
 import type { MatchDetails } from "@/network/riot/match";
 import type {
   HenrikMatchesResponse,
   HenrikAccountResponse,
   HenrikMmrResponse,
 } from "@/lib/henrik/types";
+
+// ─── Types ───
+
+interface ComputedCardData {
+  tierName: TierName;
+  competitiveTier: number;
+  portraitUrl: string;
+  ovr: number;
+  playerName: string;
+  region: string;
+  weaponIconUrl?: string;
+  stats: CardStat[];
+  trend: FormTrend;
+  badges: Badge[];
+}
 
 // ─── Helpers ───
 
@@ -54,10 +77,10 @@ const findMostPlayedAgent = (
 // ─── Component ───
 
 const CardTestView = () => {
-  const [card, setCard] = useState<React.ReactNode>(null);
+  const [data, setData] = useState<ComputedCardData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  /** fixture 로드 → 어댑터 변환 → 알고리즘 실행 → 카드 렌더링 */
+  /** fixture 로드 → 어댑터 변환 → 알고리즘 실행 → 카드 데이터 계산 */
   useEffect(() => {
     Promise.all([
       fetch("/fixtures/henrik-account.json").then((r) => r.json()),
@@ -95,21 +118,18 @@ const CardTestView = () => {
               account.data.region as keyof typeof SHARD_DISPLAY_NAMES
             ] ?? account.data.region.toUpperCase();
 
-          setCard(
-            <TierCard
-              tierName={tierName}
-              competitiveTier={competitiveTier}
-              backgroundImage={TIER_CARD_IMAGES[tierName]}
-              portraitUrl={portraitUrl}
-              ovr={result.ovr}
-              playerName={account.data.name}
-              region={region}
-              weaponIconUrl={weaponIconUrl}
-              stats={formatCardStats(result.stats)}
-              className="h-[800px]"
-              priority
-            />,
-          );
+          setData({
+            tierName,
+            competitiveTier,
+            portraitUrl,
+            ovr: result.ovr,
+            playerName: account.data.name,
+            region,
+            weaponIconUrl,
+            stats: formatCardStats(result.stats),
+            trend: result.trend,
+            badges: result.badges,
+          });
         },
       )
       .catch((err: unknown) => {
@@ -125,7 +145,7 @@ const CardTestView = () => {
     );
   }
 
-  if (!card) {
+  if (!data) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
@@ -134,10 +154,26 @@ const CardTestView = () => {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.668_0.220_21_/_0.12)_0%,_transparent_60%)]" />
-      <div className="relative z-10">{card}</div>
-    </div>
+    <CardDetailLayout>
+      <CardSlot>
+        <TierCard
+          tierName={data.tierName}
+          competitiveTier={data.competitiveTier}
+          backgroundImage={TIER_CARD_IMAGES[data.tierName]}
+          portraitUrl={data.portraitUrl}
+          ovr={data.ovr}
+          playerName={data.playerName}
+          region={data.region}
+          weaponIconUrl={data.weaponIconUrl}
+          stats={data.stats}
+          className="h-[800px]"
+          priority
+        />
+      </CardSlot>
+      <DetailSlot>
+        <CardDetailPlaceholder />
+      </DetailSlot>
+    </CardDetailLayout>
   );
 };
 
