@@ -69,7 +69,7 @@ const AIFeedback = ({ stats, trend }: AIFeedbackProps) => {
           &gt; STATUS:{" "}
           <span className={cn("px-1", status.className)}>{status.label}</span>
         </p>
-        <div className="my-4 h-px w-full bg-primary/10" />
+        <hr className="my-4 h-px w-full border-0 bg-primary/10" />
         <p className="text-[10px] text-muted-foreground/40">
           &gt; END OF REPORT. DATA SYNC COMPLETE.
         </p>

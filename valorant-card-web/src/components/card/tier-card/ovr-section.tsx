@@ -68,8 +68,8 @@ const OvrSection = ({
       <Image
         src={getTierIcon(competitiveTier)}
         alt={`${tierName} tier icon`}
-        width={512}
-        height={512}
+        width={128}
+        height={128}
         className={cn(
           "relative object-contain",
           isSm
