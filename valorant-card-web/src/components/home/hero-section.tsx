@@ -20,18 +20,85 @@ import { getWeaponIconUrl } from "@/constants/weapons";
 import { DataDisclosureDialog } from "@/components/home/data-disclosure-dialog";
 import { useAuthStatus } from "@/hooks/use-auth-status";
 import type { TierName } from "@/constants/tier-design";
+import type { CardStat } from "@/components/card/tier-card";
 import type { CardErrorCode } from "@/lib/card/errors";
 
 const VANDAL_ICON_URL = getWeaponIconUrl("9c82e19d-4575-0200-1a81-3eacf00cf872");
 
-const PLACEHOLDER_STATS = [
-  { label: "ACS", value: "0" },
-  { label: "K/D", value: "0" },
-  { label: "HS%", value: "0" },
-  { label: "DDΔ", value: "0" },
-  { label: "KAST", value: "0" },
-  { label: "ADR", value: "0" },
-];
+const SHOWCASE_STATS: Record<TierName, CardStat[]> = {
+  Iron: [
+    { label: "ACS", value: "128" },
+    { label: "K/D", value: "0.7" },
+    { label: "HS%", value: "12" },
+    { label: "DDΔ", value: "-18" },
+    { label: "KAST", value: "48" },
+    { label: "ADR", value: "105" },
+  ],
+  Bronze: [
+    { label: "ACS", value: "152" },
+    { label: "K/D", value: "0.8" },
+    { label: "HS%", value: "15" },
+    { label: "DDΔ", value: "-11" },
+    { label: "KAST", value: "54" },
+    { label: "ADR", value: "118" },
+  ],
+  Silver: [
+    { label: "ACS", value: "173" },
+    { label: "K/D", value: "0.9" },
+    { label: "HS%", value: "18" },
+    { label: "DDΔ", value: "-5" },
+    { label: "KAST", value: "60" },
+    { label: "ADR", value: "132" },
+  ],
+  Gold: [
+    { label: "ACS", value: "198" },
+    { label: "K/D", value: "1.0" },
+    { label: "HS%", value: "21" },
+    { label: "DDΔ", value: "+2" },
+    { label: "KAST", value: "65" },
+    { label: "ADR", value: "148" },
+  ],
+  Platinum: [
+    { label: "ACS", value: "218" },
+    { label: "K/D", value: "1.1" },
+    { label: "HS%", value: "24" },
+    { label: "DDΔ", value: "+7" },
+    { label: "KAST", value: "69" },
+    { label: "ADR", value: "158" },
+  ],
+  Diamond: [
+    { label: "ACS", value: "241" },
+    { label: "K/D", value: "1.2" },
+    { label: "HS%", value: "26" },
+    { label: "DDΔ", value: "+12" },
+    { label: "KAST", value: "73" },
+    { label: "ADR", value: "168" },
+  ],
+  Ascendant: [
+    { label: "ACS", value: "262" },
+    { label: "K/D", value: "1.4" },
+    { label: "HS%", value: "29" },
+    { label: "DDΔ", value: "+18" },
+    { label: "KAST", value: "76" },
+    { label: "ADR", value: "179" },
+  ],
+  Immortal: [
+    { label: "ACS", value: "285" },
+    { label: "K/D", value: "1.6" },
+    { label: "HS%", value: "31" },
+    { label: "DDΔ", value: "+23" },
+    { label: "KAST", value: "80" },
+    { label: "ADR", value: "192" },
+  ],
+  Radiant: [
+    { label: "ACS", value: "312" },
+    { label: "K/D", value: "1.8" },
+    { label: "HS%", value: "34" },
+    { label: "DDΔ", value: "+29" },
+    { label: "KAST", value: "84" },
+    { label: "ADR", value: "208" },
+  ],
+};
 
 // ─── State Machine ───
 
@@ -113,7 +180,7 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
               ovr={card.ovr}
               playerName={card.playerName}
               weaponIconUrl={VANDAL_ICON_URL}
-              stats={PLACEHOLDER_STATS}
+              stats={SHOWCASE_STATS[card.tierName]}
               size="sm"
               className="w-[280px]"
               priority={i < 3}

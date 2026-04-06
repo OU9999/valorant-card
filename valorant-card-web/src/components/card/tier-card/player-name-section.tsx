@@ -17,7 +17,13 @@ const PlayerNameSection = ({
   <div
     className={cn(
       "absolute inset-x-0 text-center",
-      isSm ? "top-[73%]" : isHighTier ? "top-[65%]" : "top-[68%]",
+      isSm && isHighTier
+        ? "top-[68.5%]"
+        : isSm
+          ? "top-[70%]"
+          : isHighTier
+            ? "top-[65%]"
+            : "top-[68%]",
     )}
   >
     <span

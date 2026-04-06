@@ -8,7 +8,9 @@ import {
   CardSlot,
   DetailSlot,
 } from "@/components/card/card-detail-layout";
-import { CardDetailPlaceholder } from "@/components/card/card-detail-placeholder";
+import { CombatStats } from "@/components/card/detail/combat-stats";
+import { PerformanceBadges } from "@/components/card/detail/performance-badges";
+import { AIFeedback } from "@/components/card/detail/ai-feedback";
 import { CHARACTERS } from "@/constants/characters";
 import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
 import { getWeaponIconUrl } from "@/constants/weapons";
@@ -53,7 +55,9 @@ const CardView = ({ data }: CardViewProps) => {
           />
         </CardSlot>
         <DetailSlot>
-          <CardDetailPlaceholder />
+          <CombatStats stats={data.stats} />
+          <PerformanceBadges badges={data.badges} />
+          <AIFeedback stats={data.stats} trend={data.trend} />
         </DetailSlot>
       </CardDetailLayout>
       <Link
