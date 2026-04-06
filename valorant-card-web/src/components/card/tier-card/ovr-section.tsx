@@ -36,18 +36,18 @@ const OvrSection = ({
   >
     <div
       className={cn(
-        "absolute flex flex-col items-center px-2.5",
+        "absolute flex flex-col items-center px-2.5 gap-[clamp(0.0625rem,0.4cqw,0.125rem)]",
         isSm
-          ? "left-[7%] top-[12%] gap-[clamp(0.0625rem,0.4cqw,0.125rem)]"
+          ? "left-[7%] top-[12%]"
           : isHighTier
-            ? "left-[10%] top-[14%] gap-[clamp(0.0625rem,0.8cqw,0.25rem)]"
-            : "left-[6%] top-[10%] gap-[clamp(0.0625rem,0.8cqw,0.25rem)]",
+            ? "left-[10%] top-[14%]"
+            : "left-[6%] top-[10%]",
       )}
     >
       {/* Gradient bg — mask로 상하 페이드, 텍스트 뒤에 깔림 */}
       <div
         className={cn(
-          "absolute inset-0 bg-linear-to-b pb-96",
+          "absolute inset-0 bg-linear-to-b",
           isSm ? "pb-40" : "pb-96",
           "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]",
           design.ovrGradient,

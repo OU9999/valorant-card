@@ -14,7 +14,10 @@ const StatsSection = ({ stats, design, isHighTier, isSm }: StatsSectionProps) =>
     className={cn(
       "absolute flex text-center",
       isSm
-        ? "inset-x-[8%] top-[82%] justify-evenly gap-[clamp(0.125rem,2.5cqw,0.5rem)]"
+        ? cn(
+            "inset-x-[8%] justify-evenly gap-[clamp(0.125rem,2.5cqw,0.5rem)]",
+            isHighTier ? "top-[77.5%]" : "top-[79%]",
+          )
         : isHighTier
           ? "inset-x-[10%] top-[74%] justify-evenly gap-[clamp(0.25rem,5.3cqw,1.25rem)]"
           : "inset-x-[6%] top-[76%] justify-between gap-[clamp(0.125rem,3.2cqw,0.75rem)]",
