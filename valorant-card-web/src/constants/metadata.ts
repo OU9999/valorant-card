@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://valfc-card.com";
 const SITE_TITLE = "VAL CARD";
-const SITE_DESCRIPTION = "나만의 발로란트 FC 카드를 만들어보세요";
+const SITE_DESCRIPTION = "나만의 발로란트 카드를 만들어보세요";
 
 const siteMetadata: Metadata = {
   title: SITE_TITLE,

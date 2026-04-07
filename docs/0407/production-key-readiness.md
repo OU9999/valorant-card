@@ -26,18 +26,19 @@ valfc-card.com 라이브 사이트를 Riot 공식 요구사항과 교차 검증�
 
 ## VALORANT API 접근 제한
 
-VALORANT은 타 Riot 타이틀과 달리 **모든 `val-*` 엔드포인트가 Production Key 전용**. Dev Key, Personal Key 모두 접근 불가. Personal Key 자체가 VALORANT에는 제공되지 않음.
+VALORANT은 Personal Key가 제공되지 않음. Dev Key와 Production Key만 존재.
+공식 문서상 `val-*` 엔드포인트는 Production Key 전용으로 안내되나, **실제 테스트 결과 일부 엔드포인트는 Dev Key로 접근 가능** (2025-04-07 검증).
 
-| 엔드포인트 | Dev Key | Production Key | 비고 |
-|------------|---------|---------------|------|
-| `account-v1` (Riot ID/PUUID 조회) | O | O | 크로스게임 플랫폼 API. val 전용 아님 |
-| `val-match-v1` (매치 히스토리) | X | O | RSO 플레이어 opt-in 필수 |
-| `val-ranked-v1` (랭크/리더보드) | X | O | |
-| `val-content-v1` (게임 콘텐츠) | X | O | 대안: valorant-api.com (키 불필요) |
-| `val-status-v1` (서버 상태) | X | O | |
+| 엔드포인트 | Dev Key | Production Key | 검증 결과 |
+|------------|---------|---------------|-----------|
+| `account-v1` (Riot ID/PUUID 조회) | **O** | O | 200 OK |
+| `val-content-v1` (게임 콘텐츠) | **O** | O | 200 OK |
+| `val-ranked-v1` (랭크/리더보드) | **O** | O | 200 OK |
+| `val-status-v1` (서버 상태) | **O** | O | 200 OK |
+| `val-match-v1` (매치 히스토리/매치리스트) | **X** | O | 403 Forbidden |
 | RSO OAuth 클라이언트 생성 | X | O | 승인된 Production App ID 필요 |
 
-결론: Production Key 없이는 매치/랭크 조회, RSO 인증 모두 불가. Dev Key로는 Riot ID 조회만 가능.
+결론: **Production Key가 필수인 건 `val-match-v1`(매치 히스토리)과 RSO뿐.** 랭크 리더보드, 콘텐츠, 서버 상태는 Dev Key로 접근 가능.
 
 ---
 
@@ -98,9 +99,13 @@ VALORANT은 타 Riot 타이틀과 달리 **모든 `val-*` 엔드포인트가 Pro
 
 VALORANT `val-*` 엔드포인트와 RSO는 Production Key 전용이므로, 신청 시점에 공식 API 기반 실제 플로우 시연은 불가. Riot은 planning stage 신청도 수용하므로 아래 방식으로 대응.
 
-- **방식 A (권장)**: Henrik 비공식 API 기반 현재 동작 상태를 화면 녹화. 신청서에 "Production Key 승인 후 공식 API + RSO 전환 예정" 명시
-- **방식 B**: 목업 + 상세 설명서. 각 화면 스크린샷과 의도된 플로우 문서화
+Riot FAQ에서 VALORANT용 공식 안내: "placeholder 데이터 또는 Dev Key로 사이트 프레임워크 구축 가능. 비디오 데모, 스크린샷, Figma 파일로 사용자 플로우 시연 가능."
+
+- **방식 A (권장)**: placeholder/목업 데이터 기반 사이트 + 스크린샷으로 플로우 문서화. 메인 제출 링크는 반드시 valfc-card.com
+- **방식 B**: 비디오 데모 (화면 녹화)로 의도된 플로우 시연
 - **방식 C**: 데모 미리보기 API(`POST /api/card/preview`) 활용. 샘플 카드 생성 플로우 시연
+
+참고: GitHub 링크는 작동하는 앱/사이트 대체로 인정되지 않음 (FAQ 명시). 보조 자료로만 활용 가능.
 
 ### 권장 (신청과 병행 가능)
 
@@ -130,8 +135,9 @@ riot.txt와 데모 자료는 신청 과정 중에 처리하면 됨. 사전 준�
 
 PIPA 세부사항 미흡은 Riot 심사 블로커가 아님. Riot은 Privacy Policy 존재 여부와 기본 내용을 확인하며, 한국 개인정보보호법 세부 준수까지 심사하지 않음.
 
-리스크 요인:
-- 심사 기간 공식 2주, 실제 수개월 소요 가능
+참고:
+- 공식 심사 기간: 매주 검토, 최대 3주
+- RSO 클라이언트는 Production Key 승인 후 자동으로 안내 링크 전송됨 (별도 요청 불필요)
 - 인메모리 카드 저장소는 서버 재시작 시 유실. DB 마이그레이션 별도 필요
 
 ---
@@ -146,14 +152,15 @@ OP.GG, Tracker.gg, Blitz.gg, Mobalytics, DAK.GG 등. 공통점:
 - 측정 가능한 플레이어 이익 (스탯 추적, 성장 도구)
 - 무료 티어 제공
 
-### 실제 심사 기간 (2025~2026 커뮤니티 제보 기준)
+### 심사 기간
 
-| 구분 | 공식 | 현실 |
-|------|------|------|
-| 일반 (LoL 등) | 1~3주 | 6~9개월 |
-| VALORANT | 1~3주 | **8~12개월** |
+**공식 FAQ 기준: 매주 전주 신청분 검토. 요청 과다 시 최대 3주 소요.**
 
-담당자가 수천 건을 소수 인원이 처리. 대기열이 지속적으로 증가 추세.
+GitHub 이슈/커뮤니티에서 수개월~1년이라는 제보가 있으나, 비공식이며 편향 가능성 있음.
+
+주의사항:
+- 신청 후 **추가 메시지를 여러 번 보내면 대기열 뒤로 밀릴 수 있음** (공식 FAQ 명시)
+- 리젝 시 Developer Portal 메시징으로 사유 안내 + 재논의 가능
 
 ### 리젝 사례
 
