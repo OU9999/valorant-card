@@ -4,6 +4,8 @@ import {
   Noto_Sans_KR,
   Black_Han_Sans,
 } from "next/font/google";
+import { Footer } from "@/components/layout/footer";
+import { PageGradient } from "@/components/layout/page-gradient";
 import "@/styles/globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -38,7 +40,9 @@ export default function RootLayout({
       <body
           className={`${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
         >
+        <PageGradient />
         {children}
+        <Footer />
       </body>
     </html>
   );

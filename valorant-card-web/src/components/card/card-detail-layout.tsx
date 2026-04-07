@@ -6,9 +6,8 @@ interface CardDetailLayoutProps {
 
 const CardDetailLayout = ({ children }: CardDetailLayoutProps) => {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.668_0.220_21_/_0.12)_0%,_transparent_60%)]" />
-      <div className="relative z-10 flex w-full max-w-7xl flex-col items-center gap-8 px-6 lg:flex-row lg:items-start lg:justify-center lg:gap-12">
+    <div className="relative flex min-h-screen flex-col items-center justify-center">
+      <div className="flex w-full max-w-7xl flex-col items-center gap-8 px-6 lg:flex-row lg:items-start lg:justify-center lg:gap-12">
         {children}
       </div>
     </div>

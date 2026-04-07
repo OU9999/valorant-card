@@ -181,12 +181,9 @@ const HeroSection = () => {
   const isAuthenticated = authStatus?.authenticated === true;
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-background md:flex-row">
-      {/* Radial gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.668_0.220_21_/_0.12)_0%,_transparent_60%)]" />
-
+    <div className="relative flex min-h-screen flex-col md:flex-row">
       {/* Left — Title + Search */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
         <h1 className="flex flex-col items-center gap-1 font-heading">
           <span className="text-5xl font-extrabold uppercase tracking-wide text-primary md:text-7xl">
             VALORANT
