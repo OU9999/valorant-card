@@ -1,6 +1,7 @@
 import { Zap, Shield, Crosshair, Crown, Flame, Swords, Trophy } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { BADGE_DEFS } from "@/lib/valorant/badges";
+import { TacticalFrame } from "./tactical-frame";
 import type { Badge, BadgeId } from "@/lib/valorant/badges";
 import type { ComponentType } from "react";
 
@@ -23,10 +24,10 @@ const PerformanceBadges = ({ badges }: PerformanceBadgesProps) => {
   const earnedIds = new Set(badges.map((b) => b.id));
 
   return (
-    <div className="rounded-lg border-l-2 border-emerald-500/40 bg-card p-6">
+    <TacticalFrame variant="roast" pattern={1}>
       <div className="mb-5 flex items-center gap-3">
-        <Trophy className="size-5 text-emerald-400" />
-        <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">
+        <Trophy className="size-5 text-[#1A0008]" />
+        <h3 className="text-sm font-bold uppercase tracking-widest text-[#1A0008]">
           Performance Badges
         </h3>
       </div>
@@ -40,27 +41,27 @@ const PerformanceBadges = ({ badges }: PerformanceBadgesProps) => {
             <div
               key={id}
               className={cn(
-                "flex items-center gap-2 rounded border bg-background px-3 py-2",
+                "flex items-center gap-2 rounded border px-3 py-2",
                 earned
-                  ? "border-border"
-                  : "border-border/50 opacity-40",
+                  ? "border-[#1A0008]/20 bg-[#1A0008]/10"
+                  : "border-[#1A0008]/10 opacity-40",
               )}
               title={def.description}
             >
               <Icon
                 className={cn(
                   "size-3.5",
-                  earned ? "text-emerald-400" : "text-muted-foreground",
+                  earned ? "text-[#1A0008]" : "text-[#6B1525]",
                 )}
               />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#1A0008]">
                 {def.name}
               </span>
             </div>
           );
         })}
       </div>
-    </div>
+    </TacticalFrame>
   );
 };
 

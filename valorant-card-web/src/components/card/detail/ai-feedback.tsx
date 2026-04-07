@@ -1,5 +1,6 @@
 import { Terminal } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { TacticalFrame } from "./tactical-frame";
 import type { CardStat } from "@/lib/valorant/card-stats";
 import type { FormTrend } from "@/lib/valorant/card-stats";
 import type { ReactNode } from "react";
@@ -10,7 +11,7 @@ interface AIFeedbackProps {
 }
 
 const TREND_STATUS: Record<FormTrend, { label: string; className: string }> = {
-  up: { label: "OPTIMIZED FOR CLIMBING", className: "bg-emerald-400/20 text-emerald-400" },
+  up: { label: "OPTIMIZED FOR CLIMBING", className: "bg-white/10 text-white" },
   stable: { label: "HOLDING STEADY", className: "bg-muted text-muted-foreground" },
   down: { label: "PERFORMANCE DECLINING", className: "bg-primary/20 text-primary" },
 };
@@ -32,14 +33,14 @@ const AIFeedback = ({ stats, trend }: AIFeedbackProps) => {
   const isPositiveDd = dd?.startsWith("+");
 
   return (
-    <div className="rounded-lg border border-primary/20 bg-background p-6">
+    <TacticalFrame variant="boast" pattern={2}>
       <div className="mb-4 flex items-center gap-3">
         <Terminal className="size-4 text-primary" />
         <h3 className="text-sm font-bold uppercase tracking-widest text-primary">
           AI Analysis Report
         </h3>
       </div>
-      <div className="space-y-3 font-mono text-sm leading-relaxed text-emerald-400/80">
+      <div className="space-y-3 font-mono text-sm leading-relaxed text-white/70">
         <p>&gt; INITIATING BEHAVIORAL DIAGNOSTICS...</p>
         {acs && (
           <p>
@@ -74,7 +75,7 @@ const AIFeedback = ({ stats, trend }: AIFeedbackProps) => {
           &gt; END OF REPORT. DATA SYNC COMPLETE.
         </p>
       </div>
-    </div>
+    </TacticalFrame>
   );
 };
 

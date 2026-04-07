@@ -1,3 +1,4 @@
+import { TacticalFrame } from "./tactical-frame";
 import type { CardStat } from "@/lib/valorant/card-stats";
 
 interface CombatStatsProps {
@@ -7,7 +8,7 @@ interface CombatStatsProps {
 
 const CombatStats = ({ stats, matchCount }: CombatStatsProps) => {
   return (
-    <div className="relative overflow-hidden rounded-lg bg-card p-6 sm:p-8">
+    <TacticalFrame variant="boast" pattern={0} className="sm:p-8">
       <div className="mb-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="h-8 w-1 bg-primary" />
@@ -31,8 +32,7 @@ const CombatStats = ({ stats, matchCount }: CombatStatsProps) => {
           </div>
         ))}
       </div>
-      <div className="absolute right-0 top-0 h-16 w-16 border-r-2 border-t-2 border-primary/20" />
-    </div>
+    </TacticalFrame>
   );
 };
 
