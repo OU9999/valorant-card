@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import type { ValorantShard } from "@/network/riot/common";
 import type { ValorantQueue } from "@/network/riot/match";
 import { getRecentMatches } from "@/lib/riot/client";
 import { getSession } from "@/lib/session";
@@ -19,7 +21,7 @@ interface Params {
   params: Promise<{ queue: string }>;
 }
 
-const GET = async (_request: Request, { params }: Params): Promise<NextResponse> => {
+const GET = async (request: NextRequest, { params }: Params): Promise<NextResponse> => {
   const { queue } = await params;
 
   if (!VALID_QUEUES.has(queue)) {
@@ -29,8 +31,9 @@ const GET = async (_request: Request, { params }: Params): Promise<NextResponse>
     );
   }
 
+  const { searchParams } = request.nextUrl;
   const session = await getSession();
-  const shard = session.activeShard ?? "kr";
+  const shard = (searchParams.get("shard") as ValorantShard) ?? session.activeShard ?? "kr";
 
   try {
     const result = await getRecentMatches(queue as ValorantQueue, shard);
