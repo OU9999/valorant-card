@@ -5,7 +5,7 @@ interface PerformanceBadgesProps {
   badges: Badge[];
 }
 
-const PerformanceBadges = ({}: PerformanceBadgesProps) => {
+const PerformanceBadges = ({ badges }: PerformanceBadgesProps) => {
   return (
     <TacticalFrame variant="roast" pattern={1}>
       <div className="mb-8 flex items-center gap-3">
