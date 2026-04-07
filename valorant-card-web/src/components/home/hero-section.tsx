@@ -335,6 +335,7 @@ const HeroSection = () => {
         </div>
 
         {/* Stats */}
+        {/* TODO: DB 연동 후 실제 데이터로 교체 */}
         <div className="mt-16 flex gap-12">
           <div>
             <span className="text-4xl font-black text-foreground">0</span>
