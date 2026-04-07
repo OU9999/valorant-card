@@ -116,7 +116,7 @@ const ComponentStylesSection = () => {
       <div className="space-y-4">
         <SubSectionTitle>PerformanceBadges</SubSectionTitle>
         <SectionDescription>
-          border-l-2 border-emerald-500/40. Earned: full opacity + emerald-400 icon. Unearned: opacity-40 + muted icon.
+          border-l-2 border-[#FF4655]. Earned: full opacity + text-primary icon. Unearned: opacity-40 + muted icon.
         </SectionDescription>
         <div className="max-w-2xl">
           <PerformanceBadges badges={MOCK_BADGES} />
@@ -127,7 +127,7 @@ const ComponentStylesSection = () => {
       <div className="space-y-4">
         <SubSectionTitle>AIFeedback — Trend Variants</SubSectionTitle>
         <SectionDescription>
-          Terminal aesthetic: font-mono, text-emerald-400/80, &gt; prefix. 3 trend states: up (emerald), stable (muted), down (primary/red).
+          Boast 패턴: font-mono, text-white/70, &gt; prefix. 3 trend states: up (white), stable (muted), down (primary/red).
         </SectionDescription>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {TRENDS.map((trend) => (
