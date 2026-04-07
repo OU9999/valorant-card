@@ -42,30 +42,120 @@ interface ShowcaseCard {
 }
 
 const COLUMN_1: ShowcaseCard[] = [
-  { tierName: "Iron", portrait: "/characters/sage/pose2.png", ovr: 12, playerName: "s0m" },
-  { tierName: "Gold", portrait: "/characters/phoenix/pose2.png", ovr: 45, playerName: "aspas" },
-  { tierName: "Silver", portrait: "/characters/yoru/pose3.png", ovr: 34, playerName: "Boaster" },
-  { tierName: "Diamond", portrait: "/characters/omen/pose1.png", ovr: 68, playerName: "nAts" },
-  { tierName: "Bronze", portrait: "/characters/neon/pose1.png", ovr: 21, playerName: "Meteor" },
-  { tierName: "Radiant", portrait: "/characters/jett/pose3.png", ovr: 97, playerName: "Demon1" },
+  {
+    tierName: "Iron",
+    portrait: "/characters/sage/pose2.png",
+    ovr: 12,
+    playerName: "s0m",
+  },
+  {
+    tierName: "Gold",
+    portrait: "/characters/phoenix/pose2.png",
+    ovr: 45,
+    playerName: "aspas",
+  },
+  {
+    tierName: "Silver",
+    portrait: "/characters/yoru/pose3.png",
+    ovr: 34,
+    playerName: "Boaster",
+  },
+  {
+    tierName: "Diamond",
+    portrait: "/characters/omen/pose1.png",
+    ovr: 68,
+    playerName: "nAts",
+  },
+  {
+    tierName: "Bronze",
+    portrait: "/characters/neon/pose1.png",
+    ovr: 21,
+    playerName: "Meteor",
+  },
+  {
+    tierName: "Radiant",
+    portrait: "/characters/jett/pose3.png",
+    ovr: 97,
+    playerName: "Demon1",
+  },
 ];
 
 const COLUMN_2: ShowcaseCard[] = [
-  { tierName: "Bronze", portrait: "/characters/breach/pose1.png", ovr: 23, playerName: "t3xture" },
-  { tierName: "Platinum", portrait: "/characters/iso/pose3.png", ovr: 56, playerName: "stax" },
-  { tierName: "Iron", portrait: "/characters/kayo/pose2.png", ovr: 10, playerName: "Jinggg" },
-  { tierName: "Immortal", portrait: "/characters/reyna/pose3.png", ovr: 91, playerName: "Alfajer" },
-  { tierName: "Silver", portrait: "/characters/tejo/pose1.png", ovr: 32, playerName: "crashies" },
-  { tierName: "Diamond", portrait: "/characters/skye/pose1.png", ovr: 65, playerName: "Shao" },
+  {
+    tierName: "Bronze",
+    portrait: "/characters/breach/pose1.png",
+    ovr: 23,
+    playerName: "t3xture",
+  },
+  {
+    tierName: "Platinum",
+    portrait: "/characters/iso/pose3.png",
+    ovr: 56,
+    playerName: "stax",
+  },
+  {
+    tierName: "Iron",
+    portrait: "/characters/kayo/pose2.png",
+    ovr: 10,
+    playerName: "Jinggg",
+  },
+  {
+    tierName: "Immortal",
+    portrait: "/characters/reyna/pose3.png",
+    ovr: 91,
+    playerName: "Alfajer",
+  },
+  {
+    tierName: "Silver",
+    portrait: "/characters/tejo/pose1.png",
+    ovr: 32,
+    playerName: "crashies",
+  },
+  {
+    tierName: "Diamond",
+    portrait: "/characters/skye/pose1.png",
+    ovr: 65,
+    playerName: "Shao",
+  },
 ];
 
 const COLUMN_3: ShowcaseCard[] = [
-  { tierName: "Silver", portrait: "/characters/cypher/pose1.png", ovr: 35, playerName: "Lakia" },
-  { tierName: "Gold", portrait: "/characters/sova/pose2.png", ovr: 48, playerName: "zekken" },
-  { tierName: "Bronze", portrait: "/characters/chamber/pose3.png", ovr: 19, playerName: "f0rsakeN" },
-  { tierName: "Ascendant", portrait: "/characters/vyse/pose3.png", ovr: 84, playerName: "MaKo" },
-  { tierName: "Iron", portrait: "/characters/astra/pose2.png", ovr: 8, playerName: "BuZz" },
-  { tierName: "Platinum", portrait: "/characters/gekko/pose3.png", ovr: 58, playerName: "Derke" },
+  {
+    tierName: "Silver",
+    portrait: "/characters/cypher/pose1.png",
+    ovr: 35,
+    playerName: "Lakia",
+  },
+  {
+    tierName: "Gold",
+    portrait: "/characters/sova/pose2.png",
+    ovr: 48,
+    playerName: "zekken",
+  },
+  {
+    tierName: "Bronze",
+    portrait: "/characters/chamber/pose3.png",
+    ovr: 19,
+    playerName: "f0rsakeN",
+  },
+  {
+    tierName: "Ascendant",
+    portrait: "/characters/vyse/pose3.png",
+    ovr: 84,
+    playerName: "MaKo",
+  },
+  {
+    tierName: "Iron",
+    portrait: "/characters/astra/pose2.png",
+    ovr: 8,
+    playerName: "BuZz",
+  },
+  {
+    tierName: "Platinum",
+    portrait: "/characters/gekko/pose3.png",
+    ovr: 58,
+    playerName: "Derke",
+  },
 ];
 
 interface CardColumnProps {
@@ -90,7 +180,9 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
           <div
             key={`${card.tierName}-${i}`}
             className="showcase-card pb-3"
-            style={{ "--tier-glow": SHOWCASE_GLOW[card.tierName] } as CSSProperties}
+            style={
+              { "--tier-glow": SHOWCASE_GLOW[card.tierName] } as CSSProperties
+            }
           >
             <TierCard
               tierName={card.tierName}
@@ -141,7 +233,10 @@ const HeroSection = () => {
 
       router.push(`/card/${json.id as string}`);
     } catch {
-      setState({ phase: "error", message: "오류가 발생했습니다. 다시 시도해주세요." });
+      setState({
+        phase: "error",
+        message: "오류가 발생했습니다. 다시 시도해주세요.",
+      });
     }
   };
 
@@ -158,7 +253,10 @@ const HeroSection = () => {
 
     const authError = searchParams.get("auth_error");
     if (authError) {
-      setState({ phase: "error", message: "로그인에 실패했습니다. 다시 시도해주세요." });
+      setState({
+        phase: "error",
+        message: "로그인에 실패했습니다. 다시 시도해주세요.",
+      });
       window.history.replaceState({}, "", "/");
     }
   }, [searchParams, refreshAuth]);
@@ -184,13 +282,9 @@ const HeroSection = () => {
     <div className="relative flex min-h-screen flex-col md:flex-row">
       {/* Left — Title + Search */}
       <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
-        <h1 className="flex flex-col items-center gap-1 font-heading">
-          <span className="text-5xl font-extrabold uppercase tracking-wide text-primary md:text-7xl">
-            VALORANT
-          </span>
-          <span className="text-3xl font-bold uppercase tracking-wide text-foreground md:text-5xl">
-            FC CARD
-          </span>
+        <h1 className="flex text-5xl tracking-wide uppercase font-bold md:text-7xl items-center gap-1.5 font-heading">
+          <span className="text-primary">VALORANT</span>
+          <span className="text-foreground">CARD</span>
         </h1>
         <p className="mt-4 text-center text-sm text-muted-foreground md:text-base">
           나만의 발로란트 카드를 만들어보세요
@@ -205,7 +299,11 @@ const HeroSection = () => {
             </Button>
           ) : isAuthenticated ? (
             <div className="flex items-center gap-3">
-              <Button size="lg" className="h-12 gap-2 px-8" onClick={generateCard}>
+              <Button
+                size="lg"
+                className="h-12 gap-2 px-8"
+                onClick={generateCard}
+              >
                 카드 생성
               </Button>
               <button
@@ -236,8 +334,35 @@ const HeroSection = () => {
           )}
         </div>
 
+        {/* Stats */}
+        {/* TODO: DB 연동 후 실제 데이터로 교체 */}
+        <div className="mt-16 flex gap-12">
+          <div>
+            <span className="text-4xl font-black text-foreground">0</span>
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 bg-primary" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Cards Generated
+              </span>
+            </div>
+          </div>
+          <div>
+            <span className="text-4xl font-black text-foreground">0</span>
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 bg-emerald-500" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Cards Shared
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Data disclosure dialog */}
-        <DataDisclosureDialog open={dialogOpen} onOpenChange={setDialogOpen} onPreview={handlePreview} />
+        <DataDisclosureDialog
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+          onPreview={handlePreview}
+        />
       </div>
 
       {/* Right — 3-column vertical scroll */}
@@ -248,7 +373,12 @@ const HeroSection = () => {
 
         <div className="flex h-full w-full gap-3 px-4">
           <CardColumn cards={COLUMN_1} direction="up" speed={60} delay={0.1} />
-          <CardColumn cards={COLUMN_2} direction="down" speed={44} delay={0.3} />
+          <CardColumn
+            cards={COLUMN_2}
+            direction="down"
+            speed={44}
+            delay={0.3}
+          />
           <CardColumn cards={COLUMN_3} direction="up" speed={52} delay={0.5} />
         </div>
       </div>

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   Barlow_Condensed,
   Noto_Sans_KR,
@@ -6,6 +5,7 @@ import {
 } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { PageGradient } from "@/components/layout/page-gradient";
+import { siteMetadata } from "@/constants/metadata";
 import "@/styles/globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -25,10 +25,7 @@ const blackHanSans = Black_Han_Sans({
   weight: "400",
 });
 
-export const metadata: Metadata = {
-  title: "VALORANT FC CARD",
-  description: "나만의 발로란트 FC 카드를 만들어보세요",
-};
+export const metadata = siteMetadata;
 
 export default function RootLayout({
   children,
