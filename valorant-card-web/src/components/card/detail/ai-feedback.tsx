@@ -1,4 +1,3 @@
-import { Terminal } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { TacticalFrame } from "./tactical-frame";
 import type { CardStat } from "@/lib/valorant/card-stats";
@@ -34,45 +33,41 @@ const AIFeedback = ({ stats, trend }: AIFeedbackProps) => {
 
   return (
     <TacticalFrame variant="boast" pattern={2}>
-      <div className="mb-4 flex items-center gap-3">
-        <Terminal className="size-4 text-primary" />
-        <h3 className="text-sm font-bold uppercase tracking-widest text-primary">
+      <div className="mb-8 flex items-center gap-3">
+        <div className="h-8 w-1 bg-primary" />
+        <h2 className="text-lg font-bold uppercase tracking-widest text-foreground sm:text-xl">
           AI Analysis Report
-        </h3>
+        </h2>
       </div>
-      <div className="space-y-3 font-mono text-sm leading-relaxed text-white/70">
-        <p>&gt; INITIATING BEHAVIORAL DIAGNOSTICS...</p>
+      <div className="space-y-3 text-sm leading-relaxed text-muted-foreground">
         {acs && (
           <p>
-            &gt; YOUR AVERAGE COMBAT SCORE IS <V>{acs}</V>. ANALYZING
-            ENGAGEMENT PATTERNS...
+            평균 전투 점수는 <V>{acs}</V>입니다.
           </p>
         )}
         {kd && hs && (
           <p>
-            &gt; K/D RATIO <V>{kd}</V> WITH <V>{hs}</V> HEADSHOT ACCURACY.
+            K/D <V>{kd}</V>, 헤드샷 정확도 <V>{hs}</V>.
           </p>
         )}
         {dd && (
           <p>
-            &gt; DAMAGE DIFFERENTIAL <V>{dd}</V>:{" "}
+            데미지 차이 <V>{dd}</V> —{" "}
             {isPositiveDd
-              ? "CONSISTENTLY OUT-DAMAGING OPPONENTS."
-              : "ADVISORY — IMPROVE TRADE EFFICIENCY."}
+              ? "상대보다 꾸준히 높은 딜량을 기록하고 있습니다."
+              : "트레이드 효율 개선이 필요합니다."}
           </p>
         )}
         {kast && (
           <p>
-            &gt; ROUND IMPACT (KAST): <V>{kast}</V>. TEAM CONTRIBUTION LOGGED.
+            라운드 기여도(KAST) <V>{kast}</V>.
           </p>
         )}
         <p>
-          &gt; STATUS:{" "}
-          <span className={cn("px-1", status.className)}>{status.label}</span>
-        </p>
-        <hr className="my-4 h-px w-full border-0 bg-primary/10" />
-        <p className="text-[10px] text-muted-foreground/40">
-          &gt; END OF REPORT. DATA SYNC COMPLETE.
+          현재 상태:{" "}
+          <span className={cn("rounded px-1.5 py-0.5 text-xs font-bold", status.className)}>
+            {status.label}
+          </span>
         </p>
       </div>
     </TacticalFrame>
