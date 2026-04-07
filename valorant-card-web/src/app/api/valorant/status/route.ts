@@ -1,9 +1,13 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import type { ValorantShard } from "@/network/riot/common";
 import { getPlatformStatus } from "@/lib/riot/client";
+import { getSession } from "@/lib/session";
 
-const GET = async (): Promise<NextResponse> => {
-  const shard = (process.env.VALORANT_SHARD ?? "kr") as ValorantShard;
+const GET = async (request: NextRequest): Promise<NextResponse> => {
+  const { searchParams } = request.nextUrl;
+  const session = await getSession();
+  const shard = (searchParams.get("shard") as ValorantShard) ?? session.activeShard ?? "kr";
 
   try {
     const result = await getPlatformStatus(shard);

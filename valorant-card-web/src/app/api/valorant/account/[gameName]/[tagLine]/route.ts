@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { RiotRegion } from "@/network/riot/common";
-import { getAccountByRiotId } from "@/lib/riot/client";
+import { getAccountByRiotId, getRegionForShard } from "@/lib/riot/client";
+import { getSession } from "@/lib/session";
 
 interface Params {
   params: Promise<{ gameName: string; tagLine: string }>;
@@ -16,7 +16,9 @@ const GET = async (_request: Request, { params }: Params): Promise<NextResponse>
     );
   }
 
-  const region = (process.env.RIOT_REGION ?? "asia") as RiotRegion;
+  const session = await getSession();
+  const shard = session.activeShard ?? "kr";
+  const region = getRegionForShard(shard);
 
   try {
     const result = await getAccountByRiotId(

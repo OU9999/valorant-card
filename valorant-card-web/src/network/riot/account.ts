@@ -4,10 +4,12 @@ interface RiotAccount {
   tagLine: string;
 }
 
+import type { ValorantShard } from "./common";
+
 interface ActiveShard {
   puuid: string;
   game: string;
-  activeShard: string;
+  activeShard: ValorantShard;
 }
 
 export type { RiotAccount, ActiveShard };

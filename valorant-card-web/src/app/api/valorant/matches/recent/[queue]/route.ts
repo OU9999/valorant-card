@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import type { ValorantShard } from "@/network/riot/common";
 import type { ValorantQueue } from "@/network/riot/match";
 import { getRecentMatches } from "@/lib/riot/client";
+import { getSession } from "@/lib/session";
 
 const VALID_QUEUES = new Set<string>([
   "competitive",
@@ -29,7 +29,8 @@ const GET = async (_request: Request, { params }: Params): Promise<NextResponse>
     );
   }
 
-  const shard = (process.env.VALORANT_SHARD ?? "kr") as ValorantShard;
+  const session = await getSession();
+  const shard = session.activeShard ?? "kr";
 
   try {
     const result = await getRecentMatches(queue as ValorantQueue, shard);

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import type { ValorantShard } from "@/network/riot/common";
 import { getLeaderboard } from "@/lib/riot/client";
+import { getSession } from "@/lib/session";
 
 interface Params {
   params: Promise<{ actId: string }>;
@@ -20,7 +21,8 @@ const GET = async (request: NextRequest, { params }: Params): Promise<NextRespon
   const { searchParams } = request.nextUrl;
   const size = searchParams.get("size");
   const startIndex = searchParams.get("startIndex");
-  const shard = (process.env.VALORANT_SHARD ?? "kr") as ValorantShard;
+  const session = await getSession();
+  const shard = (searchParams.get("shard") as ValorantShard) ?? session.activeShard ?? "kr";
 
   try {
     const result = await getLeaderboard({

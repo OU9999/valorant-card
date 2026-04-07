@@ -5,23 +5,6 @@ import type { Badge } from "@/lib/valorant/badges";
 import type { TierName } from "@/constants/tier-design";
 import { TIER_NAMES } from "@/constants/tier-design";
 
-// ─── Environment Validation ───
-
-const VALID_REGIONS: RiotRegion[] = ["americas", "asia", "europe", "esports"];
-const VALID_SHARDS: ValorantShard[] = ["ap", "br", "eu", "kr", "latam", "na"];
-
-const getRegion = (): RiotRegion => {
-  const env = process.env.RIOT_REGION;
-  if (env && VALID_REGIONS.includes(env as RiotRegion)) return env as RiotRegion;
-  return "asia";
-};
-
-const getShard = (): ValorantShard => {
-  const env = process.env.VALORANT_SHARD;
-  if (env && VALID_SHARDS.includes(env as ValorantShard)) return env as ValorantShard;
-  return "kr";
-};
-
 const SHARD_LABELS: Record<ValorantShard, string> = {
   kr: "KR",
   ap: "AP",
@@ -96,9 +79,11 @@ const competitiveTierToTierName = (tier: number): TierName | null => {
 
 // ─── Main Orchestrator ───
 
-const generateCard = async (puuid: string): Promise<GeneratedCardData> => {
-  const region = getRegion();
-  const shard = getShard();
+const generateCard = async (
+  puuid: string,
+  shard: ValorantShard,
+  region: RiotRegion,
+): Promise<GeneratedCardData> => {
 
   try {
     // 1. Account lookup by puuid

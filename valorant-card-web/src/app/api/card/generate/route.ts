@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { generateCard } from "@/lib/card/generate";
 import { saveCard } from "@/lib/card/store";
 import { CardGenerationError, ERROR_MESSAGES } from "@/lib/card/errors";
+import { getRegionForShard } from "@/lib/riot/client";
 import { getSession } from "@/lib/session";
 
 // ─── Concurrency Guard ───
@@ -30,7 +31,9 @@ const POST = async (): Promise<NextResponse> => {
       );
     }
 
-    const cardData = await generateCard(session.puuid);
+    const shard = session.activeShard ?? "kr";
+    const region = getRegionForShard(shard);
+    const cardData = await generateCard(session.puuid, shard, region);
     const id = saveCard(cardData);
     return NextResponse.json({ id });
   } catch (error) {
