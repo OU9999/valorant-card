@@ -28,6 +28,7 @@ related: []
 - [[card-view-system]] -- RSO 인증, 카드 생성 API, 히어로 상태 머신, TierCard 리팩토링 상세.
 - [[card-page-routing]] -- /card/[id] 라우팅 시스템. in-memory 저장소, 페이지 분리, 데모 미리보기.
 - [[production-key-readiness]] -- Production Key 신청 준비 상태 평가. 라이브 사이트 검증 결과, 미통과 항목, 조치 계획.
+- [[valorant-dev-policy-ko]] -- VALORANT 개발자 API 정책 공식 번역본. 심사 기준, 승인/비승인 사례, RSO 요건.
 
 ## 카드 디자인
 
