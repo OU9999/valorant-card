@@ -2,11 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import type { ValorantShard, Locale } from "@/network/riot/common";
 import { getContent } from "@/lib/riot/client";
+import { getSession } from "@/lib/session";
 
 const GET = async (request: NextRequest): Promise<NextResponse> => {
   const { searchParams } = request.nextUrl;
   const locale = searchParams.get("locale") as Locale | null;
-  const shard = (process.env.VALORANT_SHARD ?? "kr") as ValorantShard;
+  const session = await getSession();
+  const shard = (searchParams.get("shard") as ValorantShard) ?? session.activeShard ?? "kr";
 
   try {
     const result = await getContent(shard, locale ?? undefined);

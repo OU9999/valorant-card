@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import { isRsoConfigured } from "@/lib/rso/config";
 import { exchangeCodeForToken, getUserInfo } from "@/lib/rso/utils";
+import { getActiveShard } from "@/lib/riot/client";
 import { getSession } from "@/lib/session";
 
 const timingSafeEqual = (a: string, b: string): boolean => {
@@ -50,7 +51,12 @@ const GET = async (request: Request): Promise<NextResponse> => {
     const tokenResponse = await exchangeCodeForToken(code);
     const userInfo = await getUserInfo(tokenResponse.access_token);
 
+    // 유저의 활성 Valorant shard 조회 (실패 시 "kr" 폴백)
+    const shardResult = await getActiveShard(userInfo.sub);
+    const activeShard = shardResult.ok ? shardResult.data.activeShard : "kr";
+
     session.puuid = userInfo.sub;
+    session.activeShard = activeShard;
     session.rsoAccessToken = tokenResponse.access_token;
     session.rsoRefreshToken = tokenResponse.refresh_token;
     session.rsoExpiresAt = Date.now() + tokenResponse.expires_in * 1000;

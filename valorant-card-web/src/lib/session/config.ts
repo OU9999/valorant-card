@@ -1,9 +1,11 @@
 import type { SessionOptions } from "iron-session";
+import type { ValorantShard } from "@/network/riot/common";
 
 interface SessionData {
   puuid?: string;
   gameName?: string;
   tagLine?: string;
+  activeShard?: ValorantShard;
   rsoAccessToken?: string;
   rsoRefreshToken?: string;
   rsoExpiresAt?: number;
