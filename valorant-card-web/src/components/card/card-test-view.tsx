@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { TierCard } from "@/components/card/tier-card";
 import {
   CardDetailLayout,
@@ -13,147 +12,51 @@ import { AIFeedback } from "@/components/card/detail/ai-feedback";
 import { CHARACTERS } from "@/constants/characters";
 import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
 import { getWeaponIconUrl } from "@/constants/weapons";
-import { TIER_NAMES } from "@/constants/tier-design";
-import { SHARD_DISPLAY_NAMES } from "@/constants/regions";
-import { adaptHenrikMatch } from "@/lib/henrik/adapter";
-import {
-  calculateCardScore,
-  formatCardStats,
-  findMostUsedWeapon,
-} from "@/lib/valorant/card-stats";
-import { getTierIndex } from "@/lib/valorant/tiers";
-import type { TierName } from "@/constants/tier-design";
 import type { CardStat, FormTrend } from "@/lib/valorant/card-stats";
 import type { Badge } from "@/lib/valorant/badges";
-import type { MatchDetails } from "@/network/riot/match";
-import type {
-  HenrikMatchesResponse,
-  HenrikAccountResponse,
-  HenrikMmrResponse,
-} from "@/lib/henrik/types";
 
-// ─── Types ───
+// ─── Mock Data ───
 
-interface ComputedCardData {
-  tierName: TierName;
-  competitiveTier: number;
-  portraitUrl: string;
-  ovr: number;
-  playerName: string;
-  region: string;
-  weaponIconUrl?: string;
-  stats: CardStat[];
-  trend: FormTrend;
-  badges: Badge[];
-}
+const MOCK_STATS: CardStat[] = [
+  { label: "ACS", value: "247.3" },
+  { label: "K/D", value: "1.42" },
+  { label: "HS%", value: "28.5" },
+  { label: "DD/Δ", value: "+18.7" },
+  { label: "KAST", value: "71.2" },
+];
 
-// ─── Helpers ───
+const MOCK_BADGES: Badge[] = [
+  {
+    id: "sharpshooter",
+    name: "Sharpshooter",
+    description: "높은 헤드샷 비율 달성",
+  },
+  { id: "ace_hunter", name: "Ace Hunter", description: "에이스 다수 기록" },
+];
 
-const getTierName = (competitiveTier: number): TierName => {
-  const index = getTierIndex(competitiveTier);
-  if (index < 0 || index >= TIER_NAMES.length) return "Iron";
-  return TIER_NAMES[index];
-};
+const MOCK_TREND: FormTrend = "up";
 
-const findMostPlayedAgent = (
-  matches: MatchDetails[],
-  puuid: string,
-): string => {
-  const counts = new Map<string, number>();
-  for (const match of matches) {
-    const player = match.players.find((p) => p.puuid === puuid);
-    if (!player) continue;
-    counts.set(player.characterId, (counts.get(player.characterId) ?? 0) + 1);
-  }
-  let maxId = "";
-  let maxCount = 0;
-  for (const [id, count] of counts) {
-    if (count > maxCount) {
-      maxId = id;
-      maxCount = count;
-    }
-  }
-  return maxId;
+const JETT = CHARACTERS.find(
+  (c) => c.id === "ADD6443A-41BD-E414-F6AD-E58D267F4E95",
+)!;
+
+const MOCK_DATA = {
+  tierName: "Immortal" as const,
+  competitiveTier: 24,
+  portraitUrl: JETT.poses[0],
+  ovr: 82,
+  playerName: "PLAYER1",
+  region: "KR",
+  weaponIconUrl: getWeaponIconUrl("29A0CFAB-485B-F5D5-779A-B59F85E204A8"),
+  stats: MOCK_STATS,
+  trend: MOCK_TREND,
+  badges: MOCK_BADGES,
 };
 
 // ─── Component ───
 
 const CardTestView = () => {
-  const [data, setData] = useState<ComputedCardData | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  /** fixture 로드 → 어댑터 변환 → 알고리즘 실행 → 카드 데이터 계산 */
-  useEffect(() => {
-    Promise.all([
-      fetch("/fixtures/henrik-account.json").then((r) => r.json()),
-      fetch("/fixtures/henrik-mmr.json").then((r) => r.json()),
-      fetch("/fixtures/henrik-matches.json").then((r) => r.json()),
-    ])
-      .then(
-        ([account, mmr, matchesData]: [
-          HenrikAccountResponse,
-          HenrikMmrResponse,
-          HenrikMatchesResponse,
-        ]) => {
-          const matches = matchesData.data.map(adaptHenrikMatch);
-          const puuid = account.data.puuid;
-          const competitiveTier = mmr.data.current.tier.id;
-
-          const result = calculateCardScore(matches, puuid, competitiveTier);
-          if (!result) {
-            setError("알고리즘 실행 실패");
-            return;
-          }
-
-          const tierName = getTierName(competitiveTier);
-          const agentId = findMostPlayedAgent(matches, puuid);
-          const character = CHARACTERS.find(
-            (c) => c.id.toUpperCase() === agentId.toUpperCase(),
-          );
-          const portraitUrl = character?.poses[0] ?? "";
-          const weaponId = findMostUsedWeapon(matches, puuid);
-          const weaponIconUrl = weaponId
-            ? getWeaponIconUrl(weaponId)
-            : undefined;
-          const region =
-            SHARD_DISPLAY_NAMES[
-              account.data.region as keyof typeof SHARD_DISPLAY_NAMES
-            ] ?? account.data.region.toUpperCase();
-
-          setData({
-            tierName,
-            competitiveTier,
-            portraitUrl,
-            ovr: result.ovr,
-            playerName: account.data.name,
-            region,
-            weaponIconUrl,
-            stats: formatCardStats(result.stats),
-            trend: result.trend,
-            badges: result.badges,
-          });
-        },
-      )
-      .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : String(err));
-      });
-  }, []);
-
-  if (error) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-red-400">{error}</p>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Loading...</p>
-      </div>
-    );
-  }
+  const data = MOCK_DATA;
 
   return (
     <CardDetailLayout>
@@ -173,9 +76,9 @@ const CardTestView = () => {
         />
       </CardSlot>
       <DetailSlot>
-          <CombatStats stats={data.stats} />
-          <PerformanceBadges badges={data.badges} />
-          <AIFeedback stats={data.stats} trend={data.trend} />
+        <CombatStats stats={data.stats} />
+        <PerformanceBadges badges={data.badges} />
+        <AIFeedback stats={data.stats} trend={data.trend} />
       </DetailSlot>
     </CardDetailLayout>
   );
