@@ -61,7 +61,7 @@ const LegalDocumentRenderer = ({ documents }: LegalDocumentRendererProps) => {
           ))}
           {section.items && (
             <ul
-              className={`list-inside list-disc space-y-1${section.paragraphs ? " mt-3" : ""}`}
+              className={`list-inside list-disc space-y-1${section.paragraphs && section.paragraphs.length > 0 ? " mt-3" : ""}`}
             >
               {section.items.map((item, i) => (
                 <li key={i}>{parseMarkdownLinks(item)}</li>

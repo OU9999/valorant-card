@@ -63,7 +63,7 @@ const parseMarkdownLinks = (text: string): React.ReactNode => {
   return parts.map((part, i) => {
     const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
     if (!match) return <Fragment key={i}>{part}</Fragment>;
-    const isExternal = !match[2].startsWith("mailto:");
+    const isExternal = match[2].startsWith("http");
     return (
       <a
         key={i}
