@@ -27,6 +27,7 @@ related: []
 - [[production-key-todo]] -- Production Key 취득을 위한 4단계 TODO. RSO, 법적 준비, 신청, 전환. (0405 업데이트)
 - [[card-view-system]] -- RSO 인증, 카드 생성 API, 히어로 상태 머신, TierCard 리팩토링 상세.
 - [[card-page-routing]] -- /card/[id] 라우팅 시스템. in-memory 저장소, 페이지 분리, 데모 미리보기.
+- [[production-key-readiness]] -- Production Key 신청 준비 상태 평가. 라이브 사이트 검증 결과, 미통과 항목, 조치 계획.
 
 ## 카드 디자인
 
