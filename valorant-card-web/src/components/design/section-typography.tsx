@@ -131,11 +131,6 @@ const TypographySection = () => (
           sample="ACE HUNTER"
         />
         <Specimen
-          label="Terminal Text"
-          classes="font-mono text-sm leading-relaxed text-emerald-400/80"
-          sample="> INITIATING BEHAVIORAL DIAGNOSTICS..."
-        />
-        <Specimen
           label="Stat Value (Detail)"
           classes="text-3xl font-black tracking-tight text-foreground"
           sample="312"

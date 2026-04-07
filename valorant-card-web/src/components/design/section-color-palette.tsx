@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import {
   SectionTitle,
   SubSectionTitle,
+  SectionDescription,
   ColorSwatch,
 } from "./shared";
 import {
@@ -26,37 +27,15 @@ interface TokenEntry {
 
 const GLOBAL_TOKENS: TokenEntry[] = [
   { token: "--background", oklch: "oklch(0.209 0.025 249)", hex: "#131B2E", role: "Page background — deep navy" },
-  { token: "--foreground", oklch: "oklch(0.932 0.010 82)", hex: "#EDEAE6", role: "Primary text" },
   { token: "--card", oklch: "oklch(0.255 0.024 249)", hex: "#1A2338", role: "Card/panel surface" },
-  { token: "--card-foreground", oklch: "oklch(0.932 0.010 82)", hex: "#EDEAE6", role: "Text on card surfaces" },
-  { token: "--primary", oklch: "oklch(0.668 0.220 21)", hex: "#FF4655", role: "Valorant Red — accent, borders, CTAs" },
-  { token: "--primary-foreground", oklch: "oklch(1 0 0)", hex: "#FFFFFF", role: "Text on primary buttons" },
-  { token: "--secondary", oklch: "oklch(0.283 0.026 247)", hex: "#1E2A40", role: "Secondary surface" },
-  { token: "--secondary-foreground", oklch: "oklch(0.932 0.010 82)", hex: "#EDEAE6", role: "Text on secondary" },
-  { token: "--muted", oklch: "oklch(0.283 0.026 247)", hex: "#1E2A40", role: "Muted surface" },
+  { token: "--foreground", oklch: "oklch(0.932 0.010 82)", hex: "#EDEAE6", role: "Primary text" },
+  { token: "--primary", oklch: "oklch(0.668 0.220 21)", hex: "#FF4655", role: "Valorant Red — accent, borders, CTAs, focus rings" },
+  { token: "--secondary", oklch: "oklch(0.283 0.026 247)", hex: "#1E2A40", role: "Secondary/muted surface" },
   { token: "--muted-foreground", oklch: "oklch(0.714 0.009 254)", hex: "#A8A8B0", role: "De-emphasized text" },
-  { token: "--accent", oklch: "oklch(0.283 0.026 247)", hex: "#1E2A40", role: "Accent surface" },
-  { token: "--destructive", oklch: "oklch(0.714 0.180 18)", hex: "#E8604A", role: "Error/destructive actions" },
   { token: "--border", oklch: "oklch(0.932 0.010 82 / 10%)", hex: "rgba(237,234,230,0.10)", role: "Semi-transparent borders" },
-  { token: "--input", oklch: "oklch(0.932 0.010 82 / 15%)", hex: "rgba(237,234,230,0.15)", role: "Input field borders" },
-  { token: "--ring", oklch: "oklch(0.668 0.220 21)", hex: "#FF4655", role: "Focus rings" },
 ];
 
-/* ─── V5 Semantic Palette ─── */
-
-interface SemanticColor {
-  name: string;
-  hex: string;
-  usage: string;
-}
-
-const V5_COLORS: SemanticColor[] = [
-  { name: "Valorant Red", hex: "#FF4655", usage: "Primary accent — card borders, HUD lines" },
-  { name: "Dark Navy", hex: "#0A1929", usage: "Deep reference background" },
-  { name: "HUD Cyan", hex: "#00C8FF", usage: "Tactical grid/HUD decoration" },
-  { name: "Terminal Green", hex: "#34D399", usage: "AI feedback terminal text" },
-  { name: "Badge Emerald", hex: "#34D399", usage: "Performance badge earned state" },
-];
+/* ─── Boast/Roast colors (removed V5 Semantic Palette — unused colors) ─── */
 
 /* ─── StatBar (inline for this section) ─── */
 
@@ -96,6 +75,9 @@ const ColorPaletteSection = () => (
     {/* Global Tokens */}
     <div className="space-y-4">
       <SubSectionTitle>Global Tokens (Dark Mode)</SubSectionTitle>
+      <SectionDescription>
+        디자인 판단에 필요한 핵심 토큰만 정리. 나머지(--ring, --input, --accent 등)는 shadcn 내부 매핑으로 globals.css 참조.
+      </SectionDescription>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {GLOBAL_TOKENS.map((t) => (
           <ColorSwatch
@@ -109,24 +91,12 @@ const ColorPaletteSection = () => (
       </div>
     </div>
 
-    {/* Flashback V5 Semantic Palette */}
+    {/* Boast / Roast Pattern */}
     <div className="space-y-4">
-      <SubSectionTitle>Flashback V5 Semantic Palette</SubSectionTitle>
-      <div className="flex flex-wrap gap-6">
-        {V5_COLORS.map((c) => (
-          <ColorSwatch
-            key={c.name}
-            color={c.hex}
-            label={c.name}
-            sub={c.usage}
-          />
-        ))}
-      </div>
-    </div>
-
-    {/* Boast / Roast Gradient Patterns */}
-    <div className="space-y-4">
-      <SubSectionTitle>Boast / Roast Gradient Patterns</SubSectionTitle>
+      <SubSectionTitle>Boast / Roast Pattern</SubSectionTitle>
+      <SectionDescription>
+        모든 텍스트 박스의 기본 레이아웃 패턴. Flashback V5의 Boast/Roast 구조에서 차용, 의미 구분 없이 레이아웃 변형으로 사용.
+      </SectionDescription>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <p className="text-xs font-medium text-foreground">Boast (Dark)</p>
@@ -186,9 +156,16 @@ const ColorPaletteSection = () => (
                   )}
                 </div>
                 <div className="space-y-0.5 font-mono text-[10px] text-muted-foreground">
-                  <p>OVR: <span className={design.ovr}>Sample</span></p>
-                  <p>iconGlow: {design.iconGlow.replace("drop-shadow-[", "").replace("]", "")}</p>
-                  <p>gradient: {design.gradient.split(" ")[0]}</p>
+                  {(Object.keys(design) as (keyof typeof design)[]).map((key) => (
+                    <p key={key}>
+                      <span className="text-foreground/50">{key}:</span>{" "}
+                      {key === "ovr" || key === "playerName" ? (
+                        <span className={design[key]}>Sample</span>
+                      ) : (
+                        design[key]
+                      )}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>

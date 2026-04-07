@@ -31,7 +31,7 @@ const AgentGuideSection = () => (
         <QuickRule number={3} text="Uppercase structural text — section headings, stat labels, badge names are ALL-CAPS with tracking-widest" />
         <QuickRule number={4} text="Large stat numbers — stat values should be visually dominant (text-3xl+, font-black)" />
         <QuickRule number={5} text="Left bar accent — section headers use a red vertical bar (h-8 w-1 bg-primary) as visual anchor" />
-        <QuickRule number={6} text="Emerald for success/badges — earned badges and AI terminal text use emerald-400, not green-500" />
+        <QuickRule number={6} text="Boast/Roast pattern — all text boxes use border-l-2 border-[#FF4655] left accent. Boast (dark bg + white text) / Roast (red bg + dark text)" />
         <QuickRule number={7} text="Semi-transparent borders — borders use border-border (10% white), not solid gray" />
       </div>
     </div>
@@ -114,16 +114,16 @@ const AgentGuideSection = () => (
           <p className="text-xs font-medium text-foreground">Terminal Line</p>
           <CodeBlock>
 {`<p className="font-mono text-sm
-  leading-relaxed text-emerald-400/80">
+  leading-relaxed text-white/70">
   &gt; COMMAND OUTPUT TEXT
 </p>`}
           </CodeBlock>
-          <div className="rounded-lg border border-primary/20 bg-background p-4">
-            <p className="font-mono text-sm leading-relaxed text-emerald-400/80">
+          <div className="rounded-lg border-l-2 border-[#FF4655] bg-background p-4">
+            <p className="font-mono text-sm leading-relaxed text-white/70">
               &gt; INITIATING BEHAVIORAL DIAGNOSTICS...
             </p>
-            <p className="font-mono text-sm leading-relaxed text-emerald-400/80">
-              &gt; STATUS: <span className="rounded bg-emerald-400/20 px-1 text-emerald-400">OPTIMIZED FOR CLIMBING</span>
+            <p className="font-mono text-sm leading-relaxed text-white/70">
+              &gt; STATUS: <span className="rounded bg-white/10 px-1 text-white">OPTIMIZED FOR CLIMBING</span>
             </p>
           </div>
         </div>

@@ -88,7 +88,7 @@ const ResponsiveSection = () => (
           },
         ].map((item) => (
           <div key={item.label} className="flex items-start gap-3">
-            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-400/20 text-xs text-emerald-400">
+            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-white">
               ✓
             </span>
             <div>

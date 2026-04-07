@@ -3,8 +3,6 @@ import { ColorPaletteSection } from "@/components/design/section-color-palette";
 import { TypographySection } from "@/components/design/section-typography";
 import { ComponentStylesSection } from "@/components/design/section-components";
 import { LayoutSection } from "@/components/design/section-layout";
-import { DepthSection } from "@/components/design/section-depth";
-import { DosDontsSection } from "@/components/design/section-dos-donts";
 import { ResponsiveSection } from "@/components/design/section-responsive";
 import { AgentGuideSection } from "@/components/design/section-agent-guide";
 
@@ -21,8 +19,6 @@ const TOC_ENTRIES: TocEntry[] = [
   { id: "typography", label: "3. Typography" },
   { id: "components", label: "4. Components" },
   { id: "layout", label: "5. Layout" },
-  { id: "depth", label: "6. Depth" },
-  { id: "dos-donts", label: "7. Do's / Don'ts" },
   { id: "responsive", label: "8. Responsive" },
   { id: "agent-guide", label: "9. Agent Guide" },
 ];
@@ -67,10 +63,6 @@ export default function DesignReferencePage() {
           <ComponentStylesSection />
           <div className="h-px bg-border" />
           <LayoutSection />
-          <div className="h-px bg-border" />
-          <DepthSection />
-          <div className="h-px bg-border" />
-          <DosDontsSection />
           <div className="h-px bg-border" />
           <ResponsiveSection />
           <div className="h-px bg-border" />

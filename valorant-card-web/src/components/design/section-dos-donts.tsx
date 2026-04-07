@@ -14,7 +14,7 @@ const RuleItem = ({ type, text }: RuleItemProps) => {
       <span
         className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
           isDo
-            ? "bg-emerald-400/20 text-emerald-400"
+            ? "bg-white/10 text-white"
             : "bg-primary/20 text-primary"
         }`}
       >
@@ -61,8 +61,8 @@ const DosDontsSection = () => (
   <section className="space-y-6">
     <SectionTitle id="dos-donts">7. Do&apos;s and Don&apos;ts</SectionTitle>
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <div className="rounded-lg border border-emerald-500/20 bg-card p-5">
-        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-emerald-400">
+      <div className="rounded-lg border border-white/10 bg-card p-5">
+        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
           Do
         </p>
         <div className="space-y-3">
