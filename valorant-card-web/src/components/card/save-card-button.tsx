@@ -3,7 +3,7 @@
 import { useState, type RefObject } from "react";
 import { toPng } from "html-to-image";
 import { Download, Loader2 } from "lucide-react";
-import { HudButton } from "@/components/hud-button/hud-button";
+import { HudButton } from "@/components/button/hud-button";
 
 interface SaveCardButtonProps {
   cardRef: RefObject<HTMLDivElement | null>;
