@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Link, Check } from "lucide-react";
-import { HudButton } from "@/components/hud-button";
+import { HudButton } from "@/components/hud-button/hud-button";
 
 const CopyUrlButton = () => {
   const [copied, setCopied] = useState(false);
