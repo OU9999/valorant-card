@@ -35,8 +35,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-          className={`${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
-        >
+        className={`${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
+      >
         <PageGradient />
         {children}
         <Footer />
