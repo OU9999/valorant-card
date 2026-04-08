@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { TierCard } from "@/components/card/tier-card";
 import { SaveCardButton } from "@/components/card/save-card-button";
+import { CopyUrlButton } from "@/components/card/copy-url-button";
 import {
   CardDetailLayout,
   CardSlot,
@@ -64,28 +65,29 @@ const CardTestView = () => {
   return (
     <CardDetailLayout>
       <CardSlot>
-        <div className="flex flex-col items-center gap-4">
-          <TierCard
-            ref={cardRef}
-            tierName={data.tierName}
-            competitiveTier={data.competitiveTier}
-            backgroundImage={TIER_CARD_IMAGES[data.tierName]}
-            portraitUrl={data.portraitUrl}
-            ovr={data.ovr}
-            playerName={data.playerName}
-            region={data.region}
-            weaponIconUrl={data.weaponIconUrl}
-            stats={data.stats}
-            className="h-[800px]"
-            priority
-          />
+        <TierCard
+          ref={cardRef}
+          tierName={data.tierName}
+          competitiveTier={data.competitiveTier}
+          backgroundImage={TIER_CARD_IMAGES[data.tierName]}
+          portraitUrl={data.portraitUrl}
+          ovr={data.ovr}
+          playerName={data.playerName}
+          region={data.region}
+          weaponIconUrl={data.weaponIconUrl}
+          stats={data.stats}
+          className="h-[800px]"
+          priority
+        />
+      </CardSlot>
+      <DetailSlot>
+        <div className="flex w-1/2 gap-2 [&>button]:flex-1">
           <SaveCardButton
             cardRef={cardRef}
             fileName={`${data.playerName}-${data.tierName}`}
           />
+          <CopyUrlButton />
         </div>
-      </CardSlot>
-      <DetailSlot>
         <CombatStats stats={data.stats} />
         <PerformanceBadges badges={data.badges} />
         <AIFeedback stats={data.stats} trend={data.trend} />

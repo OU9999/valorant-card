@@ -3,6 +3,7 @@
 import { useState, type RefObject } from "react";
 import { toPng } from "html-to-image";
 import { Download, Loader2 } from "lucide-react";
+import { HudButton } from "@/components/hud-button";
 
 interface SaveCardButtonProps {
   cardRef: RefObject<HTMLDivElement | null>;
@@ -38,19 +39,14 @@ const SaveCardButton = ({
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleSave}
-      disabled={saving}
-      className="flex cursor-pointer items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50"
-    >
+    <HudButton variant="primary" onClick={handleSave} disabled={saving}>
       {saving ? (
         <Loader2 className="size-4 animate-spin" />
       ) : (
         <Download className="size-4" />
       )}
-      {saving ? "Saving..." : "Save as Image"}
-    </button>
+      {saving ? "Saving..." : "Save"}
+    </HudButton>
   );
 };
 
