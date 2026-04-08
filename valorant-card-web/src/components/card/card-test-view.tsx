@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { TierCard } from "@/components/card/tier-card";
+import { SaveCardButton } from "@/components/card/save-card-button";
 import {
   CardDetailLayout,
   CardSlot,
@@ -57,23 +59,31 @@ const MOCK_DATA = {
 
 const CardTestView = () => {
   const data = MOCK_DATA;
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <CardDetailLayout>
       <CardSlot>
-        <TierCard
-          tierName={data.tierName}
-          competitiveTier={data.competitiveTier}
-          backgroundImage={TIER_CARD_IMAGES[data.tierName]}
-          portraitUrl={data.portraitUrl}
-          ovr={data.ovr}
-          playerName={data.playerName}
-          region={data.region}
-          weaponIconUrl={data.weaponIconUrl}
-          stats={data.stats}
-          className="h-[800px]"
-          priority
-        />
+        <div className="flex flex-col items-center gap-4">
+          <TierCard
+            ref={cardRef}
+            tierName={data.tierName}
+            competitiveTier={data.competitiveTier}
+            backgroundImage={TIER_CARD_IMAGES[data.tierName]}
+            portraitUrl={data.portraitUrl}
+            ovr={data.ovr}
+            playerName={data.playerName}
+            region={data.region}
+            weaponIconUrl={data.weaponIconUrl}
+            stats={data.stats}
+            className="h-[800px]"
+            priority
+          />
+          <SaveCardButton
+            cardRef={cardRef}
+            fileName={`${data.playerName}-${data.tierName}`}
+          />
+        </div>
       </CardSlot>
       <DetailSlot>
         <CombatStats stats={data.stats} />
