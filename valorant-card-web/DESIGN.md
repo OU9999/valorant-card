@@ -4,38 +4,7 @@
 
 ---
 
-## 1. Visual Theme & Atmosphere
-
-### Identity
-
-**"Dry elegance meets tactical FPS."** This is not a flashy gaming dashboard. It is a precision-crafted collectible card system where every pixel serves the fantasy of owning a Valorant player card — like FIFA Ultimate Team, but forged in Valorant's universe.
-
-### Three Design Pillars
-
-| Pillar | Description |
-|--------|-------------|
-| **Collectible Card Identity** | FIFA UT card structure — large OVR number, position label, player portrait, 6-stat grid. The card is the hero object. |
-| **Tactical FPS Atmosphere** | Valorant Flashback V5 visual language — HUD corner lines, terminal-green diagnostics, red accent discipline, dark navy surfaces. |
-| **Tier Progression** | 9 tiers from Iron to Radiant. Each tier has a unique metallic-textured background, color palette, and glow intensity. High tiers (Ascendant, Immortal, Radiant) get a notched SVG clip path. |
-
-### Mood
-
-- **Dark-mode only** — `<html class="dark">` is hardcoded
-- Surfaces are deep navy, not pure black
-- Red (`#FF4655`) is reserved for accents — never backgrounds (except the Roast pattern)
-- Metallic card textures — generated as raster images, not CSS gradients
-- Restrained animation — slow infinite scrolls, subtle hovers, no bounce or overshoot
-
-### Design References
-
-| Source | Influence |
-|--------|-----------|
-| FIFA Ultimate Team | Card layout, OVR placement, 6-stat grid, tier-based card frames |
-| Valorant Flashback V5 | HUD corner L-lines, V logo watermark, diagonal split backgrounds, Boast/Roast stat bars, large counter numbers, `S2E` markers |
-
----
-
-## 2. Color Palette & Roles
+## 1. Color Palette & Roles
 
 ### Global Tokens (Dark Mode)
 
@@ -83,7 +52,7 @@ Each tier has a unique palette applied through `TierDesign` interface. Key: ligh
 
 ---
 
-## 3. Typography Rules
+## 2. Typography Rules
 
 ### Font Stack
 
@@ -134,7 +103,7 @@ All card-internal text uses `cqw` units via `clamp()` to scale with card size. T
 
 ---
 
-## 4. Component Stylings
+## 3. Component Stylings
 
 ### TierCard (Main Card)
 
@@ -240,7 +209,7 @@ pointer-events-none absolute inset-0
 
 ---
 
-## 5. Layout Principles
+## 4. Layout Principles
 
 ### Page Layouts
 

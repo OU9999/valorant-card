@@ -1,4 +1,3 @@
-import { VisualThemeSection } from "@/components/design/section-visual-theme";
 import { ColorPaletteSection } from "@/components/design/section-color-palette";
 import { TypographySection } from "@/components/design/section-typography";
 import { ComponentStylesSection } from "@/components/design/section-components";
@@ -12,11 +11,10 @@ interface TocEntry {
 }
 
 const TOC_ENTRIES: TocEntry[] = [
-  { id: "visual-theme", label: "1. Visual Theme" },
-  { id: "color-palette", label: "2. Color Palette" },
-  { id: "typography", label: "3. Typography" },
-  { id: "components", label: "4. Components" },
-  { id: "layout", label: "5. Layout" },
+  { id: "color-palette", label: "1. Color Palette" },
+  { id: "typography", label: "2. Typography" },
+  { id: "components", label: "3. Components" },
+  { id: "layout", label: "4. Layout" },
 ];
 
 /* ─── Page ─── */
@@ -50,8 +48,6 @@ export default function DesignReferencePage() {
 
         {/* Sections */}
         <div className="space-y-16">
-          <VisualThemeSection />
-          <div className="h-px bg-border" />
           <ColorPaletteSection />
           <div className="h-px bg-border" />
           <TypographySection />

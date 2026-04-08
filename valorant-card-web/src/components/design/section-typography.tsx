@@ -45,7 +45,7 @@ const Specimen = ({ label, classes, sample }: SpecimenProps) => (
 
 const TypographySection = () => (
   <section className="space-y-8">
-    <SectionTitle id="typography">3. Typography Rules</SectionTitle>
+    <SectionTitle id="typography">2. Typography Rules</SectionTitle>
 
     {/* Font Stack */}
     <div className="space-y-4">
