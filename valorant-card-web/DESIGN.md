@@ -89,13 +89,12 @@ Each tier has a unique palette applied through `TierDesign` interface. Key: ligh
 
 | Font | Source | Weights | CSS Variable | Role |
 |------|--------|---------|-------------|------|
-| **VALORANT** | CDN (`fonts.cdnfonts.com`) | — | `--font-heading` (primary) | Brand headings, hero titles |
-| **Barlow Condensed** | Google Fonts | 400, 500, 600, 700, 800 | `--font-barlow-condensed` | Card UI, condensed labels |
+| **Barlow Condensed** | Google Fonts | 400, 500, 600, 700, 800 | `--font-heading` (primary), `--font-barlow-condensed` | Brand headings, hero titles, card UI, condensed labels |
 | **Noto Sans KR** | Google Fonts | Variable | `--font-noto-sans-kr` | Korean body text |
 | **Black Han Sans** | Google Fonts | 400 | `--font-black-han-sans` | Accent headings (Korean) |
 
 ```
---font-heading: "VALORANT", var(--font-barlow-condensed), var(--font-black-han-sans), sans-serif;
+--font-heading: var(--font-barlow-condensed), var(--font-black-han-sans), sans-serif;
 --font-sans:    var(--font-noto-sans-kr), var(--font-barlow-condensed), sans-serif;
 ```
 
