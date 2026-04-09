@@ -45,7 +45,7 @@ const Specimen = ({ label, classes, sample }: SpecimenProps) => (
 
 const TypographySection = () => (
   <section className="space-y-8">
-    <SectionTitle id="typography">3. Typography Rules</SectionTitle>
+    <SectionTitle id="typography">2. Typography Rules</SectionTitle>
 
     {/* Font Stack */}
     <div className="space-y-4">
@@ -53,9 +53,10 @@ const TypographySection = () => (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <FontSample
           fontClass="font-heading"
-          name="VALORANT"
+          name="Barlow Condensed (Heading)"
           variable="--font-heading"
           sample="VALORANT FC CARD"
+          weights="400, 500, 600, 700, 800"
         />
         <FontSample
           fontClass="font-barlow-condensed"

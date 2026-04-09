@@ -70,7 +70,7 @@ const StatBar = ({ variant, label, value }: StatBarProps) => {
 
 const ColorPaletteSection = () => (
   <section className="space-y-10">
-    <SectionTitle id="color-palette">2. Color Palette &amp; Roles</SectionTitle>
+    <SectionTitle id="color-palette">1. Color Palette &amp; Roles</SectionTitle>
 
     {/* Global Tokens */}
     <div className="space-y-4">

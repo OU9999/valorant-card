@@ -1,0 +1,11 @@
+.idea/*
+.DS_Store
+node_modules/*
+logs/*
+.vscode/*
+.husky/*
+.turbo/*
+package-lock.json
+.gitignore
+README.md
+pnpm-lock.yaml

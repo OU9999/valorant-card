@@ -39,7 +39,7 @@ const RadiusSample = ({ label, cssVar, value }: RadiusSampleProps) => (
 
 const LayoutSection = () => (
   <section className="space-y-8">
-    <SectionTitle id="layout">5. Layout Principles</SectionTitle>
+    <SectionTitle id="layout">4. Layout Principles</SectionTitle>
 
     {/* Page Layouts */}
     <div className="space-y-4">

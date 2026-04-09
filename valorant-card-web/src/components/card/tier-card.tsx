@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, type Ref } from "react";
 import type { StaticImageData } from "next/image";
 import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/tier-design";
 import type { TierName } from "@/constants/tier-design";
@@ -19,6 +19,7 @@ import { StatsSection } from "./tier-card/stats-section";
 /* ------------------------------------------------------------------ */
 
 interface TierCardProps {
+  ref?: Ref<HTMLDivElement>;
   tierName: TierName;
   competitiveTier: number;
   backgroundImage: StaticImageData;
@@ -34,6 +35,7 @@ interface TierCardProps {
 }
 
 const TierCard = ({
+  ref,
   tierName,
   competitiveTier,
   backgroundImage,
@@ -55,6 +57,7 @@ const TierCard = ({
 
   return (
     <div
+      ref={ref}
       className={cn(
         "@container relative overflow-hidden aspect-2109/3218",
         className,

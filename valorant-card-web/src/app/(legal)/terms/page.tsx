@@ -1,4 +1,4 @@
-import { LegalDocumentRenderer } from "@/components/layout/legal-document-renderer";
+import { LegalDocumentRenderer } from "@/components/legal/legal-document-renderer";
 import { TERMS_OF_SERVICE } from "@/constants/legal";
 
 export default function TermsPage() {

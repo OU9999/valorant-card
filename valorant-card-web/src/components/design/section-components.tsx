@@ -59,7 +59,7 @@ const ComponentStylesSection = () => {
 
   return (
     <section className="space-y-10">
-      <SectionTitle id="components">4. Component Stylings</SectionTitle>
+      <SectionTitle id="components">3. Component Stylings</SectionTitle>
 
       {/* TierCard */}
       <div className="space-y-4">

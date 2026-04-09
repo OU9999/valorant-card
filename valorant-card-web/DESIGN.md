@@ -4,38 +4,7 @@
 
 ---
 
-## 1. Visual Theme & Atmosphere
-
-### Identity
-
-**"Dry elegance meets tactical FPS."** This is not a flashy gaming dashboard. It is a precision-crafted collectible card system where every pixel serves the fantasy of owning a Valorant player card — like FIFA Ultimate Team, but forged in Valorant's universe.
-
-### Three Design Pillars
-
-| Pillar | Description |
-|--------|-------------|
-| **Collectible Card Identity** | FIFA UT card structure — large OVR number, position label, player portrait, 6-stat grid. The card is the hero object. |
-| **Tactical FPS Atmosphere** | Valorant Flashback V5 visual language — HUD corner lines, terminal-green diagnostics, red accent discipline, dark navy surfaces. |
-| **Tier Progression** | 9 tiers from Iron to Radiant. Each tier has a unique metallic-textured background, color palette, and glow intensity. High tiers (Ascendant, Immortal, Radiant) get a notched SVG clip path. |
-
-### Mood
-
-- **Dark-mode only** — `<html class="dark">` is hardcoded
-- Surfaces are deep navy, not pure black
-- Red (`#FF4655`) is reserved for accents — never backgrounds (except the Roast pattern)
-- Metallic card textures — generated as raster images, not CSS gradients
-- Restrained animation — slow infinite scrolls, subtle hovers, no bounce or overshoot
-
-### Design References
-
-| Source | Influence |
-|--------|-----------|
-| FIFA Ultimate Team | Card layout, OVR placement, 6-stat grid, tier-based card frames |
-| Valorant Flashback V5 | HUD corner L-lines, V logo watermark, diagonal split backgrounds, Boast/Roast stat bars, large counter numbers, `S2E` markers |
-
----
-
-## 2. Color Palette & Roles
+## 1. Color Palette & Roles
 
 ### Global Tokens (Dark Mode)
 
@@ -83,19 +52,18 @@ Each tier has a unique palette applied through `TierDesign` interface. Key: ligh
 
 ---
 
-## 3. Typography Rules
+## 2. Typography Rules
 
 ### Font Stack
 
 | Font | Source | Weights | CSS Variable | Role |
 |------|--------|---------|-------------|------|
-| **VALORANT** | CDN (`fonts.cdnfonts.com`) | — | `--font-heading` (primary) | Brand headings, hero titles |
-| **Barlow Condensed** | Google Fonts | 400, 500, 600, 700, 800 | `--font-barlow-condensed` | Card UI, condensed labels |
+| **Barlow Condensed** | Google Fonts | 400, 500, 600, 700, 800 | `--font-heading` (primary), `--font-barlow-condensed` | Brand headings, hero titles, card UI, condensed labels |
 | **Noto Sans KR** | Google Fonts | Variable | `--font-noto-sans-kr` | Korean body text |
 | **Black Han Sans** | Google Fonts | 400 | `--font-black-han-sans` | Accent headings (Korean) |
 
 ```
---font-heading: "VALORANT", var(--font-barlow-condensed), var(--font-black-han-sans), sans-serif;
+--font-heading: var(--font-barlow-condensed), var(--font-black-han-sans), sans-serif;
 --font-sans:    var(--font-noto-sans-kr), var(--font-barlow-condensed), sans-serif;
 ```
 
@@ -135,7 +103,7 @@ All card-internal text uses `cqw` units via `clamp()` to scale with card size. T
 
 ---
 
-## 4. Component Stylings
+## 3. Component Stylings
 
 ### TierCard (Main Card)
 
@@ -241,7 +209,7 @@ pointer-events-none absolute inset-0
 
 ---
 
-## 5. Layout Principles
+## 4. Layout Principles
 
 ### Page Layouts
 
