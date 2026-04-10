@@ -1,8 +1,8 @@
 ---
-name: componentize
+name: custom-component
 description: 비대한 React 컴포넌트를 스코프별 서브 컴포넌트로 분리, 시맨틱 HTML 적용, 전용 서브디렉토리 구조화
 triggers:
-  - componentize
+  - custom-component
   - 컴포넌트 분리
   - 컴포넌트화
   - split component
@@ -10,7 +10,7 @@ argument-hint: "<component-file-path>"
 quality: high
 ---
 
-# Componentize
+# Custom Component
 
 비대한 React 컴포넌트를 스코프별 서브 컴포넌트로 분리하고, 시맨틱 HTML을 적용하며, 전용 서브디렉토리로 구조화한다.
 
@@ -57,20 +57,32 @@ quality: high
      <Sidebar />
    </Layout>
    ```
-2. 상태, 이펙트, 핸들러, API 호출 로직은 오케스트레이터에 유지한다.
+2. 오케스트레이터의 로직(상태, 이펙트, 핸들러, API 호출)은 전용 훅으로 분리한다 (`/custom-hook` 참조).
 3. 서브 컴포넌트로 이동한 import를 정리한다.
 
 ### 5단계: 디렉토리 구조화
 
-1. 오케스트레이터에서만 사용하는 서브 컴포넌트는 동명의 서브디렉토리로 이동한다:
+1. 오케스트레이터에서만 사용하는 서브 모듈은 동명의 서브디렉토리 안에 `_components/`, `_hooks/`로 분류한다:
    ```
    component.tsx
    component/
-     sub-a.tsx
-     sub-b.tsx
+     _components/
+       sub-a.tsx
+       sub-b.tsx
+     _hooks/
+       use-sub-action.ts
    ```
-2. 다른 곳에서도 사용되는 독립 컴포넌트는 상위 디렉토리에 유지한다.
-3. import 경로를 업데이트한다.
+2. 서브 컴포넌트가 전용 훅을 가지면 `_hooks/` 하위에, 전용 서브 훅은 훅 동명 서브디렉토리에 배치한다:
+   ```
+   component/
+     _hooks/
+       use-sub-action.ts
+       use-sub-action/
+         use-state.ts
+         use-auth.ts
+   ```
+3. 다른 곳에서도 사용되는 독립 컴포넌트/훅은 상위 디렉토리에 유지한다.
+4. import 경로를 업데이트한다.
 
 ### 6단계: 검증
 
