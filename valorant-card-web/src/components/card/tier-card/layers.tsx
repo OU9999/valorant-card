@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
-import { CARD_SVG_PATH_HIGH_TIER } from "@/constants/card";
-import type { TierDesign, TierName } from "@/constants/tier-design";
+import { CARD_SVG_PATH_HIGH_TIER } from "@/constants/card/borders";
+import type { TierDesign, TierName } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
 import type { ClipStyle } from "./types";
 

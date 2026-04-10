@@ -5,7 +5,7 @@ import {
 } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { PageGradient } from "@/components/layout/page-gradient";
-import { siteMetadata } from "@/constants/metadata";
+import { siteMetadata } from "@/constants/site/metadata";
 import "@/styles/globals.css";
 
 const barlowCondensed = Barlow_Condensed({

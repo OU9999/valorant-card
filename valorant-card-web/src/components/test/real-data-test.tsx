@@ -19,11 +19,11 @@ import { adaptHenrikMatch } from "@/lib/henrik/adapter";
 import { calculateCardScore, formatCardStats, findMostUsedWeapon } from "@/lib/valorant/card-stats";
 import type { CardScoreResult } from "@/lib/valorant/card-stats";
 import { getTierIndex } from "@/lib/valorant/tiers";
-import { CHARACTERS } from "@/constants/characters";
-import { SHARD_DISPLAY_NAMES } from "@/constants/regions";
-import { getWeaponIconUrl } from "@/constants/weapons";
-import { TIER_NAMES } from "@/constants/tier-design";
-import type { TierName } from "@/constants/tier-design";
+import { CHARACTERS } from "@/constants/game/characters";
+import { SHARD_DISPLAY_NAMES } from "@/constants/game/regions";
+import { getWeaponIconUrl } from "@/constants/game/weapons";
+import { TIER_NAMES } from "@/constants/card/tier-design";
+import type { TierName } from "@/constants/card/tier-design";
 import type { MatchDetails } from "@/network/riot/match";
 import type {
   HenrikMatchesResponse,

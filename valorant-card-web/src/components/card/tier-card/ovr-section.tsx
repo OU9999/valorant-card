@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { TierDesign } from "@/constants/tier-design";
+import type { TierDesign } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
 import { getTierIcon } from "@/lib/valorant/tiers";
 import type { ClipStyle } from "./types";

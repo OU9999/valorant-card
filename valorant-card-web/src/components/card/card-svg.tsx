@@ -1,4 +1,4 @@
-import { CARD_SVG_PATH } from "@/constants/card";
+import { CARD_SVG_PATH } from "@/constants/card/borders";
 
 interface CardSvgProps {
   fill?: string;

@@ -1,4 +1,4 @@
-import type { TierDesign } from "@/constants/tier-design";
+import type { TierDesign } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
 
 interface PlayerNameSectionProps {

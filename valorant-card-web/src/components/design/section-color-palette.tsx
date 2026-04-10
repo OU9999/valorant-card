@@ -1,7 +1,7 @@
 "use client";
 
 import { TierCard } from "@/components/card/tier-card";
-import { TIER_DESIGNS, HIGH_TIER_NAMES } from "@/constants/tier-design";
+import { TIER_DESIGNS, HIGH_TIER_NAMES } from "@/constants/card/tier-design";
 import { getTierIcon } from "@/lib/valorant/tiers";
 import { cn } from "@/lib/cn";
 import {

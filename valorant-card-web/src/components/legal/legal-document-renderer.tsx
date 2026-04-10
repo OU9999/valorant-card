@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
-import type { LegalDocumentData } from "@/constants/legal";
+import type { LegalDocumentData } from "@/constants/site/legal";
 
 import {
   LegalSection,
