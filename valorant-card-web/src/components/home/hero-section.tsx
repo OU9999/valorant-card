@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, LogOut } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { RiotButton } from "@/components/button/riot-button";
+import { HeroLayout } from "@/components/home/hero-section/hero-layout";
+import { HeroContent } from "@/components/home/hero-section/hero-content";
+import { HeroCta } from "@/components/home/hero-section/hero-cta";
+import { HeroStats } from "@/components/home/hero-section/hero-stats";
+import { CardShowcase } from "@/components/home/hero-section/card-showcase";
 import { DataDisclosureDialog } from "@/components/home/data-disclosure-dialog";
-import { CardColumn } from "@/components/home/card-column";
 import { useAuthStatus } from "@/hooks/use-auth-status";
 import { fetchApi } from "@/network/fetch-api";
-import { COLUMN_1, COLUMN_2, COLUMN_3 } from "@/constants/card/showcase-cards";
 
 type HeroState =
   | { phase: "idle" }
@@ -113,94 +113,25 @@ const HeroSection = ({ rsoSuccess, rsoError }: HeroSectionProps) => {
   const isAuthenticated = authStatus?.authenticated === true;
 
   return (
-    <div className="relative flex min-h-screen flex-col md:flex-row">
-      <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
-        <h1 className="flex items-center gap-1.5 font-heading text-5xl font-bold tracking-wide uppercase md:text-7xl">
-          <span className="text-primary">VALORANT</span>
-          <span className="text-foreground">CARD</span>
-        </h1>
-        <p className="mt-4 text-center text-sm text-muted-foreground md:text-base">
-          나만의 발로란트 카드를 만들어보세요
-        </p>
-
-        <div className="mt-8 flex flex-col items-center gap-3">
-          {isLoading ? (
-            <Button size="lg" className="h-12 gap-2 px-8" disabled>
-              <Loader2 className="size-4 animate-spin" />
-              카드 생성 중...
-            </Button>
-          ) : isAuthenticated ? (
-            <div className="flex items-center gap-3">
-              <Button
-                size="lg"
-                className="h-12 gap-2 px-8"
-                onClick={generateCard}
-              >
-                카드 생성
-              </Button>
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <LogOut className="size-3" />
-                로그아웃
-              </button>
-            </div>
-          ) : (
-            <RiotButton onClick={() => setDialogOpen(true)} />
-          )}
-
-          {state.phase === "error" && (
-            <p className="text-sm text-destructive">{state.message}</p>
-          )}
-        </div>
-
-        {/* TODO: DB 연동 후 실제 데이터로 교체 */}
-        <div className="mt-16 flex gap-12">
-          <div>
-            <span className="text-4xl font-black text-foreground">0</span>
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 bg-primary" />
-              <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
-                Cards Generated
-              </span>
-            </div>
-          </div>
-          <div>
-            <span className="text-4xl font-black text-foreground">0</span>
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 bg-emerald-500" />
-              <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
-                Cards Shared
-              </span>
-            </div>
-          </div>
-        </div>
-
+    <HeroLayout>
+      <HeroContent>
+        <HeroCta
+          isLoading={isLoading}
+          isAuthenticated={isAuthenticated}
+          error={state.phase === "error" ? state.message : null}
+          onGenerate={generateCard}
+          onLogout={handleLogout}
+          onLoginClick={() => setDialogOpen(true)}
+        />
+        <HeroStats />
         <DataDisclosureDialog
           open={dialogOpen}
           onOpenChange={setDialogOpen}
           onPreview={() => router.push("/card/test")}
         />
-      </div>
-
-      <div className="relative z-10 flex h-screen items-center overflow-hidden md:w-[45%]">
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
-
-        <div className="flex h-full w-full gap-3 px-4">
-          <CardColumn cards={COLUMN_1} direction="up" speed={60} delay={0.1} />
-          <CardColumn
-            cards={COLUMN_2}
-            direction="down"
-            speed={44}
-            delay={0.3}
-          />
-          <CardColumn cards={COLUMN_3} direction="up" speed={52} delay={0.5} />
-        </div>
-      </div>
-    </div>
+      </HeroContent>
+      <CardShowcase />
+    </HeroLayout>
   );
 };
 
