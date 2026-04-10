@@ -1,277 +1,110 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import type { CSSProperties } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Loader2, LogOut } from "lucide-react";
-import { TierCard } from "@/components/card/tier-card";
 import { Button } from "@/components/ui/button";
-import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
 import { RiotButton } from "@/components/button/riot-button";
 import { DataDisclosureDialog } from "@/components/home/data-disclosure-dialog";
+import { CardColumn } from "@/components/home/card-column";
 import { useAuthStatus } from "@/hooks/use-auth-status";
-import {
-  VANDAL_ICON_URL,
-  SHOWCASE_STATS,
-  COMPETITIVE_TIERS,
-} from "@/components/design/mock-data";
-import type { TierName } from "@/constants/tier-design";
-import type { CardErrorCode } from "@/lib/card/errors";
+import { fetchApi } from "@/network/fetch-api";
+import { COLUMN_1, COLUMN_2, COLUMN_3 } from "@/constants/card/showcase-cards";
 
 type HeroState =
   | { phase: "idle" }
   | { phase: "loading" }
   | { phase: "error"; message: string };
 
-const SHOWCASE_GLOW: Record<TierName, string> = {
-  Iron: "drop-shadow(0 0 12px rgba(156,163,175,0.5))",
-  Bronze: "drop-shadow(0 0 12px rgba(217,119,6,0.5))",
-  Silver: "drop-shadow(0 0 12px rgba(148,163,184,0.6))",
-  Gold: "drop-shadow(0 0 12px rgba(245,158,11,0.5))",
-  Platinum: "drop-shadow(0 0 12px rgba(6,182,212,0.5))",
-  Diamond: "drop-shadow(0 0 12px rgba(192,38,211,0.5))",
-  Ascendant: "drop-shadow(0 0 14px rgba(16,185,129,0.6))",
-  Immortal: "drop-shadow(0 0 14px rgba(225,29,72,0.6))",
-  Radiant: "drop-shadow(0 0 14px rgba(212,175,55,0.6))",
-};
-
-interface ShowcaseCard {
-  tierName: TierName;
-  portrait: string;
-  ovr: number;
-  playerName: string;
+interface CardGenerateSuccess {
+  id: string;
 }
 
-const COLUMN_1: ShowcaseCard[] = [
-  {
-    tierName: "Iron",
-    portrait: "/characters/sage/pose2.png",
-    ovr: 12,
-    playerName: "s0m",
-  },
-  {
-    tierName: "Gold",
-    portrait: "/characters/phoenix/pose2.png",
-    ovr: 45,
-    playerName: "aspas",
-  },
-  {
-    tierName: "Silver",
-    portrait: "/characters/yoru/pose3.png",
-    ovr: 34,
-    playerName: "Boaster",
-  },
-  {
-    tierName: "Diamond",
-    portrait: "/characters/omen/pose1.png",
-    ovr: 68,
-    playerName: "nAts",
-  },
-  {
-    tierName: "Bronze",
-    portrait: "/characters/neon/pose1.png",
-    ovr: 21,
-    playerName: "Meteor",
-  },
-  {
-    tierName: "Radiant",
-    portrait: "/characters/jett/pose3.png",
-    ovr: 97,
-    playerName: "Demon1",
-  },
-];
+type CardResult =
+  | { type: "success"; id: string }
+  | { type: "unauthorized" }
+  | { type: "error"; message: string };
 
-const COLUMN_2: ShowcaseCard[] = [
-  {
-    tierName: "Bronze",
-    portrait: "/characters/breach/pose1.png",
-    ovr: 23,
-    playerName: "t3xture",
-  },
-  {
-    tierName: "Platinum",
-    portrait: "/characters/iso/pose3.png",
-    ovr: 56,
-    playerName: "stax",
-  },
-  {
-    tierName: "Iron",
-    portrait: "/characters/kayo/pose2.png",
-    ovr: 10,
-    playerName: "Jinggg",
-  },
-  {
-    tierName: "Immortal",
-    portrait: "/characters/reyna/pose3.png",
-    ovr: 91,
-    playerName: "Alfajer",
-  },
-  {
-    tierName: "Silver",
-    portrait: "/characters/tejo/pose1.png",
-    ovr: 32,
-    playerName: "crashies",
-  },
-  {
-    tierName: "Diamond",
-    portrait: "/characters/skye/pose1.png",
-    ovr: 65,
-    playerName: "Shao",
-  },
-];
+const fetchCardGeneration = async (): Promise<CardResult> => {
+  const result = await fetchApi<CardGenerateSuccess>("/api/card/generate", {
+    method: "POST",
+  });
 
-const COLUMN_3: ShowcaseCard[] = [
-  {
-    tierName: "Silver",
-    portrait: "/characters/cypher/pose1.png",
-    ovr: 35,
-    playerName: "Lakia",
-  },
-  {
-    tierName: "Gold",
-    portrait: "/characters/sova/pose2.png",
-    ovr: 48,
-    playerName: "zekken",
-  },
-  {
-    tierName: "Bronze",
-    portrait: "/characters/chamber/pose3.png",
-    ovr: 19,
-    playerName: "f0rsakeN",
-  },
-  {
-    tierName: "Ascendant",
-    portrait: "/characters/vyse/pose3.png",
-    ovr: 84,
-    playerName: "MaKo",
-  },
-  {
-    tierName: "Iron",
-    portrait: "/characters/astra/pose2.png",
-    ovr: 8,
-    playerName: "BuZz",
-  },
-  {
-    tierName: "Platinum",
-    portrait: "/characters/gekko/pose3.png",
-    ovr: 58,
-    playerName: "Derke",
-  },
-];
+  if (result.ok) return { type: "success", id: result.data.id };
+  if (result.status === 401) return { type: "unauthorized" };
 
-interface CardColumnProps {
-  cards: ShowcaseCard[];
-  direction: "up" | "down";
-  speed: number;
-  delay: number;
-}
-
-const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
-  const doubled = [...cards, ...cards];
-  return (
-    <div
-      className="card-column flex-1 overflow-hidden"
-      style={{ "--column-delay": `${delay}s` } as CSSProperties}
-    >
-      <div
-        className={`${direction === "up" ? "card-scroll-up" : "card-scroll-down"} flex flex-col`}
-        style={{ "--scroll-duration": `${speed}s` } as CSSProperties}
-      >
-        {doubled.map((card, i) => (
-          <div
-            key={`${card.tierName}-${i}`}
-            className="showcase-card pb-3"
-            style={
-              { "--tier-glow": SHOWCASE_GLOW[card.tierName] } as CSSProperties
-            }
-          >
-            <TierCard
-              tierName={card.tierName}
-              competitiveTier={COMPETITIVE_TIERS[card.tierName]}
-              backgroundImage={TIER_CARD_IMAGES[card.tierName]}
-              portraitUrl={card.portrait}
-              ovr={card.ovr}
-              playerName={card.playerName}
-              weaponIconUrl={VANDAL_ICON_URL}
-              stats={SHOWCASE_STATS[card.tierName]}
-              size="sm"
-              className="w-[280px]"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  try {
+    const { error } = JSON.parse(result.error) as { error: string };
+    return { type: "error", message: error };
+  } catch {
+    return {
+      type: "error",
+      message: "오류가 발생했습니다. 다시 시도해주세요.",
+    };
+  }
 };
 
-const HeroSection = () => {
-  const [state, setState] = useState<HeroState>({ phase: "idle" });
+interface HeroSectionProps {
+  rsoSuccess: boolean;
+  rsoError: boolean;
+}
+
+const HeroSection = ({ rsoSuccess, rsoError }: HeroSectionProps) => {
+  const [state, setState] = useState<HeroState>(() => {
+    if (rsoSuccess) return { phase: "loading" };
+    if (rsoError)
+      return {
+        phase: "error",
+        message: "로그인에 실패했습니다. 다시 시도해주세요.",
+      };
+    return { phase: "idle" };
+  });
   const [dialogOpen, setDialogOpen] = useState(false);
   const { status: authStatus, refresh: refreshAuth } = useAuthStatus();
-  const searchParams = useSearchParams();
   const router = useRouter();
+  const rsoHandled = useRef(false);
+
+  const applyCardResult = (result: CardResult) => {
+    if (result.type === "unauthorized") {
+      setDialogOpen(true);
+      setState({ phase: "idle" });
+      return;
+    }
+    if (result.type === "error") {
+      setState({ phase: "error", message: result.message });
+      return;
+    }
+    router.push(`/card/${result.id}`);
+  };
 
   const generateCard = async () => {
     setState({ phase: "loading" });
-
-    try {
-      const res = await fetch("/api/card/generate", { method: "POST" });
-      const json = await res.json();
-
-      if (!res.ok) {
-        const code = json.code as CardErrorCode | undefined;
-        if (code === "UNAUTHORIZED") {
-          setDialogOpen(true);
-          setState({ phase: "idle" });
-          return;
-        }
-        const message = code
-          ? (json.error as string)
-          : "오류가 발생했습니다. 다시 시도해주세요.";
-        setState({ phase: "error", message });
-        return;
-      }
-
-      router.push(`/card/${json.id as string}`);
-    } catch {
-      setState({
-        phase: "error",
-        message: "오류가 발생했습니다. 다시 시도해주세요.",
-      });
-    }
+    const result = await fetchCardGeneration();
+    applyCardResult(result);
   };
 
   /**
    * RSO 콜백 처리: 인증 성공 시 카드 생성 및 /card/[id]로 이동, 실패 시 에러 표시.
+   * ref guard로 Strict Mode 등에서의 중복 실행 방지.
+   * loading/error 초기 상태는 useState initializer에서 설정.
    */
   useEffect(() => {
-    if (searchParams.get("authenticated") === "true") {
+    if (rsoHandled.current || (!rsoSuccess && !rsoError)) return;
+    rsoHandled.current = true;
+    window.history.replaceState({}, "", "/");
+
+    if (rsoSuccess) {
       refreshAuth();
-      window.history.replaceState({}, "", "/");
-      generateCard();
-      return;
+      const run = async () => {
+        const result = await fetchCardGeneration();
+        applyCardResult(result);
+      };
+      run();
     }
-
-    const authError = searchParams.get("auth_error");
-    if (authError) {
-      setState({
-        phase: "error",
-        message: "로그인에 실패했습니다. 다시 시도해주세요.",
-      });
-      window.history.replaceState({}, "", "/");
-    }
-  }, [searchParams, refreshAuth]);
-
-  const handleLogin = () => {
-    setDialogOpen(true);
-  };
-
-  const handlePreview = () => {
-    router.push("/card/test");
-  };
+  }, [rsoSuccess, rsoError, refreshAuth]);
 
   const handleLogout = async () => {
-    await fetch("/api/auth/rso/logout", { method: "POST" });
+    await fetchApi("/api/auth/rso/logout", { method: "POST" });
     refreshAuth();
     setState({ phase: "idle" });
   };
@@ -281,9 +114,8 @@ const HeroSection = () => {
 
   return (
     <div className="relative flex min-h-screen flex-col md:flex-row">
-      {/* Left — Title + Search */}
       <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
-        <h1 className="flex text-5xl tracking-wide uppercase font-bold md:text-7xl items-center gap-1.5 font-heading">
+        <h1 className="flex items-center gap-1.5 font-heading text-5xl font-bold tracking-wide uppercase md:text-7xl">
           <span className="text-primary">VALORANT</span>
           <span className="text-foreground">CARD</span>
         </h1>
@@ -291,7 +123,6 @@ const HeroSection = () => {
           나만의 발로란트 카드를 만들어보세요
         </p>
 
-        {/* Action area */}
         <div className="mt-8 flex flex-col items-center gap-3">
           {isLoading ? (
             <Button size="lg" className="h-12 gap-2 px-8" disabled>
@@ -317,23 +148,21 @@ const HeroSection = () => {
               </button>
             </div>
           ) : (
-            <RiotButton onClick={handleLogin} />
+            <RiotButton onClick={() => setDialogOpen(true)} />
           )}
 
-          {/* Error message */}
           {state.phase === "error" && (
             <p className="text-sm text-destructive">{state.message}</p>
           )}
         </div>
 
-        {/* Stats */}
         {/* TODO: DB 연동 후 실제 데이터로 교체 */}
         <div className="mt-16 flex gap-12">
           <div>
             <span className="text-4xl font-black text-foreground">0</span>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 bg-primary" />
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
                 Cards Generated
               </span>
             </div>
@@ -342,24 +171,21 @@ const HeroSection = () => {
             <span className="text-4xl font-black text-foreground">0</span>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 bg-emerald-500" />
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
                 Cards Shared
               </span>
             </div>
           </div>
         </div>
 
-        {/* Data disclosure dialog */}
         <DataDisclosureDialog
           open={dialogOpen}
           onOpenChange={setDialogOpen}
-          onPreview={handlePreview}
+          onPreview={() => router.push("/card/test")}
         />
       </div>
 
-      {/* Right — 3-column vertical scroll */}
       <div className="relative z-10 flex h-screen items-center overflow-hidden md:w-[45%]">
-        {/* Top/bottom fade masks */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
