@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { fetchApi } from "@/network/fetch-api";
 import type { FetchResult } from "@/network/fetch-api";
-import { API_ENDPOINTS } from "@/constants/api-endpoints";
+import { API_ENDPOINTS } from "@/constants/site/api-endpoints";
 
 const FetchTest = () => {
   const [loading, setLoading] = useState(false);

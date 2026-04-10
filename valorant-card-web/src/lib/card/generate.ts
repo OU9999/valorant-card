@@ -2,8 +2,8 @@ import type { RiotRegion, ValorantShard } from "@/network/riot/common";
 import type { MatchDetails } from "@/network/riot/match";
 import type { CardStat, FormTrend } from "@/lib/valorant/card-stats";
 import type { Badge } from "@/lib/valorant/badges";
-import type { TierName } from "@/constants/tier-design";
-import { TIER_NAMES } from "@/constants/tier-design";
+import type { TierName } from "@/constants/card/tier-design";
+import { TIER_NAMES } from "@/constants/card/tier-design";
 
 const SHARD_LABELS: Record<ValorantShard, string> = {
   kr: "KR",

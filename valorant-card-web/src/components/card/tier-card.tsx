@@ -1,7 +1,7 @@
 import { useId, type Ref } from "react";
 import type { StaticImageData } from "next/image";
-import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/tier-design";
-import type { TierName } from "@/constants/tier-design";
+import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/card/tier-design";
+import type { TierName } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
 import type { CardStat, CardSize } from "./tier-card/types";
 import {

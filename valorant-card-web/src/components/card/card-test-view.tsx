@@ -12,9 +12,9 @@ import {
 import { CombatStats } from "@/components/card/detail/combat-stats";
 import { PerformanceBadges } from "@/components/card/detail/performance-badges";
 import { AIFeedback } from "@/components/card/detail/ai-feedback";
-import { CHARACTERS } from "@/constants/characters";
-import { TIER_CARD_IMAGES } from "@/constants/tier-card-images";
-import { getWeaponIconUrl } from "@/constants/weapons";
+import { CHARACTERS } from "@/constants/game/characters";
+import { TIER_CARD_IMAGES } from "@/constants/card/tier-card-images";
+import { getWeaponIconUrl } from "@/constants/game/weapons";
 import type { CardStat, FormTrend } from "@/lib/valorant/card-stats";
 import type { Badge } from "@/lib/valorant/badges";
 

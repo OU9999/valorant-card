@@ -20,8 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { getWeaponIconUrl } from "@/constants/weapons";
-import type { TierName } from "@/constants/tier-design";
+import { getWeaponIconUrl } from "@/constants/game/weapons";
+import type { TierName } from "@/constants/card/tier-design";
 import { Label } from "@/components/ui/label";
 
 const VANDAL_ICON_URL = getWeaponIconUrl("9c82e19d-4575-0200-1a81-3eacf00cf872");
