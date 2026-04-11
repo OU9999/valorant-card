@@ -3,7 +3,7 @@ import { COLUMN_1, COLUMN_2, COLUMN_3 } from "@/constants/card/showcase-cards";
 
 const CardShowcase = () => {
   return (
-    <aside className="relative z-10 flex h-screen items-center overflow-hidden md:w-[45%]">
+    <aside className="relative z-10 hidden h-screen items-center overflow-hidden md:flex md:w-[45%]">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-background via-background/60 to-transparent" />
 

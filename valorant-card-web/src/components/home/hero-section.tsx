@@ -4,6 +4,7 @@ import { HeroContent } from "@/components/home/hero-section/_components/hero-con
 import { HeroInteractive } from "@/components/home/hero-section/_components/hero-interactive";
 import { HeroStats } from "@/components/home/hero-section/_components/hero-stats";
 import { CardShowcase } from "@/components/home/hero-section/_components/card-showcase";
+import { CardShowcaseMobile } from "@/components/home/hero-section/_components/card-showcase-mobile";
 
 const HeroSection = () => {
   return (
@@ -15,6 +16,7 @@ const HeroSection = () => {
         <HeroStats />
       </HeroContent>
       <CardShowcase />
+      <CardShowcaseMobile />
     </HeroLayout>
   );
 };
