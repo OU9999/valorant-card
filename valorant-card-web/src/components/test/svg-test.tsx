@@ -11,7 +11,7 @@ import diamondCard from "@/asset/example/tier-card/diamond.png";
 import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
-import { CARD_SVG_PATH, CARD_SVG_PATH_HIGH_TIER } from "@/constants/card/borders";
+import { getCardSvgPath } from "@/constants/card/borders";
 import { HIGH_TIER_NAMES } from "@/constants/card/tier-design";
 import type { TierName } from "@/constants/card/tier-design";
 import { Button } from "@/components/ui/button";
@@ -42,7 +42,7 @@ const SvgTest = () => {
 
   const tier = TIERS[activeIndex];
   const isHighTier = HIGH_TIER_NAMES.has(tier.name);
-  const svgPath = isHighTier ? CARD_SVG_PATH_HIGH_TIER : CARD_SVG_PATH;
+  const svgPath = getCardSvgPath(tier.name);
 
   return (
     <TestLayout
@@ -125,7 +125,7 @@ const SvgTest = () => {
             <div className="flex flex-col gap-1 text-sm text-muted-foreground">
               <p>Tier: {tier.name}</p>
               <p>Type: {isHighTier ? "High Tier" : "Low Tier"}</p>
-              <p>Path: {isHighTier ? "CARD_SVG_PATH_HIGH_TIER" : "CARD_SVG_PATH"}</p>
+              <p>Path: {tier.name === "Radiant" ? "HIGH_TIER" : isHighTier ? "MID_HIGH_TIER" : "CARD_SVG_PATH"}</p>
             </div>
           </section>
         </>

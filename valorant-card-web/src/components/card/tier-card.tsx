@@ -65,7 +65,7 @@ const TierCard = ({
         className,
       )}
     >
-      <ClipPathDefs clipId={clipId} isHighTier={isHighTier} />
+      <ClipPathDefs clipId={clipId} tierName={tierName} />
       <BackgroundLayer
         backgroundImage={backgroundImage}
         tierName={tierName}

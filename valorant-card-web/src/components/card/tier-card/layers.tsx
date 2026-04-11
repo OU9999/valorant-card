@@ -1,5 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
-import { CARD_SVG_PATH, CARD_SVG_PATH_HIGH_TIER } from "@/constants/card/borders";
+import { getCardSvgPath } from "@/constants/card/borders";
 import type { TierDesign, TierName } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
 import type { ClipStyle } from "./types";
@@ -10,17 +10,14 @@ import type { ClipStyle } from "./types";
 
 interface ClipPathDefsProps {
   clipId: string;
-  isHighTier: boolean;
+  tierName: TierName;
 }
 
-const ClipPathDefs = ({ clipId, isHighTier }: ClipPathDefsProps) => (
+const ClipPathDefs = ({ clipId, tierName }: ClipPathDefsProps) => (
   <svg className="absolute h-0 w-0">
     <defs>
       <clipPath id={clipId} clipPathUnits="objectBoundingBox">
-        <path
-          d={isHighTier ? CARD_SVG_PATH_HIGH_TIER : CARD_SVG_PATH}
-          transform="scale(0.01, 0.01)"
-        />
+        <path d={getCardSvgPath(tierName)} transform="scale(0.01, 0.01)" />
       </clipPath>
     </defs>
   </svg>
