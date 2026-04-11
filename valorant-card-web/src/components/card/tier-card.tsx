@@ -54,7 +54,7 @@ const TierCard = ({
   const clipId = useId();
   const design = TIER_DESIGNS[tierName];
   const isHighTier = HIGH_TIER_NAMES.has(tierName);
-  const clipStyle = isHighTier ? { clipPath: `url(#${clipId})` } : undefined;
+  const clipStyle = { clipPath: `url(#${clipId})` };
   const isSm = size === "sm";
 
   return (
@@ -65,7 +65,7 @@ const TierCard = ({
         className,
       )}
     >
-      {isHighTier && <ClipPathDefs clipId={clipId} />}
+      <ClipPathDefs clipId={clipId} tierName={tierName} />
       <BackgroundLayer
         backgroundImage={backgroundImage}
         tierName={tierName}

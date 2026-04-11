@@ -28,10 +28,7 @@ const OvrSection = ({
   clipStyle,
 }: OvrSectionProps) => (
   <div
-    className={cn(
-      "absolute inset-0 pointer-events-none",
-      !isHighTier && "card-clip",
-    )}
+    className="absolute inset-0 pointer-events-none"
     style={clipStyle}
   >
     <div

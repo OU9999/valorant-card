@@ -4,32 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.card-clip {
-  clip-path: polygon(
-    48.8% 0%,
-    11.8% 5.25%,
-    10% 7.25%,
-    5.3% 9.25%,
-    0% 10%,
-    0.6% 88.75%,
-    3.5% 92%,
-    8.8% 93.75%,
-    49.2% 99.75%,
-    50.8% 99.75%,
-    57.5% 97.75%,
-    87.7% 94.25%,
-    93.3% 93.25%,
-    98.1% 90.75%,
-    100% 86.75%,
-    100% 10%,
-    93.9% 9%,
-    89.9% 7.25%,
-    88.1% 5.25%,
-    84% 4%,
-    49.1% 0%
-  );
-}
-
 .card-portrait-fade {
   mask-image: linear-gradient(to bottom, black 40%, transparent 65%);
   -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 65%);

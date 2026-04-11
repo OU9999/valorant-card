@@ -33,10 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
-      >
+    <html
+      lang="en"
+      className={`dark ${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
+    >
+      <body>
         <PageGradient />
         <main className="min-h-screen">{children}</main>
         <Footer />
