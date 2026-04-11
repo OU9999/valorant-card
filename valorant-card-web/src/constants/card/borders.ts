@@ -1,3 +1,5 @@
+import type { TierName } from "./tier-design";
+
 /**
  * 카드 외곽선 SVG path (viewBox: 0 0 100 100)
  * 다이아몬드 티어 카드 알파 채널에서 추출, 좌우 대칭 처리됨
@@ -24,7 +26,7 @@ const CARD_SVG_PATH_MID_HIGH_TIER =
 /**
  * tierName에 따라 올바른 SVG path 반환
  */
-const getCardSvgPath = (tierName: string): string => {
+const getCardSvgPath = (tierName: TierName): string => {
   if (tierName === "Radiant") return CARD_SVG_PATH_HIGH_TIER;
   if (tierName === "Ascendant" || tierName === "Immortal") return CARD_SVG_PATH_MID_HIGH_TIER;
   return CARD_SVG_PATH;
