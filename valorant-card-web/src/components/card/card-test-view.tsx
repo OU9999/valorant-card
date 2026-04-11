@@ -76,12 +76,12 @@ const CardTestView = () => {
           region={data.region}
           weaponIconUrl={data.weaponIconUrl}
           stats={data.stats}
-          className="h-[800px]"
+          className="h-[480px] sm:h-[600px] lg:h-[800px]"
           priority
         />
       </CardSlot>
       <DetailSlot>
-        <div className="flex w-1/2 gap-2 [&>button]:flex-1">
+        <div className="flex w-full gap-2 sm:w-2/3 lg:w-1/2 [&>button]:flex-1">
           <SaveCardButton
             cardRef={cardRef}
             fileName={`${data.playerName}-${data.tierName}`}
