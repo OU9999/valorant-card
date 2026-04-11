@@ -1,3 +1,5 @@
+"use client";
+
 import { useId, type Ref } from "react";
 import type { StaticImageData } from "next/image";
 import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/card/tier-design";
