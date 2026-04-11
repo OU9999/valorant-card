@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { TierCard } from "@/components/card/tier-card";
+import type { CardSize } from "@/components/card/tier-card";
 import { SaveCardButton } from "@/components/card/save-card-button";
 import { CopyUrlButton } from "@/components/card/copy-url-button";
 import {
@@ -58,9 +59,25 @@ const MOCK_DATA = {
 
 // ─── Component ───
 
+const useCardSize = (): CardSize => {
+  const [size, setSize] = useState<CardSize>("sm");
+
+  /** lg(1024px) 이상이면 default, 미만이면 sm */
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setSize(mq.matches ? "default" : "sm");
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return size;
+};
+
 const CardTestView = () => {
   const data = MOCK_DATA;
   const cardRef = useRef<HTMLDivElement>(null);
+  const cardSize = useCardSize();
 
   return (
     <CardDetailLayout>
@@ -76,6 +93,7 @@ const CardTestView = () => {
           region={data.region}
           weaponIconUrl={data.weaponIconUrl}
           stats={data.stats}
+          size={cardSize}
           className="h-[480px] sm:h-[600px] lg:h-[800px]"
           priority
         />
