@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${barlowCondensed.variable} ${notoSansKR.variable} ${blackHanSans.variable}`}
       >
         <PageGradient />
-        {children}
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

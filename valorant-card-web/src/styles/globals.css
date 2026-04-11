@@ -71,6 +71,22 @@
   animation-play-state: paused;
 }
 
+/* Card row — 가로 무한 스크롤 (모바일) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.card-scroll-left {
+  animation: scroll-left var(--scroll-duration, 60s) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 /* Column — 진입 애니메이션 */
 @keyframes column-enter {
   0% {
@@ -105,7 +121,8 @@
 /* 접근성 — 모션 감소 */
 @media (prefers-reduced-motion: reduce) {
   .card-scroll-up,
-  .card-scroll-down {
+  .card-scroll-down,
+  .card-scroll-left {
     animation: none !important;
   }
   .card-column {

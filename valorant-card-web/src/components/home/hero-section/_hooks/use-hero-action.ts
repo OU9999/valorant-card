@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { fetchApi } from "@/network/fetch-api";
 import { useCardState } from "./use-hero-action/use-card-state";
 import { useHeroAuth } from "./use-hero-action/use-hero-auth";
@@ -35,12 +35,11 @@ const fetchCardGeneration = async (): Promise<CardResult> => {
   }
 };
 
-interface UseHeroActionParams {
-  rsoSuccess: boolean;
-  rsoError: boolean;
-}
+const useHeroAction = () => {
+  const searchParams = useSearchParams();
+  const rsoSuccess = searchParams.get("authenticated") === "true";
+  const rsoError = searchParams.has("auth_error");
 
-const useHeroAction = ({ rsoSuccess, rsoError }: UseHeroActionParams) => {
   const card = useCardState({ rsoSuccess, rsoError });
   const auth = useHeroAuth();
   const [dialogOpen, setDialogOpen] = useState(false);

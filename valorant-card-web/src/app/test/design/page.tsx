@@ -21,7 +21,7 @@ const TOC_ENTRIES: TocEntry[] = [
 
 export default function DesignReferencePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         {/* Header */}
         <div className="mb-6">

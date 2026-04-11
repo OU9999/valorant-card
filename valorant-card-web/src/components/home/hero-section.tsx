@@ -1,49 +1,22 @@
-"use client";
-
+import { Suspense } from "react";
 import { HeroLayout } from "@/components/home/hero-section/_components/hero-layout";
 import { HeroContent } from "@/components/home/hero-section/_components/hero-content";
-import { HeroCta } from "@/components/home/hero-section/_components/hero-cta";
+import { HeroInteractive } from "@/components/home/hero-section/_components/hero-interactive";
 import { HeroStats } from "@/components/home/hero-section/_components/hero-stats";
 import { CardShowcase } from "@/components/home/hero-section/_components/card-showcase";
-import { DataDisclosureDialog } from "@/components/home/data-disclosure-dialog";
-import { useHeroAction } from "@/components/home/hero-section/_hooks/use-hero-action";
+import { CardShowcaseMobile } from "@/components/home/hero-section/_components/card-showcase-mobile";
 
-interface HeroSectionProps {
-  rsoSuccess: boolean;
-  rsoError: boolean;
-}
-
-const HeroSection = ({ rsoSuccess, rsoError }: HeroSectionProps) => {
-  const {
-    isLoading,
-    isAuthenticated,
-    error,
-    dialogOpen,
-    setDialogOpen,
-    generateCard,
-    handleLogout,
-    navigateToPreview,
-  } = useHeroAction({ rsoSuccess, rsoError });
-
+const HeroSection = () => {
   return (
     <HeroLayout>
       <HeroContent>
-        <HeroCta
-          isLoading={isLoading}
-          isAuthenticated={isAuthenticated}
-          error={error}
-          onGenerate={generateCard}
-          onLogout={handleLogout}
-          onLoginClick={() => setDialogOpen(true)}
-        />
+        <Suspense>
+          <HeroInteractive />
+        </Suspense>
         <HeroStats />
-        <DataDisclosureDialog
-          open={dialogOpen}
-          onOpenChange={setDialogOpen}
-          onPreview={navigateToPreview}
-        />
       </HeroContent>
       <CardShowcase />
+      <CardShowcaseMobile />
     </HeroLayout>
   );
 };

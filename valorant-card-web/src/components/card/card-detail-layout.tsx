@@ -6,8 +6,8 @@ interface CardDetailLayoutProps {
 
 const CardDetailLayout = ({ children }: CardDetailLayoutProps) => {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center">
-      <div className="flex w-full max-w-7xl flex-col items-center gap-8 px-6 lg:flex-row lg:items-start lg:justify-center lg:gap-12">
+    <div className="relative flex flex-col items-center py-8 lg:justify-center lg:py-0">
+      <div className="flex w-full max-w-7xl flex-col items-center gap-8 px-4 sm:px-6 lg:flex-row lg:items-start lg:justify-center lg:gap-12">
         {children}
       </div>
     </div>

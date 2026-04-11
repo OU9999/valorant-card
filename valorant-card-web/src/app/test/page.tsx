@@ -9,7 +9,7 @@ const TEST_PAGES = [
 
 export default function TestPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-background p-8">
+    <div className="flex flex-col items-center justify-center gap-6 bg-background p-8">
       <h1 className="text-2xl font-bold text-foreground">Test Pages</h1>
       <div className="flex flex-col gap-4">
         {TEST_PAGES.map((page) => (
