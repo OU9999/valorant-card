@@ -1,0 +1,69 @@
+{
+  "Metadata": {
+    "title": "VAL CARD",
+    "description": "나만의 발로란트 카드를 만들어보세요"
+  },
+  "Home": {
+    "subtitle": "나만의 발로란트 카드를 만들어보세요",
+    "cardsGenerated": "Cards Generated",
+    "cardsShared": "Cards Shared"
+  },
+  "Auth": {
+    "loginWithRiot": "Riot 계정으로 로그인",
+    "logout": "로그아웃",
+    "generateCard": "카드 생성",
+    "generating": "카드 생성 중..."
+  },
+  "DataDisclosure": {
+    "title": "계정 연동 안내",
+    "description": "Riot 계정으로 로그인하여 카드를 생성합니다.",
+    "dataWarningTitle": "계정 연동 시 플레이어 데이터가 공개됩니다",
+    "dataWarningDescription": "매치 기록, 경쟁전 랭크, 퍼포먼스 스탯 등이 카드에 표시됩니다.",
+    "riotReviewTitle": "Riot 심사 대기 중",
+    "riotReviewDescription": "현재 Riot Games Production Key 심사를 기다리고 있어 로그인이 불가합니다. 임시로 카드 디자인을 미리 확인할 수 있습니다.",
+    "cancel": "취소",
+    "previewDesign": "카드 디자인 미리보기"
+  },
+  "Card": {
+    "back": "돌아가기",
+    "share": "Share",
+    "copied": "Copied!",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "CombatStats": {
+    "title": "Combat Stats",
+    "lastMatches": "Last {count} Matches"
+  },
+  "AIAnalysis": {
+    "title": "AI Analysis Report",
+    "avgCombatScore": "평균 전투 점수는 <v>{acs}</v>입니다.",
+    "kdAndHs": "K/D <v>{kd}</v>, 헤드샷 정확도 <v>{hs}</v>.",
+    "damageDelta": "데미지 차이 <v>{dd}</v> —",
+    "positiveDd": "상대보다 꾸준히 높은 딜량을 기록하고 있습니다.",
+    "negativeDd": "트레이드 효율 개선이 필요합니다.",
+    "kast": "라운드 기여도(KAST) <v>{kast}</v>.",
+    "currentStatus": "현재 상태:",
+    "trendUp": "OPTIMIZED FOR CLIMBING",
+    "trendStable": "HOLDING STEADY",
+    "trendDown": "PERFORMANCE DECLINING"
+  },
+  "PerformanceBadges": {
+    "title": "Performance Badges",
+    "comingSoon": "Coming soon — 추후 스타일링 예정"
+  },
+  "Footer": {
+    "disclaimerEn": "Valorant Card isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.",
+    "disclaimerKo": "Valorant Card는 Riot Games의 보증을 받지 않았으며, Riot Games 또는 Riot Games 자산의 제작/관리에 공식적으로 관여하는 관계자의 견해나 의견을 반영하지 않습니다. Riot Games 및 모든 관련 자산은 Riot Games, Inc.의 상표 또는 등록상표입니다.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "Error": {
+    "generic": "오류가 발생했습니다. 다시 시도해주세요.",
+    "loginFailed": "로그인에 실패했습니다. 다시 시도해주세요."
+  },
+  "LocaleSwitcher": {
+    "ko": "한국어",
+    "en": "English"
+  }
+}

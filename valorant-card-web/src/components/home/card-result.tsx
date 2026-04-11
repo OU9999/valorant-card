@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { TierCard } from "@/components/card/tier-card";
 import { Button } from "@/components/ui/button";
 import { CHARACTERS } from "@/constants/game/characters";
@@ -27,6 +28,7 @@ interface CardResultProps {
 }
 
 const CardResult = ({ data, onBack }: CardResultProps) => {
+  const t = useTranslations("Card");
   const backgroundImage = TIER_CARD_IMAGES[data.tierName];
   const portraitUrl = getAgentPortraitUrl(data.agentId);
   const weaponIconUrl = data.weaponId ? getWeaponIconUrl(data.weaponId) : undefined;
@@ -52,7 +54,7 @@ const CardResult = ({ data, onBack }: CardResultProps) => {
         onClick={onBack}
       >
         <ArrowLeft className="size-4" />
-        돌아가기
+        {t("back")}
       </Button>
     </div>
   );

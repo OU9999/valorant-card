@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { TierCard } from "@/components/card/tier-card";
 import {
   CardDetailLayout,
@@ -30,6 +31,7 @@ interface CardViewProps {
 }
 
 const CardView = ({ data }: CardViewProps) => {
+  const t = useTranslations("Card");
   const backgroundImage = TIER_CARD_IMAGES[data.tierName];
   const portraitUrl = getAgentPortraitUrl(data.agentId);
   const weaponIconUrl = data.weaponId
@@ -65,7 +67,7 @@ const CardView = ({ data }: CardViewProps) => {
         className="relative z-10 mb-8 flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="size-4" />
-        돌아가기
+        {t("back")}
       </Link>
     </div>
   );

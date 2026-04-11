@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { fetchApi } from "@/network/fetch-api";
 import { useCardState } from "./use-hero-action/use-card-state";
 import { useHeroAuth } from "./use-hero-action/use-hero-auth";
@@ -16,7 +17,9 @@ type CardResult =
   | { type: "unauthorized" }
   | { type: "error"; message: string };
 
-const fetchCardGeneration = async (): Promise<CardResult> => {
+const fetchCardGeneration = async (
+  fallbackError: string,
+): Promise<CardResult> => {
   const result = await fetchApi<CardGenerateSuccess>("/api/card/generate", {
     method: "POST",
   });
@@ -28,10 +31,7 @@ const fetchCardGeneration = async (): Promise<CardResult> => {
     const { error } = JSON.parse(result.error) as { error: string };
     return { type: "error", message: error };
   } catch {
-    return {
-      type: "error",
-      message: "오류가 발생했습니다. 다시 시도해주세요.",
-    };
+    return { type: "error", message: fallbackError };
   }
 };
 
@@ -40,6 +40,7 @@ const useHeroAction = () => {
   const rsoSuccess = searchParams.get("authenticated") === "true";
   const rsoError = searchParams.has("auth_error");
 
+  const t = useTranslations("Error");
   const card = useCardState({ rsoSuccess, rsoError });
   const auth = useHeroAuth();
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -60,7 +61,7 @@ const useHeroAction = () => {
 
   const generateCard = async () => {
     card.setLoading();
-    const result = await fetchCardGeneration();
+    const result = await fetchCardGeneration(t("generic"));
     applyCardResult(result);
   };
 
@@ -74,7 +75,7 @@ const useHeroAction = () => {
     rsoError,
     onAuthRefresh: auth.refresh,
     onSuccess: async () => {
-      const result = await fetchCardGeneration();
+      const result = await fetchCardGeneration(t("generic"));
       applyCardResult(result);
     },
   });

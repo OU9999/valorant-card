@@ -3,6 +3,7 @@
 import { useState, type RefObject } from "react";
 import { toPng } from "html-to-image";
 import { Download, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { HudButton } from "@/components/button/hud-button";
 
 interface SaveCardButtonProps {
@@ -14,6 +15,7 @@ const SaveCardButton = ({
   cardRef,
   fileName = "valorant-card",
 }: SaveCardButtonProps) => {
+  const t = useTranslations("Card");
   const [saving, setSaving] = useState(false);
 
   const handleSave = async () => {
@@ -45,7 +47,7 @@ const SaveCardButton = ({
       ) : (
         <Download className="size-4" />
       )}
-      {saving ? "Saving..." : "Save"}
+      {saving ? t("saving") : t("save")}
     </HudButton>
   );
 };
