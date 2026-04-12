@@ -207,7 +207,7 @@ const TERMS_OF_SERVICE: Record<"en" | "ko", LegalDocumentData> = {
       {
         title: "1. Service Description",
         items: [
-          "Valorant Card is a tool that generates player cards based on public VALORANT match statistics.",
+          "VAL CARD is a tool that generates player cards based on public VALORANT match statistics.",
           "This service is provided free of charge with no paid features.",
           "This service is not affiliated with, endorsed by, or officially connected to Riot Games in any way.",
         ],
@@ -263,7 +263,7 @@ const TERMS_OF_SERVICE: Record<"en" | "ko", LegalDocumentData> = {
       {
         title: "1. 서비스 설명",
         items: [
-          "Valorant Card는 발로란트 공개 매치 스탯을 기반으로 플레이어 카드를 생성하는 도구입니다.",
+          "VAL CARD는 발로란트 공개 매치 스탯을 기반으로 플레이어 카드를 생성하는 도구입니다.",
           "본 서비스는 유료 기능 없이 무료로 제공됩니다.",
           "본 서비스는 Riot Games와 제휴, 보증, 또는 공식적 관계가 없는 독립적인 서비스입니다.",
         ],

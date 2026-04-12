@@ -144,7 +144,7 @@ const main = async () => {
 
   const divStr = division > 0 ? ` ${division}` : "";
   console.log(`\n${"═".repeat(50)}`);
-  console.log(`  🃏 VALORANT CARD - ${accountResult.data.gameName}#${accountResult.data.tagLine}`);
+  console.log(`  🃏 VAL CARD - ${accountResult.data.gameName}#${accountResult.data.tagLine}`);
   console.log(`${"═".repeat(50)}`);
   console.log(`  티어: ${tierInfo?.name ?? "??"}${divStr} (competitive: ${competitiveTier})`);
   console.log(`  OVR:  ${result.ovr}`);
