@@ -77,9 +77,7 @@ export default async function RootLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          <div className="fixed top-4 right-4 z-50">
-            <LocaleSwitcher />
-          </div>
+          <LocaleSwitcher />
           <PageGradient />
           <main className="min-h-screen">{children}</main>
           <Footer />
