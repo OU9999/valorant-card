@@ -1,22 +1,10 @@
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type HeroState =
   | { phase: "idle" }
   | { phase: "loading" }
   | { phase: "error"; message: string };
-
-const resolveInitialState = (
-  rsoSuccess: boolean,
-  rsoError: boolean,
-): HeroState => {
-  if (rsoSuccess) return { phase: "loading" };
-  if (rsoError)
-    return {
-      phase: "error",
-      message: "로그인에 실패했습니다. 다시 시도해주세요.",
-    };
-  return { phase: "idle" };
-};
 
 interface UseCardStateParams {
   rsoSuccess: boolean;
@@ -24,9 +12,13 @@ interface UseCardStateParams {
 }
 
 const useCardState = ({ rsoSuccess, rsoError }: UseCardStateParams) => {
-  const [state, setState] = useState<HeroState>(() =>
-    resolveInitialState(rsoSuccess, rsoError),
-  );
+  const t = useTranslations("Error");
+
+  const [state, setState] = useState<HeroState>(() => {
+    if (rsoSuccess) return { phase: "loading" };
+    if (rsoError) return { phase: "error", message: t("loginFailed") };
+    return { phase: "idle" };
+  });
 
   return {
     isLoading: state.phase === "loading",

@@ -2,9 +2,11 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Link, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { HudButton } from "@/components/button/hud-button";
 
 const CopyUrlButton = () => {
+  const t = useTranslations("Card");
   const [copied, setCopied] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
@@ -35,7 +37,7 @@ const CopyUrlButton = () => {
       ) : (
         <Link className="size-4" />
       )}
-      {copied ? "Copied!" : "Share"}
+      {copied ? t("copied") : t("share")}
     </HudButton>
   );
 };

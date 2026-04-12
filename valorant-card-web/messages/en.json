@@ -1,0 +1,68 @@
+{
+  "Metadata": {
+    "title": "VAL CARD",
+    "description": "Create your own Valorant card"
+  },
+  "Home": {
+    "subtitle": "Create your own Valorant card",
+    "cardsGenerated": "Cards Generated",
+    "cardsShared": "Cards Shared"
+  },
+  "Auth": {
+    "loginWithRiot": "Sign in with Riot",
+    "logout": "Logout",
+    "generateCard": "Generate Card",
+    "generating": "Generating..."
+  },
+  "DataDisclosure": {
+    "title": "Account Link Notice",
+    "description": "Sign in with your Riot account to generate your card.",
+    "dataWarningTitle": "Player data will be disclosed",
+    "dataWarningDescription": "Match history, competitive rank, and performance stats will be displayed on your card.",
+    "riotReviewTitle": "Awaiting Riot Approval",
+    "riotReviewDescription": "Login is currently unavailable as we're awaiting Riot Games Production Key approval. You can preview the card design temporarily.",
+    "cancel": "Cancel",
+    "previewDesign": "Preview Card Design"
+  },
+  "Card": {
+    "back": "Back",
+    "share": "Share",
+    "copied": "Copied!",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "CombatStats": {
+    "title": "Combat Stats",
+    "lastMatches": "Last {count} Matches"
+  },
+  "AIAnalysis": {
+    "title": "AI Analysis Report",
+    "avgCombatScore": "Your average combat score is <v>{acs}</v>.",
+    "kdAndHs": "K/D <v>{kd}</v>, headshot accuracy <v>{hs}</v>.",
+    "damageDelta": "Damage delta <v>{dd}</v> —",
+    "positiveDd": "You consistently deal more damage than opponents.",
+    "negativeDd": "Trade efficiency needs improvement.",
+    "kast": "Round contribution (KAST) <v>{kast}</v>.",
+    "currentStatus": "Current status:",
+    "trendUp": "OPTIMIZED FOR CLIMBING",
+    "trendStable": "HOLDING STEADY",
+    "trendDown": "PERFORMANCE DECLINING"
+  },
+  "PerformanceBadges": {
+    "title": "Performance Badges",
+    "comingSoon": "Coming soon"
+  },
+  "Footer": {
+    "disclaimer": "Valorant Card isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "Error": {
+    "generic": "An error occurred. Please try again.",
+    "loginFailed": "Login failed. Please try again."
+  },
+  "LocaleSwitcher": {
+    "ko": "한국어",
+    "en": "English"
+  }
+}

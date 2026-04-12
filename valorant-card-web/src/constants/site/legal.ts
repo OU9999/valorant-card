@@ -58,7 +58,8 @@ const PRIVACY_POLICY: Record<"en" | "ko", LegalDocumentData> = {
           "This service uses cookies for the following purposes:",
         ],
         items: [
-          "Session cookies: Used to maintain RSO authentication state. These are automatically deleted when the browser is closed.",
+          "Session cookie (vfc_session): Used to maintain RSO authentication state. Automatically expires within 24 hours of issuance.",
+          "Locale cookie (locale): A functional cookie that stores your selected display language (Korean/English). Retained for up to one year and can be deleted by the user at any time via browser settings.",
           "This service does not use cookies for advertising, analytics, or tracking purposes.",
         ],
       },
@@ -149,7 +150,8 @@ const PRIVACY_POLICY: Record<"en" | "ko", LegalDocumentData> = {
         title: "5. 쿠키 사용",
         paragraphs: ["본 서비스는 아래 목적으로 쿠키를 사용합니다."],
         items: [
-          "세션 쿠키: RSO 인증 상태 유지를 위해 사용되며, 브라우저 종료 시 자동 삭제됩니다.",
+          "세션 쿠키(vfc_session): RSO 인증 상태 유지를 위해 사용되며, 발급 후 최대 24시간 뒤 자동 만료됩니다.",
+          "언어 설정 쿠키(locale): 선택한 표시 언어(한국어/영어)를 저장하기 위한 기능성 쿠키로, 최대 1년간 유지되며 이용자가 브라우저 설정에서 언제든 삭제할 수 있습니다.",
           "본 서비스는 광고, 분석, 트래킹 목적의 쿠키를 사용하지 않습니다.",
         ],
       },

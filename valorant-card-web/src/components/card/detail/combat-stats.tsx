@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { TacticalFrame } from "./tactical-frame";
 import type { CardStat } from "@/lib/valorant/card-stats";
 
@@ -7,17 +10,19 @@ interface CombatStatsProps {
 }
 
 const CombatStats = ({ stats, matchCount }: CombatStatsProps) => {
+  const t = useTranslations("CombatStats");
+
   return (
     <TacticalFrame variant="boast" pattern={0} className="sm:p-8">
       <div className="mb-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="h-8 w-1 bg-primary" />
           <h2 className="text-lg font-bold uppercase tracking-widest text-foreground sm:text-xl">
-            Combat Stats
+            {t("title")}
           </h2>
         </div>
         <span className="text-xs uppercase tracking-widest text-muted-foreground">
-          Last {matchCount ?? 20} Matches
+          {t("lastMatches", { count: matchCount ?? 20 })}
         </span>
       </div>
       <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">

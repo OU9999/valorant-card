@@ -1,10 +1,13 @@
 import type { ReactNode } from "react";
+import { getTranslations } from "next-intl/server";
 
 interface HeroContentProps {
   children: ReactNode;
 }
 
-const HeroContent = ({ children }: HeroContentProps) => {
+const HeroContent = async ({ children }: HeroContentProps) => {
+  const t = await getTranslations("Home");
+
   return (
     <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
       <header>
@@ -13,7 +16,7 @@ const HeroContent = ({ children }: HeroContentProps) => {
           <span className="text-foreground">CARD</span>
         </h1>
         <p className="mt-4 text-center text-sm text-muted-foreground md:text-base">
-          나만의 발로란트 카드를 만들어보세요
+          {t("subtitle")}
         </p>
       </header>
       {children}

@@ -1,4 +1,7 @@
+"use client";
+
 import { Loader2, LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { RiotButton } from "@/components/button/riot-button";
 
@@ -19,12 +22,14 @@ const HeroCta = ({
   onLogout,
   onLoginClick,
 }: HeroCtaProps) => {
+  const t = useTranslations("Auth");
+
   return (
     <div className="mt-8 flex flex-col items-center gap-3">
       {isLoading ? (
         <Button size="lg" className="h-12 gap-2 px-8" disabled>
           <Loader2 className="size-4 animate-spin" />
-          카드 생성 중...
+          {t("generating")}
         </Button>
       ) : isAuthenticated ? (
         <div className="flex items-center gap-3">
@@ -33,7 +38,7 @@ const HeroCta = ({
             className="h-12 gap-2 px-8"
             onClick={onGenerate}
           >
-            카드 생성
+            {t("generateCard")}
           </Button>
           <button
             type="button"
@@ -41,7 +46,7 @@ const HeroCta = ({
             className="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             <LogOut className="size-3" />
-            로그아웃
+            {t("logout")}
           </button>
         </div>
       ) : (

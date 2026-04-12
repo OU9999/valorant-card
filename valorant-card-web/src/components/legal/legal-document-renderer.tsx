@@ -1,26 +1,24 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 import { cn } from "@/lib/cn";
 import type { LegalDocumentData } from "@/constants/site/legal";
+import type { Locale } from "@/i18n/request";
 
 import {
   LegalSection,
   parseMarkdownLinks,
 } from "@/components/legal/legal-shared";
 
-type Lang = "en" | "ko";
-
-const LANGS: Lang[] = ["en", "ko"];
-
 interface LegalDocumentRendererProps {
-  documents: Record<Lang, LegalDocumentData>;
+  documents: Record<Locale, LegalDocumentData>;
 }
 
-const LegalDocumentRenderer = ({ documents }: LegalDocumentRendererProps) => {
-  const [lang, setLang] = useState<Lang>("en");
-  const data = documents[lang];
+const LegalDocumentRenderer = async ({
+  documents,
+}: LegalDocumentRendererProps) => {
+  const locale = (await getLocale()) as Locale;
+  const t = await getTranslations("Card");
+  const data = documents[locale];
 
   return (
     <>
@@ -29,28 +27,8 @@ const LegalDocumentRenderer = ({ documents }: LegalDocumentRendererProps) => {
           href="/"
           className="text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
         >
-          &larr; Back
+          &larr; {t("back")}
         </Link>
-        <div className="flex items-center gap-2">
-          {LANGS.map((l, i) => (
-            <div key={l} className="flex items-center gap-2">
-              {i > 0 && (
-                <span className="text-muted-foreground/50">|</span>
-              )}
-              <button
-                onClick={() => setLang(l)}
-                className={cn(
-                  "text-xs font-medium uppercase tracking-widest transition-colors",
-                  lang === l
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {l.toUpperCase()}
-              </button>
-            </div>
-          ))}
-        </div>
       </div>
 
       <h1 className="mt-6 font-heading text-3xl font-extrabold uppercase tracking-wide text-foreground">
