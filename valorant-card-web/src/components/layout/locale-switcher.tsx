@@ -1,18 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { setLocale } from "@/i18n/actions";
+import type { Locale } from "@/i18n/request";
 
 const LocaleSwitcher = () => {
   const locale = useLocale();
-  const router = useRouter();
   const t = useTranslations("LocaleSwitcher");
 
-  const switchTo = locale === "ko" ? "en" : "ko";
+  const switchTo: Locale = locale === "ko" ? "en" : "ko";
 
-  const handleSwitch = () => {
-    document.cookie = `locale=${switchTo};path=/;max-age=31536000`;
-    router.refresh();
+  const handleSwitch = async () => {
+    await setLocale(switchTo);
   };
 
   return (
