@@ -31,7 +31,7 @@ const Footer = async () => {
             </Link>
           </nav>
           <p className="text-xs text-muted-foreground/50">
-            &copy; {new Date().getFullYear()} Valorant Card
+            &copy; {new Date().getFullYear()} VAL CARD
           </p>
         </div>
       </div>
