@@ -12,7 +12,7 @@ const HeroContent = async ({ children }: HeroContentProps) => {
     <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
       <header>
         <h1 className="flex items-center gap-1.5 font-heading text-5xl font-bold tracking-wide uppercase md:text-7xl">
-          <span className="text-primary">VALORANT</span>
+          <span className="text-primary">VAL</span>
           <span className="text-foreground">CARD</span>
         </h1>
         <p className="mt-4 text-center text-sm text-muted-foreground md:text-base">
