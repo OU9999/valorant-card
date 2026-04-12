@@ -10,13 +10,8 @@ const Footer = async () => {
         {/* Riot disclaimer */}
         <div className="border-l-2 border-primary px-5 py-4">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            {t("disclaimerEn")}
+            {t("disclaimer")}
           </p>
-          {t("disclaimerKo") && (
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground/70">
-              {t("disclaimerKo")}
-            </p>
-          )}
         </div>
 
         {/* Links + Copyright */}

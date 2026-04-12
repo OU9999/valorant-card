@@ -53,10 +53,9 @@
     "comingSoon": "Coming soon — 추후 스타일링 예정"
   },
   "Footer": {
-    "disclaimerEn": "Valorant Card isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.",
-    "disclaimerKo": "Valorant Card는 Riot Games의 보증을 받지 않았으며, Riot Games 또는 Riot Games 자산의 제작/관리에 공식적으로 관여하는 관계자의 견해나 의견을 반영하지 않습니다. Riot Games 및 모든 관련 자산은 Riot Games, Inc.의 상표 또는 등록상표입니다.",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "disclaimer": "Valorant Card는 Riot Games의 보증을 받지 않았으며, Riot Games 또는 Riot Games 자산의 제작/관리에 공식적으로 관여하는 관계자의 견해나 의견을 반영하지 않습니다. Riot Games 및 모든 관련 자산은 Riot Games, Inc.의 상표 또는 등록상표입니다.",
+    "privacyPolicy": "개인정보처리방침",
+    "termsOfService": "이용약관"
   },
   "Error": {
     "generic": "오류가 발생했습니다. 다시 시도해주세요.",
