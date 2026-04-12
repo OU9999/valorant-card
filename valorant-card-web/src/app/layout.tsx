@@ -8,6 +8,7 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { PageGradient } from "@/components/layout/page-gradient";
+import { SITE_URL } from "@/constants/site/metadata";
 import "@/styles/globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -30,8 +31,6 @@ const blackHanSans = Black_Han_Sans({
 const generateMetadata = async () => {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "Metadata" });
-
-  const SITE_URL = "https://valfc-card.com";
 
   return {
     title: t("title"),

@@ -11,6 +11,7 @@ const setLocale = async (locale: Locale) => {
     path: "/",
     maxAge: LOCALE_COOKIE_MAX_AGE,
     sameSite: "lax",
+    httpOnly: true,
     secure: process.env.NODE_ENV === "production",
   });
 };
