@@ -13,14 +13,14 @@ const HeroContent = async ({ children }: HeroContentProps) => {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-20 md:w-[55%] md:py-0">
       <header>
-        <h1
-          aria-label="VAL CARD"
-          className="flex items-end gap-1.5 font-heading text-5xl font-bold leading-none tracking-wide uppercase md:text-7xl"
-        >
-          <VMark className="h-[0.806em] w-auto text-primary" />
-          <span className="text-primary">AL</span>
-          <CMark className="ml-1.5 h-[0.806em] w-auto text-foreground" />
-          <span className="text-foreground">ARD</span>
+        <h1 className="font-heading text-5xl font-bold leading-none tracking-wide uppercase md:text-7xl">
+          <span className="sr-only">VAL CARD</span>
+          <span aria-hidden="true" className="flex items-end gap-1.5">
+            <VMark className="h-[0.806em] w-auto text-primary" />
+            <span className="text-primary">AL</span>
+            <CMark className="ml-1.5 h-[0.806em] w-auto text-foreground" />
+            <span className="text-foreground">ARD</span>
+          </span>
         </h1>
         <p className="mt-4 text-center text-sm text-muted-foreground md:text-base">
           {t("subtitle")}

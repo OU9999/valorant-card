@@ -23,4 +23,4 @@ const VMark = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { VMark };
+export { VMark, V_PATHS };

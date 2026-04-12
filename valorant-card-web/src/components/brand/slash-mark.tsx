@@ -17,4 +17,4 @@ const SlashMark = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { SlashMark };
+export { SlashMark, SLASH_PATH };

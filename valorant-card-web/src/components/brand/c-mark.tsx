@@ -22,4 +22,4 @@ const CMark = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { CMark };
+export { CMark, C_PATHS };
