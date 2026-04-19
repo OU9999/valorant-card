@@ -1,7 +1,7 @@
 import { TIER_CARD_IMAGES } from "@/constants/card/tier-card-images";
 import { TIER_NAMES } from "@/constants/card/tier-design";
 import type { TierName } from "@/constants/card/tier-design";
-import type { CardStat } from "@/components/card/tier-card";
+import type { CardStat } from "@/components/tier-card";
 import type { StaticImageData } from "next/image";
 import type { Badge } from "@/lib/valorant/badges";
 import type { FormTrend } from "@/lib/valorant/card-stats";

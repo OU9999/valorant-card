@@ -12,7 +12,7 @@ import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

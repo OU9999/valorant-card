@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import {
   CardDetailLayout,
   CardSlot,

@@ -1,6 +1,6 @@
 "use client";
 
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import { CombatStats } from "@/components/card/detail/combat-stats";
 import { PerformanceBadges } from "@/components/card/detail/performance-badges";
 import { AIFeedback } from "@/components/card/detail/ai-feedback";

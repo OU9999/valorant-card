@@ -2,7 +2,7 @@
 
 import { ArrowLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import { Button } from "@/components/ui/button";
 import { CHARACTERS } from "@/constants/game/characters";
 import { TIER_CARD_IMAGES } from "@/constants/card/tier-card-images";
