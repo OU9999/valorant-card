@@ -18,7 +18,7 @@ import {
 
 const ALL_CARDS = [...COLUMN_1, ...COLUMN_2, ...COLUMN_3];
 const DOUBLED = [...ALL_CARDS, ...ALL_CARDS];
-const SCROLL_DURATION_S = 30;
+const SCROLL_DURATION_S = 60;
 
 const CardShowcaseMobile = () => {
   const [scope, animate] = useAnimate();

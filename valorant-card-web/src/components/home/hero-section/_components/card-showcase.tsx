@@ -14,8 +14,15 @@ const CardShowcase = () => {
           direction="down"
           speed={44}
           delay={0.3}
+          className="hidden lg:block"
         />
-        <CardColumn cards={COLUMN_3} direction="up" speed={52} delay={0.5} />
+        <CardColumn
+          cards={COLUMN_3}
+          direction="up"
+          speed={52}
+          delay={0.5}
+          className="hidden xl:block"
+        />
       </div>
     </aside>
   );

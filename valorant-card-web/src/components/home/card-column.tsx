@@ -16,15 +16,23 @@ import {
 } from "@/components/design/mock-data";
 import { SHOWCASE_GLOW } from "@/constants/card/showcase-cards";
 import type { ShowcaseCard } from "@/constants/card/showcase-cards";
+import { cn } from "@/lib/cn";
 
 interface CardColumnProps {
   cards: ShowcaseCard[];
   direction: "up" | "down";
   speed: number;
   delay: number;
+  className?: string;
 }
 
-const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
+const CardColumn = ({
+  cards,
+  direction,
+  speed,
+  delay,
+  className,
+}: CardColumnProps) => {
   const [scope, animate] = useAnimate();
   const controlsRef = useRef<AnimationPlaybackControls | null>(null);
   const [hovered, setHovered] = useState(false);
@@ -59,18 +67,18 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
 
   return (
     <motion.div
-      className="flex-1 overflow-hidden"
+      className={cn("flex-1 overflow-hidden", className)}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      <div ref={scope} className="flex flex-col">
+      <div ref={scope} className="flex w-full flex-col items-center">
         {doubled.map((card, i) => (
           <motion.div
             key={`${card.tierName}-${i}`}
-            className="pb-3"
+            className="flex w-full justify-center pb-3"
             whileHover={{
               y: -6,
               scale: 1.03,
@@ -89,7 +97,7 @@ const CardColumn = ({ cards, direction, speed, delay }: CardColumnProps) => {
               weaponIconUrl={VANDAL_ICON_URL}
               stats={SHOWCASE_STATS[card.tierName]}
               size="sm"
-              className="w-[280px]"
+              className="w-full max-w-[280px]"
             />
           </motion.div>
         ))}
