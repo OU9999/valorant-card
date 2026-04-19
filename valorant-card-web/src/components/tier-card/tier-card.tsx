@@ -5,16 +5,16 @@ import type { StaticImageData } from "next/image";
 import { HIGH_TIER_NAMES, TIER_DESIGNS } from "@/constants/card/tier-design";
 import type { TierName } from "@/constants/card/tier-design";
 import { cn } from "@/lib/cn";
-import type { CardStat, CardSize } from "./tier-card/types";
+import type { CardStat, CardSize } from "./types";
 import {
   ClipPathDefs,
   BackgroundLayer,
   PortraitLayer,
   BottomGradientLayer,
-} from "./tier-card/layers";
-import { OvrSection } from "./tier-card/ovr-section";
-import { PlayerNameSection } from "./tier-card/player-name-section";
-import { StatsSection } from "./tier-card/stats-section";
+} from "./layers";
+import { OvrSection } from "./ovr-section";
+import { PlayerNameSection } from "./player-name-section";
+import { StatsSection } from "./stats-section";
 
 /* ------------------------------------------------------------------ */
 /*  TierCard                                                          */

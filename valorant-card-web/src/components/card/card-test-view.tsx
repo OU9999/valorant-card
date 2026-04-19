@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { TierCard } from "@/components/card/tier-card";
-import type { CardSize } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
+import type { CardSize } from "@/components/tier-card";
 import { SaveCardButton } from "@/components/card/save-card-button";
 import { CopyUrlButton } from "@/components/card/copy-url-button";
 import {

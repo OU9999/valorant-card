@@ -4,7 +4,7 @@ import type { StaticImageData } from "next/image";
 import ascendantCard from "@/asset/example/tier-card/ascendant.png";
 import immortalCard from "@/asset/example/tier-card/immortal.png";
 import radiantCard from "@/asset/example/tier-card/radiant.png";
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import type { TierName } from "@/constants/card/tier-design";
 
 const JETT_PORTRAIT = "/characters/jett/fullportrait.png";

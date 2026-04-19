@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { TierCard } from "@/components/card/tier-card";
+import { TierCard } from "@/components/tier-card";
 import { TIER_CARD_IMAGES } from "@/constants/card/tier-card-images";
 import {
   VANDAL_ICON_URL,
