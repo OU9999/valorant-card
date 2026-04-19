@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useAnimate,
@@ -34,42 +34,44 @@ const CardColumn = ({
   className,
 }: CardColumnProps) => {
   const [scope, animate] = useAnimate();
-  const controlsRef = useRef<AnimationPlaybackControls | null>(null);
+  const [controls, setControls] = useState<AnimationPlaybackControls | null>(
+    null,
+  );
   const [hovered, setHovered] = useState(false);
   const reducedMotion = useReducedMotion();
   const doubled = [...cards, ...cards];
 
   /**
    * 세로 무한 스크롤 실행. direction에 따라 0% ↔ -50%를 선형 반복하며,
-   * 생성된 controls를 ref에 보관해 호버 시 pause/play로 제어한다.
+   * 생성된 controls를 상태에 저장해 speed/direction 변경 시 호버 동기화 효과가
+   * 새 controls를 감지하도록 한다.
    */
   useEffect(() => {
     if (reducedMotion) return;
     const keyframes = direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"];
-    const controls = animate(
+    const animation = animate(
       scope.current,
       { y: keyframes },
       { duration: speed, ease: "linear", repeat: Infinity },
     );
-    controlsRef.current = controls;
-    return () => controls.stop();
+    setControls(animation);
+    return () => animation.stop();
   }, [animate, direction, reducedMotion, scope, speed]);
 
   /**
    * 호버 상태와 스크롤 재생 상태를 동기화. 진행 위치는 유지하고 재생만 토글.
    */
   useEffect(() => {
-    const controls = controlsRef.current;
     if (!controls) return;
     if (hovered) controls.pause();
     else controls.play();
-  }, [hovered]);
+  }, [controls, hovered]);
 
   return (
     <motion.div
       className={cn("flex-1 overflow-hidden", className)}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 40 }}
+      animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
