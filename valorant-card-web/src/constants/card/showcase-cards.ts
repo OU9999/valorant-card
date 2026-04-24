@@ -40,7 +40,7 @@ const COLUMN_1: ShowcaseCard[] = [
   },
   {
     tierName: "Diamond",
-    portrait: "/characters/omen/pose1.png",
+    portrait: "/characters/viper/pose2.png",
     ovr: 68,
     playerName: "nAts",
   },
