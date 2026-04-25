@@ -17,6 +17,7 @@
 - 해키한 패턴 금지. 우회가 필요하면 구조 자체를 재설계.
 - 함수는 단일 책임 원칙 준수. 순수 함수 지향하고, 작은 함수로 분리 후 조합.
 - `useEffect` 코드 추가시 항상 JSDoc으로 코드 설명.
+- 애니메이션은 `motion/react` 사용 (`animate`, `useMotionValue`, `useAnimate`, `motion.*` 등). 직접 `requestAnimationFrame` / `setInterval` 루프 작성 금지. `useReducedMotion`으로 접근성 고려.
 - `.then()` / `.catch()` 체이닝 금지. 반드시 `async/await` 사용.
 - `fetch()` 직접 사용 금지. 반드시 `@/network/fetch-api`의 `fetchApi` 사용.
 

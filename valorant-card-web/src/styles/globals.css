@@ -9,6 +9,12 @@
   -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 65%);
 }
 
+.site-bg-radtech {
+  background: url("/images/radtech.webp") no-repeat center / contain;
+  -webkit-mask: url("/images/svg/radtech-mask.svg") no-repeat center / contain;
+  mask: url("/images/svg/radtech-mask.svg") no-repeat center / contain;
+}
+
 @theme inline {
   --font-heading: var(--font-barlow-condensed), var(--font-black-han-sans), sans-serif;
   --font-sans: var(--font-noto-sans-kr), var(--font-barlow-condensed), sans-serif;
