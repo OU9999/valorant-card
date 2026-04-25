@@ -79,7 +79,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <SiteBackground />
           <LocaleSwitcher />
-          <PageGradient />
+          {/*<PageGradient />*/}
           <main className="min-h-screen">{children}</main>
           <Footer />
         </NextIntlClientProvider>
