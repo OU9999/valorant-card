@@ -35,29 +35,6 @@ const CORNERS: readonly Corner[] = [
   },
 ];
 
-/**
- * 큰 사이즈 코너 데코 — 4 코너 small radtech 의 1.5x 크기.
- * 가운데 빈 영역까지 패턴이 들어와 BG 공백 메움.
- */
-const LARGE_CORNERS: readonly Corner[] = [
-  {
-    className: "-top-12 -right-12 h-[945px] w-[855px] opacity-60",
-    transform: "",
-  },
-  {
-    className: "-top-12 -left-12 h-[855px] w-[945px] opacity-60",
-    transform: "-scale-x-100",
-  },
-  {
-    className: "-bottom-12 -right-12 h-[855px] w-[945px] opacity-60",
-    transform: "-scale-y-100",
-  },
-  {
-    className: "-bottom-12 -left-12 h-[945px] w-[855px] opacity-60",
-    transform: "-scale-x-100 -scale-y-100",
-  },
-];
-
 const SiteBackground = () => {
   const phase = useMotionValue(0);
   const reducedMotion = useReducedMotion();
@@ -92,18 +69,6 @@ const SiteBackground = () => {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#101923]"
     >
-      {LARGE_CORNERS.map((corner) => (
-        <React.Fragment key={corner.className}>
-          <motion.div
-            style={{ maskPosition: maskPosA, WebkitMaskPosition: maskPosA }}
-            className={`site-bg-radtech pointer-events-none absolute ${corner.className} ${corner.transform}`}
-          />
-          <motion.div
-            style={{ maskPosition: maskPosB, WebkitMaskPosition: maskPosB }}
-            className={`site-bg-radtech pointer-events-none absolute ${corner.className} ${corner.transform}`}
-          />
-        </React.Fragment>
-      ))}
       {CORNERS.map((corner) => (
         <React.Fragment key={corner.className}>
           <motion.div
