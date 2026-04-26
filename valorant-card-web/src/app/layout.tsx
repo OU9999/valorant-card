@@ -8,6 +8,7 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { SiteBackground } from "@/components/layout/site-background";
+import { SiteHeader } from "@/components/layout/site-header";
 import { SITE_URL } from "@/constants/site/metadata";
 import "@/styles/globals.css";
 
@@ -77,6 +78,7 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <SiteBackground />
+          <SiteHeader />
           <LocaleSwitcher />
           <main className="min-h-screen">{children}</main>
           <Footer />
