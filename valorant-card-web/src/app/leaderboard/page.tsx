@@ -11,7 +11,7 @@ export default async function LeaderboardPage() {
       <h1 className="mt-3 font-heading text-5xl font-bold uppercase tracking-widest text-foreground md:text-6xl">
         {t("leaderboard")}
       </h1>
-      <p className="mt-4 text-sm text-muted-foreground">Coming soon</p>
+      <p className="mt-4 text-sm text-muted-foreground">{t("comingSoon")}</p>
     </section>
   );
 }
