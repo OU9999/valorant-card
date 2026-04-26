@@ -23,8 +23,8 @@ const SiteHeader = () => {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 h-20">
-      <div className="pointer-events-auto relative flex h-full items-center px-6 md:px-10">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 h-16">
+      <div className="pointer-events-auto relative flex h-full items-center border-b border-white/[0.06] bg-background/40 px-6 backdrop-blur-md md:px-10">
         <Link
           href="/"
           aria-label="VAL CARD"
@@ -36,30 +36,23 @@ const SiteHeader = () => {
             width={48}
             height={43}
             priority
-            className="h-10 w-auto"
+            className="h-8 w-auto"
           />
         </Link>
 
-        <nav className="ml-8 flex items-center gap-5">
-          {items.map((item, idx) => (
-            <div key={item.href} className="flex items-center gap-5">
-              {idx > 0 && (
-                <span
-                  aria-hidden
-                  className="size-1.5 rotate-45 bg-primary/70"
-                />
-              )}
-              <Link
-                href={item.href}
-                className={`font-heading text-sm font-bold uppercase tracking-widest transition-colors ${
-                  isActive(item.href)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            </div>
+        <nav className="ml-8 flex items-center gap-7">
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`font-heading text-sm font-bold uppercase tracking-widest transition-colors ${
+                isActive(item.href)
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </Link>
           ))}
         </nav>
 

@@ -80,7 +80,7 @@ export default async function RootLayout({
           <SiteBackground />
           <SiteHeader />
           <LocaleSwitcher />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen pt-16">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>
