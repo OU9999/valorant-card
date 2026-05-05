@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
+import { cn } from "@/lib/cn";
+
 interface NavItem {
   href: string;
   label: string;
@@ -24,7 +26,7 @@ const SiteHeader = () => {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40 h-16">
-      <div className="pointer-events-auto relative flex h-full items-center border-b border-white/[0.06] bg-background/40 px-6 backdrop-blur-md md:px-10">
+      <div className="pointer-events-auto relative flex h-full items-center border-b border-white/[0.06] bg-background/40 px-4 backdrop-blur-md sm:px-6 md:px-10">
         <Link
           href="/"
           aria-label="VAL CARD"
@@ -40,16 +42,17 @@ const SiteHeader = () => {
           />
         </Link>
 
-        <nav className="ml-8 flex items-center gap-7">
+        <nav className="ml-4 flex items-center gap-3 sm:ml-6 sm:gap-5 md:ml-8 md:gap-7">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`font-heading text-sm font-bold uppercase tracking-widest transition-colors ${
+              className={cn(
+                "font-heading text-xs font-bold uppercase tracking-wider transition-colors sm:text-sm sm:tracking-widest",
                 isActive(item.href)
                   ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+                  : "text-muted-foreground hover:text-foreground",
+              )}
             >
               {item.label}
             </Link>
