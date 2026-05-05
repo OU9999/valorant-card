@@ -7,6 +7,7 @@
 
 - 가독성을 위해 early return 패턴 적극 사용
 - HTML 요소 스타일링은 반드시 Tailwind 클래스 사용. inline style 사용 금지.
+- 조건부/동적 className은 반드시 `@/lib/cn`의 `cn()` 사용. template literal(백틱) + 삼항 연산자로 클래스 조합 금지.
 - 함수 선언 대신 `const` 화살표 함수 사용 (예: `const toggle = () =>`) 가능하면 타입도 정의.
 - 단, App Router 라우트 컴포넌트(page, layout, loading, error 등)는 `export default function`으로 선언.
 - inline export 대신 파일 끝에서 named export 사용 (예: `export { foo, bar }`, `export type { FooType }`)
