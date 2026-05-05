@@ -1,0 +1,93 @@
+import type { CSSProperties } from "react";
+import type { AnimationPhase, PhaseView } from "./types";
+
+const PANEL_START_X = "134vw";
+const PANEL_CENTER_X = "0vw";
+const PANEL_END_X = "-146vw";
+
+const FULL_TEXT_CLIP = "inset(0 0 0 0)";
+const HIDDEN_TEXT_CLIP_RIGHT = "polygon(126% 0, 126% 0, 108% 100%, 108% 100%)";
+const HIDDEN_TEXT_CLIP_LEFT = "polygon(-126% 0, -18% 0, -36% 100%, -144% 100%)";
+
+const REVEAL_DURATION_MS = 720;
+const RESTORE_DURATION_MS = 720;
+const BLINK_DURATION_MS = 460;
+const REDUCED_REVEAL_DURATION_MS = 280;
+const REDUCED_RESTORE_DURATION_MS = 280;
+const REDUCED_BLINK_DURATION_MS = 220;
+
+const BLINK_OPACITY = [0, 1, 0, 1, 1];
+const BLINK_TIMES = [0, 0.18, 0.42, 0.66, 1];
+const REDUCED_BLINK_TIMES = [0, 0.45, 1];
+
+const DARK_BACKGROUND_STYLE = {
+  backgroundImage: [
+    "radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.06), transparent 34%)",
+    "linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px)",
+    "linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px)",
+    "linear-gradient(135deg, transparent 0 48%, rgba(255, 255, 255, 0.04) 48% 49%, transparent 49% 100%)",
+  ].join(", "),
+  backgroundSize: "100% 100%, 56px 56px, 56px 56px, 180px 180px",
+} satisfies CSSProperties;
+
+const WIPE_PANEL_STYLE = {
+  clipPath: "polygon(18% 0, 100% 0, 82% 100%, 0 100%)",
+} satisfies CSSProperties;
+
+const PHASE_VIEW = {
+  base: {
+    panel: {
+      x: PANEL_START_X,
+      opacity: 0,
+    },
+    baseTextOpacity: 0.18,
+    activeText: {
+      clipPath: HIDDEN_TEXT_CLIP_RIGHT,
+      opacity: 0,
+    },
+  },
+  reveal: {
+    panel: {
+      x: PANEL_CENTER_X,
+      opacity: 1,
+    },
+    baseTextOpacity: 0,
+    activeText: {
+      clipPath: FULL_TEXT_CLIP,
+      opacity: 1,
+    },
+  },
+  restore: {
+    panel: {
+      x: [PANEL_CENTER_X, PANEL_END_X, PANEL_END_X],
+      opacity: [1, 1, 0],
+    },
+    baseTextOpacity: 0.18,
+    activeText: {
+      clipPath: HIDDEN_TEXT_CLIP_LEFT,
+      opacity: 0,
+    },
+  },
+} satisfies Record<AnimationPhase, PhaseView>;
+
+const getNextPhase = (phase: AnimationPhase): AnimationPhase => {
+  if (phase === "base") return "reveal";
+  if (phase === "reveal") return "restore";
+  return "base";
+};
+
+export {
+  BLINK_DURATION_MS,
+  BLINK_OPACITY,
+  BLINK_TIMES,
+  DARK_BACKGROUND_STYLE,
+  getNextPhase,
+  PHASE_VIEW,
+  REDUCED_BLINK_DURATION_MS,
+  REDUCED_BLINK_TIMES,
+  REDUCED_RESTORE_DURATION_MS,
+  REDUCED_REVEAL_DURATION_MS,
+  RESTORE_DURATION_MS,
+  REVEAL_DURATION_MS,
+  WIPE_PANEL_STYLE,
+};
