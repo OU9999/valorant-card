@@ -1,4 +1,4 @@
-import type { KeyboardEventHandler, ReactNode } from "react";
+import type { KeyboardEventHandler, ReactElement, ReactNode } from "react";
 
 interface AnimationPhaseSurfaceProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ const AnimationPhaseSurface = ({
   children,
   onAdvance,
   onKeyDown,
-}: AnimationPhaseSurfaceProps) => {
+}: AnimationPhaseSurfaceProps): ReactElement => {
   return (
     <section
       role="button"

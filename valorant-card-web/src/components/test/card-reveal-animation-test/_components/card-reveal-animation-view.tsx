@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { AnimationPhaseSurface } from "./animation-phase-surface";
 import { AnimationStage } from "./animation-stage";
 import { BackgroundFrame } from "./background-frame";
@@ -11,7 +12,7 @@ interface CardRevealAnimationViewProps {
 
 const CardRevealAnimationView = ({
   animation,
-}: CardRevealAnimationViewProps) => (
+}: CardRevealAnimationViewProps): ReactElement => (
   <AnimationPhaseSurface
     onAdvance={animation.advancePhase}
     onKeyDown={animation.handleKeyDown}

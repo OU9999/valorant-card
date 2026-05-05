@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { motion } from "motion/react";
 import type { CardRevealAnimationState } from "../types";
 
@@ -6,7 +7,10 @@ interface WipePanelProps {
   transition: CardRevealAnimationState["panelTransition"];
 }
 
-const WipePanel = ({ animation, transition }: WipePanelProps) => (
+const WipePanel = ({
+  animation,
+  transition,
+}: WipePanelProps): ReactElement => (
   <motion.div
     aria-hidden
     animate={{ x: animation.x, opacity: animation.opacity }}

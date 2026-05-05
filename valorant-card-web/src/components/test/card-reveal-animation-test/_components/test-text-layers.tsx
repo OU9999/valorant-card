@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
 import type { CardRevealAnimationState } from "../types";
@@ -9,7 +10,7 @@ interface TestTextLayersProps {
 const TEST_TEXT_CLASS =
   "font-heading text-[clamp(5rem,19vw,17rem)] font-extrabold tracking-normal";
 
-const TestTextLayers = ({ animation }: TestTextLayersProps) => (
+const TestTextLayers = ({ animation }: TestTextLayersProps): ReactElement => (
   <>
     <div className="absolute inset-0 z-30 flex items-center justify-center">
       <motion.h1
