@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent } from "react";
 import { useReducedMotion } from "motion/react";
 import {
   BLINK_DURATION_MS,
@@ -19,6 +19,31 @@ import type { AnimationPhase, CardRevealAnimationState } from "../types";
 
 const toSeconds = (ms: number) => ms / 1000;
 
+const createPanelTransition = (
+  phase: AnimationPhase,
+  panelDuration: number,
+): CardRevealAnimationState["panelTransition"] => {
+  const transition = {
+    duration: phase === "base" ? 0 : panelDuration,
+    ease: "easeInOut" as const,
+  };
+
+  if (phase !== "restore") return transition;
+
+  return {
+    ...transition,
+    times: [0, 0.92, 1],
+  };
+};
+
+const createTextTransition = (
+  phase: AnimationPhase,
+  panelDuration: number,
+): CardRevealAnimationState["baseTextTransition"] => ({
+  duration: phase === "base" ? 0 : panelDuration,
+  ease: "easeInOut" as const,
+});
+
 const useCardRevealAnimation = (): CardRevealAnimationState => {
   const [phase, setPhase] = useState<AnimationPhase>("base");
   const reducedMotion = useReducedMotion();
@@ -36,22 +61,8 @@ const useCardRevealAnimation = (): CardRevealAnimationState => {
   );
   const panelDuration = phase === "restore" ? restoreDuration : revealDuration;
 
-  const panelTransition = useMemo(
-    () => ({
-      duration: phase === "base" ? 0 : panelDuration,
-      ease: "easeInOut" as const,
-      times: phase === "restore" ? [0, 0.92, 1] : undefined,
-    }),
-    [panelDuration, phase],
-  );
-
-  const baseTextTransition = useMemo(
-    () => ({
-      duration: phase === "base" ? 0 : panelDuration,
-      ease: "easeInOut" as const,
-    }),
-    [panelDuration, phase],
-  );
+  const panelTransition = createPanelTransition(phase, panelDuration);
+  const baseTextTransition = createTextTransition(phase, panelDuration);
 
   const activeTextTransition = baseTextTransition;
 
@@ -75,6 +86,9 @@ const useCardRevealAnimation = (): CardRevealAnimationState => {
         }
       : { duration: 0.16, ease: "linear" as const };
 
+  /**
+   * restore 단계의 패널 퇴장 애니메이션이 끝난 뒤 기본 대기 상태로 되돌린다.
+   */
   useEffect(() => {
     if (phase !== "restore") return;
 

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { cn } from "@/lib/cn";
 import type { CardRevealAnimationState } from "../types";
 
 interface TestTextLayersProps {
@@ -13,7 +14,7 @@ const TestTextLayers = ({ animation }: TestTextLayersProps) => (
     <div className="absolute inset-0 z-30 flex items-center justify-center">
       <motion.h1
         animate={{ opacity: animation.phaseView.baseTextOpacity }}
-        className={`${TEST_TEXT_CLASS} text-[#d8d3ca]`}
+        className={cn(TEST_TEXT_CLASS, "text-[#d8d3ca]")}
         initial={false}
         transition={animation.baseTextTransition}
       >
@@ -34,7 +35,7 @@ const TestTextLayers = ({ animation }: TestTextLayersProps) => (
       <motion.h1
         key={animation.phase}
         animate={animation.blinkAnimation}
-        className={`${TEST_TEXT_CLASS} text-primary`}
+        className={cn(TEST_TEXT_CLASS, "text-primary")}
         initial={{ opacity: 0 }}
         transition={animation.blinkTransition}
       >
