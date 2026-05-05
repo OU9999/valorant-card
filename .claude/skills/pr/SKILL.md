@@ -11,19 +11,53 @@ allowed-tools: ["Bash", "Read", "Grep", "AskUserQuestion"]
 
 ### 1. 변경 내용 분석
 
-다음 명령어로 변경 내용을 분석하세요:
+먼저 PR 생성 가능 상태인지 확인하세요:
+
+```bash
+git status --short
+git branch --show-current
+git fetch origin main --prune
+```
+
+**중단 조건:**
+
+- working tree가 깨끗하지 않으면 중단하고, 커밋 또는 스태시 후 다시 실행하도록 안내
+- 현재 브랜치가 `main`이면 중단
+- `git fetch origin main --prune` 실패 시 원격 기준 검사가 불완전하다는 점을 사용자에게 알리고 진행 여부 확인
+- 기준 브랜치 대비 커밋이 0개이면 PR 생성할 변경사항이 없으므로 중단
+
+기준 브랜치는 `origin/main`을 우선 사용하고, 불가능한 경우에만 로컬 `main`을 사용하세요:
+
+```bash
+git log --oneline origin/main..HEAD
+git log --name-status --find-renames --oneline origin/main..HEAD
+git diff --stat origin/main...HEAD
+git diff --name-status --find-renames origin/main...HEAD
+```
+
+`origin/main`을 사용할 수 없는 경우:
 
 ```bash
 git log --oneline main..HEAD
-git log --name-only --oneline main..HEAD
+git log --name-status --find-renames --oneline main..HEAD
+git diff --stat main...HEAD
+git diff --name-status --find-renames main...HEAD
 ```
 
-**주의:** `git diff main..HEAD`는 사용하지 마세요!
+**주의:** `git diff main..HEAD` 또는 `git diff origin/main..HEAD`는 사용하지 마세요!
 
-- `git diff main..HEAD`는 main에만 있는 변경사항도 "삭제"로 표시합니다.
-- 반드시 `git log --name-only main..HEAD`를 사용하여 **이 브랜치 커밋에서 실제로 변경한 파일만** 확인하세요.
+- `A..B` 형태의 `git diff`는 PR 기준 diff가 아니라 A와 B의 직접 비교입니다.
+- base 브랜치에만 있는 변경사항이 이 브랜치에서 삭제된 것처럼 보일 수 있습니다.
+- 실제 PR diff 확인은 반드시 `origin/main...HEAD`처럼 triple-dot을 사용하세요.
+- 커밋 기반 변경 파일 확인은 `git log --name-status --find-renames origin/main..HEAD`를 사용하세요.
 
-### 2. PR 제목 생성
+### 2. 사전 검사 체크리스트
+
+PR 제목과 본문을 만들기 전에 `.claude/skills/pr/check-list.md`를 읽고 체크리스트를 작성하세요.
+
+체크리스트에서 중단 조건에 해당하는 항목이 있으면 PR 생성 전 먼저 수정하세요.
+
+### 3. PR 제목 생성
 
 변경 내용을 분석하여 다음 형식으로 제목을 생성하세요:
 
@@ -35,7 +69,7 @@ git log --name-only --oneline main..HEAD
 - `docs: 문서 변경 설명` - 문서 수정
 - `agent: 에이전트, 클로드, ai 관련 설정` - 에이전트 설정
 
-### 3. PR 본문 생성
+### 4. PR 본문 생성
 
 다음 형식으로 PR 본문을 생성하세요:
 
@@ -63,7 +97,7 @@ git log --name-only --oneline main..HEAD
 5. 각 설명은 1~2문장으로 간결하게 작성
 6. "~함", "~추가", "~구현" 같은 간결한 문체 사용
 
-### 4. 라벨 결정
+### 5. 라벨 결정
 
 제목의 prefix에 따라 라벨을 결정하세요:
 
@@ -83,7 +117,7 @@ git log --name-only --oneline main..HEAD
 | remove     | remove        | 기능 제거       |
 | agent      | agent         | 에이전트 설정   |
 
-### 5. PR 내용 확인 (필수)
+### 6. PR 내용 확인 (필수)
 
 PR을 생성하기 전에 **반드시** 사용자에게 다음 내용을 보여주고 확인을 받으세요:
 
@@ -99,6 +133,12 @@ PR 미리보기
 라벨: [결정한 라벨들]
 Base: main
 
+사전 검사:
+- CLAUDE.md 준수: [확인/수정 필요/해당 없음]
+- AGENTS.md 준수: [확인/수정 필요/해당 없음]
+- Claude/Codex 스킬 동기화: [확인/수정 필요/해당 없음]
+- 예외 사유: [없음 또는 사유]
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -106,7 +146,7 @@ AskUserQuestion 도구를 사용하여 확인을 받으세요.
 
 **중요:** 사용자가 승인하기 전까지 절대로 PR을 생성하지 마세요.
 
-### 6. PR 생성
+### 7. PR 생성
 
 사용자가 승인한 경우에만 gh CLI를 사용하여 PR을 생성하세요:
 
@@ -127,6 +167,6 @@ EOF
 
 **중요:** body는 반드시 HEREDOC을 사용하세요.
 
-### 7. 결과 출력
+### 8. 결과 출력
 
 PR 생성 후 URL을 사용자에게 알려주세요.
