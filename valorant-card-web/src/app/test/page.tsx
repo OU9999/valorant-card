@@ -1,11 +1,36 @@
 import Link from "next/link";
 
 const TEST_PAGES = [
-  { href: "/test/real-data", label: "Real Data Test", description: "실제 플레이어 데이터로 카드 렌더링" },
-  { href: "/test/carousel", label: "Carousel Test", description: "전 티어 카드 캐러셀 & 컨트롤" },
-  { href: "/test/size", label: "Card Size Test", description: "카드 크기별 비율 비교 (Original vs cqw)" },
-  { href: "/test/design", label: "Design Reference", description: "FIFA Card × Valorant Flashback 디자인 레퍼런스" },
-  { href: "/test/svg-test", label: "SVG Path Test", description: "SVG clipPath와 배경 이미지 정렬 검증" },
+  {
+    href: "/test/animation",
+    label: "Animation Test",
+    description: "카드 등장 HUD 리빌 애니메이션 검증",
+  },
+  {
+    href: "/test/real-data",
+    label: "Real Data Test",
+    description: "실제 플레이어 데이터로 카드 렌더링",
+  },
+  {
+    href: "/test/carousel",
+    label: "Carousel Test",
+    description: "전 티어 카드 캐러셀 & 컨트롤",
+  },
+  {
+    href: "/test/size",
+    label: "Card Size Test",
+    description: "카드 크기별 비율 비교 (Original vs cqw)",
+  },
+  {
+    href: "/test/design",
+    label: "Design Reference",
+    description: "FIFA Card × Valorant Flashback 디자인 레퍼런스",
+  },
+  {
+    href: "/test/svg-test",
+    label: "SVG Path Test",
+    description: "SVG clipPath와 배경 이미지 정렬 검증",
+  },
 ] as const;
 
 export default function TestPage() {

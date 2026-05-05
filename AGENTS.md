@@ -25,5 +25,5 @@
 
 ### 커밋 & PR 규칙
 
-- 커밋 전 반드시 `/commit` 스킬 사용. 직접 `git commit` 실행 금지.
-- PR 생성 시 반드시 `/pr` 스킬 사용. 직접 `gh pr create` 실행 금지.
+- 커밋 전 반드시 `.claude/skills/commit`의 `/commit` 스킬 지침을 따라 실행. 직접 `git commit` 실행 금지.
+- PR 생성 시 반드시 `.claude/skills/pr`의 `/pr` 스킬 지침을 따라 실행. 직접 `gh pr create` 실행 금지.
