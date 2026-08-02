@@ -40,3 +40,4 @@ related: []
 
 - [[diff]] -- 프로젝트 차별점. 핵심 컨셉, 기능, 바이럴 전략, 리스크 정리.
 - [[docs-rule]] -- 문서 작성 규칙. 말투, 구조, 금지 표현, 프론트매터 스키마 정의.
+- [long-running-agent-workflow-translation](0516/long-running-agent-workflow-translation.md) -- Jarrod Watts의 장기 실행 에이전트 워크플로우 게시글 번역 정리. 모호성 제거, 멀티 에이전트, 크로스 컨텍스트 메모리 포함.
