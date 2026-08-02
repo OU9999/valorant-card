@@ -7,8 +7,8 @@ status: published
 category: api
 date: 2025-04-04
 related:
-  - "[[riot-production-key-review]]"
-  - "[[riot-api-key-guide]]"
+  - "docs/0404/riot-production-key-review.md"
+  - "docs/0214/riot-api-key-guide.md"
 ---
 
 # Production Key 취득 TODO

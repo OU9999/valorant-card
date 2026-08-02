@@ -11,14 +11,14 @@ status: published
 category: algorithm
 date: 2025-03-18
 related:
-  - "[[tier-scoring-algorithm]]"
-  - "[[tracker-score-validation]]"
+  - "docs/0318/tier-scoring-algorithm.md"
+  - "docs/0318/tracker-score-validation.md"
 ---
 
 # Tracker Score 알고리즘 개선안
 
 기존 알고리즘의 문제점을 분석하고 개선안을 제시함.
-최종 반영 결과는 [[tier-scoring-algorithm]], 검증은 [[tracker-score-validation]] 참고.
+최종 반영 결과는 [tier-scoring-algorithm](./tier-scoring-algorithm.md), 검증은 [tracker-score-validation](./tracker-score-validation.md) 참고.
 
 ## 1. 현재 문제점
 

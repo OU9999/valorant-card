@@ -7,8 +7,8 @@ status: published
 category: api
 date: 2025-04-07
 related:
-  - "[[production-key-readiness]]"
-  - "[[riot-production-key-review]]"
+  - "docs/0407/production-key-readiness.md"
+  - "docs/0404/riot-production-key-review.md"
 ---
 
 # Riot Games 개발자 정책 (번역)

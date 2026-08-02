@@ -7,8 +7,8 @@ status: published
 category: api
 date: 2025-04-07
 related:
-  - "[[production-key-readiness]]"
-  - "[[valorant-dev-policy-ko]]"
+  - "docs/0407/production-key-readiness.md"
+  - "docs/0407/valorant-dev-policy-ko.md"
 ---
 
 # Production Key 신청 폼 작성

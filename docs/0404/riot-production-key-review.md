@@ -7,7 +7,7 @@ status: published
 category: api
 date: 2025-04-04
 related:
-  - "[[riot-api-key-guide]]"
+  - "docs/0214/riot-api-key-guide.md"
 ---
 
 # Riot Production Key 심사 분석
