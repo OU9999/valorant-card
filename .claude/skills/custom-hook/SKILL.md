@@ -97,7 +97,7 @@ quality: high
 ## Constraints
 
 - `useMemo`, `useCallback` 사용 금지 (React Compiler 환경).
-- 프로젝트 코드 규칙 준수 (CLAUDE.md 참조): arrow function, named export, async/await 등.
+- 프로젝트 코드 규칙 준수 (`valorant-card-rules/code-rule/code-rule.md` 참조): arrow function, named export, async/await 등.
 - 이펙트 훅에는 반드시 JSDoc 설명 포함.
 - 글루 함수(여러 스코프를 건드리는 함수)는 composer에 남긴다 — 억지로 분리하지 않는다.
 - 단순 boolean 토글 등 trivial한 상태는 별도 훅으로 분리하지 않는다.

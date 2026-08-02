@@ -94,7 +94,7 @@ quality: high
 
 - 오케스트레이터 JSX에 HTML 태그 금지 — 컴포넌트만 조합.
 - prop pass-through 대신 children composition 패턴 우선.
-- 프로젝트 코드 규칙 준수 (CLAUDE.md 참조): arrow function, named export, Tailwind only 등.
+- 프로젝트 코드 규칙 준수 (`valorant-card-rules/code-rule/code-rule.md` 참조): arrow function, named export, Tailwind only 등.
 - 기존 프로젝트의 분리 패턴(tier-card/ 등)을 참고하여 일관성 유지.
 
 ## Success Criteria

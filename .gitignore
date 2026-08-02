@@ -44,9 +44,6 @@ next-env.d.ts
 .playwright-mcp
 .playwright-cli
 
-# obsidian
-.obsidian
-
 # test fixtures (API 응답 — 개인정보 포함)
 valorant-card-web/scripts/fixtures/
 valorant-card-web/public/fixtures/

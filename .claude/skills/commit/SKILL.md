@@ -43,7 +43,7 @@ git diff --cached
 | `style`    | UI/스타일 변경               |
 | `chore`    | 설정, 빌드 등 (agent 범위 제외)                                    |
 | `docs`     | 문서 수정                                                          |
-| `agent`    | AI 에이전트 관련 모든 변경 (CLAUDE.md, .claude/, 스킬, MCP 설정 등) |
+| `agent`    | AI 에이전트 관련 변경 (`AGENTS.md`, `CLAUDE.md`, `valorant-card-rules/`, `.agents/`, `.claude/`, `.codex/` 등) |
 | `perf`     | 성능 개선                    |
 | `test`     | 테스트                       |
 | `ci`       | CI/CD                        |
