@@ -7,7 +7,7 @@ status: published
 category: ui-ux
 date: 2025-04-05
 related:
-  - "[[card-view-system]]"
+  - "docs/0405/card-view-system.md"
 ---
 
 # 디자인 레퍼런스: FIFA Card × Valorant Flashback

@@ -8,8 +8,8 @@ status: published
 category: api
 date: 2025-04-06
 related:
-  - "[[riot-production-key-review]]"
-  - "[[production-key-todo]]"
+  - "docs/0404/riot-production-key-review.md"
+  - "docs/0405/production-key-todo.md"
 ---
 
 # 법적 페이지 작성 명세

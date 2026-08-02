@@ -8,8 +8,8 @@ status: draft
 category: meta
 date: 2026-03-21
 related:
-  - "[[tier-scoring-algorithm]]"
-  - "[[high-tier-card-design]]"
+  - "docs/0318/tier-scoring-algorithm.md"
+  - "docs/0321/high-tier-card-design.md"
 ---
 
 # 프로젝트 차별점
@@ -26,7 +26,7 @@ related:
 
 - 발로란트 전적 데이터 기반 FC FUT 스타일 카드 생성
 - 티어별 카드 디자인 차등. 높은 티어일수록 화려함.
-- [[tier-scoring-algorithm]] 기반 알고리즘 점수 산출
+- [tier-scoring-algorithm](../0318/tier-scoring-algorithm.md) 기반 알고리즘 점수 산출
 
 ### 2. AI 요원 이미지 생성 (NanoBanana2)
 

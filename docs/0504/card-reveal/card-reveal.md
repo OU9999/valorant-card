@@ -8,7 +8,7 @@ status: draft
 category: card-design
 date: 2026-05-04
 related:
-  - "[[card-view-system]]"
+  - "docs/0405/card-view-system.md"
 ---
 
 # 카드 등장 애니메이션 스토리보드
@@ -21,7 +21,7 @@ VALORANT 클라이언트풍 HUD 전환을 참고하되, 실제 구현에서는 �
 
 ## 스토리보드
 
-![[card-reveal-storyboard.png]]
+![카드 공개 스토리보드](./card-reveal-storyboard.png)
 
 ## 전환 흐름
 

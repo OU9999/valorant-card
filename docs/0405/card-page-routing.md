@@ -7,8 +7,8 @@ status: published
 category: ui-ux
 date: 2025-04-05
 related:
-  - "[[card-view-system]]"
-  - "[[production-key-todo]]"
+  - "docs/0405/card-view-system.md"
+  - "docs/0405/production-key-todo.md"
 ---
 
 # 카드 페이지 라우팅 시스템

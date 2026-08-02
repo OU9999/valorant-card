@@ -7,8 +7,8 @@ status: published
 category: ui-ux
 date: 2025-04-05
 related:
-  - "[[card-design-review]]"
-  - "[[production-key-todo]]"
+  - "docs/0321/card-design-review.md"
+  - "docs/0405/production-key-todo.md"
 ---
 
 # 카드 뷰 시스템

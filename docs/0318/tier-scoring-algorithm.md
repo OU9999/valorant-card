@@ -8,15 +8,15 @@ status: published
 category: algorithm
 date: 2025-03-18
 related:
-  - "[[tracker-score-improvements]]"
-  - "[[tracker-score-validation]]"
+  - "docs/0318/tracker-score-improvements.md"
+  - "docs/0318/tracker-score-validation.md"
 ---
 
 # 티어 기반 스코어링 알고리즘
 
 ## 1. 개요
 
-[[tracker-score-improvements]]의 개선안을 반영한 최종 알고리즘.
+[tracker-score-improvements](./tracker-score-improvements.md)의 개선안을 반영한 최종 알고리즘.
 
 플레이어의 능력치를 **1~99** OVR 점수와 **실전 스탯 6종**으로 부여한다.
 점수는 두 가지 요소로 결정된다:
@@ -204,7 +204,7 @@ finalScore = round(adjustedBase + finalPerformance × (ceiling - adjustedBase))
 
 ## 5. 검증 시뮬레이션
 
-전체 검증 결과는 [[tracker-score-validation]] 참고.
+전체 검증 결과는 [tracker-score-validation](./tracker-score-validation.md) 참고.
 
 ### GenG Xiesta (레디언트)
 

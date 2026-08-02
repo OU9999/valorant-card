@@ -7,14 +7,14 @@ status: draft
 category: card-design
 date: 2026-03-21
 related:
-  - "[[high-tier-card-design]]"
+  - "docs/0321/high-tier-card-design.md"
 ---
 
 # 카드 디자인 리뷰 및 개선점
 
 ## 배경
 
-[[high-tier-card-design]]에서 생성한 상위 티어 카드와 기존 하위 티어 카드의 레이아웃을 전면 개선함.
+[high-tier-card-design](./high-tier-card-design.md)에서 생성한 상위 티어 카드와 기존 하위 티어 카드의 레이아웃을 전면 개선함.
 Playwright로 9장 전체를 스크린샷 찍어 냉정하게 리뷰한 결과.
 
 ## 작업 내용

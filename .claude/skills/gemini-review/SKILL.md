@@ -160,4 +160,4 @@ mutation($threadId: ID!) {
 - Gemini 외 리뷰어(사람 리뷰 등) 스레드는 건드리지 말 것 — 이 스킬 범위 밖
 - 이미 resolved 된 스레드는 건드리지 말 것
 - 한 번의 실행에서 여러 리뷰를 함께 처리할 때, 가능하면 하나의 커밋으로 묶어 리뷰 피드백 단위의 히스토리를 유지
-- 프로젝트 규칙(CLAUDE.md, 린트/빌드 통과) 을 반드시 준수
+- 프로젝트 지침(`AGENTS.md`)과 코드 규칙(`valorant-card-rules/code-rule/code-rule.md`) 준수, 관련 린트·빌드 통과 필수

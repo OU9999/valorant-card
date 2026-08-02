@@ -7,9 +7,9 @@ status: published
 category: api
 date: 2025-04-07
 related:
-  - "[[riot-production-key-review]]"
-  - "[[production-key-todo]]"
-  - "[[legal-pages-spec]]"
+  - "docs/0404/riot-production-key-review.md"
+  - "docs/0405/production-key-todo.md"
+  - "docs/0406/legal-pages-spec.md"
 ---
 
 # Production Key 신청 준비 상태 평가
